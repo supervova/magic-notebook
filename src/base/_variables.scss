@@ -1,0 +1,370 @@
+// stylelint-disable selector-class-pattern
+
+// -----------------------------------------------------------------------------
+// 🎨  COLORS
+// -----------------------------------------------------------------------------
+// #region
+
+// COLOR NAMES
+
+// Spectrum
+$red:                                   hsl(10, 100%, 59%);
+$red-soft:                              hsl(10, 87%, 69%);
+$orange:                                hsl(40, 87%, 49%);
+$orange-lightest:                       hsl(40, 87%, 92%);
+$yellow:                                hsl(60, 87%, 49%);
+$yellow-lightest:                       hsl(60, 87%, 83%);
+$lime:                                  hsl(100, 87%, 69%);
+$green:                                 hsl(130, 87%, 39%);
+$turquoise:                             hsl(160, 87%, 39%);
+$cyan:                                  hsl(190, 87%, 39%);
+$cobalt:                                hsl(220, 87%, 69%);
+$blue:                                  hsl(250, 87%, 69%);
+$blue-lightest:                         hsl(250, 87%, 96%);
+$violet:                                hsl(280, 87%, 59%);
+$crimson:                               hsl(340, 87%, 69%);
+
+// Neutrals
+$transparent:                           hsla(0, 0%, 0%, 0);
+
+$black-max:                             hsla(0, 0%, 0%, .87);
+$black-transparent:                     hsla(0, 0%, 0%, .54);
+$black-transparent-more:                hsla(0, 0%, 0%, .38);
+$black-transparent-even-more:           hsla(0, 0%, 0%, .22);
+$black-transparent-almost:              hsla(0, 0%, 0%, .12);
+$black-transparent-most:                hsla(0, 0%, 0%, .05);
+
+$white-max:                             hsl(0, 0%, 100%);
+$white-transparent:                     hsla(0, 0%, 100%, .7);
+$white-transparent-more:                hsla(0, 0%, 100%, .5);
+$white-transparent-almost:              hsla(0, 0%, 100%, .12);
+
+// COLOR ROLES
+
+$color-primary:                         $red-soft;
+$color-primary-dark:                    darken($color-primary, 40%);
+$color-primary-light:                   lighten($color-primary, 26%);
+
+$color-error:                           $red;
+$color-info:                            $blue;
+$color-success:                         $green;
+$color-warning:                         $yellow;
+
+// Backgrounds
+$color-background-normal:               $white-max;
+$color-background-accent:               hsl(10, 98%, 96%);
+$color-background-inverse:              $color-primary-dark;
+$color-background-warning:              $yellow-lightest;
+$color-background-danger:               lighten($color-error, 20);
+
+$color-background-inverse-z0:           hsl(0, 0%, 7%);
+
+// Foregrounds / Inks
+
+// Inks are foreground colors for texts, borders, and icons
+// The map is preferable to variables as it can be used in the contrast function
+
+$color-inks: (
+
+  // color-ink(key)
+  normal: (
+    normal:                             $black-max,
+    muted:                              $black-transparent,
+    hint:                               $black-transparent-more,
+    disabled:                           $black-transparent-more,
+    icon:                               $black-transparent-even-more,
+    border:                             $black-transparent-almost,
+    link:                               darken($blue, 5%),
+    focus-outline:                      lighten($blue, 25%)
+  ),
+
+  // color-ink(key, accent)
+  accent: (
+    normal:                             $black-max,
+    muted:                              $black-transparent,
+    hint:                               $black-transparent-more,
+    disabled:                           $black-transparent-more,
+    icon:                               $black-transparent-even-more,
+    border:                             $black-transparent-almost,
+    link:                               darken($blue, 5%),
+    focus-outline:                      lighten($blue, 25%)
+  ),
+
+  // color-ink(key, inverse)
+  inverse: (
+    normal:                             $white-max,
+    muted:                              $white-transparent,
+    hint:                               $white-transparent-more,
+    disabled:                           $white-transparent-more,
+    icon:                               $white-transparent-more,
+    border:                             $white-transparent-almost,
+    link:                               lighten($blue, 5%),
+    link-hover:                         $blue
+  )
+);
+
+// #endregion
+
+// -----------------------------------------------------------------------------
+// 📰 LAYOUT
+// -----------------------------------------------------------------------------
+// #region
+
+$size-1:                                .8rem;
+$size-2:                                ($size-1 * 2);
+$size-3:                                ($size-1 * 3);
+$size-4:                                ($size-1 * 4);
+$size-5:                                ($size-1 * 5);
+$size-6:                                ($size-1 * 6);
+$size-7:                                ($size-1 * 7);
+$size-8:                                ($size-1 * 8);
+
+// For larger values use derived lines. E.g. ($size-line * 3)
+$size-line:                             $size-3;
+
+// Maps to generate spacing classes using Bootstrap mixin.
+// To use this uncomment '@import … spacing' in style.scss or remake Bootstrap
+// loop utilities/spacing removing unnecessary rules
+$spacers: (
+  0: 0,
+  1: $size-1,
+  2: $size-2,
+  // 3: $size-3,
+  4: $size-4,
+  5: $size-5,
+  6: $size-6,
+  7: $size-7,
+  8: $size-8,
+
+  1l: $size-line,
+  2l: ($size-line * 2),
+  3l: ($size-line * 3)
+);
+
+
+$grid-breakpoints: (
+  xs:   0,
+  sm:   568px,
+  md:   768px, // Use the same layout as on sm, but with vertical navbar
+  lg:   1024px,
+  xl:   1150px,
+  xxl:   1280px,
+  // xxxl:  1440px,
+  king-size: 1920px,
+  // jumbo: 2560px // iMac 27''
+);
+
+// Maps to generate maximum width of the container for each breakpoint
+// Values are multiples of 8.
+$container-max-widths: (
+  lg: (952px + 64px), // Tablet in landscape;
+  xl: (1144px + 64px), // Laptop;
+  // xxl: (1776px + 64px) // Full HD
+);
+
+// Using: @media #{$mq-retina} { … }
+$mq-retina: 'print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi)';
+
+// Grid. This stuff is needed only for BS grid.
+// My CSS grid needs to be edited directly in the file
+$grid-gutter-width:                     $size-1;
+// $grid-gutter-xxs:                       ($size-1 / 2);
+// $grid-gutter-lg:                        $size-line;
+// $grid-gutter-xl:                        $size-4;
+
+// #endregion
+
+// -----------------------------------------------------------------------------
+// 🔠 TYPOGRAPHY
+// -----------------------------------------------------------------------------
+// #region
+
+// stylelint-disable indentation
+$font-family-base:
+ 'Helvetica Neue',
+  Helvetica,
+  -apple-system,
+  system-ui,
+  BlinkMacSystemFont,
+ 'Segoe UI',
+ 'Noto Sans',
+  Arial,
+  sans-serif,
+ 'Apple Color Emoji',
+ 'Segoe UI Emoji',
+ 'Segoe UI Symbol',
+ 'Noto Color Emoji';
+
+
+$font-family-accent:
+ -apple-system,
+  system-ui,
+  BlinkMacSystemFont,
+ 'Helvetica Neue',
+  Helvetica,
+ 'Segoe UI',
+ 'Noto Sans',
+  Arial,
+  sans-serif,
+ 'Apple Color Emoji',
+ 'Segoe UI Emoji',
+ 'Segoe UI Symbol',
+ 'Noto Color Emoji';
+
+$font-family-monospace:
+ 'Fira Code',
+  Menlo,
+  Courier,
+ 'Courier New',
+  monospace;
+// stylelint-enable indentation
+
+$font-size-hero:                        $size-8;
+$line-height-hero:                      ($font-size-hero + $size-1) / $font-size-hero;
+
+$font-size-h1:                          $size-8;
+$line-height-h1:                        ($font-size-h1 + $size-1) / $font-size-h1;
+$font-weight-h1:                        700;
+
+$font-size-h1-small:                    $size-4;
+$line-height-h1-small:                  ($font-size-h1-small + $size-1) / $font-size-h1-small;
+
+$font-size-h2:                          $size-6;
+$line-height-h2:                        ($font-size-h2 + $size-1) / $font-size-h2;
+$font-weight-h2:                        700;
+
+$font-size-h2-small:                    $size-4;
+$line-height-h2-small:                  ($font-size-h2-small + $size-1) / $font-size-h2-small;
+$font-weight-h2-small:                  400;
+
+$font-size-big:                         2rem;
+$line-height-big:                       1.2; // 24px
+
+$font-size-base:                        1.7rem;
+$line-height-base:                      1.412; // 24px
+
+$font-size-small:                       1.4rem;
+$line-height-small:                     1.714; // 24px
+
+$list-bullet:                           url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%225%22%20height%3D%227%22%20viewBox%3D%220%200%205%207%22%3E%3Ccircle%20cx%3D%222.5%22%20cy%3D%222.5%22%20r%3D%222.5%22%20fill-opacity%3D%22.38%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E');
+
+// #endregion
+
+// -----------------------------------------------------------------------------
+// 📦 COMPONENTS BOXES
+// -----------------------------------------------------------------------------
+// #region
+
+$border-width:                          .1rem;
+
+// BOX BORDER RADIUS
+
+// Alerts, Cards, Rectangular Images
+$border-radius-sm:                      3px;
+
+// Buttons
+$border-radius:                         5px;
+
+// Dropdowns, Modal Bottom Sheets, Pickers, Sticky Blocks, Popovers, Tooltips
+$border-radius-lg:                      12px;
+
+// Modals
+$border-radius-xl:                      24px;
+
+
+// BOX SHADOWS
+
+// Buttons, Cards, Alerts, App Bar, Tab Bar, Switches
+$box-shadow-z1: 0 1px 0 0 rgba(0, 0, 0, .06);
+
+// FAB, Buttons hover, Snackbars
+$box-shadow-z2:
+  0 2px 4px -1px rgba(0, 0, 0, .24),
+  0 8px 16px -4px rgba(0, 0, 0, .12);
+
+// FAB hover, Drawers, Dropdowns, Modal Bottom Sheets, Pickers, Sticky Blocks
+$box-shadow-z3:
+  0 9px 10px -3px rgba(0, 0, 0, .21),
+  0 18px 34px -7px rgba(0, 0, 0, .12);
+
+// Popovers, Tooltips
+$box-shadow-z4:
+  0 16px 17px -5px rgba(0, 0, 0, .19),
+  0 29px 53px -10px rgba(0, 0, 0, .12);
+
+// Modals
+$box-shadow-z5:
+  0 24px 24px -8px rgba(0, 0, 0, .16),
+  0 40px 72px -12px rgba(0, 0, 0, .12);
+
+// Custom function color-ink() does not execute in sass lists.
+$box-shadow-focus-outline:              0 0 0 4px rgba(darken($blue, 5%), .5);
+
+// BOX Z-INDEX
+// $zindex-dropdown:                       1000;
+// $zindex-sticky:                         1020;
+// $zindex-fixed:                          1030;
+// $zindex-modal-backdrop:                 1040;
+// $zindex-modal:                          1050;
+// $zindex-popover:                        1060;
+// $zindex-tooltip:                        1070;
+
+
+// PANELS WIDTH
+
+$panel-width-xs:                        200px;
+
+// Tooltips, mobile drawers
+$panel-width-sm:                        280px;
+
+// Dropdowns, popovers, tablet and desktop drawers
+$panel-width:                           320px;
+
+// Wide drawers, modals on tablets
+$panel-width-md:                        640px;
+
+// Modals on desktops,
+$panel-width-lg:                        800px;
+
+// PADDINGS
+
+$box-padding-sm:                        $size-2;
+$box-padding-line:                      $size-line;
+$box-padding-lg:                        $size-4; // 32
+$box-padding-xl:                        $size-5; // 40
+
+// #endregion
+
+// -----------------------------------------------------------------------------
+// 👻 ANIMATION & TRANSITIONS
+// -----------------------------------------------------------------------------
+// #region
+
+// Use shorter for disappearing  elements. To do that set transitions on both
+// states, like this:
+// .el { transition: all --duration-disappearance --easing-disappearance; }
+// .el.hidden { transition: all --duration-appearance --easing-appearance; }
+$duration-xs:                           .1s;
+
+// Medium elements changing states
+// and disappearance
+$duration-sm:                           .2s;
+
+// Medium elements appearance,
+// large elements changing states
+// and disappearance
+$duration:                              .25s;
+
+// Medium to large elements appearance
+$duration-md:                           .3s;
+
+// Slower large elements appearance
+$duration-lg:                           .5s;
+$duration-xl:                          .8s;
+
+$easing:                                cubic-bezier(.4, 0, .2, 1); // accented ease-in-out
+$easing-appearance:                     cubic-bezier(0, 0, .2, 1); // accented ease-out
+$easing-disappearance:                  cubic-bezier(.4, 0, 1, 1); // ease-in
+$easing-bounce:                         cubic-bezier(.175, .885, .32, 1.275);
+
+// #endregion

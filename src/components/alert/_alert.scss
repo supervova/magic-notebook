@@ -1,0 +1,85 @@
+.alert {
+  background-color: $color-background-warning;
+  border-radius: $border-radius-sm;
+  box-shadow:
+    inset 0 0 0 1px color-ink(border, accent),
+    $box-shadow-z1;
+  color: color-ink(normal, accent);
+  font-family: $font-family-accent;
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+  margin-bottom: $size-line;
+  padding: $box-padding-sm;
+  position: relative;
+
+  @include media-breakpoint-up(md) {
+    padding: $box-padding-line;
+  }
+}
+
+// BIG GLOBAL ALERTS
+
+.alert.is-global {
+  border-radius: 0;
+  box-shadow:
+    inset 0 -1px 0 color-ink(border, accent),
+    $box-shadow-z1;
+  text-align: center;
+  margin-bottom: 0;
+  padding: $size-line $box-padding-sm;
+
+  > p {
+    text-align: left;
+    margin: 0 auto;
+    padding-left: $size-6;
+    position: relative;
+    min-height: 4.8rem;
+    // Max width is 7 global columns on desktops
+    max-width: round(map-get($container-max-widths, 'lg') / 7 * 12);
+  }
+
+  // Big Icons
+  > p .icon {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}
+
+// SEMANTIC BACKGROUNDS
+
+// H5BP .browserupgrade, noscript etc
+.is-waring,
+%alert-waring {
+  background: $color-background-warning;
+}
+
+.alert.is-warning .icon__body {
+  fill: $color-warning;
+}
+
+.alert.is-warning .icon__details {
+  fill: color-ink(muted, accent);
+}
+
+.is-danger,
+%alert-danger {
+  background: $color-background-danger;
+}
+
+
+// DISMISSIBLE ALERTS
+
+// .is-dismissible {
+//   padding-right: $size-4; // 32px
+
+//   // Adjust close link position
+//   .btn.is-close {
+//     position: absolute;
+//     top: $size-1;
+//     right: $size-1;
+//   }
+// }

@@ -1,0 +1,209 @@
+// $font-face-primary: '/path/to/font-without-extension';
+
+// @font-face {
+//   font-family: 'Font Name';
+//   font-style: normal;
+//   font-weight: 400;
+//   // woff2 and woff are enough
+//   src:
+//     url('#{$font-face-primary}.woff2') format('woff2'),
+//     url('#{$font-face-primary}.woff') format('woff');
+// }
+
+// -----------------------------------------------------------------------------
+// DOCUMENT
+// -----------------------------------------------------------------------------
+
+body {
+  background-color: $color-background-normal;
+  color: color-ink(normal);
+
+  // Use flex to distribute blocks across the entire height of the screen
+  // setting central area flex-growth to 1.
+  // display: flex;
+  // flex-direction: column;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  text-align: left;
+  scroll-behavior: smooth;
+  min-height: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// BODY COPY
+// -----------------------------------------------------------------------------
+
+// LINKS
+
+a {
+  color: color-ink(link);
+  text-decoration: none;
+  transition: color $duration-xs $easing;
+
+  &:hover {
+    color: color-ink(link)-hover;
+    text-decoration: underline;
+  }
+}
+
+// BLOCKS
+
+address,
+blockquote,
+dl,
+figure,
+iframe,
+ol,
+p,
+pre,
+ul {
+  margin-top: 0;
+  margin-bottom: $size-line;
+}
+
+.lead {
+  font-size: $font-size-big;
+  line-height: $line-height-big;
+}
+
+// QUOTES
+
+:lang(ru) {
+  blockquote::before,
+  q::before {
+    content: '«';
+  }
+
+  blockquote::after,
+  q::after {
+    content: '»';
+  }
+}
+
+:lang(en) {
+  blockquote::before,
+  q::before {
+    content: '“';
+  }
+
+  blockquote::after,
+  q::after {
+    content: '”';
+  }
+}
+
+.blockquote {
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  footer {
+    color: color-ink(muted, accent);
+
+    &::before {
+      content: '\2014\00A0'; // em dash, nbsp
+    }
+  }
+}
+
+// LISTS
+
+ul {
+  list-style-image: $list-bullet;
+  padding-left: $size-2;
+
+  @include media-breakpoint-up(md) {
+    padding-left: 0;
+  }
+}
+
+li:not(:last-child),
+.list-caption {
+  margin-bottom: $size-1;
+}
+
+// .list-caption may be a span
+.list-caption {
+  display: block;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  padding-left: $size-2;
+  margin-bottom: 0;
+}
+
+.list.is-unstyled,
+nav ol,
+nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list.is-inline {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: .5rem;
+    }
+  }
+}
+
+dt {
+  font-weight: 500;
+}
+
+dd {
+  margin-left: 0;
+}
+
+// DIVIDERS
+
+hr {
+  border: 0;
+  border-top: $border-width solid color-ink(border);
+  margin-top: ($size-line * 3 - .1rem);
+  margin-bottom: ($size-line * 3);
+}
+
+
+// -----------------------------------------------------------------------------
+// HELPERS
+// -----------------------------------------------------------------------------
+
+.nobr {
+  white-space: nowrap;
+}
+
+.note {
+  color: color-ink(muted);
+}
+
+.sr-only,
+%sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+.text-hide,
+%text-hide {
+  background-color: $transparent;
+  border: 0;
+  color: $transparent;
+  font: 0/0 a;
+  text-shadow: none;
+}

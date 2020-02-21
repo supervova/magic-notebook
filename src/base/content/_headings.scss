@@ -1,0 +1,79 @@
+// stylelint-disable selector-list-comma-newline-after
+
+h1, h2 {
+  font-family: $font-family-accent;
+
+  // OpenType kerning
+  font-feature-settings: 'kern' 1, 'liga' 1;
+
+  @include media-breakpoint-up(md) {
+    letter-spacing: -.1rem;
+  }
+}
+
+// Heading 1
+// Expected %-placeholder "%h1" to match specified pattern (scss/percent-placeholder-pattern)
+h1,
+%heading-1 {
+  color: color-ink(normal, accent);
+  font-size: $font-size-h1-small;
+  font-weight: $font-weight-h1;
+  line-height: $line-height-h1-small;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+// Heading 2
+h2,
+%heading-h2 {
+  color: color-ink(normal, accent);
+  font-size: $font-size-h2-small;
+  font-weight: $font-weight-h2-small;
+  line-height: $line-height-h2-small;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  h1 + &,
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-h2;
+    font-weight: $font-weight-h2;
+    line-height: $line-height-h2;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+h3, h4, h5, h6 {
+  font-size: 100%;
+  margin-top: ($size-line * 2);
+  margin-bottom: $size-line;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h4 {
+  color: $crimson;
+}
+
+h3 + h4 {
+  margin-top: $size-line;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

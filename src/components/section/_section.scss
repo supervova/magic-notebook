@@ -1,0 +1,168 @@
+// -----------------------------------------------------------------------------
+// HEADERS
+// -----------------------------------------------------------------------------
+
+.section__header {
+  --background-img: url('/projects/mn/img/components/section/product.jpg');
+
+  background-color: $color-primary-light;
+  background:
+    linear-gradient(rgba($color-primary-light, .84), rgba($color-primary-light, .84)),
+    linear-gradient($color-primary-light, $color-primary-light),
+    var(--background-img);
+  background-blend-mode: normal, color, normal;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  margin-right: -$size-2;
+  margin-left: -$size-2;
+  padding-top: $size-line + 1.6rem;
+  padding-bottom: 2rem;
+
+  @include media-breakpoint-up(md) {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-right: -$size-4;
+    margin-left: -$size-4;
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 33.6rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    border-radius: $border-radius-lg;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+
+// .section__header {
+//   background: $color-primary-light;
+//   text-align: center;
+//   margin-right: -$size-2;
+//   margin-left: -$size-2;
+//   padding-top: $size-line + 1.6rem;
+
+//   @include media-breakpoint-up(md) {
+//     margin-right: -$size-4;
+//     margin-left: -$size-4;
+//     padding-top: ($size-line * 2) + .2rem;
+//   }
+
+//   @include media-breakpoint-up(xl) {
+//     margin-right: -((1150px - 952px) / 2);
+//     margin-left: -((1150px - 952px) / 2);
+//   }
+// }
+
+// .section__eyebrow {
+//   color: color-ink(muted);
+//   font-family: $font-family-accent;
+//   font-size: $font-size-small;
+//   line-height: $line-height-small;
+//   text-transform: uppercase;
+// }
+
+.section__header-content > h2 {
+  margin-bottom: .6rem;
+  padding-right: $size-2;
+  padding-left: $size-2;
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: .4rem;
+  }
+}
+
+
+.section__header-content > p {
+  // color: color-ink(muted);
+  padding-right: $size-2;
+  padding-left: $size-2;
+  margin-right: auto;
+  margin-bottom: 2.2rem;
+  margin-left: auto;
+  max-width: 63.2rem + $size-4;
+}
+
+// -----------------------------------------------------------------------------
+// BODY
+// -----------------------------------------------------------------------------
+
+// Dev styles
+// .section {
+//   background: #ffc;
+// }
+
+// .section__body {
+//   background: #fcf;
+// }
+
+// Vertical paddings to adjust the vertical rhythm are set on the first and
+// last child of the .section.
+// of the lower paddings.
+// .section h2:first-child { padding-top: 1.6rem }
+// .section p:last-child { margin-bottom: 0; padding-bottom: .6rem }
+
+.section__body {
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: $size-line;
+  padding-bottom: $size-line;
+  max-width: 63.2rem;
+
+  @include media-breakpoint-up(md) {
+    padding-top: ($size-line * 2);
+    padding-bottom: ($size-line * 2);
+  }
+}
+
+.section__body.has-top-text {
+  padding-top: $size-line + .3rem;
+
+  @include media-breakpoint-up(md) {
+    padding-top: ($size-line * 2) + .3rem;
+  }
+}
+
+.section__body.has-top-text.is-compact {
+  @include media-breakpoint-up(md) {
+    padding-top: $size-line;
+  }
+}
+
+.section__body.has-bottom-text {
+  padding-bottom: 1.8rem;
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: $size-line + 1.8rem;
+  }
+}
+// #endregion
+
+
+// -----------------------------------------------------------------------------
+// FULL BLEED
+// -----------------------------------------------------------------------------
+
+// MARKUP
+// .section.is-full-bleed
+//   .container
+//     Content...
+
+// figure.feature.is-full-bleed
+//   img(src='https://source.unsplash.com/e_DmszdpETY/1200x600',
+//     srcset='https://source.unsplash.com/e_DmszdpETY/2400x1200 2400w,\
+//     https://source.unsplash.com/e_DmszdpETY/1200x600 1200w,\
+//     https://source.unsplash.com/e_DmszdpETY/600x300 600w',\
+//     sizes='100vw', alt='low-angle photography of trees')
+//   figcaption Photo by Jonathan Borba on Unsplash
+
+.is-full-bleed {
+  text-align: center;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+}

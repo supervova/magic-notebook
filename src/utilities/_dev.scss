@@ -1,0 +1,66 @@
+// -----------------------------------------------------------------------------
+// RESET
+// -----------------------------------------------------------------------------
+
+// Использовать для локализации проблемы, составить список все предков
+// проблемного элемента и назначить им стили reset с помощью директивы
+// @extend. Затем по очереди комментировать селекторы, вычисляя методом
+// исключения, настоящий источник ошибки. Когда селектор будет локализован,
+// по очереди комментировать свойства, вычисляя испорченное. Пример.
+// body,
+// html,
+// .overtok-root,
+// .modal,
+// .chat,
+// .similar,
+// .modal__inner {
+//   @extend %reset;
+// }
+
+%reset {
+  box-sizing: border-box !important;
+  border: 0 !important;
+  float: none !important;
+  font-size: 100% !important;
+  line-height: auto !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  vertical-align: baseline !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+//------------------------------------------------------------------------------
+// DEBUG MODE
+//------------------------------------------------------------------------------
+
+$debug:                                 false;
+
+@if $debug {
+  body:hover {
+    background: transparent url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228%22%20height%3D%2224%22%20viewBox%3D%220%200%208%2024%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20width%3D%228%22%20height%3D%221%22%20y%3D%2223%22%20fill%3D%22%23000%22%20fill-opacity%3D%22.24%22%2F%3E%3Crect%20width%3D%228%22%20height%3D%221%22%20y%3D%2215%22%20fill%3D%22%23F0F%22%20fill-opacity%3D%22.12%22%2F%3E%3Crect%20width%3D%228%22%20height%3D%221%22%20y%3D%227%22%20fill%3D%22%23F0F%22%20fill-opacity%3D%22.12%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E') repeat;
+  }
+
+  .header,
+  .footer {
+    display: none !important;
+  }
+
+  .hero {
+    background: rgba(0, 0, 0, .5) none !important;
+  }
+
+  // Main content container
+  .main {
+    background: rgba(0, 0, 0, .12);
+    text-align: left;
+
+    @include media-breakpoint-up(md) {
+      margin: 0 auto;
+    }
+  }
+}
+
+

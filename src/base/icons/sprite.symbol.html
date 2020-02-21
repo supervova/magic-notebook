@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<script src="https://rawgit.com/jonathantneal/svg4everybody/master/dist/svg4everybody.js"></script>
+		<script>svg4everybody();</script>
+		<title>SVG &lt;symbol&gt; sprite preview | svg-sprite</title>
+		<style>@charset "UTF-8";body{padding:0;margin:0;color:#666;background:#fafafa;font-family:Arial,Helvetica,sans-serif;font-size:1em;line-height:1.4}header{display:block;padding:3em 3em 2em 3em;background-color:#fff}header p{margin:2em 0 0 0}section{border-top:1px solid #eee;padding:2em 3em 0 3em}section ul{margin:0;padding:0}section li{display:inline;display:inline-block;background-color:#fff;position:relative;margin:0 2em 2em 0;vertical-align:top;border:1px solid #ccc;padding:1em 1em 3em 1em;cursor:default}.icon-box{margin:0;width:144px;height:144px;position:relative;background:#ccc url("data:image/gif;base64,R0lGODlhDAAMAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozQjk4OTI0MUY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozQjk4OTI0MkY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNCOTg5MjNGRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjNCOTg5MjQwRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAAAwADAAAAhaEH6mHmmzcgzJAUG/NVGrfOZ8YLlABADs=") top left repeat;border:1px solid #ccc;display:table-cell;vertical-align:middle;text-align:center}.icon{display:inline;display:inline-block}h1{margin-top:0}h2{margin:0;padding:0;font-size:1em;font-weight:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:absolute;left:1em;right:1em;bottom:1em}footer{display:block;margin:0;padding:0 3em 3em 3em}footer p{margin:0;font-size:.7em}footer a{color:#0f7595;margin-left:0}</style>
+		
+<!--
+	
+Sprite shape dimensions
+====================================================================================================
+You will need to set the sprite shape dimensions via CSS when you use them as inline SVG, otherwise
+they would become a huge 100% in size. You may use the following dimension classes for doing so.
+They might well be outsourced to an external stylesheet of course.
+
+-->
+
+<style type="text/css">
+	 icon-ball { width: 20px; height: 20px; }
+	 icon-book { width: 20px; height: 20px; }
+	 icon-calculator { width: 20px; height: 20px; }
+	 icon-cart { width: 20px; height: 20px; }
+	 icon-chevron { width: 20px; height: 20px; }
+	 icon-close { width: 20px; height: 20px; }
+	 icon-close-xs { width: 16px; height: 16px; }
+	 icon-desktop { width: 20px; height: 20px; }
+	 icon-email { width: 20px; height: 20px; }
+	 icon-files { width: 20px; height: 20px; }
+	 icon-flame { width: 20px; height: 20px; }
+	 icon-gear { width: 20px; height: 20px; }
+	 icon-gift { width: 20px; height: 20px; }
+	 icon-group { width: 20px; height: 20px; }
+	 icon-heart { width: 20px; height: 20px; }
+	 icon-html { width: 20px; height: 20px; }
+	 icon-like { width: 20px; height: 20px; }
+	 icon-logo { width: 24px; height: 24px; }
+	 icon-magnifier { width: 20px; height: 20px; }
+	 icon-menu-more { width: 20px; height: 20px; }
+	 icon-mode-markdown { width: 20px; height: 20px; }
+	 icon-money { width: 20px; height: 20px; }
+	 icon-note { width: 20px; height: 20px; }
+	 icon-resources { width: 20px; height: 20px; }
+	 icon-segment { width: 20px; height: 20px; }
+	 icon-spellcheck { width: 20px; height: 20px; }
+	 icon-tag { width: 20px; height: 20px; }
+	 icon-truck { width: 20px; height: 20px; }
+	 icon-warning-md { width: 28px; height: 28px; }
+	 icon-whatsapp { width: 20px; height: 20px; }
+	 icon-word { width: 20px; height: 20px; }
+	 icon-wordpress { width: 20px; height: 20px; }
+	 icon-wordpress-glyph { width: 20px; height: 20px; }
+</style>
+<!--
+====================================================================================================
+-->
+
+	</head>
+	<body>
+	
+<!--
+	
+Inline <symbol> SVG sprite
+====================================================================================================
+This is an inlined version of the generated SVG sprite. The single images may be <use>d everywhere
+below within this document. Please see
+
+	https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md#defs--symbol-mode
+
+for further details on how to create this embeddable sprite variant.
+
+-->
+
+<svg width="0" height="0" style="position:absolute">
+		<symbol viewBox="0 0 20 20" id="icon-ball" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M15.657 4.343A8 8 0 114.343 15.657 8 8 0 0115.657 4.343zM8.586 10l-.752-.75a7.959 7.959 0 01-3.774 1.599 5.967 5.967 0 001.049 2.628L8.586 10zm2.165 2.165l-.751-.75-3.476 3.477a5.97 5.97 0 002.628 1.048 7.942 7.942 0 011.599-3.775zm2.725 2.727l-1.297-1.297a5.965 5.965 0 00-.99 2.286 5.958 5.958 0 002.287-.99zM6.405 7.82L5.108 6.524a5.965 5.965 0 00-.99 2.285 5.945 5.945 0 002.287-.988zM8.81 4.119l-.059.012a5.964 5.964 0 00-2.228.978L7.82 6.406a5.965 5.965 0 00.99-2.287zm2.233-.028l-.194-.03a7.956 7.956 0 01-1.6 3.774l.751.75 3.477-3.476a5.967 5.967 0 00-2.434-1.018zm3.849 2.433L11.414 10l.75.751a7.959 7.959 0 013.776-1.6 5.963 5.963 0 00-1.048-2.627zm.99 4.667a5.95 5.95 0 00-2.288.989l1.297 1.297a5.965 5.965 0 00.99-2.286z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-book" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M15 2H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM5 4h5v7L7.5 9.5 5 11V4z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-calculator" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14 2a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2h8zM8 14H6v2h2v-2zm3 0H9v2h2v-2zm3 0h-2v2h2v-2zm-6-3H6v2h2v-2zm3 0H9v2h2v-2zm3 0h-2v2h2v-2zm0-7H6v4h8V4z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-cart" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.5 15a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm8 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM5 2l1 2h11c.8 0 1.2.686.9 1.286L15 9.57c-.2.258-.5.429-.9.429H8.223L7.3 11.8H16v2H6c-.6 0-1-.4-1-1v-1l1.479-2.841L4 4H2V2h3z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-chevron" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4L6.59 5.41 11.17 10l-4.58 4.59L8 16l6-6z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-close" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M17 4.41L15.59 3 10 8.59 4.41 3 3 4.41 8.59 10 3 15.59 4.41 17 10 11.41 15.59 17 17 15.59 11.41 10z"/></symbol>
+		<symbol viewBox="0 0 16 16" id="icon-close-xs" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.563 2.027l1.409 1.409L9.41 8l4.562 4.562-1.41 1.41L8 9.41l-4.564 4.562-1.409-1.409L6.59 8 2.027 3.436l1.409-1.409L8 6.59z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-desktop" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 2c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h4v2H6v2h8v-2h-2v-2h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm12 10H4V4h12v8z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-email" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.4 4c.88 0 1.6.675 1.6 1.5v9c0 .825-.72 1.5-1.6 1.5H3.6c-.88 0-1.6-.675-1.6-1.5l.008-9c0-.825.712-1.5 1.592-1.5zM16 6.25L10 10 4 6.25v2L10 12l6-3.75v-2z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-files" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 18a2 2 0 01-2-2v-6a2 2 0 012-2h2.006l.004-4c0-1.05.81-1.918 1.841-1.994L8 2h6l4 4v10c0 1.05-.82 1.918-1.851 1.994L16 18H4zm9-14.001L8.01 4l-.005 4H12a2 2 0 012 2v6h2V7h-3V3.999zM7 12l-4 4h8l-4-4zm3.5-2a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-flame" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.854 2.51c.206.411.38.846.517 1.303a8.118 8.118 0 01.155 4.108 8.118 8.118 0 001.963-3.734 8.159 8.159 0 012.164 3.548 8.109 8.109 0 01-3.59 9.295c.264-.375.418-.836.418-1.338 0-.969-.554-1.754-1.385-2.123a2.284 2.284 0 01-1.385-2.123c0-.277.047-.554.139-.83-1.892.138-3.37 1.753-3.37 3.692 0 1.834 1.341 3.353 3.111 3.645-2.371.33-4.636-1.1-5.363-3.516-.584-1.94-.012-3.851 1.34-5.149l.167-.152c1.47-1.298 2.114-3.284 1.507-5.301a5.726 5.726 0 00-.805-1.642 7.53 7.53 0 014.417.317z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-gear" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M15.95 10.78c.03-.25.05-.51.05-.78s-.02-.53-.06-.78l1.69-1.32c.15-.12.19-.34.1-.51l-1.6-2.77c-.1-.18-.31-.24-.49-.18l-1.99.8c-.42-.32-.86-.58-1.35-.78L12 2.34a.4.4 0 00-.4-.34H8.4c-.2 0-.36.14-.39.34l-.3 2.12c-.49.2-.94.47-1.35.78l-1.99-.8c-.18-.07-.39 0-.49.18l-1.6 2.77c-.1.18-.06.39.1.51l1.69 1.32c-.04.25-.07.52-.07.78s.02.53.06.78L2.37 12.1c-.15.12-.19.34-.1.51l1.6 2.77c.1.18.31.24.49.18l1.99-.8c.42.32.86.58 1.35.78l.3 2.12c.04.2.2.34.4.34h3.2c.2 0 .37-.14.39-.34l.3-2.12c.49-.2.94-.47 1.35-.78l1.99.8c.18.07.39 0 .49-.18l1.6-2.77c.1-.18.06-.39-.1-.51l-1.67-1.32zM10 13c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-gift" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.5 2a2.5 2.5 0 012.45 3H16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2h1.05a2.5 2.5 0 014.617-1.747l.333.333.332-.333A2.499 2.499 0 0112.5 2zM16 13H4v2h12v-2zM6.585 7H4v4h12V7h-2.586l1.513 1.512-1.415 1.415L10.587 7H9.413L6.488 9.927 5.073 8.512 6.585 7zM7.5 3.5a1 1 0 100 2 1 1 0 000-2zm5 0a1 1 0 100 2 1 1 0 000-2z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-group" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M13.465 12.015c2.03.13 5.33 1.07 5.526 2.82L19 15v3h-4v-3c0-.787-.254-1.519-.746-2.172l-.154-.194a4.832 4.832 0 00-.635-.619zM7 12c1.944 0 5.78.945 5.99 2.836L13 15v3H1v-3c0-2 4-3 6-3zm6-8c1.66 0 2.99 1.34 2.99 3s-1.33 3-2.99 3a2.99 2.99 0 01-1.673-.507A4.975 4.975 0 0011.99 7c0-.909-.24-1.76-.66-2.492A2.975 2.975 0 0113 4zM7 4c1.66 0 2.99 1.34 2.99 3S8.66 10 7 10c-1.66 0-3-1.34-3-3s1.34-3 3-3z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-heart" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 17.34l-1.16-1.056C4.72 12.548 2 10.084 2 7.06c0-2.464 1.936-4.4 4.4-4.4A4.79 4.79 0 0110 4.332a4.79 4.79 0 013.6-1.672c2.464 0 4.4 1.936 4.4 4.4 0 3.024-2.72 5.488-6.84 9.232L10 17.34z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-html" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.778 2h12.444c.93 0 1.698.722 1.772 1.633l.006.145v12.444c0 .93-.722 1.698-1.633 1.772l-.145.006H3.778a1.784 1.784 0 01-1.772-1.633L2 16.222V3.778c0-.93.722-1.698 1.633-1.772L3.778 2h12.444H3.778zM7.93 6.036L4 10.105l4.07 3.93 1.39-1.44-2.631-2.54 2.54-2.63-1.439-1.39zm4-.07l-1.39 1.438 2.631 2.54-2.54 2.631 1.439 1.39L16 9.894l-4.07-3.93z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-like" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 6v12H2V6h2zm7.38-4l.79.79c.2.21.33.49.33.8l-.02.23L11.82 7H17c.55 0 1 .45 1 1v1.25c0 .19-.04.38-.11.55l-2.26 5.29c-.23.53-.76.91-1.38.91H7.5c-.83 0-1.5-.67-1.5-1.5V8c0-.41.17-.79.44-1.06L11.38 2z"/></symbol>
+		<symbol viewBox="0 0 24 24" id="icon-logo" xmlns="http://www.w3.org/2000/svg"><defs><rect id="ara" width="20" height="20" x="2" y="2" rx="4"/></defs><g fill="none" fill-rule="evenodd"><mask id="arb" fill="#fff"><use xlink:href="#ara"/></mask><rect width="19" height="19" x="2.5" y="2.5" stroke="#FDEAE6" rx="4"/><path fill="#FDEBE7" fill-rule="nonzero" d="M17.668 2.5l-5.22 14.355 7.161-13.964c.303.157.58.357.822.591l-7.29 14.213a14.938 14.938 0 018.36-3.62v1.004a13.997 13.997 0 00-10.265 6.327l-.046.093H9.696l.046-.125-.127-.192A14.037 14.037 0 002.5 15.739v-1.052a15.03 15.03 0 017.662 5.532l6.442-17.72h1.064zm-6.9 7.866l-.437.884.437.884-.884-.437-.884.437.437-.884L9 10.366l.884.437.884-.437zm-3 0l-.437.884.437.884-.884-.437-.884.437.437-.884L6 10.366l.884.437.884-.437zm.634-4.348l.442 1.307 1.308.443-1.308.443-.442 1.307-.443-1.307-1.307-.443 1.307-.443.443-1.307z" mask="url(#arb)"/></g></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-magnifier" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.65 3.757a5.997 5.997 0 018.483 0 6.001 6.001 0 010 8.486 5.997 5.997 0 01-8.136.32l-.278.28.01.734-4.325 4.318L2 16.49l4.316-4.327.734.011.28-.278a6.002 6.002 0 01.32-8.139zm7.07 1.415a3.998 3.998 0 00-5.656 0 4 4 0 000 5.656 3.998 3.998 0 005.655 0 4 4 0 000-5.656zM13 5v2h2v2h-2v2h-2V9H9V7h2V5h2z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-menu-more" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-mode-markdown" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.778 2h12.444c.93 0 1.698.722 1.772 1.633l.006.145v12.444c0 .93-.722 1.698-1.633 1.772l-.145.006H3.778a1.784 1.784 0 01-1.772-1.633L2 16.222V3.778c0-.93.722-1.698 1.633-1.772L3.778 2h12.444H3.778zm5.165 6h-1.5v6h1.5v-3.5l.01-.136a.997.997 0 01.99-.864c.23 0 .442.078.611.208l.096.085.085.096a.995.995 0 01.2.475l.008.136V14h1.5v-3.5l.01-.136a.997.997 0 01.99-.864c.23 0 .442.078.611.208l.096.085.085.096a.995.995 0 01.2.475l.008.136V14h1.5v-4a2 2 0 00-3.75-.97 2 2 0 00-3.134-.473l-.115.12V8zM6 6H5v1.311l-1.248-.405-.309.951 1.248.405-.771 1.062.809.588.77-1.062.772 1.062.81-.588-.773-1.062 1.249-.405-.31-.95L6 7.311 6 6z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-money" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2.062v1.586c-2.766.305-4 2.02-4 3.652 0 2.7 2.6 3.2 4.8 3.8 2.3.5 3.2.8 3.2 1.7 0 1.4-1.6 1.7-3 1.7-2.2 0-3-1.1-3-1.8H5c0 1.603 1.427 3.364 4 3.731v1.507A8.001 8.001 0 019 2.062zm2.001 0a8.001 8.001 0 010 15.876v-1.489C14.66 16.06 15 13.53 15 12.7c0-2.7-2.7-3.2-4.8-3.7C7.9 8.5 7 8.2 7 7.3c0-.8.8-1.7 2.9-1.7 2 0 2.7 1.2 2.7 1.7h2c0-1.56-1.351-3.194-3.598-3.603z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-note" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11 2l5 5v9c0 1.1-.9 2-2 2H5.99C4.89 18 4 17.1 4 16l.01-12c0-1.1.89-2 1.99-2h5zm1 12H6v2h6v-2zm2-4H6v2h8v-2zm-4-6.5V8h4.5L10 3.5z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-resources" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 14v4H8v-4h4zm-6 0v4H2v-4h4zm12 0v4h-4v-4h4zM9 8v4H5V8h4zm6 0v4h-4V8h4zm-3-6v4H8V2h4z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-segment" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 4v7h7a7 7 0 11-7.24-6.996L9 4zm2-2a7 7 0 016.996 6.76L18 9h-7V2z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-spellcheck" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.59 8.59L18 10l-8 8-4.59-4.59L6.83 12 10 15.17l6.59-6.58zM7.717 2l4.193 10H9.741l-.839-2H5.005l-.837 2H2L6.194 2h1.523zm-.762 3.354L5.844 8h2.219L6.955 5.354z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-tag" xmlns="http://www.w3.org/2000/svg"><defs><path id="baa" d="M9.648 17.414a1.995 1.995 0 01-2.825 0l-4.238-4.246a2.004 2.004 0 010-2.83L10.906 2H18v7.045l-8.352 8.369zm4.856-13.412a1.5 1.5 0 000 3.002 1.5 1.5 0 001.498-1.501 1.5 1.5 0 00-1.498-1.501z"/></defs><use fill-rule="evenodd" xlink:href="#baa"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-truck" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M13 4v3h3l2 3v4h-1.05a2.5 2.5 0 11-4.9 0h-4.1a2.5 2.5 0 11-4.9 0H2V6a2 2 0 012-2h9zm-7.5 9.5a1 1 0 100 2 1 1 0 000-2zm9 0a1 1 0 100 2 1 1 0 000-2zm.643-4.9H13V11h3.4v-.515L15.143 8.6z"/></symbol>
+		<symbol viewBox="0 0 28 28" id="icon-warning-md" xmlns="http://www.w3.org/2000/svg"><defs><filter id="bcb" width="104.2%" height="104.8%" x="-2.1%" y="-2.4%" filterUnits="objectBoundingBox"><feMorphology in="SourceAlpha" radius="1" result="shadowSpreadInner1"/><feOffset in="shadowSpreadInner1" result="shadowOffsetInner1"/><feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/><feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/></filter><path id="bca" d="M13.133 4.491L2.134 23.504A.995.995 0 002.999 25h21.997a1 1 0 00.869-.497c.18-.309.18-.69.001-.999L14.867 4.511a1 1 0 00-1.734-.02z"/></defs><g fill="none" fill-rule="evenodd"><use fill="#EFEF1A" xlink:href="#bca"/><use fill="#000" filter="url(#bcb)" xlink:href="#bca"/><path fill="#000" fill-opacity=".54" d="M13.999 19a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm1.5-8l-1 7h-1l-1-7h3z"/></g></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-whatsapp" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a8 8 0 11-4.279 14.76L2 18l1.24-3.72A8 8 0 0110 2zm0 2a6 6 0 00-5.216 8.968l.145.241.51.803-.277.827.828-.276.802.509A6 6 0 1010 4zM7.531 5.8l.063.001c.136.01.27.036.39.044l.107.004c.09.008.194.05.287.263l.04.102.45 1.341.095.265a.343.343 0 01-.031.29c-.077.13-.117.212-.227.323l-.225.233-.184.172c-.073.078-.117.174-.039.332l.074.142c.157.295.487.854.96 1.335.336.342.654.581.917.751l.128.08.223.127.377.2c.15.068.255.046.364-.063l.282-.286.263-.28.21-.241c.11-.103.216-.086.344-.035l.066.028.044.02.327.177 1.175.673c.085.05.144.093.17.146.045.087.017.491-.185.951-.187.424-.936.794-1.345.855l-.17.013-.23.033c-.155.013-.368-.006-.806-.16l-.154-.056-.365-.147-.374-.164-.401-.186c-1.305-.618-2.25-1.759-2.78-2.523l-.106-.157-.175-.273-.295-.487c-.209-.347-.647-1.176-.59-1.994.042-.596.26-.997.47-1.263l.07-.084.133-.14.156-.147a.765.765 0 01.497-.215z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-word" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.222 2H3.778C2.8 2 2 2.8 2 3.778v12.444C2 17.2 2.8 18 3.778 18h12.444C17.2 18 18 17.2 18 16.222V3.778C18 2.8 17.2 2 16.222 2zM13.5 15H12l-2-7.5L8 15H6.5L4.1 5h1.7l1.54 7.51L9.3 5h1.4l1.97 7.51L14.2 5h1.7l-2.4 10z"/></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-wordpress" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle cx="10" cy="10" r="7" fill="#FFF"/><path fill="#0C7DB0" fill-rule="nonzero" d="M10 2a8 8 0 110 16 8 8 0 010-16zm0 8l-1.897 5.694A5.994 5.994 0 0010 16c.663 0 1.302-.108 1.898-.307L10 10zm-6 0a5.994 5.994 0 002.662 4.987L4.337 8.012A5.99 5.99 0 004 10zm11.663-1.987l-2.324 6.973A5.994 5.994 0 0016 10a5.99 5.99 0 00-.337-1.987zM10 4a5.985 5.985 0 00-4.472 2H7v1H6l2 6 1.5-4.5L9 7H8V6h4v1h-1l1.997 5.993L14.09 9.7C14.38 8.82 13 7.56 13 6.5c0-.62.555-.864 1.015-.96A5.98 5.98 0 0010 4z"/></g></symbol>
+		<symbol viewBox="0 0 20 20" id="icon-wordpress-glyph" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a8 8 0 110 16 8 8 0 010-16zm0 8l-1.897 5.694A5.994 5.994 0 0010 16c.663 0 1.302-.108 1.898-.307L10 10zm-6 0a5.994 5.994 0 002.662 4.987L4.337 8.012A5.99 5.99 0 004 10zm11.663-1.987l-2.324 6.973A5.994 5.994 0 0016 10a5.99 5.99 0 00-.337-1.987zM10 4a5.985 5.985 0 00-4.472 2H7v1H6l2 6 1.5-4.5L9 7H8V6h4v1h-1l1.997 5.993L14.09 9.7C14.38 8.82 13 7.56 13 6.5c0-.62.555-.864 1.015-.96A5.98 5.98 0 0010 4z"/></symbol>
+</svg>
+
+<!--
+====================================================================================================
+-->
+		
+		<header>
+			<h1>SVG <code>&lt;symbol&gt;</code> sprite preview</h1>
+			<p>This preview features two methods of using the generated sprite in conjunction with inline SVG. Please have a look at the HTML source for further details and be aware of the following constraints:</p>
+			<ul>
+				<li>Your browser has to <a href="http://caniuse.com/#feat=svg-html5" target="_blank">support inline SVG</a> for these techniques to work.</li>
+				<li>The embedded sprite (A) slightly differs from the generated external one. Please <a href="https://github.com/jkphl/svg-sprite/blob/master/docs/configuration.md#defs--symbol-mode" target="_blank">see the documentation</a> for details on how to create such an embeddable sprite.</li>
+				<li>Internet Explorer up to version 11 doesn't support external sprites for use with inline SVG. For IE 9-11, you may polyfill this functionality with <a href="https://github.com/jonathantneal/svg4everybody" target="_blank">SVG for Everybody</a>.</li>
+			</ul>
+		</header>
+		<section>
+
+<!--
+	
+A) Inline SVG with embedded sprite
+====================================================================================================
+These SVG images make use of fragment identifiers (IDs) and are extracted out of the inline sprite
+embedded above. They may be styled via CSS.
+
+-->
+
+			<h3>A) Inline SVG with embedded sprite</h3>
+			<ul>
+
+				<li title="icon-ball">
+					<div class="icon-box">
+						
+						<!-- icon-ball -->
+						<svg class="icon-ball">
+							<use xlink:href="#icon-ball"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-ball</h2>
+				</li>
+				<li title="icon-book">
+					<div class="icon-box">
+						
+						<!-- icon-book -->
+						<svg class="icon-book">
+							<use xlink:href="#icon-book"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-book</h2>
+				</li>
+				<li title="icon-calculator">
+					<div class="icon-box">
+						
+						<!-- icon-calculator -->
+						<svg class="icon-calculator">
+							<use xlink:href="#icon-calculator"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-calculator</h2>
+				</li>
+				<li title="icon-cart">
+					<div class="icon-box">
+						
+						<!-- icon-cart -->
+						<svg class="icon-cart">
+							<use xlink:href="#icon-cart"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-cart</h2>
+				</li>
+				<li title="icon-chevron">
+					<div class="icon-box">
+						
+						<!-- icon-chevron -->
+						<svg class="icon-chevron">
+							<use xlink:href="#icon-chevron"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-chevron</h2>
+				</li>
+				<li title="icon-close">
+					<div class="icon-box">
+						
+						<!-- icon-close -->
+						<svg class="icon-close">
+							<use xlink:href="#icon-close"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-close</h2>
+				</li>
+				<li title="icon-close-xs">
+					<div class="icon-box">
+						
+						<!-- icon-close-xs -->
+						<svg class="icon-close-xs">
+							<use xlink:href="#icon-close-xs"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-close-xs</h2>
+				</li>
+				<li title="icon-desktop">
+					<div class="icon-box">
+						
+						<!-- icon-desktop -->
+						<svg class="icon-desktop">
+							<use xlink:href="#icon-desktop"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-desktop</h2>
+				</li>
+				<li title="icon-email">
+					<div class="icon-box">
+						
+						<!-- icon-email -->
+						<svg class="icon-email">
+							<use xlink:href="#icon-email"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-email</h2>
+				</li>
+				<li title="icon-files">
+					<div class="icon-box">
+						
+						<!-- icon-files -->
+						<svg class="icon-files">
+							<use xlink:href="#icon-files"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-files</h2>
+				</li>
+				<li title="icon-flame">
+					<div class="icon-box">
+						
+						<!-- icon-flame -->
+						<svg class="icon-flame">
+							<use xlink:href="#icon-flame"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-flame</h2>
+				</li>
+				<li title="icon-gear">
+					<div class="icon-box">
+						
+						<!-- icon-gear -->
+						<svg class="icon-gear">
+							<use xlink:href="#icon-gear"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-gear</h2>
+				</li>
+				<li title="icon-gift">
+					<div class="icon-box">
+						
+						<!-- icon-gift -->
+						<svg class="icon-gift">
+							<use xlink:href="#icon-gift"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-gift</h2>
+				</li>
+				<li title="icon-group">
+					<div class="icon-box">
+						
+						<!-- icon-group -->
+						<svg class="icon-group">
+							<use xlink:href="#icon-group"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-group</h2>
+				</li>
+				<li title="icon-heart">
+					<div class="icon-box">
+						
+						<!-- icon-heart -->
+						<svg class="icon-heart">
+							<use xlink:href="#icon-heart"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-heart</h2>
+				</li>
+				<li title="icon-html">
+					<div class="icon-box">
+						
+						<!-- icon-html -->
+						<svg class="icon-html">
+							<use xlink:href="#icon-html"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-html</h2>
+				</li>
+				<li title="icon-like">
+					<div class="icon-box">
+						
+						<!-- icon-like -->
+						<svg class="icon-like">
+							<use xlink:href="#icon-like"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-like</h2>
+				</li>
+				<li title="icon-logo">
+					<div class="icon-box">
+						
+						<!-- icon-logo -->
+						<svg class="icon-logo">
+							<use xlink:href="#icon-logo"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-logo</h2>
+				</li>
+				<li title="icon-magnifier">
+					<div class="icon-box">
+						
+						<!-- icon-magnifier -->
+						<svg class="icon-magnifier">
+							<use xlink:href="#icon-magnifier"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-magnifier</h2>
+				</li>
+				<li title="icon-menu-more">
+					<div class="icon-box">
+						
+						<!-- icon-menu-more -->
+						<svg class="icon-menu-more">
+							<use xlink:href="#icon-menu-more"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-menu-more</h2>
+				</li>
+				<li title="icon-mode-markdown">
+					<div class="icon-box">
+						
+						<!-- icon-mode-markdown -->
+						<svg class="icon-mode-markdown">
+							<use xlink:href="#icon-mode-markdown"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-mode-markdown</h2>
+				</li>
+				<li title="icon-money">
+					<div class="icon-box">
+						
+						<!-- icon-money -->
+						<svg class="icon-money">
+							<use xlink:href="#icon-money"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-money</h2>
+				</li>
+				<li title="icon-note">
+					<div class="icon-box">
+						
+						<!-- icon-note -->
+						<svg class="icon-note">
+							<use xlink:href="#icon-note"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-note</h2>
+				</li>
+				<li title="icon-resources">
+					<div class="icon-box">
+						
+						<!-- icon-resources -->
+						<svg class="icon-resources">
+							<use xlink:href="#icon-resources"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-resources</h2>
+				</li>
+				<li title="icon-segment">
+					<div class="icon-box">
+						
+						<!-- icon-segment -->
+						<svg class="icon-segment">
+							<use xlink:href="#icon-segment"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-segment</h2>
+				</li>
+				<li title="icon-spellcheck">
+					<div class="icon-box">
+						
+						<!-- icon-spellcheck -->
+						<svg class="icon-spellcheck">
+							<use xlink:href="#icon-spellcheck"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-spellcheck</h2>
+				</li>
+				<li title="icon-tag">
+					<div class="icon-box">
+						
+						<!-- icon-tag -->
+						<svg class="icon-tag">
+							<use xlink:href="#icon-tag"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-tag</h2>
+				</li>
+				<li title="icon-truck">
+					<div class="icon-box">
+						
+						<!-- icon-truck -->
+						<svg class="icon-truck">
+							<use xlink:href="#icon-truck"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-truck</h2>
+				</li>
+				<li title="icon-warning-md">
+					<div class="icon-box">
+						
+						<!-- icon-warning-md -->
+						<svg class="icon-warning-md">
+							<use xlink:href="#icon-warning-md"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-warning-md</h2>
+				</li>
+				<li title="icon-whatsapp">
+					<div class="icon-box">
+						
+						<!-- icon-whatsapp -->
+						<svg class="icon-whatsapp">
+							<use xlink:href="#icon-whatsapp"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-whatsapp</h2>
+				</li>
+				<li title="icon-word">
+					<div class="icon-box">
+						
+						<!-- icon-word -->
+						<svg class="icon-word">
+							<use xlink:href="#icon-word"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-word</h2>
+				</li>
+				<li title="icon-wordpress">
+					<div class="icon-box">
+						
+						<!-- icon-wordpress -->
+						<svg class="icon-wordpress">
+							<use xlink:href="#icon-wordpress"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-wordpress</h2>
+				</li>
+				<li title="icon-wordpress-glyph">
+					<div class="icon-box">
+						
+						<!-- icon-wordpress-glyph -->
+						<svg class="icon-wordpress-glyph">
+							<use xlink:href="#icon-wordpress-glyph"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-wordpress-glyph</h2>
+				</li>
+			</ul>
+
+<!--
+====================================================================================================
+-->
+
+		</section>
+		<section>
+
+<!--
+	
+B) Inline SVG with external sprite (IE 9-11 with polyfill only)
+====================================================================================================
+These SVG images make use of an URL + fragment identifiers (IDs) and refer to the regular external
+SVG sprite. They may be styled via CSS. (IE 9-11 with polyfill only)
+
+-->
+
+			<h3>B) Inline SVG with external sprite (IE 9-11 with polyfill only)</h3>
+			<ul>
+				
+				<li title="icon-ball">
+					<div class="icon-box">
+						
+						<!-- icon-ball -->
+						<svg class="icon-ball">
+							<use xlink:href="sprite.svg#icon-ball"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-ball</h2>
+				</li>
+				<li title="icon-book">
+					<div class="icon-box">
+						
+						<!-- icon-book -->
+						<svg class="icon-book">
+							<use xlink:href="sprite.svg#icon-book"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-book</h2>
+				</li>
+				<li title="icon-calculator">
+					<div class="icon-box">
+						
+						<!-- icon-calculator -->
+						<svg class="icon-calculator">
+							<use xlink:href="sprite.svg#icon-calculator"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-calculator</h2>
+				</li>
+				<li title="icon-cart">
+					<div class="icon-box">
+						
+						<!-- icon-cart -->
+						<svg class="icon-cart">
+							<use xlink:href="sprite.svg#icon-cart"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-cart</h2>
+				</li>
+				<li title="icon-chevron">
+					<div class="icon-box">
+						
+						<!-- icon-chevron -->
+						<svg class="icon-chevron">
+							<use xlink:href="sprite.svg#icon-chevron"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-chevron</h2>
+				</li>
+				<li title="icon-close">
+					<div class="icon-box">
+						
+						<!-- icon-close -->
+						<svg class="icon-close">
+							<use xlink:href="sprite.svg#icon-close"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-close</h2>
+				</li>
+				<li title="icon-close-xs">
+					<div class="icon-box">
+						
+						<!-- icon-close-xs -->
+						<svg class="icon-close-xs">
+							<use xlink:href="sprite.svg#icon-close-xs"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-close-xs</h2>
+				</li>
+				<li title="icon-desktop">
+					<div class="icon-box">
+						
+						<!-- icon-desktop -->
+						<svg class="icon-desktop">
+							<use xlink:href="sprite.svg#icon-desktop"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-desktop</h2>
+				</li>
+				<li title="icon-email">
+					<div class="icon-box">
+						
+						<!-- icon-email -->
+						<svg class="icon-email">
+							<use xlink:href="sprite.svg#icon-email"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-email</h2>
+				</li>
+				<li title="icon-files">
+					<div class="icon-box">
+						
+						<!-- icon-files -->
+						<svg class="icon-files">
+							<use xlink:href="sprite.svg#icon-files"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-files</h2>
+				</li>
+				<li title="icon-flame">
+					<div class="icon-box">
+						
+						<!-- icon-flame -->
+						<svg class="icon-flame">
+							<use xlink:href="sprite.svg#icon-flame"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-flame</h2>
+				</li>
+				<li title="icon-gear">
+					<div class="icon-box">
+						
+						<!-- icon-gear -->
+						<svg class="icon-gear">
+							<use xlink:href="sprite.svg#icon-gear"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-gear</h2>
+				</li>
+				<li title="icon-gift">
+					<div class="icon-box">
+						
+						<!-- icon-gift -->
+						<svg class="icon-gift">
+							<use xlink:href="sprite.svg#icon-gift"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-gift</h2>
+				</li>
+				<li title="icon-group">
+					<div class="icon-box">
+						
+						<!-- icon-group -->
+						<svg class="icon-group">
+							<use xlink:href="sprite.svg#icon-group"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-group</h2>
+				</li>
+				<li title="icon-heart">
+					<div class="icon-box">
+						
+						<!-- icon-heart -->
+						<svg class="icon-heart">
+							<use xlink:href="sprite.svg#icon-heart"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-heart</h2>
+				</li>
+				<li title="icon-html">
+					<div class="icon-box">
+						
+						<!-- icon-html -->
+						<svg class="icon-html">
+							<use xlink:href="sprite.svg#icon-html"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-html</h2>
+				</li>
+				<li title="icon-like">
+					<div class="icon-box">
+						
+						<!-- icon-like -->
+						<svg class="icon-like">
+							<use xlink:href="sprite.svg#icon-like"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-like</h2>
+				</li>
+				<li title="icon-logo">
+					<div class="icon-box">
+						
+						<!-- icon-logo -->
+						<svg class="icon-logo">
+							<use xlink:href="sprite.svg#icon-logo"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-logo</h2>
+				</li>
+				<li title="icon-magnifier">
+					<div class="icon-box">
+						
+						<!-- icon-magnifier -->
+						<svg class="icon-magnifier">
+							<use xlink:href="sprite.svg#icon-magnifier"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-magnifier</h2>
+				</li>
+				<li title="icon-menu-more">
+					<div class="icon-box">
+						
+						<!-- icon-menu-more -->
+						<svg class="icon-menu-more">
+							<use xlink:href="sprite.svg#icon-menu-more"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-menu-more</h2>
+				</li>
+				<li title="icon-mode-markdown">
+					<div class="icon-box">
+						
+						<!-- icon-mode-markdown -->
+						<svg class="icon-mode-markdown">
+							<use xlink:href="sprite.svg#icon-mode-markdown"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-mode-markdown</h2>
+				</li>
+				<li title="icon-money">
+					<div class="icon-box">
+						
+						<!-- icon-money -->
+						<svg class="icon-money">
+							<use xlink:href="sprite.svg#icon-money"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-money</h2>
+				</li>
+				<li title="icon-note">
+					<div class="icon-box">
+						
+						<!-- icon-note -->
+						<svg class="icon-note">
+							<use xlink:href="sprite.svg#icon-note"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-note</h2>
+				</li>
+				<li title="icon-resources">
+					<div class="icon-box">
+						
+						<!-- icon-resources -->
+						<svg class="icon-resources">
+							<use xlink:href="sprite.svg#icon-resources"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-resources</h2>
+				</li>
+				<li title="icon-segment">
+					<div class="icon-box">
+						
+						<!-- icon-segment -->
+						<svg class="icon-segment">
+							<use xlink:href="sprite.svg#icon-segment"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-segment</h2>
+				</li>
+				<li title="icon-spellcheck">
+					<div class="icon-box">
+						
+						<!-- icon-spellcheck -->
+						<svg class="icon-spellcheck">
+							<use xlink:href="sprite.svg#icon-spellcheck"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-spellcheck</h2>
+				</li>
+				<li title="icon-tag">
+					<div class="icon-box">
+						
+						<!-- icon-tag -->
+						<svg class="icon-tag">
+							<use xlink:href="sprite.svg#icon-tag"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-tag</h2>
+				</li>
+				<li title="icon-truck">
+					<div class="icon-box">
+						
+						<!-- icon-truck -->
+						<svg class="icon-truck">
+							<use xlink:href="sprite.svg#icon-truck"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-truck</h2>
+				</li>
+				<li title="icon-warning-md">
+					<div class="icon-box">
+						
+						<!-- icon-warning-md -->
+						<svg class="icon-warning-md">
+							<use xlink:href="sprite.svg#icon-warning-md"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-warning-md</h2>
+				</li>
+				<li title="icon-whatsapp">
+					<div class="icon-box">
+						
+						<!-- icon-whatsapp -->
+						<svg class="icon-whatsapp">
+							<use xlink:href="sprite.svg#icon-whatsapp"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-whatsapp</h2>
+				</li>
+				<li title="icon-word">
+					<div class="icon-box">
+						
+						<!-- icon-word -->
+						<svg class="icon-word">
+							<use xlink:href="sprite.svg#icon-word"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-word</h2>
+				</li>
+				<li title="icon-wordpress">
+					<div class="icon-box">
+						
+						<!-- icon-wordpress -->
+						<svg class="icon-wordpress">
+							<use xlink:href="sprite.svg#icon-wordpress"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-wordpress</h2>
+				</li>
+				<li title="icon-wordpress-glyph">
+					<div class="icon-box">
+						
+						<!-- icon-wordpress-glyph -->
+						<svg class="icon-wordpress-glyph">
+							<use xlink:href="sprite.svg#icon-wordpress-glyph"></use>
+						</svg>
+						
+					</div>
+					<h2>icon-wordpress-glyph</h2>
+				</li>
+			</ul>
+
+<!--
+====================================================================================================
+-->
+
+		</section>
+		<footer>
+			<p>Generated at Mon, 17 Feb 2020 08:18:05 GMT by <a href="https://github.com/jkphl/svg-sprite" target="_blank">svg-sprite</a>.</p>
+		</footer>
+	</body>
+</html>

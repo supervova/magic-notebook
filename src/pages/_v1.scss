@@ -1,0 +1,451 @@
+// -----------------------------------------------------------------------------
+// THE FIRST SCREENSHOT
+//------------------------------------------------------------------------------
+
+.is-editing {
+  @include media-breakpoint-up(md) {
+    margin-top: -16rem;
+  }
+}
+
+.is-editing > figure {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 100%;
+
+  @include media-breakpoint-up(xl) {
+    max-width: 1150px;
+  }
+}
+
+.is-editing img {
+  @include media-breakpoint-up(md) {
+    object-fit: cover;
+    max-width: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// FEATURES
+// -----------------------------------------------------------------------------
+
+.grid.is-features {
+  padding-top: ($size-line * 2);
+
+  @include media-breakpoint-up(md) {
+    grid-column-gap: $size-4;
+    grid-row-gap: $size-4;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column-gap: $size-6;
+    grid-row-gap: $size-7;
+    margin-bottom: $size-line;
+  }
+}
+
+// Cell
+.feature {
+  grid-column: span 4;
+}
+
+// Icons in the colored boxes
+
+.feature > figure {
+  border-radius: $border-radius-lg;
+  box-shadow: $box-shadow-z3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $size-2;
+  width: $size-6;
+  height: $size-6;
+
+  > .icon.is-inverted {
+    fill: color-ink(normal, inverse);
+  }
+
+  > .icon.is-normal {
+    fill: color-ink(hint);
+  }
+}
+
+// stylelint-disable rule-empty-line-before
+.feature:nth-child(1) > figure { background-color: $red-soft; }
+.feature:nth-child(2) > figure { background-color: $orange; }
+.feature:nth-child(3) > figure { background-color: $yellow; }
+.feature:nth-child(4) > figure { background-color: $green; }
+.feature:nth-child(5) > figure { background-color: $cyan; }
+.feature:nth-child(6) > figure { background-color: lighten($blue, 10%); }
+
+
+// Content
+
+.feature > h3 {
+  margin-top: 0;
+  margin-bottom: .1rem;
+}
+
+.feature > p {
+  margin-bottom: $size-line + $size-1;
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FRAGMENT EDITING
+// -----------------------------------------------------------------------------
+
+
+.is-fragment-editing > .figure__group {
+
+  @include media-breakpoint-up(md) {
+    display: grid;
+    grid-template-columns: minmax(max-content, 250px) minmax(max-content, 650px) minmax(max-content, 250px);
+    grid-template-rows: minmax(0, 312px) minmax(0, 369px) minmax(0, 312px);
+    padding-top: 1px;
+    padding-bottom: $size-line * 3;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin: 0 auto;
+    max-width: 1150px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    overflow: visible;
+  }
+}
+
+.is-fragment-editing > figcaption {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 $size-2 $size-line + 1.8rem;
+  max-width: 63.2rem + $size-4;
+}
+
+.is-fragment-editing .figure__item {
+
+  &:nth-child(1) {
+    box-shadow:
+      0 0 0 1px color-ink(border),
+      $box-shadow-z3;
+
+    @include media-breakpoint-up(md) {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+  }
+
+  &:nth-child(2) {
+    box-shadow:
+      0 0 0 1px color-ink(border),
+      $box-shadow-z4;
+    margin-top: -$size-line * 4;
+    z-index: 1;
+
+    @include media-breakpoint-up(md) {
+      grid-column: 2 / 4;
+      grid-row: 2 / 4;
+      margin-top: 0;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// COMPETITORS AND ROADMAP TABLES
+// -----------------------------------------------------------------------------
+
+.section.is-competitors .section__header {
+  margin-bottom: ($size-line * 2) + .6rem;
+}
+
+.section.is-roadmap .section__header {
+  margin-bottom: ($size-line * 2) + 1.4rem;
+}
+
+.section.is-competitors .is-full-bleed,
+.section.is-roadmap .is-full-bleed {
+  @include media-breakpoint-up(lg) {
+    padding-right: $size-4;
+    padding-left: $size-4;
+  }
+}
+
+.section.is-competitors tbody th {
+  font-weight: normal;
+}
+
+.section.is-competitors .table__thumbnail {
+  margin-top: 1.8rem;
+  padding-bottom: 1.7rem;
+  position: relative;
+
+  &::before {
+    background: $color-background-accent;
+    border-radius: $border-radius;
+    box-shadow:
+      0 0 0 1px color-ink(border),
+      $box-shadow-z2;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $size-4;
+    height: $size-4;
+    z-index: 1;
+  }
+}
+
+.section.is-competitors .table__thumbnail > .icon {
+  pointer-events: none;
+  position: absolute;
+  bottom: .6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+// -----------------------------------------------------------------------------
+// BUSINESS MODEL
+// -----------------------------------------------------------------------------
+
+.is-business-model > .grid {
+  display: block;
+  margin-top: $size-line;
+  margin-bottom: $size-line;
+
+  @include media-breakpoint-up(md) {
+    display: grid;
+    grid-gap: $size-1;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    margin-top: $size-line * 2;
+    margin-bottom: $size-line * 2;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin-top: $size-line * 3;
+    margin-bottom: $size-line * 3;
+  }
+}
+
+.is-business-model .grid__item {
+  border-radius: $border-radius;
+  padding: $size-2;
+  margin-bottom: $size-1;
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 0;
+    padding: $size-3;
+  }
+}
+
+.is-business-model .grid__item-title {
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: $size-1;
+  padding-right: $size-4;
+  position: relative;
+}
+
+.is-business-model .grid__item-title .icon {
+  position: absolute;
+  top: .2rem;
+  right: 0;
+}
+
+.is-business-model .grid__item-body {
+  color: color-ink(muted);
+  margin-bottom: 0;
+}
+
+
+// USP
+
+.grid__item.is-usp {
+  background-color: $color-primary-light;
+
+  .icon {
+    fill: $color-primary;
+  }
+
+  @include media-breakpoint-up(md) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+}
+
+// CUSTOMERS
+// #region
+
+.grid__item.is-customer-segments,
+.grid__item.is-customer-relationships,
+.grid__item.is-channels {
+  background-color: $orange-lightest;
+
+  .icon {
+    fill: $orange;
+  }
+}
+
+.grid__item.is-customer-segments {
+  @include media-breakpoint-up(md) {
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+}
+
+.grid__item.is-customer-relationships {
+  @include media-breakpoint-up(md) {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+}
+
+.grid__item.is-channels {
+  @include media-breakpoint-up(md) {
+    grid-column: 3 / 5;
+    grid-row: 2 / 3;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+}
+// #endregion
+
+// FINANCE
+// #region
+.grid__item.is-cost-structure,
+.grid__item.is-revenue-streams {
+  background-color: $yellow-lightest;
+
+  .icon {
+    fill: color-ink(hint);
+  }
+}
+
+.grid__item.is-revenue-streams {
+  @include media-breakpoint-up(md) {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+}
+
+.grid__item.is-cost-structure {
+  @include media-breakpoint-up(md) {
+    grid-column: 3 / 5;
+    grid-row: 3 / 4;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
+}
+// #endregion
+
+// INFRASTRUCTURE
+.grid__item.is-activities,
+.grid__item.is-resources,
+.grid__item.is-partners {
+  background-color: $blue-lightest;
+
+  .icon {
+    fill: $blue;
+  }
+}
+
+.grid__item.is-activities {
+  @include media-breakpoint-up(md) {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+}
+
+.grid__item.is-resources {
+  @include media-breakpoint-up(md) {
+    grid-column: 3 / 5;
+    grid-row: 4 / 5;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+  }
+}
+
+.grid__item.is-partners {
+  @include media-breakpoint-up(md) {
+    grid-column: 2 / 4;
+    grid-row: 5 / 6;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+  }
+}
+
+// -----------------------------------------------------------------------------
+
+
+.section.is-finance .is-full-bleed {
+  padding-right: $size-1;
+  padding-left: $size-1;
+
+  @include media-breakpoint-up(lg) {
+    padding-right: $size-4;
+    padding-left: $size-4;
+  }
+}
+
+.section.is-finance iframe {
+  background: #f9f9f9;
+  border: 1px solid color-ink(border);
+  margin-bottom: $size-line + .7rem;
+  transform: translateY(-.4rem);
+  width: 100%;
+  height: 504px;
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: ($size-line * 3) + .7rem;
+  }
+}
+

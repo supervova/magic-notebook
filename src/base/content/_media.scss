@@ -1,0 +1,108 @@
+figcaption {
+  color: color-ink(muted);
+}
+
+.border,
+%border {
+  border-radius: $border-radius;
+
+  // inline-block should be avoided because it adds extra space around element
+  display: table;
+  position: relative;
+  overflow: hidden;
+
+  // Border
+  &::after {
+    border-radius: $border-radius;
+    box-shadow: inset 0 0 0 1px color-ink(border);
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+.has-shadow-z3 {
+  box-shadow:
+    0 0 0 1px color-ink(border),
+    $box-shadow-z3;
+}
+
+.has-shadow-z4 {
+  box-shadow:
+    0 0 0 1px color-ink(border),
+    $box-shadow-z4;
+}
+
+
+// -----------------------------------------------------------------------------
+// RESPONSIVE MEDIA
+// -----------------------------------------------------------------------------
+
+.embed-responsive {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &::before {
+    content: '';
+    display: block;
+  }
+
+  .embed-responsive__item,
+  > iframe,
+  > embed,
+  > object,
+  > video {
+    border: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.embed-responsive.is-4by3 {
+  &::before {
+    padding-top: percentage(3 / 4);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// MEDIA OBJECT
+// -----------------------------------------------------------------------------
+
+.media-object {
+  @include media-breakpoint-up(sm) {
+    display: flex;
+    align-items: flex-start;
+    margin-top: $size-line + .6rem;
+  }
+}
+
+.media-object__figure {
+  @extend %border;
+
+  @include media-breakpoint-up(sm) {
+    margin-right: $size-line;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-right: $size-4;
+  }
+}
+
+.media-object__body {
+  flex: 1;
+}

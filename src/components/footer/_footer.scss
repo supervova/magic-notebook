@@ -1,0 +1,16 @@
+.footer {
+  color: color-ink(muted);
+  text-align: center;
+  padding: ($size-line * 2 + 1.3rem) $size-2 ($size-line * 2 + 1.7rem);
+}
+
+.footer > .btn {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: $size-line * 2 + 1.3rem;
+}
+
+.footer > p {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+}

@@ -9,6 +9,10 @@ h1, h2 {
   @include media-breakpoint-up(md) {
     letter-spacing: -.1rem;
   }
+
+  // @if $debug {
+  //   background: hsla(240, 100%, 50%, .24);
+  // }
 }
 
 // Heading 1
@@ -19,14 +23,15 @@ h1,
   font-size: $font-size-h1-small;
   font-weight: $font-weight-h1;
   line-height: $line-height-h1-small;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 
   @include media-breakpoint-up(md) {
     font-size: $font-size-h1;
     line-height: $line-height-h1;
-    margin-top: 0;
-    margin-bottom: 0;
+    padding-top: 1.4rem;
+    padding-bottom: 1rem;
   }
 }
 
@@ -37,21 +42,26 @@ h2,
   font-size: $font-size-h2-small;
   font-weight: $font-weight-h2-small;
   line-height: $line-height-h2-small;
-  margin-top: 0;
-  margin-bottom: 0;
-
-  h1 + &,
-  &:first-child {
-    margin-top: 0;
-  }
+  margin: 0;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
 
   @include media-breakpoint-up(md) {
     font-size: $font-size-h2;
     font-weight: $font-weight-h2;
     line-height: $line-height-h2;
-    margin-top: 0;
-    margin-bottom: 0;
   }
+}
+
+address + h2,
+blockquote + h2,
+dl + h2,
+ol + h2,
+p + h2,
+pre + h2,
+ul + h2,
+.h2.is-subhead {
+  margin-top: calc(-1 * var(--type-body-copy-vr-offset));
 }
 
 h3, h4, h5, h6 {

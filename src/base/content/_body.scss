@@ -28,6 +28,10 @@ body {
   text-align: left;
   scroll-behavior: smooth;
   min-height: 100%;
+
+  @if $debug {
+    background: transparent url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228%22%20height%3D%2224%22%20viewBox%3D%220%200%208%2024%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Crect%20width%3D%228%22%20height%3D%221%22%20y%3D%2223%22%20fill%3D%22%23000%22%20fill-opacity%3D%22.24%22%2F%3E%3Crect%20width%3D%228%22%20height%3D%221%22%20y%3D%2215%22%20fill%3D%22%23F0F%22%20fill-opacity%3D%22.12%22%2F%3E%3Crect%20width%3D%228%22%20height%3D%221%22%20y%3D%227%22%20fill%3D%22%23F0F%22%20fill-opacity%3D%22.12%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E') repeat;
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -59,7 +63,26 @@ p,
 pre,
 ul {
   margin-top: 0;
-  margin-bottom: $size-line;
+  margin-bottom: var(--size-line);
+}
+
+.has-vr-offset,
+%has-vr-offset {
+  margin-top: var(--type-body-copy-vr-offset);
+}
+
+address,
+blockquote,
+dl,
+ol,
+p,
+pre,
+ul {
+  h1 + &,
+  h2 + &,
+  &:first-child:not([class]) {
+    @extend %has-vr-offset;
+  }
 }
 
 .lead {
@@ -132,8 +155,9 @@ ol ol,
 ul ul,
 ol ul,
 ul ol {
-  padding-left: $size-2;
+  margin-top: var(--size-1);
   margin-bottom: 0;
+  padding-left: var(--size-2);
 }
 
 .list.is-unstyled,

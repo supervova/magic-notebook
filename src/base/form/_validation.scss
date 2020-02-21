@@ -9,6 +9,9 @@
 }
 
 // Error messages
+.form__feedback {
+  display: none;
+}
 
 .form__feedback.is-invalid {
   color: darken($color-error, 20%);
@@ -28,4 +31,11 @@
 .form__control:not(:focus):invalid + .form__feedback.is-invalid {
   opacity: 1;
   height: rem(34);
+}
+
+// Honey pot
+
+.form__verification {
+  position: absolute;
+  left: -5000px;
 }

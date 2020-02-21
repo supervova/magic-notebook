@@ -16,12 +16,14 @@
 // @import './node_modules/bootstrap/scss/utilities/spacing';
 
 // Base
+@import 'base/root';
 @import 'base/normalize';
 @import 'base/content/body';
 @import 'base/content/headings';
 @import 'base/icons/icons';
 @import 'base/buttons';
 @import 'base/form/form';
+@import 'base/form/validation';
 @import 'base/content/media';
 @import 'base/layout';
 // @import 'base/animation';

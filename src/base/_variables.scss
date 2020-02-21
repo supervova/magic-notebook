@@ -1,5 +1,7 @@
 // stylelint-disable selector-class-pattern
 
+$debug:                                 false;
+
 // -----------------------------------------------------------------------------
 // 🎨  COLORS
 // -----------------------------------------------------------------------------
@@ -219,17 +221,17 @@ $font-family-monospace:
   monospace;
 // stylelint-enable indentation
 
-$font-size-hero:                        $size-8;
-$line-height-hero:                      ($font-size-hero + $size-1) / $font-size-hero;
+$font-size-hero:                        6rem;
+$line-height-hero:                      72 / 60;
 
-$font-size-h1:                          $size-8;
-$line-height-h1:                        ($font-size-h1 + $size-1) / $font-size-h1;
+$font-size-h1:                          6rem;
+$line-height-h1:                        72 / 60;
 $font-weight-h1:                        700;
 
 $font-size-h1-small:                    $size-4;
 $line-height-h1-small:                  ($font-size-h1-small + $size-1) / $font-size-h1-small;
 
-$font-size-h2:                          $size-6;
+$font-size-h2:                          $size-4;
 $line-height-h2:                        ($font-size-h2 + $size-1) / $font-size-h2;
 $font-weight-h2:                        700;
 

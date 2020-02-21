@@ -1,0 +1,32 @@
+// stylelint-disable declaration-colon-space-after
+
+:root {
+
+  // ---------------------------------------------------------------------------
+  // 📰 LAYOUT
+  // ---------------------------------------------------------------------------
+  // #region
+
+  --size-1:                             .8rem;
+  --size-2:                             calc(var(--size-1) * 2);
+  --size-3:                             calc(var(--size-1) * 3);
+  --size-4:                             calc(var(--size-1) * 4);
+  --size-5:                             calc(var(--size-1) * 5);
+  --size-6:                             calc(var(--size-1) * 6);
+  --size-7:                             calc(var(--size-1) * 7);
+  --size-8:                             calc(var(--size-1) * 8);
+
+  --size-line:                          var(--size-3);
+
+  // #endregion
+
+  // -----------------------------------------------------------------------------
+  // 🔠 TYPOGRAPHY
+  // -----------------------------------------------------------------------------
+  // #region
+
+  --type-body-copy-vr-offset:           .6rem;
+
+  // #endregion
+
+}

@@ -16,7 +16,7 @@
     'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
     'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn',
   ];
-  let length = methods.length;
+  let { length } = methods;
   const console = (window.console = window.console || {});
 
   while (length--) {
@@ -38,7 +38,7 @@
 
 jQuery(document).ready(($) => {
   $('.carousel').carousel({
-    interval: 5000,
+    interval: 10000,
   });
 
   $('.navbar__link, .navbar__menu .dropdown__item').click((e) => {

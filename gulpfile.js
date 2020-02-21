@@ -107,6 +107,15 @@ const settings = {
     src: [
       `${config.src}/**/*.mp4`,
     ],
+    dest: `${config.dest}/video`,
+  },
+
+  rootFiles: {
+    src: [
+      './*.html',
+      './CNAME',
+      './site.webmanifest',
+    ],
     dest: `${config.dest}`,
   },
 };
@@ -187,7 +196,7 @@ const js = gulp.series(
 
 /**
  * -----------------------------------------------------------------------------
- * 📼 VIDEO
+ * 👯‍♀️ COPY
  * -----------------------------------------------------------------------------
  */
 // #region
@@ -195,6 +204,12 @@ function video() {
   return gulp.src(settings.video.src)
     .pipe(changed(settings.video.dest))
     .pipe(gulp.dest(settings.video.dest));
+}
+
+function docs() {
+  return gulp.src(settings.rootFiles.src)
+    .pipe(changed(settings.rootFiles.dest))
+    .pipe(gulp.dest(settings.rootFiles.dest));
 }
 // #endregion
 
@@ -222,7 +237,7 @@ const imgTasks = (src, subtitle) => gulp.src(src)
           optimizationLevel: 3,
         }),
         imageminJPG({ quality: 85 }),
-        imageminPNG([0.8, 0.9]),
+        imageminPNG([0.85, 0.95]),
         imageminSVG({
           plugins: [
             { removeViewBox: false },
@@ -369,7 +384,7 @@ function watch() {
   gulp.watch(settings.svg.src, gulp.series(sprite, reload));
   // Don't use arrays here
   gulp.watch(settings.img.watch, gulp.series(img, reload));
-  gulp.watch(settings.markup.watch, gulp.series(reload));
+  gulp.watch(settings.rootFiles.src, gulp.series(docs, reload));
 }
 
 function server(done) {
@@ -389,7 +404,7 @@ const build = gulp.series(
   clean,
   svg,
   img,
-  gulp.parallel(cssMain, js, video),
+  gulp.parallel(cssMain, js, video, docs),
 );
 // #endregion
 
@@ -416,13 +431,15 @@ function deploy() {
 
 /* eslint-disable no-multi-spaces */
 
-exports.cleanSrc    = cleanSrc;
-exports.clean       = clean;
-exports.svg         = svg;
-exports.img         = img;
-exports.sprite      = sprite;
-exports.js          = js;
-exports.css         = cssMain;
-exports.deploy      = deploy;
-exports.s           = server;
-exports.default     = build;
+exports.cleanSrc = cleanSrc;
+exports.clean    = clean;
+exports.video    = video;
+exports.copy     = docs;
+exports.svg      = svg;
+exports.img      = img;
+exports.sprite   = sprite;
+exports.js       = js;
+exports.css      = cssMain;
+exports.deploy   = deploy;
+exports.s        = server;
+exports.default  = build;

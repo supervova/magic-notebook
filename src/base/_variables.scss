@@ -30,16 +30,16 @@ $crimson:                               hsl(340, 87%, 69%);
 $transparent:                           hsla(0, 0%, 0%, 0);
 
 $black-max:                             hsla(0, 0%, 0%, .87);
-$black-transparent:                     hsla(0, 0%, 0%, .54);
-$black-transparent-more:                hsla(0, 0%, 0%, .38);
-$black-transparent-even-more:           hsla(0, 0%, 0%, .22);
-$black-transparent-almost:              hsla(0, 0%, 0%, .12);
-$black-transparent-most:                hsla(0, 0%, 0%, .05);
+$black-2:                     hsla(0, 0%, 0%, .54);
+$black-3:                hsla(0, 0%, 0%, .38);
+$black-4:           hsla(0, 0%, 0%, .22);
+$black-min:              hsla(0, 0%, 0%, .12);
+$black-2-most:                hsla(0, 0%, 0%, .05);
 
 $white-max:                             hsl(0, 0%, 100%);
-$white-transparent:                     hsla(0, 0%, 100%, .7);
-$white-transparent-more:                hsla(0, 0%, 100%, .5);
-$white-transparent-almost:              hsla(0, 0%, 100%, .12);
+$white-2:                     hsla(0, 0%, 100%, .7);
+$white-3:                hsla(0, 0%, 100%, .5);
+$white-min:              hsla(0, 0%, 100%, .12);
 
 // COLOR ROLES
 
@@ -71,11 +71,11 @@ $color-inks: (
   // color-ink(key)
   normal: (
     normal:                             $black-max,
-    muted:                              $black-transparent,
-    hint:                               $black-transparent-more,
-    disabled:                           $black-transparent-more,
-    icon:                               $black-transparent-even-more,
-    border:                             $black-transparent-almost,
+    muted:                              $black-2,
+    hint:                               $black-3,
+    disabled:                           $black-3,
+    icon:                               $black-4,
+    border:                             $black-min,
     link:                               darken($blue, 5%),
     focus-outline:                      lighten($blue, 25%)
   ),
@@ -83,11 +83,11 @@ $color-inks: (
   // color-ink(key, accent)
   accent: (
     normal:                             $black-max,
-    muted:                              $black-transparent,
-    hint:                               $black-transparent-more,
-    disabled:                           $black-transparent-more,
-    icon:                               $black-transparent-even-more,
-    border:                             $black-transparent-almost,
+    muted:                              $black-2,
+    hint:                               $black-3,
+    disabled:                           $black-3,
+    icon:                               $black-4,
+    border:                             $black-min,
     link:                               darken($blue, 5%),
     focus-outline:                      lighten($blue, 25%)
   ),
@@ -95,11 +95,11 @@ $color-inks: (
   // color-ink(key, inverse)
   inverse: (
     normal:                             $white-max,
-    muted:                              $white-transparent,
-    hint:                               $white-transparent-more,
-    disabled:                           $white-transparent-more,
-    icon:                               $white-transparent-more,
-    border:                             $white-transparent-almost,
+    muted:                              $white-2,
+    hint:                               $white-3,
+    disabled:                           $white-3,
+    icon:                               $white-3,
+    border:                             $white-min,
     link:                               lighten($blue, 5%),
     link-hover:                         $blue
   )

@@ -133,12 +133,18 @@
 
 .logos {
   text-align: center;
-  margin: -.8rem auto 0;
+  margin: -1.6rem auto 0;
   padding-bottom: calc(var(--size-line) + 1.8rem);
 
   > figcaption {
-    padding-top: var(--size-1);
+    padding-top: var(--size-2);
   }
+}
+
+.logos__title {
+  margin: 0;
+  padding-top: var(--size-line);
+  color: var(--color-ink-normal);
 }
 
 // #endregion

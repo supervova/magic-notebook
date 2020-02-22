@@ -1,6 +1,28 @@
 // stylelint-disable declaration-colon-space-after
 
+$blue-d5:                               darken($blue, 5%);
+$blue-l25:                              lighten($blue, 25%);
+
 :root {
+
+  // -----------------------------------------------------------------------------
+  // 🎨  COLORS
+  // -----------------------------------------------------------------------------
+  // #region
+
+  // Foregrounds / Inks
+
+  // Inks are foreground colors for texts, borders, and icons
+  // The map is preferable to variables as it can be used in the contrast function
+
+  --color-ink-normal:                   #{$black-max};
+  --color-ink-normal-muted:             #{$black-2};
+  --color-ink-normal-hint:              #{$black-3};
+  --color-ink-normal-disabled:          #{$black-3};
+  --color-ink-normal-icon:              #{$black-4};
+  --color-ink-normal-border:            #{$black-min};
+  --color-ink-normal-link:              #{$blue-d5};
+  --color-ink-normal-focus-outline:     #{$blue-l25};
 
   // ---------------------------------------------------------------------------
   // 📰 LAYOUT

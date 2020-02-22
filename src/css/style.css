@@ -1648,7 +1648,7 @@ figcaption {
 .footer {
   color: rgba(0, 0, 0, 0.54);
   text-align: center;
-  padding: 6.1rem 1.6rem 6.5rem; }
+  padding: 6rem 1.6rem 6.5rem; }
 
 .footer > .btn {
   margin-right: auto;
@@ -1736,6 +1736,13 @@ figcaption {
   @media (min-width: 768px) {
     .feature > p {
       margin-bottom: 0; } }
+
+.logos {
+  text-align: center;
+  margin: -.8rem auto 0;
+  padding-bottom: calc(var(--size-line) + 1.8rem); }
+  .logos > figcaption {
+    padding-top: var(--size-1); }
 
 .section.is-early-access {
   text-align: center;

@@ -1,6 +1,7 @@
 # Compiled code
 .publish
 dist
+src/**/*.css
 
 # Media Files
 *.avi
@@ -86,3 +87,4 @@ $RECYCLE.BIN/
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+

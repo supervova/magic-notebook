@@ -440,6 +440,7 @@ exports.img      = img;
 exports.sprite   = sprite;
 exports.js       = js;
 exports.css      = cssMain;
+exports.w        = watch;
 exports.deploy   = deploy;
 exports.s        = server;
 exports.default  = build;

@@ -902,7 +902,7 @@ h1 {
   @media (min-width: 768px) {
     h1 {
       font-size: 6rem;
-      line-height: 1.2;
+      line-height: 1.0667;
       padding-top: 1.4rem;
       padding-bottom: 1rem; } }
 
@@ -1455,7 +1455,7 @@ figcaption {
       padding-top: calc(var(--size-line) + .3rem); } }
   @media (min-width: 768px) {
     .hero__eyebrow {
-      margin-bottom: calc(var(--size-line) * 4 + var(--size-1)); } }
+      margin-bottom: calc(var(--size-line) * 2 + 1.2rem); } }
 
 .hero__title {
   color: #8a1f0a; }
@@ -1465,6 +1465,9 @@ figcaption {
   margin-right: auto;
   margin-left: auto;
   max-width: 63.2rem; }
+  @media (min-width: 1024px) {
+    .hero__subtitle {
+      margin-top: 1rem; } }
 
 .section__body {
   margin-right: auto;
@@ -1670,6 +1673,10 @@ figcaption {
 @media (min-width: 768px) {
   .carousel.is-main {
     margin-top: -9.1rem; } }
+
+@media (min-width: 768px) {
+  .section.is-need ol {
+    padding-left: 0; } }
 
 .section__header.is-magic .border {
   display: none; }

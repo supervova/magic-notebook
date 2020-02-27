@@ -818,6 +818,9 @@ ul {
     ul {
       padding-left: 0; } }
 
+ol {
+  padding-left: 2rem; }
+
 li:not(:last-child),
 .list-caption {
   margin-bottom: 0.8rem; }
@@ -1673,10 +1676,6 @@ figcaption {
 @media (min-width: 768px) {
   .carousel.is-main {
     margin-top: -9.1rem; } }
-
-@media (min-width: 768px) {
-  .section.is-need ol {
-    padding-left: 0; } }
 
 .section__header.is-magic .border {
   display: none; }

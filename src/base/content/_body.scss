@@ -141,6 +141,10 @@ ul {
   }
 }
 
+ol {
+  padding-left: 2rem;
+}
+
 li:not(:last-child),
 .list-caption {
   margin-bottom: $size-1;

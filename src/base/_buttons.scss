@@ -126,6 +126,17 @@
   }
 }
 
+.btn.is-link {
+  background-color: $transparent;
+  color: color-ink(link);
+  font-size: inherit;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: none;
+  padding: 0;
+  height: auto;
+}
+
 // BUTTON GROUP
 
 .buttons {

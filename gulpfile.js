@@ -94,9 +94,8 @@ const settings = {
       ],
       plugins: [
         // `${config.src}/js/vendor/popper.min.js`,
-        './node_modules/bootstrap/js/dist/util.js', // Required for carousel and dropdown
+        './node_modules/bootstrap/js/dist/util.js', // Required for carousel
         './node_modules/bootstrap/js/dist/carousel.js',
-        './node_modules/bootstrap/js/dist/dropdown.js',
         './node_modules/bootstrap/js/dist/modal.js',
       ],
     },

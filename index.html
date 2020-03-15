@@ -51,6 +51,9 @@
         <p class="hero__subtitle">
           Пишите так хорошо, чтобы начальники премировали, клиенты покупали, а&nbsp;подписчики ставили лайки
         </p>
+        <button class="btn is-link" type="button" data-toggle="modal" data-target="#modal">
+          См. трейлер-тизер
+        </button>
       </div>
     </header>
 
@@ -259,10 +262,27 @@
     <p>©&nbsp;<a href="https://super-mark.ru/" target="_blank" rel="noopener noreferrer">Владимир Никишин</a>, 2020&nbsp;г. Все права защищены.</p>
   </footer>
 
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-label="Трейлер-тизер" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal__content">
+        <div class="modal__body">
+          <iframe width="740" height="416" src="https://www.youtube.com/embed/Xo81Od5DiPs" allow="accelerometer; autoplay; encrypted-media; gyroscope" allowfullscreen></iframe>
+
+          <button class="modal__close" type="button" data-dismiss="modal" aria-label="Close">
+            <svg class="icon" role="presentation" focusable="false">
+              <use xlink:href="/img/base/icons/sprite.svg#icon-close-xs"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script>
     window.jQuery || document.write('<script src="/js/vendor/jquery-3.4.1.min.js"><\/script>')
-
   </script>
   <script src="/js/plugins.js"></script>
   <script src="/js/main.js"></script>

@@ -30,16 +30,15 @@ $crimson:                               hsl(340, 87%, 69%);
 $transparent:                           hsla(0, 0%, 0%, 0);
 
 $black-max:                             hsla(0, 0%, 0%, .87);
-$black-2:                     hsla(0, 0%, 0%, .54);
-$black-3:                hsla(0, 0%, 0%, .38);
-$black-4:           hsla(0, 0%, 0%, .22);
-$black-min:              hsla(0, 0%, 0%, .12);
-$black-2-most:                hsla(0, 0%, 0%, .05);
+$black-2:                               hsla(0, 0%, 0%, .54);
+$black-3:                               hsla(0, 0%, 0%, .38);
+$black-4:                               hsla(0, 0%, 0%, .22);
+$black-min:                             hsla(0, 0%, 0%, .12);
 
 $white-max:                             hsl(0, 0%, 100%);
-$white-2:                     hsla(0, 0%, 100%, .7);
-$white-3:                hsla(0, 0%, 100%, .5);
-$white-min:              hsla(0, 0%, 100%, .12);
+$white-2:                               hsla(0, 0%, 100%, .7);
+$white-3:                               hsla(0, 0%, 100%, .5);
+$white-min:                             hsla(0, 0%, 100%, .12);
 
 // COLOR ROLES
 
@@ -88,7 +87,7 @@ $color-inks: (
     disabled:                           $black-3,
     icon:                               $black-4,
     border:                             $black-min,
-    link:                               darken($blue, 5%),
+    link:                               $white-2,
     focus-outline:                      lighten($blue, 25%)
   ),
 

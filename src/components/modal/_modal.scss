@@ -1,0 +1,177 @@
+// .modal-open      - body class for killing the scroll
+// .modal           - container to scroll within
+// .modal-dialog    - positioning shell for the actual modal
+// .modal-content   - actual modal w/ bg and corners and stuff
+
+// MARKUP
+// #modal.modal.fade(tabindex='-1', role='dialog', aria-label='', aria-hidden='true')
+//   .modal-dialog(role='document')
+//     .modal__content
+//       .modal__body
+//         button.modal__close(type='button', data-dismiss='modal', aria-label='Close')
+//           svg.icon(role='presentation', focusable='false')
+//             use(xlink:href='/projects/mn/img/base/icons/sprite.svg#icon-close-xs')
+
+$modal-transition:                      transform $duration-lg $easing;
+
+.modal-open {
+  // Kill the scroll on the body
+  overflow: hidden;
+
+  .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+// WRAPPER
+
+.modal {
+  display: none;
+
+  // Prevent Chrome on Windows from adding a focus outline. For details, see
+  // https://github.com/twbs/bootstrap/pull/10951.
+  outline: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal;
+  // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
+  // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
+  // See also https://github.com/twbs/bootstrap/issues/17695
+}
+
+
+// INNER CONTAINER TO POSITION THE MODAL WITH BOTTOM PADDING
+// Dashed class name is used in BS JS
+.modal-dialog {
+  margin: 0;
+  padding: $size-2;
+
+  // allow clicks to pass through for custom click handling to close modal
+  pointer-events: none;
+  position: relative;
+  width: 100%;
+
+  // When fading in the modal, animate it to slide down
+  .modal.fade & {
+    transform: translate(0, -25%);
+    transition: $modal-transition;
+  }
+
+  .modal.show & {
+    transform: translate(0, 0);
+  }
+
+  @include media-breakpoint-up(md) {
+    margin: ($size-line * 2) auto;
+    padding: 0;
+    max-width: 740px;
+  }
+}
+
+// ACTUAL MODAL
+.modal__content {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 0;
+  box-shadow: $box-shadow-z5;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  // Remove focus outline from opened modal
+  outline: 0;
+
+  // counteract the pointer-events: none; in the .modal-dialog
+  pointer-events: auto;
+  position: relative;
+
+  // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
+  width: 100%;
+}
+
+.modal__content.has-enlarged-img {
+  background: $transparent;
+  padding: 0;
+
+  > .modal__body {
+    border-radius: $border-radius;
+    overflow: hidden;
+  }
+}
+
+
+// OVERLAY
+.modal-backdrop {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal-backdrop;
+
+  // Fade for backdrop
+  &.fade { opacity: 0; }
+  &.show { opacity: .54; }
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+}
+
+
+// -----------------------------------------------------------------------------
+// CONTENT
+// -----------------------------------------------------------------------------
+
+.modal__title {
+  color: color-ink();
+  font-family: $font-family-accent;
+  font-size: $font-size-h2-small;
+  font-weight: 400;
+  line-height: $line-height-h2-small;
+  margin-bottom: 0;
+
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-h2;
+    letter-spacing: -.1rem;
+    line-height: $line-height-h2;
+    margin-bottom: 0;
+  }
+}
+
+// BUTTON CLOSE
+.modal__close {
+  @extend %btn;
+
+  background: $color-background-normal;
+  box-shadow:
+    0 0 0 1px color-ink(border),
+    $box-shadow-z2;
+  border-radius: 50rem;
+  padding: 0;
+  position: absolute;
+  top: -$size-1;
+  right: -$size-1;
+  transition: background-color $duration-xs;
+  width: $size-4;
+  height: $size-4;
+
+  &:hover {
+    background: $color-background-accent;
+  }
+}
+
+.modal__close > .icon {
+  width: $size-2;
+  height: $size-2;
+}

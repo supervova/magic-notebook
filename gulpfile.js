@@ -113,6 +113,7 @@ const settings = {
     src: [
       './*.html',
       './CNAME',
+      './favicon.ico',
       './site.webmanifest',
     ],
     dest: `${config.dest}`,

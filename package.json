@@ -188,5 +188,9 @@
     "html": {
       "wrap_line_length": 0
     }
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }

@@ -70,8 +70,8 @@ $carousel-transition:                   transform $duration-xl $easing;
 
 .carousel-item img {
   box-shadow:
-  0 0 0 1px color-ink(border),
-  $box-shadow-z4;
+    0 0 0 1px color-ink(border),
+    $box-shadow-z4;
 }
 
 .carousel-item.active,

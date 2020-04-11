@@ -39,10 +39,6 @@ const settings = {
     watch: `${config.src}/**/*.scss`,
     tmp: `${config.src}/css/`,
     dest: `${config.dest}/css/`,
-    autoprefixer: {
-      browsers: ['> 1%', 'last 2 versions'],
-      cascade: false,
-    },
   },
 
   markup: {

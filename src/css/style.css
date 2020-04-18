@@ -731,7 +731,7 @@ summary {
 body {
   background-color: white;
   color: rgba(0, 0, 0, 0.87);
-  font-family: "Helvetica Neue", Helvetica, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "SF Pro Text", "Helvetica Neue", Helvetica, Arial, "Segoe UI", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.7rem;
   line-height: 1.412;
   text-align: left;
@@ -887,7 +887,7 @@ hr {
   text-shadow: none; }
 
 h1, h2 {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, "Roboto", "Segoe UI", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -webkit-font-feature-settings: 'kern' 1, 'liga' 1;
   font-feature-settings: 'kern' 1, 'liga' 1; }
   @media (min-width: 768px) {
@@ -897,7 +897,7 @@ h1, h2 {
 h1 {
   color: rgba(0, 0, 0, 0.87);
   font-size: 3.2rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.25;
   margin: 0;
   padding-top: 0;
@@ -920,7 +920,7 @@ h2 {
   @media (min-width: 768px) {
     h2 {
       font-size: 3.2rem;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1.25; } }
 
 address + h2,
@@ -1128,6 +1128,20 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
     color: rgba(0, 0, 0, 0.87);
     border-color: #f5826b;
     outline: 0; }
+
+input,
+label {
+  position: relative; }
+
+label {
+  top: 36px;
+  -webkit-transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1; }
+
+.is-filled label {
+  top: 0;
+  font-size: 1.4rem; }
 
 .form__control:not(:focus):invalid {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20fill%3D%22%23F25A5A%22%20d%3D%22M12%2C2%20C6.48%2C2%202%2C6.48%202%2C12%20C2%2C17.52%206.48%2C22%2012%2C22%20C17.52%2C22%2022%2C17.52%2022%2C12%20C22%2C6.48%2017.52%2C2%2012%2C2%20Z%20M13%2C17%20L11%2C17%20L11%2C15%20L13%2C15%20L13%2C17%20Z%20M13%2C13%20L11%2C13%20L11%2C7%20L13%2C7%20L13%2C13%20Z%22%2F%3E%20%3C%2Fsvg%3E");
@@ -1384,7 +1398,7 @@ iframe {
   -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 1px 0 0 rgba(0, 0, 0, 0.06);
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12), 0 1px 0 0 rgba(0, 0, 0, 0.06);
   color: rgba(0, 0, 0, 0.87);
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, "Roboto", "Segoe UI", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1.4rem;
   line-height: 1.714;
   margin-bottom: 2.4rem;
@@ -1766,7 +1780,7 @@ iframe {
 
 .modal__title {
   color: rgba(0, 0, 0, 0.87);
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Segoe UI", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, "Roboto", "Segoe UI", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 3.2rem;
   font-weight: 400;
   line-height: 1.25;
@@ -1815,6 +1829,10 @@ iframe {
 @media (min-width: 768px) {
   .carousel.is-main {
     margin-top: -9.1rem; } }
+
+@media (max-width: 1149.98px) {
+  .section.is-need > .section__body {
+    padding-top: 0; } }
 
 .section__header.is-magic .border {
   display: none; }

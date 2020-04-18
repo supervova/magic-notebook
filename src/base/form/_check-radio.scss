@@ -1,5 +1,6 @@
-// MARKUP
+// stylelint-disable selector-no-qualifying-type
 
+// MARKUP
 // label.form__check-label
 //   //- Input element for the checkbox
 //   input.form__check-input(type='checkbox')
@@ -40,3 +41,48 @@
   border-color: $color-primary;
   background: $color-primary url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIyMCA2IDkgMTcgNCAxMiI+PC9wb2x5bGluZT48L3N2Zz4=') center no-repeat;
 }
+
+// -----------------------------------------------------------------------------
+// RADIO BUTTONS
+// -----------------------------------------------------------------------------
+
+// MARKUP
+
+// https://hackernoon.com/hacking-custom-checkboxes-and-radios-5d48230440d
+
+// ALTERNATIVE
+
+// input[type='checkbox'],
+// input[type='radio'] {
+//   display: inline-block;
+//   margin: 0 .2rem 0 0;
+//   position: relative;
+//   vertical-align: middle;
+//   width: 14px;
+//   height: 14px;
+// }
+
+// input[type='radio'] {
+//   border-radius: 50%;
+// }
+
+// input[type='checkbox']:checked,
+// input[type='radio']:checked {
+//   background: var(--color-primary);
+// }
+
+// input[type='checkbox']:checked::before,
+// input[type='radio']:checked::before {
+//   content: '•';
+//   display: block;
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translateX(-50%) translateY(-50%);
+// }
+
+// input[type='checkbox']:checked::before {
+//   content: '✔';
+//   transform: translateY(-50%) translateY(.1rem) translateX(-.6rem);
+// }
+

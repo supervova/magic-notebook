@@ -2,6 +2,7 @@
 .publish
 dist
 src/**/*.css
+src/_labs/**/*
 
 # Media Files
 *.avi

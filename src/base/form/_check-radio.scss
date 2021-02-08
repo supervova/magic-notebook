@@ -22,7 +22,7 @@
 // Pseudo element
 .form__check-input ~ .form__check-toggle {
   border-radius: 50%;
-  border: $border-width solid color-ink(border);
+  border: $border-width solid $color-ink-border;
   cursor: pointer;
   display: inline-block;
   position: relative;

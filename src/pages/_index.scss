@@ -103,7 +103,7 @@
   height: $size-6;
 
   > .icon {
-    fill: color-ink(normal, inverse);
+    fill: $color-ink-inverse-normal;
   }
 }
 

@@ -5,7 +5,7 @@ pre {
 }
 
 code {
-  color: color-ink(code);
+  color: $color-ink-code;
   padding: $size-1 $size-2;
 }
 
@@ -13,9 +13,9 @@ pre {
   // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
   // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
   // -webkit-overflow-scrolling: touch;
-  background-color: $color-background-inverse;
+  background-color: $color-bg-inverse;
   border-radius: $border-radius-sm;
-  color: color-ink(normal, inverse);
+  color: $color-ink-inverse-normal;
   white-space: pre;
   word-wrap: normal; // IE11
   overflow-wrap: normal; // modern browsers

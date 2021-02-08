@@ -19,7 +19,7 @@
   display: flex;
 
   thead {
-    border-right: solid $border-width color-ink(border);
+    border-right: solid $border-width $color-ink-border;
   }
 
   thead th,
@@ -38,7 +38,7 @@
   }
 
   tbody tr {
-    border-right: solid $border-width color-ink(border);
+    border-right: solid $border-width $color-ink-border;
 
     &:last-child {
       border-right: 0;
@@ -101,12 +101,12 @@
 // #region
 
 @mixin table-bordered {
-  border: $border-width solid color-ink(border);
+  border: $border-width solid $color-ink-border;
   border-radius: $border-radius-sm;
 
   th,
   td {
-    border: $border-width solid color-ink(border);
+    border: $border-width solid $color-ink-border;
   }
 
   thead {

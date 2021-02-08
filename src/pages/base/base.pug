@@ -1,0 +1,19 @@
+block config
+  include /pages/base/config
+
+doctype html
+html(lang=app.lang)
+  head
+
+    block head
+      include /pages/base/head
+
+  body(class=bodyClasses || false)
+
+    //- Content ----------------------------------------------------------------
+    block content
+
+    block bodyAddOns
+
+    block scripts
+      //- script(src='/js/main.js')

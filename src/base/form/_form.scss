@@ -35,11 +35,11 @@
 .form__control {
   appearance: none;
   background-clip: padding-box;
-  background-color: $color-background-normal;
+  background-color: $color-bg-normal;
   background-image: none;
   border-radius: $border-radius-sm;
-  border: $border-width solid color-ink(border);
-  color: color-ink(muted);
+  border: $border-width solid $color-ink-border;
+  color: $color-ink-2ry;
   display: block;
   margin: 0 0 .8rem;
   overflow: visible;
@@ -48,7 +48,7 @@
   width: 100%;
 
   &:focus {
-    color: color-ink(normal);
+    color: $color-ink-normal;
     border-color: $color-primary;
     outline: 0;
   }

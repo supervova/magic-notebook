@@ -1,0 +1,55 @@
+meta(charset='utf-8')
+title #{app.title}
+meta(name='description', content=app.desc)
+//- meta(name='viewport', content='width=device-width, initial-scale=1')
+meta(name='viewport', content='initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+
+//- OG
+meta(property='og:title', content=app.title)
+meta(property='og:type', content='website')
+meta(property='og:url', content=app.link)
+//- Recommended size for high resolution devices: at least 1200 x 630px
+meta(property='og:image', content=app.img)
+meta(property='og:image', content=app.img)
+meta(property='fb:admins', content=site.facebookAdmins)
+meta(name='twitter:card', content='summary_large_image')
+
+meta(name='apple-itunes-app', content=app.store)
+
+//- WEB APP: https://go.shr.lc/3bhwCj1
+meta(name='apple-mobile-web-app-capable', content='yes')
+meta(name='apple-mobile-web-app-status-bar-style', content='default')
+meta(name='theme-color', content=app.color)
+
+meta(name='google', content='notranslate')
+meta(name='google-site-verification', content=app.googleVerification)
+
+link(rel='apple-touch-icon', href=app.icon.lg)
+//- Even apple.com doesn’t use the mask-icon anymore
+link(rel='icon', href= app.icon.svg, type='image/svg+xml', sizes='any')
+
+if app.fonts
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=' + app.fonts)
+link(rel='stylesheet', href=app.css)
+
+script(type='application/ld+json').
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "#{app.title}",
+    "operatingSystem": "Windows 10, OSX 10.6",
+    "applicationCategory": "BusinessApplication",
+  }
+
+//- {
+//-   "aggregateRating": {
+//-     "@type": "AggregateRating",
+//-     "ratingValue": "4.6",
+//-     "ratingCount": "8864"
+//-   },
+//-   "offers": {
+//-     "@type": "Offer",
+//-     "price": "1.00",
+//-     "priceCurrency": "USD"
+//-   }
+//- }

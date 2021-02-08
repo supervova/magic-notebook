@@ -2,7 +2,7 @@
   display: inline-block;
 
   // Можно окрасить иконку в цвет текста (currentColor) или назначить свой цвет
-  fill: color-ink(icon);
+  fill: $color-ink-icon;
 
   // Prevent the icon from shrinking inside a flex container.
   flex-shrink: 0;

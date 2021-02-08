@@ -1,5 +1,5 @@
 .footer {
-  color: color-ink(muted);
+  color: $color-ink-2ry;
   text-align: center;
   padding: ($size-line * 2 + 1.2rem) $size-2 ($size-line * 2 + 1.7rem);
 }
@@ -11,6 +11,6 @@
 }
 
 .footer > p {
-  font-size: $font-size-small;
-  line-height: $line-height-small;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
 }

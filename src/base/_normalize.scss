@@ -89,7 +89,7 @@ a {
 
 
 abbr[title] {
-  border-bottom: 2px solid color-ink(border);
+  border-bottom: 2px solid $color-ink-border;
   text-decoration: none;
 }
 
@@ -417,7 +417,7 @@ body {
 
 ::selection {
   background: darken($color-primary, 5%);
-  color: color-ink(normal, inverse);
+  color: $color-ink-inverse-normal;
   text-shadow: none;
 }
 

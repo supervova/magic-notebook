@@ -48,13 +48,13 @@
 // -----------------------------------------------------------------------------
 
 .is-note {
-  color: color-ink(muted);
+  color: $color-ink-2ry;
 }
 
 .has-middle-dot,
 %has-middle-dot {
   &::before {
-    color: color-ink(icon);
+    color: $color-ink-icon;
     content: ' \00b7';
   }
 }

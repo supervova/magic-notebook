@@ -1,23 +1,17 @@
 // Modifiers are not defined in component files. The unique page styles are
-// written in the corresponded <head> section (less is better). And styles
-// for a group of pages are written in pages folder. E.g. /pages/company.scss
+// written in the corresponded <head> section, and styles for a group of pages
+// are written in pages folder. E.g.
+// # /pages/company.scss
 // .hero.is-company { background: hsl(50, 100%, 50%); }
 
 @import 'base/functions';
 @import 'base/variables';
-@import 'base/mixins';
 
 // BS
 @import './node_modules/bootstrap/scss/functions';
 @import './node_modules/bootstrap/scss/variables';
 @import './node_modules/bootstrap/scss/mixins';
 // @import './node_modules/bootstrap/scss/grid';
-
-// BS4 utilities
-// @import './node_modules/bootstrap/scss/utilities/display';
-// @import './node_modules/bootstrap/scss/utilities/spacing';
-
-// BS5 utilities
 @import './node_modules/bootstrap/scss/utilities';
 
 // Only use the utilities we need
@@ -25,20 +19,13 @@ $utilities: map-get-multiple(
   $utilities,
   (
     'display',
-    'margin-top',
-    'margin-bottom',
-    'margin-x',
-    'padding-x',
-    'padding-top',
-    'padding-bottom',
-    'padding-right',
-    'padding-left'
-    // 'order','flex','flex-direction','flex-grow','flex-shrink','flex-wrap','justify-content','align-items','align-content','align-self','margin', 'margin-y', 'margin-right', 'margin-left','negative-margin','negative-margin-x','negative-margin-y','negative-margin-top','negative-margin-right','negative-margin-bottom','negative-margin-left','padding','padding-x','padding-y',
+    // 'margin-top', 'margin-bottom', 'margin-x', 'padding-x', 'padding-top', 'padding-bottom', 'padding-right', 'padding-left', 'order','flex','flex-direction','flex-grow','flex-shrink','flex-wrap','justify-content','align-items','align-content','align-self','margin', 'margin-y', 'margin-right', 'margin-left','negative-margin','negative-margin-x','negative-margin-y','negative-margin-top','negative-margin-right','negative-margin-bottom','negative-margin-left','padding','padding-x','padding-y',
   ));
 
 @import './node_modules/bootstrap/scss/utilities/api';
 
 // Base
+@import 'base/root';
 @import 'base/normalize';
 @import 'base/content/body';
 @import 'base/content/headings';
@@ -65,4 +52,3 @@ $utilities: map-get-multiple(
 // Helpers & Print
 @import 'utilities/layout';
 @import 'base/print';
-

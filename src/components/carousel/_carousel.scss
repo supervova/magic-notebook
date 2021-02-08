@@ -70,7 +70,7 @@ $carousel-transition:                   transform $duration-xl $easing;
 
 .carousel-item img {
   box-shadow:
-    0 0 0 1px color-ink(border),
+    0 0 0 1px $color-ink-border,
     $box-shadow-z4;
 }
 
@@ -163,7 +163,7 @@ $carousel-transition:                   transform $duration-xl $easing;
 
   li {
     background-clip: padding-box;
-    background-color: color-ink(border);
+    background-color: $color-ink-border;
     // Use transparent borders to increase the hit area by 10px on top and bottom.
     border-top: 1rem solid transparent;
     border-bottom: 1rem solid transparent;
@@ -208,7 +208,7 @@ $carousel-transition:                   transform $duration-xl $easing;
   }
 
   > div {
-    color: color-ink(hint);
+    color: $color-ink-3ry;
   }
 }
 

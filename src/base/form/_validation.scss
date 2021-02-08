@@ -15,7 +15,7 @@
 
 .form__feedback.is-invalid {
   color: darken($color-error, 20%);
-  font-size: $font-size-small;
+  font-size: var(--font-size-small);
   overflow: hidden;
   opacity: 0;
   height: 0;

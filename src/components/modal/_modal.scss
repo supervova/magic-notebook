@@ -10,7 +10,7 @@
 //       .modal__body
 //         button.modal__close(type='button', data-dismiss='modal', aria-label='Close')
 //           svg.icon(role='presentation', focusable='false')
-//             use(xlink:href='/projects/mn/img/base/icons/sprite.svg#icon-close-xs')
+//             use(xlink:href='/projects/mn/img/base/graphics/sprite.svg#icon-close-xs')
 
 $modal-transition:                      transform $duration-lg $easing;
 
@@ -134,17 +134,15 @@ $modal-transition:                      transform $duration-lg $easing;
 // -----------------------------------------------------------------------------
 
 .modal__title {
-  color: color-ink();
+  color: $color-ink-title;
   font-family: $font-family-accent;
-  font-size: $font-size-h2-small;
+  font-size: var(--font-size-h2);
   font-weight: 400;
-  line-height: $line-height-h2-small;
+  line-height: var(--line-height-h2);
   margin-bottom: 0;
 
   @include media-breakpoint-up(md) {
-    font-size: $font-size-h2;
     letter-spacing: -.1rem;
-    line-height: $line-height-h2;
     margin-bottom: 0;
   }
 }
@@ -153,9 +151,9 @@ $modal-transition:                      transform $duration-lg $easing;
 .modal__close {
   @extend %btn;
 
-  background: $color-background-normal;
+  background: $color-bg-normal;
   box-shadow:
-    0 0 0 1px color-ink(border),
+    0 0 0 1px $color-ink-border,
     $box-shadow-z2;
   border-radius: 50rem;
   padding: 0;
@@ -167,7 +165,7 @@ $modal-transition:                      transform $duration-lg $easing;
   height: $size-4;
 
   &:hover {
-    background: $color-background-accent;
+    background: $color-bg-accent;
   }
 }
 

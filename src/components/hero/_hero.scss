@@ -38,9 +38,9 @@
 
 // EYEBROW
 .hero__eyebrow {
-  background: $color-background-inverse;
-  color: color-ink(normal, inverse);
-  font-size: $font-size-small;
+  background: $color-bg-inverse;
+  color: $color-ink-inverse-normal;
+  font-size: var(--font-size-small);
   line-height: var(--size-2);
   margin-bottom: calc(var(--size-line) * 2);
   padding: calc(var(--size-2) + .3rem) var(--size-2) 0;
@@ -64,7 +64,7 @@
 }
 
 .hero__subtitle {
-  color: color-ink(muted);
+  color: $color-ink-2ry;
   margin-right: auto;
   margin-bottom: 0;
   margin-left: auto;
@@ -78,14 +78,14 @@
   background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-opacity%3D%22.16%22%20fill-rule%3D%22evenodd%22%20d%3D%22M8%2C0%20C12.418278%2C0%2016%2C3.581722%2016%2C8%20C16%2C12.418278%2012.418278%2C16%208%2C16%20C3.581722%2C16%200%2C12.418278%200%2C8%20C0%2C3.581722%203.581722%2C0%208%2C0%20Z%20M8%2C2%20C4.6862915%2C2%202%2C4.6862915%202%2C8%20C2%2C11.3137085%204.6862915%2C14%208%2C14%20C11.3137085%2C14%2014%2C11.3137085%2014%2C8%20C14%2C4.6862915%2011.3137085%2C2%208%2C2%20Z%20M6%2C4%20L12%2C8%20L6%2C12%20L6%2C4%20Z%22%2F%3E%3C%2Fsvg%3E%0A');
   background-position: $size-2 calc(50% - .1rem);
   background-repeat: no-repeat;
-  // border: 1px solid color-ink(border, accent);
-  color: color-ink(hint, accent);
+  // border: 1px solid $color-ink-accent-border;
+  color: $color-ink-accent-3ry;
   margin-top: $size-1;
   padding: 1.2rem $size-2 1.2rem $size-5;
   transition: background-color $duration-sm;
 
   &:hover {
-    background-color: $white-min;
+    background-color: $white-penult;
   }
 
   &:active {

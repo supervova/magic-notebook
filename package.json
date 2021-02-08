@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "animate.css": "github:daneden/animate.css",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^5.0.0-beta1",
     "html5-boilerplate": "github:h5bp/html5-boilerplate"
   },
   "stylelint": {
@@ -52,12 +52,27 @@
         }
       ],
       "order/properties-alphabetical-order": null,
-      "property-no-unknown": [true, {"ignoreProperties": ["appearance"]}],
-      "rule-empty-line-before": ["always", {"ignore": ["after-comment", "inside-block"]}],
+      "property-no-unknown": [
+        true,
+        {
+          "ignoreProperties": [
+            "appearance"
+          ]
+        }
+      ],
+      "rule-empty-line-before": [
+        "always",
+        {
+          "ignore": [
+            "after-comment",
+            "inside-block"
+          ]
+        }
+      ],
       "scss/at-extend-no-missing-placeholder": null,
       "scss/dollar-variable-colon-space-after": null,
       "selector-attribute-quotes": "always",
-      "selector-class-pattern": "^[a-z0-9]+([a-z0-9-_]+[a-z0-9]+)?$"
+      "selector-class-pattern": "[a-zA-Z0-9]+[a-za-zA-Z0-9-_]*"
     }
   },
   "eslintConfig": {

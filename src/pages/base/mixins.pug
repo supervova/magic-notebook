@@ -1,0 +1,5 @@
+mixin icon(name, class = '')
+  - var classes = 'icon' + class;
+  svg(class=classes, aria-hidden='true', focusable='false')
+    use(href='/img/base/graphics/sprite.svg#icon-' + name)
+

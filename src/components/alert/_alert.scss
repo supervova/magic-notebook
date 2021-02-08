@@ -1,20 +1,16 @@
 .alert {
-  background-color: $color-background-warning;
+  background-color: $color-warning-bg;
   border-radius: $border-radius-sm;
   box-shadow:
-    inset 0 0 0 1px color-ink(border, accent),
+    inset 0 0 0 1px $color-ink-accent-border,
     $box-shadow-z1;
-  color: color-ink(normal, accent);
+  color: $color-ink-accent-normal;
   font-family: $font-family-accent;
-  font-size: $font-size-small;
-  line-height: $line-height-small;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
   margin-bottom: $size-line;
-  padding: $box-padding-sm;
+  padding: var(--padding-x-box);
   position: relative;
-
-  @include media-breakpoint-up(md) {
-    padding: $box-padding-line;
-  }
 }
 
 // BIG GLOBAL ALERTS
@@ -22,11 +18,11 @@
 .alert.is-global {
   border-radius: 0;
   box-shadow:
-    inset 0 -1px 0 color-ink(border, accent),
+    inset 0 -1px 0 $color-ink-accent-border,
     $box-shadow-z1;
   text-align: center;
   margin-bottom: 0;
-  padding: $size-line $box-padding-sm;
+  padding: $size-line var(--padding-x-box);
 
   > p {
     text-align: left;
@@ -54,7 +50,7 @@
 // H5BP .browserupgrade, noscript etc
 .is-waring,
 %alert-waring {
-  background: $color-background-warning;
+  background: $color-warning-bg;
 }
 
 .alert.is-warning .icon__body {
@@ -62,12 +58,12 @@
 }
 
 .alert.is-warning .icon__details {
-  fill: color-ink(muted, accent);
+  fill: $color-ink-accent-2ry;
 }
 
 .is-danger,
 %alert-danger {
-  background: $color-background-danger;
+  background: $color-error-bg;
 }
 
 

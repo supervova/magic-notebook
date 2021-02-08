@@ -32,7 +32,7 @@
 // @param $color {String} Defines the color of the dot
 // @param $mq {Boolean} If you want a dots on touch device or not
 
-@mixin bullet-separator($size: 3px, $color: $, $mq: null) {
+@mixin bullet-separator($size: 3px, $color: $color-primary, $mq: null) {
   display: flex;
   align-items: center;
   position: relative;
@@ -95,7 +95,7 @@
 
 @mixin scrollbar(
   $size: 12px,
-  $thumb: color-ink(border),
+  $thumb: $color-ink-border,
   $track: $color-background-secondary) {
 
   &::-webkit-scrollbar {

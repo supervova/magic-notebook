@@ -2,7 +2,7 @@
   "short_name": "MN",
   "name": "Magic Notebook",
   "icons": [{
-    "src": "/img/base/icons/icon.png",
+    "src": "/img/base/graphics/icon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],

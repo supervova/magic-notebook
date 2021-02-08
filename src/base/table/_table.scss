@@ -1,11 +1,11 @@
 // stylelint-disable selector-no-qualifying-type
 
-$table-background:                      $color-background-normal;
+$table-background:                      $color-bg-normal;
 
 $table-cell-padding-x:                  $size-2;
 $table-cell-padding-y:                  $size-2;
 $table-cell-padding:                    ($table-cell-padding-y - $border-width) $table-cell-padding-x $table-cell-padding-y;
-$table-accent-bg:                       $color-background-accent;
+$table-accent-bg:                       $color-bg-accent;
 $table-hover-bg:                        hsla(0, 0%, 0%, .03);
 
 $table-fixed-column-width:              14.4rem;
@@ -41,7 +41,7 @@ $table-fixed-column-width-md:           24rem;
 caption,
 .table__caption {
   // caption-side: bottom;
-  color: color-ink(muted);
+  color: $color-ink-2ry;
   font-weight: normal;
   text-align: center;
   margin-top: 0;
@@ -54,7 +54,7 @@ caption,
 
 th,
 td {
-  border-top: $border-width solid color-ink(border);
+  border-top: $border-width solid $color-ink-border;
   text-align: left;
   padding: $table-cell-padding;
   vertical-align: top;
@@ -72,7 +72,7 @@ td {
 }
 
 thead th {
-  border-bottom: (2 * $border-width) solid color-ink(border);
+  border-bottom: (2 * $border-width) solid $color-ink-border;
   font-weight: bolder;
   padding-bottom: ($table-cell-padding-y - $border-width * 2);
   vertical-align: bottom;
@@ -83,10 +83,10 @@ thead th {
 }
 
 .table__th-vertical {
-  border-right: $border-width solid color-ink(border);
+  border-right: $border-width solid $color-ink-border;
 
   tbody & {
-    background: $color-background-normal;
+    background: $color-bg-normal;
   }
 }
 

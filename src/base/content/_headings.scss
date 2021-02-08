@@ -1,67 +1,46 @@
 // stylelint-disable selector-list-comma-newline-after
 
-h1, h2 {
-  font-family: $font-family-accent;
-
+h1, .h1, %h1,
+h2, .h2, %h2 {
   // OpenType kerning
+  font-family: $font-family-accent;
   font-feature-settings: 'kern' 1, 'liga' 1;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(mdl) {
     letter-spacing: -.1rem;
   }
-
-  // @if $debug {
-  //   background: hsla(240, 100%, 50%, .24);
-  // }
 }
 
-// Heading 1
-// Expected %-placeholder "%h1" to match specified pattern (scss/percent-placeholder-pattern)
-h1,
-%heading-1 {
-  color: color-ink(normal, accent);
-  font-size: $font-size-h1-small;
-  font-weight: $font-weight-h1;
-  line-height: $line-height-h1-small;
+// H1 and hero titles
+h1, .h1, %h1 {
+  color: $color-ink-title;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-h1);
+  line-height: var(--line-height-h1);
   margin: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-top: var(--padding-top-h1);
+  padding-bottom: var(--padding-bottom-h1);
 
-  @include media-breakpoint-up(md) {
-    font-size: $font-size-h1;
-    line-height: $line-height-h1;
-    padding-top: 1.4rem;
-    padding-bottom: 1rem;
+  // With eyebrow
+  header > & {
+    margin-top: var(--margin-top-h1-has-eyebrow);
   }
 }
 
 // Heading 2
-h2,
-%heading-h2 {
-  color: color-ink(normal, accent);
-  font-size: $font-size-h2-small;
-  font-weight: $font-weight-h2-small;
-  line-height: $line-height-h2-small;
+// Heading 2
+h2, .h2, %h2 {
+  color: $color-ink-title;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: var(--line-height-h2);
   margin: 0;
-  padding-top: 1.6rem;
-  padding-bottom: 1.6rem;
+  padding-top: var(--padding-top-h2);
+  padding-bottom: var(--padding-bottom-h2);
 
-  @include media-breakpoint-up(md) {
-    font-size: $font-size-h2;
-    font-weight: $font-weight-h2;
-    line-height: $line-height-h2;
+  &:not(:first-child):not([class]) {
+    margin-top: var(--margin-top-subhead);
   }
-}
-
-address + h2,
-blockquote + h2,
-dl + h2,
-ol + h2,
-p + h2,
-pre + h2,
-ul + h2,
-.h2.is-subhead {
-  margin-top: calc(-1 * var(--type-body-copy-vr-offset));
 }
 
 h3, h4, h5, h6 {

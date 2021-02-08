@@ -89,3 +89,6 @@ $RECYCLE.BIN/
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
+/-copy.publish
+/src/base/_variables-v1.scss
+/src/pages/notes

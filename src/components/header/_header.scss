@@ -22,10 +22,13 @@
 }
 
 .header > .container.is-kicker {
-  justify-content: center;
+  display: block;
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
   text-align: center;
+  padding-top: 2.8rem;
+  padding-bottom: 2.8rem;
+  height: auto;
 }
 
 .header__logo {

@@ -2375,12 +2375,14 @@ video {
       height: 9.6rem; } }
 
 .header > .container.is-kicker {
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  display: block;
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
-  text-align: center; }
+  text-align: center;
+  padding-top: 2.8rem;
+  padding-bottom: 2.8rem;
+  height: auto;
+}
 
 .header__logo {
   fill: rgba(255, 255, 255, 0.7);

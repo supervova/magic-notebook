@@ -29,4 +29,4 @@ if (lightbox) {
 }
 
 // Fix Shia Labeouf autoplay
-document.getElementById('video-labeouf').play();
+// document.getElementById('video-labeouf').play();

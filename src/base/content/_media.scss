@@ -1,7 +1,3 @@
-figcaption {
-  color: $color-ink-2ry;
-}
-
 .border,
 %border {
   border-radius: $border-radius;
@@ -17,6 +13,7 @@ figcaption {
     box-shadow: inset 0 0 0 1px $color-ink-border;
     content: '';
     display: block;
+    pointer-events: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -29,22 +26,29 @@ figcaption {
   }
 }
 
-.has-shadow-z3 {
-  box-shadow:
-    0 0 0 1px $color-ink-border,
-    $box-shadow-z3;
+// -----------------------------------------------------------------------------
+// FIGURES & IFRAMES
+// -----------------------------------------------------------------------------
+
+figure,
+iframe {
+  margin-top: 0;
+  margin-bottom: $size-line;
 }
 
-.has-shadow-z4 {
-  box-shadow:
-    0 0 0 1px $color-ink-border,
-    $box-shadow-z4;
+figcaption {
+  color: $color-ink-2ry;
+  padding-top: var(--padding-top-base);
+  padding-bottom: var(--padding-bottom-base);
 }
-
 
 // -----------------------------------------------------------------------------
 // RESPONSIVE MEDIA
 // -----------------------------------------------------------------------------
+
+video {
+  height: auto;
+}
 
 .embed-responsive {
   display: block;
@@ -79,38 +83,58 @@ figcaption {
   }
 }
 
-iframe {
-  border: 0;
+// -----------------------------------------------------------------------------
+// VIDEO BACKGROUND
+// -----------------------------------------------------------------------------
 
-  .modal__body > & {
-    margin-bottom: 0;
-  }
+// MARKUP
+// video.video.is-bg(autoplay, muted, loop, playsinline)
+//   source(data-src='/path/to/video.mp4', type='video/mp4')
+
+// To prevent download video on mobiles use base/content/content.js and data-src
+// instead of source src attribute
+
+.video.is-bg {
+  filter: brightness(50%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
 }
 
 // -----------------------------------------------------------------------------
-// MEDIA OBJECT
+// MASKING
 // -----------------------------------------------------------------------------
 
-.media-object {
-  @include media-breakpoint-up(sm) {
-    display: flex;
-    align-items: flex-start;
-    margin-top: $size-line + .6rem;
-  }
+
+.img[class^='has-been-masked'] {
+  object-fit: cover;
 }
 
-.media-object__figure {
-  @extend %border;
 
-  @include media-breakpoint-up(sm) {
-    margin-right: $size-line;
-  }
+// WITH BITMAP
 
-  @include media-breakpoint-up(md) {
-    margin-right: $size-4;
-  }
+.img.has-been-masked-with-star {
+  mask-image: url('/a/img/star.png');
+  mask-size: cover;
+
 }
 
-.media-object__body {
-  flex: 1;
+// WITH SVG
+
+// Add svg graphics on the page with image. Add <mask> element inside the SVG
+// with ID
+// svg(width='0', height='0', viewbox='0 0 400 300')
+//   defs
+//     mask#mask
+//       rect(fill='#000000', x='0', y='0', width='400', height='300')
+//       circle(fill='#FFFFFF', cx='150', cy='150', r='100')
+//       circle(fill='#FFFFFF', cx='50', cy='50', r='150')
+
+// img.img.has-been-masked-with-cloud(src='/a/img/balloons.jpg', alt='')
+
+.img.has-been-masked-with-cloud {
+  mask-image: url('#mask');
 }

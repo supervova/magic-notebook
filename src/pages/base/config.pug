@@ -1,23 +1,23 @@
 -
-  var app = {
-    lang: 'ru', //- Electron method is app.getLocale()
-    title: 'Magic Notebook',
-    desc: 'Приложение — литературный помощник. Специально для блогеров, маркетологов и копираитеров',
+  var site = {
+    lang: 'ru',
+    title: 'Magic Notebook: цифровой блокнот и литературный помощник',
+    desc: 'Новое приложение, специально для блогеров, маркетологов и копирайтеров. Пишите так хорошо, чтобы начальники премировали, клиенты покупали, а подписчики ставили лайки',
     //- desc: 'The writing assistant app. Especially for bloggers, marketers and copywriters',
-    link: 'https://app.magic-nb.ru/',
-    img: '/img/screens/main/magic-notebook.png',
+    link: 'https://magic-nb.ru',
+    img: '/img/cover.png',
     icon: {
       lg: '/img/base/graphics/icon.png',
       svg: '/img/base/graphics/icon.svg'
     },
     color: '#f5826b',
-    fonts: '',
+    fonts: 'Inter:wght@500;600;700',
     css: '/css/style.css',
-    store: '',
-    googleVerification: ''
+    facebookAdmins: '506386402',
+    gtm: 'GTM-WHW5N6H',
+    author: 'Владимир Никишин, www.super-mark.ru',
+    copyright: 2021
   }
 
--
-  var site = {
-    facebookAdmins: '506386402'
-  }
+- var currentYear = new Date().getFullYear();
+

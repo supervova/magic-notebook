@@ -27,10 +27,7 @@ const root = {
 
 const paths = {
   css: {
-    src: {
-      first: `${root.src}/first.scss`,
-      main: `${root.src}/style.scss`,
-    },
+    src: `${root.src}/style.scss`,
     watch: `${root.src}/**/*.scss`,
     tmp: `${root.src}/css/`,
     dest: `${root.dest}/css/`,
@@ -43,10 +40,7 @@ const paths = {
       `!${root.src}/pages/base/*.pug`,
       `!${root.src}/pages/notes/*.pug`,
     ],
-    watch: [
-      `${root.dest}/index.html`,
-      `${root.src}/**/*.pug`,
-    ],
+    watch: `${root.src}/**/*.pug`,
     toMin: `${root.dest.site}/**/*.html`,
     dest: `${root.dest}`,
   },
@@ -79,12 +73,8 @@ const paths = {
         `!${root.src}/add-ons/**/*.js`,
         `!${root.src}/js/vendor/*.js`,
       ],
-      plugins: [
-        // `${root.src}/js/vendor/popper.min.js`,
-        './node_modules/bootstrap/js/dist/carousel.js',
-        './node_modules/bootstrap/js/dist/modal.js',
-      ],
     },
+    backup: `${root.src}/_arj/main.js`,
     dest: `${root.dest}/js/`,
   },
 
@@ -121,7 +111,8 @@ function clean() {
   return del([
     `${paths.css.dest}/**/*.css`,
     `${paths.js.dest}/**/*.js`,
-    `!${paths.js.dest}/vendor/*.js`,
+    `${paths.img.dest}/**/*.img`,
+    // `!${paths.js.dest}/vendor/*.js`,
   ]);
 }
 
@@ -136,49 +127,27 @@ function cleanSrc() {
  * -----------------------------------------------------------------------------
  */
 // #region
-const babel = require('gulp-babel');
-const concat = require('gulp-concat');
-const uglify = require('gulp-terser');
+// Webpack
+const webpack = require('webpack-stream');
 
-// Common scripts function
-const jsTasks = (source, file, compiler) => src(source)
-  .pipe(changed(paths.js.dest))
-  .pipe(plumber())
-// With modular project structure use webpack instead others
-// .pipe(webpackstream(webpackconfig, webpack))
-  .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
-  .pipe(gulpif(compiler, babel({ presets: ['@babel/preset-env'] })))
-  .pipe(concat(`${file}.js`))
-  .pipe(uglify())
-  .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
-  .pipe(size({ title: `scripts: ${file}` }))
-  .pipe(dest(paths.js.dest))
-  .pipe(browserSync.stream());
-
-// Plugins
-function jsPlugins(done) {
-  jsTasks(
-    paths.js.src.plugins, // source
-    'plugins', // file
+function js() {
+  const mode = (PRODUCTION) ? 'production' : 'development';
+  // ⚠️ To use webpack keep main.js in root folder not in js subfolder
+  return (
+    src(`${root.src}/main.js`)
+      .pipe(changed(`${paths.js.dest}/**/*.js`))
+      .pipe(plumber())
+      .pipe(
+        webpack({
+          mode,
+          entry: `${root.src}/main.js`,
+          output: { filename: '[name].js' },
+        }),
+      )
+      .pipe(dest(paths.js.dest))
+      .pipe(browserSync.stream())
   );
-  done();
 }
-
-// Main
-function jsMain(done) {
-  jsTasks(
-    paths.js.src.main, // source
-    'main', // file
-    true,
-  );
-  done();
-}
-
-// SCRIPTS BUILD
-const js = series(
-  jsMain,
-  jsPlugins,
-);
 // #endregion
 
 /**
@@ -197,6 +166,11 @@ function docs() {
   return src(paths.rootFiles.src)
     .pipe(changed(paths.rootFiles.dest))
     .pipe(dest(paths.rootFiles.dest));
+}
+
+function jsCopy() {
+  return src(paths.js.backup)
+    .pipe(dest(paths.js.dest));
 }
 // #endregion
 
@@ -305,8 +279,10 @@ const cssTasks = (
               /* eslint-disable max-len */
               // Bootstrap
               /\w\.fade/,
+              /\w\.show/,
               /\.collapse?(ing)?/,
               /\.carousel(-[a-zA-Z]+)?/,
+              /\.modal(-[a-zA-Z]+)?/,
 
               // Custom
               /\[data-has-shared-alert\]\.is-invalid/,
@@ -330,32 +306,17 @@ const cssTasks = (
   .pipe(dest(destination))
   .pipe(browserSync.stream());
 
-// The first
-function cssFirst(done) {
-  cssTasks(
-    paths.css.src.first, // src
-    'main', // subtitle
-    // uncssHTML; use array syntax for normal results
-    [`${root.dest}/index.html`],
-    paths.css.dest,
-  );
-  done();
-}
-
 // Main (overview)
-function cssMain(done) {
+function css(done) {
   cssTasks(
-    paths.css.src.main, // src
+    paths.css.src, // src
     'main', // subtitle
     // uncssHTML; use array syntax for normal results
-    [`${root.dest}/overview.html`],
+    [`${root.src}/pages/uncss/*.html`],
     paths.css.dest,
   );
   done();
 }
-
-// STYLES BUILD
-const css = parallel(cssFirst, cssMain);
 
 // #endregion
 
@@ -416,7 +377,7 @@ function svg() {
     .pipe(dest(paths.svg.dest));
 }
 
-const sprite = series(svg, parallel(cssMain, imgGraphics));
+const sprite = series(svg, parallel(css, imgGraphics));
 // #endregion
 
 /**
@@ -438,7 +399,7 @@ function watchFiles() {
   watch(paths.js.src.main, series(js));
   watch(paths.svg.src).on('change', series(sprite, reload));
   watch(paths.img.watch).on('change', series(img, reload));
-  watch(paths.markup.src, series(pug));
+  watch(paths.markup.watch, series(buildPug));
   watch(paths.rootFiles.src, series(docs, reload));
 }
 
@@ -465,7 +426,8 @@ const build = series(
   clean,
   svg,
   img,
-  parallel(cssMain, js, video, docs),
+  parallel(css, js, video, docs),
+  // parallel(css, jsCopy, video, docs),
 );
 // #endregion
 
@@ -500,6 +462,7 @@ exports.pug      = buildPug;
 exports.svg      = svg;
 exports.img      = img;
 exports.sprite   = sprite;
+exports.jsc      = jsCopy;
 exports.js       = js;
 exports.css      = css;
 exports.w        = watchFiles;

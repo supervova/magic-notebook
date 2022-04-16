@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "animate.css": "github:daneden/animate.css",
-    "bootstrap": "^5.0.0-beta1",
+    "bootstrap": "^5.0.0-beta2",
     "html5-boilerplate": "github:h5bp/html5-boilerplate"
   },
   "stylelint": {
@@ -207,5 +207,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "dependencies": {}
 }

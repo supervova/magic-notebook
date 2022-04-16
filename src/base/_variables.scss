@@ -83,7 +83,7 @@ $color-primary-scrim:                   rgba($color-primary, .8);
 // BASE BACKGROUNDS
 $color-bg-normal:                       $white-max;
 $color-bg-accent:                       $color-primary-lightest;
-$color-bg-inverse:                      desaturate($color-primary-darkest, 25%); // or desaturate(darken($color-primary, 15%), 25%);
+$color-bg-inverse:                      desaturate(darken($color-primary, 35%), 25%); // or desaturate(darken($color-primary, 15%), 25%);
 $color-bg-scrim:                        rgba(#000, .72);
 
 // FEEDBACK COLORS
@@ -187,11 +187,8 @@ $grid-gutter-xl:                        $size-6;
 
 // Maps to generate maximum width of the container for each breakpoint
 $container-max-widths: (
-  // Laptop: 88*12 + 8*11 + 64
-  lg: 1208px,
-
-  // Full HD - 1920x1080 and up: 136*12 + 8*11
-  xxl: 1784px
+  // Screenshots width + side paddings
+  lg: (110.4rem + 6.4rem),
 );
 
 // Using: @media #{$mq-retina} { … }
@@ -208,12 +205,13 @@ $mq-retina: 'print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.2
 /* stylelint-disable indentation */
 // Don't use system-ui (Tahoma in Win7) and Segoe UI. These fonts are ugly
 $font-family-base:
- 'Helvetica Neue',
  -apple-system,
-  Roboto,
+ 'SF Pro Text',
+ 'Helvetica Neue',
   Helvetica,
-  Arial,
+ 'Roboto',
  'Noto Sans',
+  Arial,
   sans-serif,
  'Apple Color Emoji',
  'Segoe UI Emoji',
@@ -222,12 +220,13 @@ $font-family-base:
 
 $font-family-accent:
  -apple-system,
- 'Helvetica Neue',
+ 'SF Pro Text',
  'Inter',
-  Roboto,
+ 'Helvetica Neue',
   Helvetica,
-  Arial,
+ 'Roboto',
  'Noto Sans',
+  Arial,
   sans-serif,
  'Apple Color Emoji',
  'Segoe UI Emoji',
@@ -259,42 +258,46 @@ $font-family-serif:
 // below.
 
 :root {
-  --font-size-hero-title:               5rem;
-  --font-weight-hero-title:             300;
+  --font-size-hero-title:               3.4rem;
+  --font-weight-hero-title:             600;
   // Keep parentheses to do math using interpolation
-  --line-height-hero-title:             #{(56/60)};
-  --padding-top-hero-title:             0;
-  --padding-bottom-hero-title:          0;
+  --line-height-hero-title:             #{(40/34)};
+  --padding-top-hero-title:             #{$size-2};
+  --padding-bottom-hero-title:          #{$size-2};
 
-  --font-size-h1:                       2.8rem;
-  --line-height-h1:                     #{(32/28)};
-  --font-weight-h1:                     400;
-  --padding-top-h1:                     0;
-  --padding-bottom-h1:                  0;
+  --font-size-h1:                       3.4rem;
+  --font-weight-h1:                     500;
+  --line-height-h1:                     #{(40/34)};
+  --padding-top-h1:                     #{$size-2};
+  --padding-bottom-h1:                  #{$size-2};
   --margin-top-h1-has-eyebrow:          #{-$size-line};
 
-  --font-size-h2:                       2.1rem;
-  --line-height-h2:                     #{(24/21)};
-  --font-weight-h2:                     400;
+  --font-size-h2:                       2.4rem;
+  --line-height-h2:                     #{(32/24)};
+  --font-weight-h2:                     500;
   --padding-top-h2:                     0;
-  --padding-bottom-h2:                  0;
+  --padding-bottom-h2:                  1.7rem;
   --margin-top-subhead:                 #{$size-line};
 
-  --font-size-big:                      1.8rem;
-  --line-height-big:                    #{(24/18)};
-  --font-weight-big:                    bolder;
-  --padding-top-big:                    0;
-  --padding-bottom-big:                 0;
+  --font-size-big:                      2rem;
+  --line-height-big:                    #{(24/20)};
+  --font-weight-big:                    500;
+  --padding-top-big:                    .5rem;
+  --padding-bottom-big:                 1.9rem;
 
-  --font-size-base:                     1.6rem; // 16px
-  --line-height-base:                   1.5; // 24px
+  --font-size-base:                     1.7rem;
+  --line-height-base:                   1.4117647059; // 24px
   --padding-top-base:                   .6rem;
   --padding-bottom-base:                1.8rem;
 
-  --font-size-small:                    1.2rem; // 12px
-  --line-height-small:                  1.333; // 16px
-  --padding-top-small:                  0;
-  --padding-bottom-small:               0;
+  --font-size-small:                    1.2rem;
+  --line-height-small:                  1.6rem;
+  --padding-top-small:                  .4rem;
+  --padding-bottom-small:               1.2rem;
+
+  // Lists
+  --padding-bottom-li:                  .2rem;
+  --padding-bottom-list:                #{$size-2};
 
   // Table
   --margin-top-table:                   1.8rem;
@@ -316,21 +319,30 @@ $font-family-serif:
   --spacer:                             #{$size-line};
 
   @media screen and (min-width: #{map-get($grid-breakpoints, 'md')}) {
-    --font-size-h1:                     6.4rem;
-    --line-height-h1:                   1;
-    --padding-top-h1:                   0;
-    --padding-bottom-h1:                0;
+    --font-size-hero-title:             7.2rem;
+    --line-height-hero-title:           1;
+    --padding-top-hero-title:           1rem;
+    --padding-bottom-hero-title:        1.4rem;
 
-    --font-size-h2:                     4.8rem;
-    --line-height-h2:                   #{(56/48)};
-    --padding-top-h2:                   0;
-    --padding-bottom-h2:                0;
+    --font-size-h1:                     4.5rem;
+    --line-height-h1:                   #{(56/45)};
+    --font-weight-h1:                   600;
+    --padding-top-h1:                   .5rem;
+    --padding-bottom-h1:                1.2rem;
 
-    --font-size-big:                    2rem;
-    --line-height-big:                  #{(24/20)};
+    --font-size-h2:                     2.8rem;
+    --line-height-h2:                   #{(32/28)};
+    --padding-top-h2:                   2.2rem;
+    --padding-bottom-h2:                1.8rem;
+
+    --font-size-big:                    2.3rem;
+    --line-height-big:                  #{(24/23)};
     --font-weight-big:                  normal;
-    --padding-top-big:                  0;
-    --padding-bottom-big:               0;
+    --padding-top-big:                  .4rem;
+    --padding-bottom-big:               2rem;
+
+    --font-size-small:                  1.3rem;
+    --line-height-small:                1.231; // 16px
 
     --padding-bottom-form-group:        #{$size-2};
 
@@ -346,10 +358,6 @@ $font-family-serif:
   @media screen and (min-width: #{map-get($grid-breakpoints, 'lg')}) {
     --padding-x-box:                    #{$size-4};
     --padding-x-section:                #{$size-8};
-  }
-
-  @media screen and (min-width: #{map-get($grid-breakpoints, 'xxl')}) {
-    --padding-x-section:                #{$size-1 * 11};
   }
 }
 // #endregion

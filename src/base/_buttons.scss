@@ -5,7 +5,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
@@ -21,7 +21,7 @@
   @extend %btn;
 
   border-radius: $border-radius;
-  flex: 1 1 0;
+  flex: 1 1 auto;
   font-size: var(--font-size-small);
   text-decoration: none;
   text-transform: uppercase;
@@ -79,9 +79,18 @@
 
 .btn.is-primary .icon,
 .btn.is-whatsapp .icon {
-  fill: $color-ink-inverse-2ry;
+  filter: drop-shadow(0 .1rem 0 rgba(0, 0, 0, .12));
   margin-right: $size-1;
 }
+
+.btn.is-primary .icon {
+  fill: lighten($color-primary, 25%);
+}
+
+.btn.is-whatsapp .icon {
+  fill: lighten($color-success, 35%);
+}
+
 
 .btn.is-primary {
   background-color: $color-primary;

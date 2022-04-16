@@ -14,3 +14,19 @@
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
 }
+
+
+// -----------------------------------------------------------------------------
+// CTA
+// -----------------------------------------------------------------------------
+
+.section.is-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.section.is-cta .btn {
+  flex-grow: 0;
+  padding-left: $size-4;
+  padding-right: $size-4;
+}

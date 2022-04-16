@@ -9,7 +9,7 @@
   margin-right: auto;
   margin-left: auto;
   width: 100%;
-  max-width: 1024px;
+  max-width: map-get($container-max-widths, 'lg');
 
   @include media-breakpoint-up(sm) {
     padding-right: $size-3;
@@ -19,11 +19,6 @@
   @include media-breakpoint-up(md) {
     padding-right: $size-4;
     padding-left: $size-4;
-  }
-
-  @include media-breakpoint-up(lg) {
-    padding-right: 3.6rem;
-    padding-left: 3.6rem;
   }
 }
 
@@ -52,7 +47,7 @@
 .grid,
 %grid {
   display: grid;
-  grid-gap: $size-1;
+  grid-gap: $size-2;
   grid-template-columns: repeat(4, 1fr);
 
   @include media-breakpoint-up(sm) {
@@ -60,6 +55,7 @@
   }
 
   @include media-breakpoint-up(lg) {
+    grid-gap: $size-4;
     grid-template-columns: repeat(12, 1fr);
   }
 }
@@ -72,7 +68,11 @@
   }
 }
 
-.has-no-gutters {
+.grid.has-small-gap {
+  grid-gap: $size-1;
+}
+
+.grid.has-no-gutters {
   grid-gap: 0;
 }
 

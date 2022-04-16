@@ -12,7 +12,7 @@
 //           svg.icon(role='presentation', focusable='false')
 //             use(xlink:href='/projects/mn/img/base/graphics/sprite.svg#icon-close-xs')
 
-$modal-transition:                      transform $duration-lg $easing;
+$modal-transition:                      opacity $easing $duration-lg, transform $easing $duration;
 
 .modal-open {
   // Kill the scroll on the body
@@ -67,8 +67,14 @@ $modal-transition:                      transform $duration-lg $easing;
   }
 
   @include media-breakpoint-up(md) {
-    margin: $size-8 auto auto;
+    margin: $size-8 auto;
     padding: 0;
+    max-width: 1104px;
+  }
+}
+
+.modal-dialog.has-teaser {
+  @include media-breakpoint-up(md) {
     max-width: 740px;
   }
 }
@@ -112,6 +118,7 @@ $modal-transition:                      transform $duration-lg $easing;
   right: 0;
   bottom: 0;
   left: 0;
+  transition: opacity $easing $duration;
   z-index: $zindex-modal-backdrop;
 
   // Fade for backdrop

@@ -45,24 +45,20 @@ h2, .h2, %h2 {
 
 h3, h4, h5, h6 {
   font-size: 100%;
-  margin-top: ($size-line * 2);
-  margin-bottom: $size-line;
+  margin: 0;
+  padding-top: var(--padding-top-base);
+  padding-bottom: var(--padding-bottom-base);
 
-  &:first-child {
-    margin-top: 0;
+  &:not(:first-child):not([class]) {
+    margin-top: var(--margin-top-subhead);
   }
+}
+
+h3 {
+  color: $color-ink-title;
 }
 
 h4 {
   color: $crimson;
 }
 
-h3 + h4 {
-  margin-top: $size-line;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  &:last-child {
-    margin-bottom: 0;
-  }
-}

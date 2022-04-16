@@ -4,15 +4,15 @@
 
 // REDUCED MOTION
 
-@media(prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
-    scroll-behavior: auto !important;
-  }
-}
+// @media(prefers-reduced-motion: reduce) {
+//   *,
+//   *::before,
+//   *::after {
+//     transition: none !important;
+//     animation: none !important;
+//     scroll-behavior: auto !important;
+//   }
+// }
 
 
 // -----------------------------------------------------------------------------
@@ -46,6 +46,10 @@
 // -----------------------------------------------------------------------------
 // TEXT
 // -----------------------------------------------------------------------------
+
+.text-center {
+  text-align: center !important;
+}
 
 .is-note {
   color: $color-ink-2ry;

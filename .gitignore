@@ -46,6 +46,7 @@ sitemap.xml.gz
 
 # Package managers
 .npm
+.yarn
 .yarn-integrity
 jspm_packages
 node_modules
@@ -92,3 +93,4 @@ $RECYCLE.BIN/
 /-copy.publish
 /src/base/_variables-v1.scss
 /src/pages/notes
+

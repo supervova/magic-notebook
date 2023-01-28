@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // -----------------------------------------------------------------------------
 // NEED SECTION
 // -----------------------------------------------------------------------------
@@ -155,7 +157,7 @@
   @include media-breakpoint-up(lg) {
     margin-right: auto;
     margin-left: auto;
-    max-width: percentage(632 / 952);
+    max-width: percentage(math.div(632, 952));
   }
 }
 

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .alert {
   background-color: $color-warning-bg;
   border-radius: $border-radius-sm;
@@ -31,7 +33,7 @@
     position: relative;
     min-height: 4.8rem;
     // Max width is 7 global columns on desktops
-    max-width: round(map-get($container-max-widths, 'lg') / 7 * 12);
+    max-width: round(math.div(map-get($container-max-widths, 'lg'), 7) * 12);
   }
 
   // Big Icons

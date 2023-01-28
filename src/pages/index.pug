@@ -33,45 +33,29 @@ block content
 
     .carousel.is-main.is-full-bleed.slide#carousel-main(data-bs-ride='carousel')
       .carousel__inner(role='group')
-        figure.carousel-item.active
-          span.border
-            img(src='/img/app-screens/magic-notebook-editing.png' alt='Редактирование текста в Magic Notebook')
-          figcaption.carousel__caption Редактирование текста&nbsp;
-            span.d-none.d-sm-inline в Magic Notebook
-            div 1 из 7
-        figure.carousel-item
-          span.border
-            img(src='/img/app-screens/magic-notebook-proof-reader.png' alt='Работа над ошибками')
-          figcaption.carousel__caption Работа над ошибками
-            div 2 из 7
-        figure.carousel-item
-          span.border
-            img(src='/img/app-screens/magic-notebook-tesaurus.png' alt='Выбор подходящего синонима, эпитета или устойчивого выражения')
-          figcaption.carousel__caption Подбор нужного слова
-            div 3 из 7
-        figure.carousel-item
-          span.border
-            img(src='/img/app-screens/magic-notebook-control-panel.png' alt='Контрольная панель')
-          figcaption.carousel__caption Контрольная панель
-            div 4 из 7
-        figure.carousel-item
-          span.border
-            img(src='/img/app-screens/magic-notebook-focus.png' alt='Режим фокуса')
-          figcaption.carousel__caption Режим фокуса
-            div 5 из 7
-        figure.carousel-item
-          span.border
-            img(src='/img/app-screens/magic-notebook-markdown.png' alt='Редактирование в режиме Markdown')
-          figcaption.carousel__caption
-            span.d-none.d-sm-inline Редактирование в режиме
-            | Markdown
-            div 6 из 7
-        figure.carousel-item
-          span.border
-            img(src='/img/app-screens/magic-notebook-mini-app.png' alt='Редактирование в режиме Markdown')
-          figcaption.carousel__caption Мини-блокнот
-            span.d-none.d-sm-inline и встроенный калькулятор
-            div 7 из 7
+
+        mixin carouselItem(index, img, caption, prefix=false, suffix=false)
+
+          figure.carousel-item(class!=attributes.class)
+            span.border
+              img(src=`/img/app-screens/magic-notebook-${img}.png` srcset=`/img/app-screens/magic-notebook-${img}.png, /img/app-screens/magic-notebook-${img}@2x.png 2x` alt= caption)
+            figcaption.carousel__caption
+              if prefix
+                span.d-none.d-sm-inline= prefix
+              = caption
+              if suffix
+                span.d-none.d-sm-inline= suffix
+              div= `${index} из 8`
+
+        +carouselItem('1', 'editing', 'Редактирование текста ', false, 'в Magic Notebook')(class='active')
+        +carouselItem('2', 'proof-reader', 'Работа над ошибками')
+        +carouselItem('3', 'ai-assistant', 'Искусственный интеллект')
+        +carouselItem('4', 'thesaurus', 'Подбор нужного слова ', false, '(англ. язык)')
+        +carouselItem('5', 'control-panel', 'Контрольная панель')
+        +carouselItem('6', 'focus', 'Режим фокуса')
+        +carouselItem('7', 'markdown', 'Markdown', 'Редактирование в режиме ')
+        +carouselItem('8', 'mini-app', 'Мини-блокнот ', false, 'и встроенный калькулятор')
+
       a.carousel__control.is-prev(href='#carousel-main' role='button' data-bs-slide='prev')
         span.icon(aria-hidden='true')
         span.sr-only Назад

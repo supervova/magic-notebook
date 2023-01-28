@@ -28,7 +28,7 @@
   margin-left: auto;
   padding-top: $size-line;
   padding-bottom: $size-line;
-  max-width: 63.2rem;
+  max-width: 56rem;
 
   @include media-breakpoint-up(md) {
     padding-top: ($size-line * 2);

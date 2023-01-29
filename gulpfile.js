@@ -426,6 +426,7 @@ const build = series(
   clean,
   svg,
   img,
+  buildPug,
   parallel(css, js, video, docs),
   // parallel(css, jsCopy, video, docs),
 );

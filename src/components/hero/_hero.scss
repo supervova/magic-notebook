@@ -6,16 +6,27 @@
   background-image:
     url('/img/components/hero/bottom-magic-sparks.svg'),
     // url('/img/components/hero/ham.png'),
-    url('/img/components/hero/bottom-magic.svg');
+    url('/img/components/hero/bottom-magic.svg'),
+    radial-gradient(
+      circle at 50% 20%,
+      hsl(10 87% 99% / .60) 0%,
+      hsl(10 87% 99% / .57) 1%,
+      hsl(10 87% 99% / .48) 4%,
+      hsl(10 87% 99% / .36) 9%,
+      hsl(10 87% 99% / .24) 16%,
+      hsl(10 87% 99% / .12) 25%,
+      hsl(10 87% 99% / .03) 37%,
+      hsl(10 87% 99% / 0) 50%
+    );
   background-position:
     right -2.4rem top 2.4rem,
-    // var(--ham-position),
-    var(--magic-position);
+    var(--magic-position),
+    50% 0;
   background-repeat: no-repeat;
   background-size:
     auto,
-    // auto,
-    cover;
+    cover,
+    960px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,14 +45,14 @@
   @include media-breakpoint-up(md) {
     --magic-position: center bottom -22rem;
 
-    margin-bottom: $size-line * 3;
-    margin-left: 0;
-    margin-right: 0;
     padding-top: $size-line * 3;
+    max-width: 954px;
     min-height: $size-line * 15;
+    margin: 0 auto (-$size-5);
 
     &:not(.is-full-bleed) {
       border-radius: 2.4rem;
+
     }
   }
 }

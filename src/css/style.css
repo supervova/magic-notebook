@@ -3421,10 +3421,10 @@ video {
 .hero {
   --magic-position: center bottom -14rem;
   background-color: #f5826b;
-  background-image: url("/img/components/hero/bottom-magic-sparks.svg"), url("/img/components/hero/bottom-magic.svg");
-  background-position: right -2.4rem top 2.4rem, var(--magic-position);
+  background-image: url("/img/components/hero/bottom-magic-sparks.svg"), url("/img/components/hero/bottom-magic.svg"), radial-gradient(circle at 50% 20%, rgba(255, 251, 250, 0.6) 0%, rgba(255, 251, 250, 0.57) 1%, rgba(255, 251, 250, 0.48) 4%, rgba(255, 251, 250, 0.36) 9%, rgba(255, 251, 250, 0.24) 16%, rgba(255, 251, 250, 0.12) 25%, rgba(255, 251, 250, 0.03) 37%, rgba(255, 251, 250, 0) 50%);
+  background-position: right -2.4rem top 2.4rem, var(--magic-position), 50% 0;
   background-repeat: no-repeat;
-  background-size: auto, cover;
+  background-size: auto, cover, 960px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3451,11 +3451,10 @@ video {
 @media (min-width: 768px) {
   .hero {
     --magic-position: center bottom -22rem;
-    margin-bottom: 7.2rem;
-    margin-left: 0;
-    margin-right: 0;
     padding-top: 7.2rem;
+    max-width: 954px;
     min-height: 36rem;
+    margin: 0 auto -4rem;
   }
   .hero:not(.is-full-bleed) {
     border-radius: 2.4rem;

@@ -57,10 +57,14 @@ block content
         +carouselItem('8', 'mini-app', 'Мини-блокнот ', false, 'и встроенный калькулятор')
 
       a.carousel__control.is-prev(href='#carousel-main' role='button' data-bs-slide='prev')
-        span.icon(aria-hidden='true')
+        figure
+          svg.icon(aria-hidden='true' focusable='false')
+            use(href='/img/base/graphics/sprite.svg#icon-chevron')
         span.sr-only Назад
       a.carousel__control.is-next(href='#carousel-main' role='button' data-bs-slide='next')
-        span.icon(aria-hidden='true')
+        figure
+          svg.icon(aria-hidden='true' focusable='false')
+            use(href='/img/base/graphics/sprite.svg#icon-chevron')
         span.sr-only Вперёд
 
     //- NEED

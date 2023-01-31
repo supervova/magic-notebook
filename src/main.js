@@ -28,5 +28,8 @@ if (lightbox) {
   });
 }
 
-// Fix Shia Labeouf autoplay
-// document.getElementById('video-labeouf').play();
+const teaserModal = document.getElementById('modal-video');
+
+teaserModal.addEventListener('shown.bs.modal', (event) => {
+  teaserModal.querySelector('iframe').src += '&autoplay=1';
+});

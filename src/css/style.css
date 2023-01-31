@@ -2838,12 +2838,12 @@ h4 {
 
 .btn.is-primary {
   background-color: #f5826b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f69683), to(#f36e53));
-  background-image: linear-gradient(#f69683, #f36e53);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f58a75), to(#f47a62));
+  background-image: linear-gradient(#f58a75, #f47a62);
 }
 .btn.is-primary:hover {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f8aa9b), to(#f5826b));
-  background-image: linear-gradient(#f8aa9b, #f5826b);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f6927e), to(#f5826b));
+  background-image: linear-gradient(#f6927e, #f5826b);
 }
 
 .btn.is-whatsapp {
@@ -3559,13 +3559,12 @@ video {
   margin-left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  width: 100vw;
+  width: calc(100vw - var(--scrollbar-width));
 }
 
 .carousel {
   position: relative;
   margin-bottom: 2.4rem;
-  max-width: calc(100vw - 40px);
 }
 
 .carousel__inner {

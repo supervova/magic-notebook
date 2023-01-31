@@ -28,8 +28,16 @@ if (lightbox) {
   });
 }
 
+// Autoplay the teaser
 const teaserModal = document.getElementById('modal-video');
 
 teaserModal.addEventListener('shown.bs.modal', (event) => {
   teaserModal.querySelector('iframe').src += '&autoplay=1';
 });
+
+/* Set scrollbar width variables to calculate full bleed width to avoid
+horizontal overflow */
+document.documentElement.style.setProperty(
+  '--scrollbar-width',
+  `${window.innerWidth - document.documentElement.clientWidth}px`,
+);

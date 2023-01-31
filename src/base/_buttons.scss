@@ -94,10 +94,10 @@
 
 .btn.is-primary {
   background-color: $color-primary;
-  background-image: linear-gradient(lighten($color-primary, 5%), darken($color-primary, 5%));
+  background-image: linear-gradient(lighten($color-primary, 2%), darken($color-primary, 2%));
 
   &:hover {
-    background-image: linear-gradient(lighten($color-primary, 10%), $color-primary);
+    background-image: linear-gradient(lighten($color-primary, 4%), $color-primary);
   }
 }
 

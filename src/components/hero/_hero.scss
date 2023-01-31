@@ -87,6 +87,15 @@
   padding-bottom: var(--padding-bottom-hero-title);
 }
 
+.hero__display .h1 {
+  color: $color-primary-dark;
+  display: block;
+
+  @include media-breakpoint-down(md) {
+    margin-top: -$size-2;
+  }
+}
+
 .hero__title {
   color: $color-primary-dark;
   font-size: var(--font-size-h1);

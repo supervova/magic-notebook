@@ -19,6 +19,7 @@ import imageminGIF from 'imagemin-gifsicle';
 import imageminJPG from 'imagemin-mozjpeg';
 import imageminPNG from 'imagemin-pngquant';
 import imageminSVG from 'imagemin-svgo';
+import newer from 'gulp-newer';
 import plumber from 'gulp-plumber';
 import postcss from 'gulp-postcss';
 import pug from 'gulp-pug';
@@ -188,18 +189,15 @@ function jsCopy() {
 // #region
 
 // Common images function
-const imgTasks = (source, subtitle) =>
-  src(source)
-    .pipe(changed(paths.img.dest))
+const imgTasks = (source, subtitle) => {
+  return src(source, { encoding: false })
+    .pipe(newer(paths.img.dest))
     .pipe(
       imagemin(
         [
-          imageminGIF({
-            interlaced: true,
-            optimizationLevel: 3,
-          }),
+          imageminGIF({ interlaced: true, optimizationLevel: 3 }),
           imageminJPG({ quality: 85 }),
-          imageminPNG({ quality: [0.85, 0.95] }),
+          imageminPNG(),
           imageminSVG({
             plugins: [
               {
@@ -223,7 +221,8 @@ const imgTasks = (source, subtitle) =>
       )
     )
     .pipe(dest(paths.img.dest))
-    .pipe(size({ title: `styles: ${subtitle}` }));
+    .pipe(size({ title: `images: ${subtitle}` }));
+};
 
 // Graphics
 function imgGraphics(done) {

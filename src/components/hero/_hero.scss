@@ -45,15 +45,12 @@
   @include media-breakpoint-up(md) {
     --magic-position: center bottom -22rem;
 
-    padding-top: $size-line * 3;
+    border-radius: $size-4;
+    padding-top: $size-line * 4;
     padding-bottom: $size-2;
     max-width: 954px;
     min-height: $size-line * 15;
     margin: 0 auto (-$size-5);
-
-    &:not(.is-full-bleed) {
-      border-radius: 2.4rem;
-    }
   }
 }
 
@@ -114,7 +111,7 @@
 
   @include media-breakpoint-up(md) {
     border-radius: $size-line;
-    margin-top: $size-line;
+    margin-top: $size-line * 2;
     padding: $size-4 $size-4 $size-5;
   }
 }

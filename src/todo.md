@@ -1,6 +1,8 @@
 # Поддержка и развитие
 
-## 1) На время бета-версии и скидок добавлять в блок JSON-LD раздел offers. После появления оценок в App Store и магазине Windows-приложений добавить раздел aggregateRating.
+## 1) На время бета-версии и скидок добавлять в блок JSON-LD раздел offers
+
+После появления оценок в App Store и магазине Windows-приложений добавить раздел aggregateRating.
 
 ```html
 <script type="application/ld+json">

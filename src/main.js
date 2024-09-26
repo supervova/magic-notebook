@@ -3,8 +3,8 @@
 // import { Carousel } from '../node_modules/bootstrap/js/dist/carousel';
 // import { Carousel } from '../node_modules/bootstrap/dist/js/bootstrap.esm.min.js';
 // import { Modal } from '../node_modules/bootstrap/js/dist/modal';
-import '../node_modules/bootstrap/js/src/carousel';
-import '../node_modules/bootstrap/js/src/modal';
+import 'bootstrap/js/src/carousel.js';
+import 'bootstrap/js/src/modal.js';
 
 /**
  * -----------------------------------------------------------------------------
@@ -39,5 +39,5 @@ teaserModal.addEventListener('shown.bs.modal', (event) => {
 horizontal overflow */
 document.documentElement.style.setProperty(
   '--scrollbar-width',
-  `${window.innerWidth - document.documentElement.clientWidth}px`,
+  `${window.innerWidth - document.documentElement.clientWidth}px`
 );

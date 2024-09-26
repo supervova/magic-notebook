@@ -70,6 +70,7 @@
 // Cell
 .feature {
   grid-column: span 4;
+  text-align: center;
 }
 
 // Icons in the colored boxes
@@ -81,6 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-inline: auto;
   width: $size-6;
   height: $size-6;
 

@@ -46,13 +46,13 @@
     --magic-position: center bottom -22rem;
 
     padding-top: $size-line * 3;
+    padding-bottom: $size-2;
     max-width: 954px;
     min-height: $size-line * 15;
     margin: 0 auto (-$size-5);
 
     &:not(.is-full-bleed) {
       border-radius: 2.4rem;
-
     }
   }
 }
@@ -103,6 +103,20 @@
   line-height: var(--line-height-h1);
   padding-top: var(--padding-top-h1);
   padding-bottom: var(--padding-bottom-h1);
+}
+
+.hero__copy {
+  background-color: hsl(10 87% 95%);
+  border-radius: $size-2;
+  margin-inline: auto;
+  padding: $size-2;
+  max-width: 44rem;
+
+  @include media-breakpoint-up(md) {
+    border-radius: $size-line;
+    margin-top: $size-line;
+    padding: $size-4 $size-4 $size-5;
+  }
 }
 
 .hero__subtitle {

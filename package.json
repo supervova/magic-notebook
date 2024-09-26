@@ -4,6 +4,7 @@
   "description": "",
   "author": "Vladimir Nikishin",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "b": "gulp --p"
   },
@@ -13,90 +14,99 @@
   },
   "stylelint": {
     "extends": [
-      "stylelint-config-sass-guidelines"
-    ],
-    "ignoreFiles": [
-      "**/*.css",
-      "**/*.html",
-      "node_modules/**/*"
+      "stylelint-config-recommended-scss"
     ],
     "rules": {
-      "comment-whitespace-inside": "always",
+      "at-rule-empty-line-before": null,
+      "at-rule-no-vendor-prefix": true,
+      "color-named": "never",
+      "declaration-empty-line-before": null,
+      "declaration-no-important": true,
       "font-family-name-quotes": "always-where-recommended",
-      "function-parentheses-space-inside": "never-single-line",
-      "max-nesting-depth": 3,
-      "media-feature-colon-space-after": "always",
-      "media-feature-colon-space-before": "never",
-      "media-feature-range-operator-space-after": "always",
-      "media-feature-range-operator-space-before": "always",
-      "no-duplicate-selectors": true,
-      "number-leading-zero": "never",
-      "order/order": [
-        "custom-properties",
-        "dollar-variables",
-        {
-          "type": "at-rule",
-          "name": "include"
-        },
-        "declarations",
-        "rules",
-        {
-          "type": "at-rule",
-          "name": "include",
-          "hasBlock": true
-        }
-      ],
-      "order/properties-alphabetical-order": null,
-      "property-no-unknown": [
-        true,
-        {
-          "ignoreProperties": [
-            "appearance"
-          ]
-        }
-      ],
-      "rule-empty-line-before": [
-        "always",
+      "font-weight-notation": [
+        "numeric",
         {
           "ignore": [
-            "after-comment",
-            "inside-block"
+            "relative"
           ]
         }
       ],
-      "scss/at-extend-no-missing-placeholder": null,
-      "scss/dollar-variable-colon-space-after": null,
+      "function-url-no-scheme-relative": true,
+      "function-url-quotes": "always",
+      "length-zero-no-unit": true,
+      "media-feature-name-no-vendor-prefix": true,
+      "no-descending-specificity": null,
+      "no-duplicate-selectors": true,
+      "no-empty-source": null,
+      "media-feature-name-no-unknown": [
+        true,
+        {
+          "ignoreMediaFeatureNames": [
+            "prefers-reduced-motion"
+          ]
+        }
+      ],
+      "property-no-vendor-prefix": true,
+      "rule-empty-line-before": null,
+      "scss/dollar-variable-default": null,
       "selector-attribute-quotes": "always",
-      "selector-class-pattern": "[a-zA-Z0-9]+[a-za-zA-Z0-9-_]*"
+      "selector-class-pattern": [
+        "^[a-z0-9-_\\/:]+$",
+        {
+          "message": "Class names should only contain lowercase letters, numbers, hyphens, underscores (for BEM elements only), and may include forward slashes for fractions and colons."
+        }
+      ],
+      "selector-max-attribute": 2,
+      "selector-max-class": 4,
+      "selector-max-combinators": 4,
+      "selector-max-compound-selectors": 4,
+      "selector-max-id": 0,
+      "selector-max-specificity": null,
+      "selector-max-type": 2,
+      "selector-max-universal": 1,
+      "selector-no-qualifying-type": null,
+      "selector-no-vendor-prefix": true,
+      "value-keyword-case": [
+        "lower",
+        {
+          "camelCaseSvgKeywords": true,
+          "ignoreKeywords": [
+            "Arial",
+            "Baskerville",
+            "BlinkMacSystemFont",
+            "Consolas",
+            "Georgia",
+            "Inter",
+            "Menlo",
+            "Monaco",
+            "Roboto",
+            "SFMono-Regular",
+            "Times"
+          ]
+        }
+      ],
+      "value-no-vendor-prefix": true
     }
   },
   "eslintConfig": {
     "root": true,
     "extends": [
-      "eslint-config-prettier",
-      "google",
-      "airbnb-base"
+      "airbnb-base",
+      "plugin:prettier/recommended"
     ],
-    "globals": {
-      "wp": true
-    },
     "env": {
-      "node": true,
-      "es6": true,
-      "amd": true,
       "browser": true,
-      "jquery": true
+      "es2023": true,
+      "node": true
     },
     "plugins": [
-      "eslint-plugin-prettier",
       "import"
     ],
     "parserOptions": {
-      "ecmaVersion": 2017,
+      "ecmaVersion": 2023,
       "sourceType": "module"
     },
     "settings": {
-      "import/core-modules": [],
       "import/ignore": [
         "node_modules",
         "\\.(coffee|scss|css|less|hbs|svg|json)$"
@@ -104,6 +114,16 @@
     },
     "rules": {
       "import/no-extraneous-dependencies": "off",
+      "import/extensions": [
+        "error",
+        "ignorePackages",
+        {
+          "js": "always",
+          "jsx": "always",
+          "ts": "never",
+          "tsx": "never"
+        }
+      ],
       "max-len": [
         "error",
         {
@@ -133,6 +153,37 @@
       ]
     }
   },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "endOfLine": "auto",
+    "jsxSingleQuote": false,
+    "printWidth": 80,
+    "quoteProps": "as-needed",
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "overrides": [
+      {
+        "files": [
+          "*.html"
+        ],
+        "options": {
+          "printWidth": 40000,
+          "bracketSameLine": true
+        }
+      }
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "pugLintConfig": {
     "disallowAttributeConcatenation": null,
     "disallowAttributeInterpolation": true,
@@ -194,15 +245,6 @@
       "string"
     ]
   },
-  "beautify.config": {
-    "html": {
-      "wrap_line_length": 0
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ],
   "dependencies": {
     "bootstrap": "^5.2.3"
   }

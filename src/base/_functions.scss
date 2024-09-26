@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 // -----------------------------------------------------------------------------
 // GRID
 // -----------------------------------------------------------------------------
@@ -50,13 +52,13 @@
   $areas: '';
 
   // Iterate through list
-  @for $i from 1 through length($list) {
+  @for $i from 1 through list.length($list) {
     @if $i % 2 != 0 {
-      $count: nth($list, $i);
+      $count: list.nth($list, $i);
 
       // Repeat the area name at $i+1 for $count number of times
       @for $j from 1 through $count {
-        $areas: $areas + ' ' + nth($list, $i+1);
+        $areas: $areas + ' ' + list.nth($list, $i + 1);
       }
     }
   }

@@ -1,0 +1,49 @@
+//- Icon
+mixin icon(name, classes=false)
+  - const iconClasses = [`is-${name}`, classes].filter(Boolean).join(' ')
+  svg.icon(class=iconClasses, aria-hidden='true' focusable='false')
+    use(href=`/assets/img/components/icon/sprite.svg#icon-${name}`)
+
+//- Button
+  +button({
+    label: 'Submit',
+    classes: 'btn-primary',
+    iconStart: 'check',
+    showHide: 'myWidget'
+  })
+mixin button({label, classes=false, id=false, iconStart=false, type='button', action=false, showHide=false, iconEnd=false, hidden=false})
+  button.btn(
+    class=classes
+    id=id || undefined
+    type=type
+    onclick=action
+    aria-controls=showHide || false
+    aria-haspopup=showHide ? 'true' : false
+    aria-expanded=showHide ? 'false' : false
+    tabindex=hidden ? '-1' : false
+  )
+    if iconStart
+      +icon(iconStart)
+    span.label= label
+    if iconEnd
+      +icon(iconEnd)
+
+//- Form item
+mixin formItem(label, name, type='text', labelClass=false, alert=false)
+  label(for=name, class=labelClass)= label
+  input(id=`form-${name}`, name=name, type=type, inputmode!=attributes.inputmode, value!=attributes.value, maxlength!=attributes.maxlength, pattern!=attributes.pattern, required!=attributes.required, placeholder!=attributes.placeholder)
+  if alert
+    small(role='alert')= alert
+
+//- List view snippet
+mixin snippet(title, summary, img=false, link='#')
+  article.snippet(id!=attributes.id, itemscope, itemtype='http://schema.org/Article')
+    if img
+      figure.snippet__img
+        img(src='/assets/img/' + img, alt=title)
+    .snippet__copy
+      a(href=link)
+        h3(itemprop='headline')= title
+      p(itemprop='description')= summary
+
+

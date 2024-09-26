@@ -1,23 +1,23 @@
-# Compiled code
+# Working stuff
 .publish
+backup
 dist
 src/**/*.css
-src/_labs/**/*
 
 # Media Files
 *.avi
 *.doc
 *.docx
-*.gif
-*.jpeg
-*.jpg
+# *.gif
+# *.jpeg
+# *.jpg
 *.mov
 *.mp3
-*.mp4
+# *.mp4
 *.mpeg
 *.pdf
-*.png
-*.svg
+# *.png
+# *.svg
 *.webm
 *.webp
 *.wmv

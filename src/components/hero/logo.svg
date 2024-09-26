@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72" height="72" viewBox="0 0 72 72">
+  <defs>
+    <linearGradient id="logo-c" x1="50%" x2="50%" y1="8.855%" y2="97.824%">
+      <stop offset="0%" stop-color="#F8AA9B"/>
+      <stop offset="100%" stop-color="#F15A3B"/>
+    </linearGradient>
+    <path id="logo-a" d="M17.3062251,-6.99192208e-16 L42.6937749,6.99192208e-16 C48.7115264,-4.06250808e-16 50.8937085,0.626572875 53.0937085,1.80314575 C55.2937085,2.97971863 57.0202814,4.7062915 58.1968542,6.9062915 C59.3734271,9.1062915 60,11.2884736 60,17.3062251 L60,42.6937749 C60,48.7115264 59.3734271,50.8937085 58.1968542,53.0937085 C57.0202814,55.2937085 55.2937085,57.0202814 53.0937085,58.1968542 C50.8937085,59.3734271 48.7115264,60 42.6937749,60 L17.3062251,60 C11.2884736,60 9.1062915,59.3734271 6.9062915,58.1968542 C4.7062915,57.0202814 2.97971863,55.2937085 1.80314575,53.0937085 C0.626572875,50.8937085 2.70833872e-16,48.7115264 -4.66128138e-16,42.6937749 L4.66128138e-16,17.3062251 C-2.70833872e-16,11.2884736 0.626572875,9.1062915 1.80314575,6.9062915 C2.97971863,4.7062915 4.7062915,2.97971863 6.9062915,1.80314575 C9.1062915,0.626572875 11.2884736,4.06250808e-16 17.3062251,-6.99192208e-16 Z"/>
+    <filter id="logo-b" width="140%" height="140%" x="-20%" y="-13.3%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" radius=".5" result="shadowSpreadOuter1"/>
+      <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.24 0"/>
+      <feMorphology in="SourceAlpha" radius="1" result="shadowSpreadOuter2"/>
+      <feOffset dy="4" in="shadowSpreadOuter2" result="shadowOffsetOuter2"/>
+      <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="4"/>
+      <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="shadowMatrixOuter2"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(6 2)">
+    <mask id="logo-d" fill="#fff">
+      <use xlink:href="#logo-a"/>
+    </mask>
+    <use fill="#000" filter="url(#logo-b)" xlink:href="#logo-a"/>
+    <use fill="url(#logo-c)" xlink:href="#logo-a"/>
+    <polygon fill="#F9EDEA" fill-rule="nonzero" points="23.5 26.395 21.732 27.268 22.605 25.5 21.732 23.732 23.5 24.605 25.268 23.732 24.395 25.5 25.268 27.268" mask="url(#logo-d)"/>
+    <polygon fill="#F9EDEA" fill-rule="nonzero" points="13.5 26.395 11.732 27.268 12.605 25.5 11.732 23.732 13.5 24.605 15.268 23.732 14.395 25.5 15.268 27.268" mask="url(#logo-d)"/>
+    <polygon fill="#F9EDEA" fill-rule="nonzero" points="18.536 19.788 16.061 21.01 17.283 18.536 16.061 16.061 18.536 17.283 21.01 16.061 19.788 18.536 21.01 21.01" mask="url(#logo-d)" transform="rotate(45 18.536 18.536)"/>
+    <polygon fill="#FFF" fill-opacity=".24" points="24.639 60 23 59.67 43.88 0 60 0 60 60" mask="url(#logo-d)"/>
+    <path fill="#FFF" fill-opacity=".24" d="M59.75,0 L60,1.171 L60.0002158,46.7591895 C45.7234823,46.5508458 30.6163188,46.5829297 25,55.83 L54.82,0 L59.75,0 Z" mask="url(#logo-d)"/>
+    <path fill="#FDE9E5" d="M60 37L60 60.17 23 60.17 23 60.17 25.23 56C32.18 44.59 43.56 37.17 60 37zM23 59.93L0 59.93 0 39C10.7 42.53 18.25 50.04 23 59.93z" mask="url(#logo-d)"/>
+  </g>
+</svg>

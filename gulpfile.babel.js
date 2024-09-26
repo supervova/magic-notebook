@@ -12,8 +12,8 @@ import browserSync from 'browser-sync';
 import changed from 'gulp-changed';
 import cleanCSS from 'gulp-clean-css';
 import ghPages from 'gulp-gh-pages';
-import gulpSass from 'gulp-sass';
 import gulpif from 'gulp-if';
+import gulpSass from 'gulp-sass';
 import imagemin from 'gulp-imagemin';
 import imageminGIF from 'imagemin-gifsicle';
 import imageminJPG from 'imagemin-mozjpeg';
@@ -33,13 +33,11 @@ import { deleteAsync } from 'del';
 import { hideBin } from 'yargs/helpers';
 
 const sassCompiler = gulpSass(sass);
-const bsInstance = browserSync.create();
 
-// Look for the --p flag
+const bsInstance = browserSync.create();
 const { argv } = yargs(hideBin(process.argv));
 const PRODUCTION = argv.p;
 
-// Config
 const root = {
   src: './src',
   dest: './dist',
@@ -52,19 +50,11 @@ const paths = {
     tmp: `${root.src}/css/`,
     dest: `${root.dest}/css/`,
   },
-
   markup: {
-    src: [
-      `${root.src}/pages/**/*.pug`,
-      `!${root.src}/pages/**/_*.pug`,
-      `!${root.src}/pages/base/*.pug`,
-      `!${root.src}/pages/notes/*.pug`,
-    ],
+    src: [`${root.src}/pages/**/*.pug`, `!${root.src}/pages/pug/*.pug`],
     watch: `${root.src}/**/*.pug`,
-    toMin: `${root.dest.site}/**/*.html`,
     dest: `${root.dest}`,
   },
-
   img: {
     src: {
       graphics: [
@@ -80,31 +70,20 @@ const paths = {
     ],
     dest: `${root.dest}/img/`,
   },
-
   svg: {
     src: `${root.src}/base/graphics/sprite/*.svg`,
     dest: `${root.src}/base/graphics`,
   },
-
   js: {
-    src: {
-      main: [
-        `${root.src}/**/*.js`,
-        `!${root.src}/add-ons/**/*.js`,
-        `!${root.src}/js/vendor/*.js`,
-      ],
-    },
-    backup: `${root.src}/_arj/main.js`,
+    src: `${root.src}/main.js`,
     dest: `${root.dest}/js/`,
   },
-
   video: {
-    src: [`${root.src}/**/*.mp4`],
+    src: [`${root.src}/**/*.mp4`, `!${root.src}/_arj/**/*.mp4`],
     dest: `${root.dest}/video`,
   },
-
   rootFiles: {
-    src: ['./*.html', './CNAME', './favicon.ico', './site.webmanifest'],
+    src: ['./*.html', './CNAME', './favicon.ico', 'manifest.json'],
     dest: `${root.dest}`,
   },
 };
@@ -116,20 +95,13 @@ const paths = {
  * -----------------------------------------------------------------------------
  */
 // #region
-
-// CLEAN
-function clean() {
-  return deleteAsync([
+const clean = () =>
+  deleteAsync([
     `${paths.css.dest}/**/*.css`,
     `${paths.js.dest}/**/*.js`,
     `${paths.img.dest}/**/*.img`,
-    // `!${paths.js.dest}/vendor/*.js`,
   ]);
-}
-
-function cleanSrc() {
-  return deleteAsync([`${root.src}/**/*.css`]);
-}
+const cleanSrc = () => deleteAsync([`${root.src}/**/*.css`]);
 // #endregion
 
 /**
@@ -138,24 +110,15 @@ function cleanSrc() {
  * -----------------------------------------------------------------------------
  */
 // #region
-// Webpack
-
-function js() {
+const js = () => {
   const mode = PRODUCTION ? 'production' : 'development';
-  // ⚠️ To use webpack keep main.js in root folder not in js subfolder
-  return src(`${root.src}/main.js`)
-    .pipe(changed(`${paths.js.dest}/**/*.js`))
+  return src(paths.js.src)
+    .pipe(changed(paths.js.dest))
     .pipe(plumber())
-    .pipe(
-      webpack({
-        mode,
-        entry: `${root.src}/main.js`,
-        output: { filename: '[name].js' },
-      })
-    )
+    .pipe(webpack({ mode, output: { filename: '[name].js' } }))
     .pipe(dest(paths.js.dest))
     .pipe(bsInstance.stream());
-}
+};
 // #endregion
 
 /**
@@ -164,21 +127,14 @@ function js() {
  * -----------------------------------------------------------------------------
  */
 // #region
-function video() {
-  return src(paths.video.src)
+const copyVideo = () =>
+  src(paths.video.src, { encoding: false })
     .pipe(changed(paths.video.dest))
     .pipe(dest(paths.video.dest));
-}
-
-function docs() {
-  return src(paths.rootFiles.src)
+const copyRootFiles = () =>
+  src(paths.rootFiles.src, { encoding: false })
     .pipe(changed(paths.rootFiles.dest))
     .pipe(dest(paths.rootFiles.dest));
-}
-
-function jsCopy() {
-  return src(paths.js.backup).pipe(dest(paths.js.dest));
-}
 // #endregion
 
 /**
@@ -187,17 +143,15 @@ function jsCopy() {
  * -----------------------------------------------------------------------------
  */
 // #region
-
-// Common images function
-const imgTasks = (source, subtitle) => {
-  return src(source, { encoding: false })
+const imgTasks = (source, subtitle) =>
+  src(source, { encoding: false })
     .pipe(newer(paths.img.dest))
     .pipe(
       imagemin(
         [
           imageminGIF({ interlaced: true, optimizationLevel: 3 }),
           imageminJPG({ quality: 85 }),
-          imageminPNG(),
+          imageminPNG({ quality: [0.85, 0.95] }),
           imageminSVG({
             plugins: [
               {
@@ -222,28 +176,19 @@ const imgTasks = (source, subtitle) => {
     )
     .pipe(dest(paths.img.dest))
     .pipe(size({ title: `images: ${subtitle}` }));
+
+const imgGraphics = (done) => {
+  imgTasks(paths.img.src.graphics, 'graphics');
+  done();
 };
 
-// Graphics
-function imgGraphics(done) {
-  imgTasks(
-    paths.img.src.graphics, // src
-    'graphics' // subtitle
-  );
+const imgContent = (done) => {
+  imgTasks(paths.img.src.content, 'content');
   done();
-}
-
-function imgContent(done) {
-  imgTasks(
-    paths.img.src.content, // src
-    'content' // subtitle
-  );
-  done();
-}
+};
 
 // OPTIMIZE
 const img = parallel(imgGraphics, imgContent);
-
 // #endregion
 
 /**
@@ -252,8 +197,6 @@ const img = parallel(imgGraphics, imgContent);
  * -----------------------------------------------------------------------------
  */
 // #region
-
-// COMMON STYLES FUNCTION
 const cssTasks = (source, subtitle, uncssHTML, destination, link = true) =>
   src(source)
     .pipe(changed(paths.css.dest))
@@ -312,43 +255,15 @@ const cssTasks = (source, subtitle, uncssHTML, destination, link = true) =>
     .pipe(dest(destination))
     .pipe(bsInstance.stream());
 
-// Main (overview)
-function css(done) {
+const css = (done) => {
   cssTasks(
-    paths.css.src, // src
-    'main', // subtitle
-    // uncssHTML; use array syntax for normal results
+    paths.css.src,
+    'main',
     [`${root.src}/pages/uncss/*.html`],
     paths.css.dest
   );
   done();
-}
-
-// #endregion
-
-/**
- * -----------------------------------------------------------------------------
- * 📰 MARKUP
- * -----------------------------------------------------------------------------
- */
-// #region
-
-// PUG
-
-function buildPug() {
-  return src(paths.markup.src)
-    .pipe(plumber())
-    .pipe(
-      pug({
-        doctype: 'html',
-        pretty: true,
-        basedir: root.src,
-      })
-    )
-    .pipe(size({ title: 'html' }))
-    .pipe(dest(paths.markup.dest))
-    .pipe(bsInstance.stream());
-}
+};
 // #endregion
 
 /**
@@ -385,54 +300,62 @@ const sprite = series(svg, parallel(css, imgGraphics));
 
 /**
  * -----------------------------------------------------------------------------
+ * 📰 MARKUP
+ * -----------------------------------------------------------------------------
+ */
+// #region
+const buildPug = () =>
+  src(paths.markup.src)
+    .pipe(plumber())
+    .pipe(pug({ doctype: 'html', pretty: true, basedir: root.src }))
+    .pipe(size({ title: 'html' }))
+    .pipe(dest(paths.markup.dest))
+    .pipe(bsInstance.stream());
+// #endregion
+
+/**
+ * -----------------------------------------------------------------------------
  * 📶 SERVER
  * -----------------------------------------------------------------------------
  */
 // #region
-
-// const { reload } = bsInstance;
-function reload(done) {
+const reload = (done) => {
   bsInstance.reload();
   done();
-}
+};
 
-// WATCHERS
-function watchFiles() {
+const watchFiles = () => {
   watch(paths.css.watch, series(css));
-  watch(paths.js.src.main, series(js));
-  watch(paths.svg.src).on('change', series(sprite, reload));
-  watch(paths.img.watch).on('change', series(img, reload));
+  watch(paths.js.src, series(js));
   watch(paths.markup.watch, series(buildPug));
-  watch(paths.rootFiles.src, series(docs, reload));
-}
+  watch(paths.img.watch, series(img, reload));
+  watch(paths.rootFiles.src, series(copyRootFiles, reload));
+};
 
-function serve(done) {
+const serve = (done) => {
   bsInstance.init({
-    server: {
-      baseDir: root.dest,
-    },
+    server: { baseDir: root.dest },
     port: 9000,
     notify: false,
   });
   watchFiles();
   done();
-}
+};
 // #endregion
 
 /**
  * -----------------------------------------------------------------------------
- * 🏗️ DEFAULT TASK
+ * 🏗️ BUILD AND SERVE
  * -----------------------------------------------------------------------------
  */
 // #region
 const build = series(
   clean,
-  svg,
-  img,
-  buildPug,
-  parallel(css, js, video, docs)
-  // parallel(css, jsCopy, video, docs),
+  parallel(img, buildPug, css, js, copyVideo, copyRootFiles)
 );
+
+const s = series(build, serve);
+
 // #endregion
 
 /**
@@ -441,10 +364,7 @@ const build = series(
  * -----------------------------------------------------------------------------
  */
 // #region
-
-function deploy() {
-  return src(`${root.dest}/**/*`).pipe(ghPages());
-}
+const deploy = () => src(`${root.dest}/**/*`).pipe(ghPages());
 // #endregion
 
 /**
@@ -453,23 +373,20 @@ function deploy() {
  * -----------------------------------------------------------------------------
  */
 
-/* eslint-disable no-multi-spaces */
-
 export {
   cleanSrc,
   clean,
-  video,
-  docs as copy,
+  copyVideo as copy,
+  copyRootFiles,
   buildPug as pug,
-  svg,
-  img,
   sprite,
-  jsCopy as jsc,
+  img,
   js,
   css,
-  watchFiles as w,
+  s,
+  serve,
   deploy,
-  serve as s,
+  watchFiles,
 };
 
 export default build;

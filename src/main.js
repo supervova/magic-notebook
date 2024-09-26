@@ -31,7 +31,7 @@ if (lightbox) {
 // Autoplay the teaser
 const teaserModal = document.getElementById('modal-video');
 
-teaserModal.addEventListener('shown.bs.modal', (event) => {
+teaserModal?.addEventListener('shown.bs.modal', (event) => {
   teaserModal.querySelector('iframe').src += '&autoplay=1';
 });
 

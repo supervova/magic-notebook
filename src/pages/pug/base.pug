@@ -1,0 +1,78 @@
+block config
+  include /pages/pug/config
+
+//- Helpers
+-
+  const getLangSpecificContent = (content, lang) => {
+    return content[lang] || content[site.lang];
+  };
+  const pageTitle = (page.title ? page.title + ' | ' : '') +
+    (page.section ? page.section + ' | ' : '') +
+    getLangSpecificContent(site.title, page.lang);
+  const pageDesc = page.desc || getLangSpecificContent(site.desc, page.lang);
+  const pageImg = page.img ? (site.url + page.img) : site.img;
+  const pageUrl = page.path ? (site.url + page.path) : site.url;
+
+doctype html
+html(lang=page.lang || site.lang, prefix='og: http://ogp.me/ns#')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover')
+    title= pageTitle
+    meta(name='description', content=pageDesc)
+
+    //- Open Graph
+    meta(property='og:type', content=page.isFront ? 'website' : 'article')
+    meta(property='og:title', content=pageTitle)
+    meta(property='og:description', content=pageDesc)
+    meta(property='og:url', content=pageUrl)
+    meta(property='og:image', content=pageImg)
+    meta(property='fb:admins', content=site.facebookAdmins || '')
+    meta(name='twitter:card' content='summary_large_image')
+
+    //- Links
+    link(rel='canonical', href=pageUrl)
+    link(rel='icon' href='/favicon.ico' sizes='32x32')
+    link(rel='icon' href=site.icon.svg, type='image/svg+xml' sizes='any')
+    link(rel='apple-touch-icon', href=site.icon.lg)
+    link(rel='manifest' href='/manifest.json')
+
+    meta(name='robots' content='noindex')
+
+    if site.fonts.google
+      link(rel='preconnect' href='https://fonts.googleapis.com/')
+      link(rel='stylesheet' href=`https://fonts.googleapis.com/css2?family=${site.fonts.google}&display=swap`)
+    link(rel='stylesheet', href=site.css)
+
+    if site.author
+      meta(name='author', content=site.author)
+
+    script(type='application/ld+json').
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "#{getLangSpecificContent(site.title, page.lang)}"
+        "operatingSystem": "Windows 10, OSX 10.6",
+        "applicationCategory": "BusinessApplication"
+      }
+
+    if site.gtm
+      script.
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','#{site.gtm}');
+
+    block headSuffix
+
+  body(class=page.bodyClasses)
+    block bodyPrefix
+      include /pages/pug/body-prefix
+    block header
+    block content
+    block footer
+      include /pages/pug/footer
+    block bodySuffix
+    block scripts
+      script(src='/js/main.js')

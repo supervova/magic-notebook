@@ -1,20 +1,13 @@
-extends /pages/base/base.pug
+extends /pages/pug/base.pug
+include /pages/pug/mixins
 
-//- SETTINGS -------------------------------------------------------------------
-
+//- FRONT MATTER ---------------------------------------------------------------
 append config
   -
-    var page = {
-      isFront: true,
-      title: site.title,
-      desc: site.desc,
-      link: site.link,
-      img: site.img,
-      bodyClasses: 'page is-front'
-    }
+    page.isFront = true;
+    page.bodyClasses = 'page is-front';
 
 //- CONTENT --------------------------------------------------------------------
-
 block content
   header.header
     .container.is-kicker
@@ -32,7 +25,7 @@ block content
           p.hero__subtitle Пишите так хорошо, чтобы начальники премировали, клиенты покупали, а&nbsp;подписчики ставили лайки
           button.btn.is-link(type='button' data-bs-toggle='modal' data-bs-target='#modal-video') См. проморолик
 
-    .carousel.is-main.is-full-bleed.slide#carousel-main(data-bs-ride='carousel')
+    .carousel.is-main.slide#carousel-main(data-bs-ride='carousel')
       .carousel__inner(role='group')
 
         mixin carouselItem(index, img, caption, prefix=false, suffix=false)

@@ -1,18 +1,14 @@
-extends /pages/base/base.pug
+extends /pages/pug/base.pug
+include /pages/pug/mixins
 
-//- SETTINGS -------------------------------------------------------------------
-
+//- FRONT MATTER ---------------------------------------------------------------
 append config
   -
-    var page = {
-      title: 'Введение в Magic Notebook, текстовой редактор с интеллектуальной системой подсказок',
-      desc: 'Пока вы набираете текст, приложение проводит лингвистический анализ и выделяет ошибки: в том числе, стилистические и проблемы удобочитаемости. Нажав на подчеркнутое слово, получаете рекомендации и варианты исправления.',
-      link: '/overview.html',
-      img: site.img,
-    }
+    page.title = 'Введение в Magic Notebook, текстовой редактор с интеллектуальной системой подсказок';
+    page.desc = 'Пока вы набираете текст, приложение проводит лингвистический анализ и выделяет ошибки: в том числе, стилистические и проблемы удобочитаемости. Нажав на подчеркнутое слово, получаете рекомендации и варианты исправления.';
+    page.link = '/overview.html';
 
 //- CONTENT --------------------------------------------------------------------
-
 block content
   header.header
     .container
@@ -26,7 +22,7 @@ block content
     //- HERO
     header.hero
       .container
-        img(src='/img/components/hero/logo.svg', alt='Иконка Magic Notebook')
+        img(src='/img/components/hero/logo.svg' alt='Иконка Magic Notebook')
         h1.hero__title Введение в&nbsp;Magic Notebook
         p.hero__subtitle Текстовой редактор с&nbsp;интеллектуальной системой&nbsp;подсказок:<br>правописание, стилистика, подбор&nbsp;слов
 
@@ -47,7 +43,7 @@ block content
         p <strong>Область справа занимает редактор</strong>&nbsp;&mdash; здесь набираете и&nbsp;правите статьи, прозу и&nbsp;доклады.
         p Чтобы подобрать нужное слово&nbsp;&mdash; синоним, эпитет, часть устойчивого выражения&nbsp;&mdash; автор нажимает в&nbsp;проблемном месте текста, удерживая пробел. Открывается панель тезауруса&nbsp;&mdash; словарь, в&nbsp;котором можно быстро найти подходящий вариант.
 
-    .carousel.is-main.is-full-bleed.slide#carousel-main(data-bs-ride='carousel')
+    .carousel.is-main.slide#carousel-main(data-bs-ride='carousel')
       .carousel__inner(role='group')
         figure.carousel-item.active
           span.border

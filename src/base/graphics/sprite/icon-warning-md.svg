@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28" viewBox="0 0 28 28">
+  <defs>
+    <path id="icon-warning-md-a" d="M13.1326046,4.49122989 L2.13395841,23.5044576 C1.9554389,23.8127795 1.95534111,24.192625 2.13370183,24.5010382 C2.31206255,24.8094514 2.6418135,24.9996271 2.99885195,25 L24.9961444,25 C25.3540756,25.0014123 25.6854658,24.8119418 25.8650478,24.5032015 C26.0446298,24.1944611 26.0450072,23.8135512 25.8660373,23.5044576 L14.8673911,4.51117035 C14.6927807,4.19916722 14.3640868,4.00418494 14.0057912,4 C13.6474955,3.9959481 13.3143814,4.18332324 13.1326046,4.49122989 Z"/>
+    <filter id="icon-warning-md-b" width="104.2%" height="104.8%" x="-2.1%" y="-2.4%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" radius="1" result="shadowSpreadInner1"/>
+      <feOffset in="shadowSpreadInner1" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#EFEF1A" xlink:href="#icon-warning-md-a"/>
+    <use fill="#000" filter="url(#icon-warning-md-b)" xlink:href="#icon-warning-md-a"/>
+    <path fill="#000" fill-opacity=".54" d="M13.9989749,19 C14.827402,19 15.4989749,19.6715729 15.4989749,20.5 C15.4989749,21.3284271 14.827402,22 13.9989749,22 C13.1705478,22 12.4989749,21.3284271 12.4989749,20.5 C12.4989749,19.6715729 13.1705478,19 13.9989749,19 Z M15.4989749,11 L14.4989749,18 L13.4989749,18 L12.4989749,11 L15.4989749,11 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+-
+  const site = {
+    lang: 'ru',
+    title: {
+      ru: 'Magic Notebook: цифровой блокнот и литературный помощник',
+      en: 'Magic Notebook — your smart and classy assistant',
+    },
+    desc: {
+      ru: 'Новое приложение, специально для блогеров, маркетологов и копирайтеров. Пишите так хорошо, чтобы начальники премировали, клиенты покупали, а подписчики ставили лайки',
+      en: 'A new app especially for bloggers, marketers and copywriters. Write so well that bosses reward, clients buy, and subscribers give you likes',
+    },
+    url: "https://magic-nb.ru",
+    theme: '/',
+    css: '/css/style.css',
+    img: '/img/cover.png',
+    icon: {
+      lg: '/img/base/graphics/icon.png',
+      svg: '/img/base/graphics/icon.svg'
+    },
+    color: '#f00',
+    fonts: {
+      google: 'Inter:wght@300;400;600',
+    },
+    social: {
+      facebook: '_project'
+    }
+  }
+
+-
+  const page = {
+    lang: site.lang,
+    title: site.title[site.lang],
+    desc: site.desc,
+    path: false,
+    img: site.img,
+    bodyClasses: ''
+  }
+
+- const now = new Date();
+- const currentYear = now.getFullYear();
+- const timestamp = now.getTime();

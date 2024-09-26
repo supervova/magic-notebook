@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="96" viewBox="0 0 96 96">
+  <defs>
+    <rect id="icon-spellcheck-b" width="48" height="48" x="0" y="0" rx="12"/>
+    <filter id="icon-spellcheck-a" width="279.2%" height="279.2%" x="-89.6%" y="-60.4%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" radius="2" result="shadowSpreadOuter1"/>
+      <feOffset dy="8" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="8"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.133095562 0"/>
+      <feMorphology in="SourceAlpha" radius="2" result="shadowSpreadOuter2"/>
+      <feOffset dy="14" in="shadowSpreadOuter2" result="shadowOffsetOuter2"/>
+      <feGaussianBlur in="shadowOffsetOuter2" result="shadowBlurOuter2" stdDeviation="14"/>
+      <feColorMatrix in="shadowBlurOuter2" result="shadowMatrixOuter2" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.116762908 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="shadowMatrixOuter2"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(24 10)">
+    <use fill="#000" filter="url(#icon-spellcheck-a)" xlink:href="#icon-spellcheck-b"/>
+    <use fill="#F5826B" xlink:href="#icon-spellcheck-b"/>
+    <path fill="#FFF" d="M16.59,8.59 L18,10 L10,18 L5.41,13.41 L6.83,12 L10,15.17 L16.59,8.59 Z M7.71680562,2 L11.91,12 L9.741,12 L8.902,10 L5.005,10 L4.168,12 L2,12 L6.19380562,2 L7.71680562,2 Z M6.95480562,5.35427332 L5.844,8 L8.063,8 L6.95480562,5.35427332 Z" transform="translate(14 14)"/>
+  </g>
+</svg>

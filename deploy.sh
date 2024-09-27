@@ -2,7 +2,7 @@
 directory=dist
 branch=gh-pages
 build_command() {
-  gulp build --p
+  gulp --p
 }
 
 echo -e "\033[0;32mDeleting old content...\033[0m"

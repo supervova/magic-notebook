@@ -11,7 +11,6 @@ import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
 import changed from 'gulp-changed';
 import cleanCSS from 'gulp-clean-css';
-import ghPages from 'gulp-gh-pages';
 import gulpif from 'gulp-if';
 import gulpSass from 'gulp-sass';
 import imagemin from 'gulp-imagemin';
@@ -364,7 +363,9 @@ const s = series(build, serve);
  * -----------------------------------------------------------------------------
  */
 // #region
-const deploy = () => src(`${root.dest}/**/*`).pipe(ghPages());
+// USE DEPLOY.SH INSTEAD
+// import ghPages from 'gulp-gh-pages';
+// const deploy = () => src(`${root.dest}/**/*`).pipe(ghPages());
 // #endregion
 
 /**
@@ -385,7 +386,6 @@ export {
   css,
   s,
   serve,
-  deploy,
   watchFiles,
 };
 

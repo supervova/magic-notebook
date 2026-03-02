@@ -17,6 +17,7 @@
 //   @extend %reset;
 // }
 
+// stylelint-disable declaration-no-important
 %reset {
   box-sizing: border-box !important;
   border: 0 !important;
@@ -51,6 +52,7 @@ $debug:                                 false;
   .hero {
     background: rgba(0, 0, 0, .5) none !important;
   }
+  // stylelint-enable declaration-no-important
 
   // Main content container
   .main {

@@ -1,10 +1,9 @@
-/**
- * -----------------------------------------------------------------------------
- * 👮‍ GENERAL
- * -----------------------------------------------------------------------------
- */
-// #region
-import { src, dest, watch, series, parallel } from 'gulp';
+// -----------------------------------------------------------------------------
+// #region: 👮‍ GENERAL
+// -----------------------------------------------------------------------------
+
+import gulp from 'gulp';
+import { PassThrough } from 'node:stream';
 
 import * as sass from 'sass';
 import autoprefixer from 'gulp-autoprefixer';
@@ -13,7 +12,6 @@ import changed from 'gulp-changed';
 import cleanCSS from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 import gulpSass from 'gulp-sass';
-import imagemin from 'gulp-imagemin';
 import imageminGIF from 'imagemin-gifsicle';
 import imageminJPG from 'imagemin-mozjpeg';
 import imageminPNG from 'imagemin-pngquant';
@@ -27,15 +25,17 @@ import sourcemaps from 'gulp-sourcemaps';
 import svgSprite from 'gulp-svg-sprite';
 import uncss from 'postcss-uncss';
 import webpack from 'webpack-stream';
-import yargs from 'yargs';
+import yargs from 'yargs/yargs';
 import { deleteAsync } from 'del';
 import { hideBin } from 'yargs/helpers';
 
 const sassCompiler = gulpSass(sass);
 
 const bsInstance = browserSync.create();
-const { argv } = yargs(hideBin(process.argv));
-const PRODUCTION = argv.p;
+const argv = yargs(hideBin(process.argv)).parse();
+const IS_PRODUCTION = Boolean(argv.p);
+
+const { src, dest, watch, series, parallel } = gulp;
 
 const root = {
   src: './src',
@@ -82,35 +82,39 @@ const paths = {
     dest: `${root.dest}/video`,
   },
   rootFiles: {
-    src: ['./*.html', './CNAME', './favicon.ico', 'manifest.json'],
+    src: ['./*.html', './CNAME', './favicon.ico', './manifest.json'],
     dest: `${root.dest}`,
   },
 };
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 🛠 UTILITIES
- * -----------------------------------------------------------------------------
- */
-// #region
+// -----------------------------------------------------------------------------
+// #region: 🛠 UTILITIES
+// -----------------------------------------------------------------------------
+
 const clean = () =>
   deleteAsync([
     `${paths.css.dest}/**/*.css`,
     `${paths.js.dest}/**/*.js`,
-    `${paths.img.dest}/**/*.img`,
+    `${paths.img.dest}/**/*`,
   ]);
 const cleanSrc = () => deleteAsync([`${root.src}/**/*.css`]);
+
+let imageminModulePromise = null;
+const loadImagemin = () => {
+  if (!imageminModulePromise) {
+    imageminModulePromise = import('gulp-imagemin');
+  }
+  return imageminModulePromise;
+};
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 💾 SCRIPTS
- * -----------------------------------------------------------------------------
- */
-// #region
+// -----------------------------------------------------------------------------
+// #region: 💾 SCRIPTS
+// -----------------------------------------------------------------------------
+
 const js = () => {
-  const mode = PRODUCTION ? 'production' : 'development';
+  const mode = IS_PRODUCTION ? 'production' : 'development';
   return src(paths.js.src)
     .pipe(changed(paths.js.dest))
     .pipe(plumber())
@@ -120,14 +124,12 @@ const js = () => {
 };
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 👯‍♀️ COPY
- * -----------------------------------------------------------------------------
- */
-// #region
+// -----------------------------------------------------------------------------
+// #region: 👯‍♀️ COPY
+// -----------------------------------------------------------------------------
+
 const copyVideo = () =>
-  src(paths.video.src, { encoding: false })
+  src(paths.video.src, { allowEmpty: true, encoding: false })
     .pipe(changed(paths.video.dest))
     .pipe(dest(paths.video.dest));
 const copyRootFiles = () =>
@@ -136,76 +138,84 @@ const copyRootFiles = () =>
     .pipe(dest(paths.rootFiles.dest));
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 🖼 IMAGES
- * -----------------------------------------------------------------------------
- */
-// #region
-const imgTasks = (source, subtitle) =>
-  src(source, { encoding: false })
-    .pipe(newer(paths.img.dest))
-    .pipe(
-      imagemin(
-        [
-          imageminGIF({ interlaced: true, optimizationLevel: 3 }),
-          imageminJPG({ quality: 85 }),
-          imageminPNG({ quality: [0.85, 0.95] }),
-          imageminSVG({
-            plugins: [
-              {
-                name: 'removeViewBox',
-                active: false,
-              },
-              {
-                name: 'cleanupIds',
-                params: {
-                  remove: false,
-                  minify: false,
-                  preserve: [],
-                  preservePrefixes: [],
-                  force: false,
-                },
-              },
+// -----------------------------------------------------------------------------
+// #region: 🖼 IMAGES
+// -----------------------------------------------------------------------------
+
+const imgTasks = (source, subtitle) => {
+  const out = new PassThrough({ objectMode: true });
+
+  loadImagemin()
+    .then(({ default: imagemin }) => {
+      const stream = src(source, { encoding: false })
+        .pipe(newer(paths.img.dest))
+        .pipe(
+          imagemin(
+            [
+              imageminGIF({ interlaced: true, optimizationLevel: 3 }),
+              imageminJPG({ quality: 85 }),
+              imageminPNG({ quality: [0.85, 0.95] }),
+              imageminSVG({
+                plugins: [
+                  {
+                    name: 'removeViewBox',
+                    active: false,
+                  },
+                  {
+                    name: 'cleanupIds',
+                    params: {
+                      remove: false,
+                      minify: false,
+                      preserve: [],
+                      preservePrefixes: [],
+                      force: false,
+                    },
+                  },
+                ],
+              }),
             ],
-          }),
-        ],
-        { verbose: true }
-      )
-    )
-    .pipe(dest(paths.img.dest))
-    .pipe(size({ title: `images: ${subtitle}` }));
+            { verbose: true }
+          )
+        )
+        .pipe(dest(paths.img.dest))
+        .pipe(size({ title: `images: ${subtitle}` }));
 
-const imgGraphics = (done) => {
-  imgTasks(paths.img.src.graphics, 'graphics');
-  done();
+      stream.on('error', (err) => out.emit('error', err));
+      stream.pipe(out);
+    })
+    .catch((err) => out.emit('error', err));
+
+  return out;
 };
 
-const imgContent = (done) => {
-  imgTasks(paths.img.src.content, 'content');
-  done();
-};
+const imgGraphics = () => imgTasks(paths.img.src.graphics, 'graphics');
+
+const imgContent = () => imgTasks(paths.img.src.content, 'content');
 
 // OPTIMIZE
 const img = parallel(imgGraphics, imgContent);
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 🎨 STYLES
- * -----------------------------------------------------------------------------
- */
-// #region
+// -----------------------------------------------------------------------------
+// #region: 🎨 STYLES
+// -----------------------------------------------------------------------------
+
 const cssTasks = (source, subtitle, uncssHTML, destination, link = true) =>
   src(source)
     .pipe(changed(paths.css.dest))
     .pipe(plumber())
-    .pipe(gulpif(!PRODUCTION, sourcemaps.init()))
+    .pipe(gulpif(!IS_PRODUCTION, sourcemaps.init()))
     .pipe(
       sassCompiler({
         precision: 4,
         includePaths: ['.'],
-      }).on('error', (err) => {
+        ...(IS_PRODUCTION
+          ? {}
+          : {
+              logger: sass.Logger.silent,
+              quietDeps: true,
+            }),
+      }).on('error', function onSassError(err) {
         // eslint-disable-next-line no-console
         console.error('Error compiling Sass:', err.message);
         this.emit('end');
@@ -213,11 +223,11 @@ const cssTasks = (source, subtitle, uncssHTML, destination, link = true) =>
     )
     // autoprefixer (browserslist) has been set in package.json
     .pipe(autoprefixer({ cascade: false }))
-    .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
+    .pipe(gulpif(!IS_PRODUCTION, sourcemaps.write()))
     .pipe(dest(paths.css.tmp))
     .pipe(
       gulpif(
-        PRODUCTION,
+        IS_PRODUCTION,
         gulpif(
           link,
           postcss([
@@ -249,28 +259,23 @@ const cssTasks = (source, subtitle, uncssHTML, destination, link = true) =>
         )
       )
     )
-    .pipe(gulpif(PRODUCTION, cleanCSS()))
+    .pipe(gulpif(IS_PRODUCTION, cleanCSS()))
     .pipe(size({ title: `styles: ${subtitle}` }))
     .pipe(dest(destination))
     .pipe(bsInstance.stream());
 
-const css = (done) => {
+const css = () =>
   cssTasks(
     paths.css.src,
     'main',
     [`${root.src}/pages/uncss/*.html`],
     paths.css.dest
   );
-  done();
-};
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * ❤️ SVG SPRITES
- * -----------------------------------------------------------------------------
- */
-// #region
+// -----------------------------------------------------------------------------
+// #region: ❤️ SVG SPRITES
+// -----------------------------------------------------------------------------
 
 function svg() {
   return src(paths.svg.src)
@@ -297,12 +302,10 @@ function svg() {
 const sprite = series(svg, parallel(css, imgGraphics));
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 📰 MARKUP
- * -----------------------------------------------------------------------------
- */
-// #region
+// -----------------------------------------------------------------------------
+// #region: 📰 MARKUP
+// -----------------------------------------------------------------------------
+
 const buildPug = () =>
   src(paths.markup.src)
     .pipe(plumber())
@@ -312,12 +315,10 @@ const buildPug = () =>
     .pipe(bsInstance.stream());
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 📶 SERVER
- * -----------------------------------------------------------------------------
- */
-// #region
+// -----------------------------------------------------------------------------
+// #region: 📶 SERVER
+// -----------------------------------------------------------------------------
+
 const reload = (done) => {
   bsInstance.reload();
   done();
@@ -332,22 +333,31 @@ const watchFiles = () => {
 };
 
 const serve = (done) => {
-  bsInstance.init({
-    server: { baseDir: root.dest },
-    port: 9000,
-    notify: false,
-  });
-  watchFiles();
-  done();
+  bsInstance.init(
+    {
+      listen: '127.0.0.1',
+      server: { baseDir: root.dest },
+      port: 9000,
+      notify: false,
+      open: false,
+    },
+    (err) => {
+      if (err) {
+        done(err);
+        return;
+      }
+
+      watchFiles();
+      done();
+    }
+  );
 };
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 🏗️ BUILD AND SERVE
- * -----------------------------------------------------------------------------
- */
-// #region
+// -----------------------------------------------------------------------------
+// #region: 🏗️ BUILD AND SERVE
+// -----------------------------------------------------------------------------
+
 const build = series(
   clean,
   parallel(img, buildPug, css, js, copyVideo, copyRootFiles)
@@ -357,22 +367,9 @@ const s = series(build, serve);
 
 // #endregion
 
-/**
- * -----------------------------------------------------------------------------
- * 📤 DEPLOY
- * -----------------------------------------------------------------------------
- */
-// #region
-// USE DEPLOY.SH INSTEAD
-// import ghPages from 'gulp-gh-pages';
-// const deploy = () => src(`${root.dest}/**/*`).pipe(ghPages());
-// #endregion
-
-/**
- * -----------------------------------------------------------------------------
- * ☑️ TASKS
- * -----------------------------------------------------------------------------
- */
+// -----------------------------------------------------------------------------
+// #region: ☑️ TASKS
+// -----------------------------------------------------------------------------
 
 export {
   cleanSrc,
@@ -390,3 +387,5 @@ export {
 };
 
 export default build;
+
+// #endregion

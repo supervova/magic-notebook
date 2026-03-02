@@ -16,8 +16,7 @@ pre {
   background-color: $color-bg-inverse;
   border-radius: $border-radius-sm;
   color: $color-ink-inverse-normal;
-  white-space: pre;
-  word-wrap: normal; // IE11
+  white-space: pre; // IE11
   overflow-wrap: normal; // modern browsers
   padding: $size-2;
   tab-size: 2;

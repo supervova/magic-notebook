@@ -38,7 +38,7 @@
 }
 
 .aspect-ratio-16-9 {
-  padding-top: percentage(math.div(9, 16));
+  padding-top: math.percentage(math.div(9, 16));
 }
 
 .aspect-ratio-square {
@@ -50,7 +50,7 @@
 // -----------------------------------------------------------------------------
 
 .text-center {
-  text-align: center !important;
+  text-align: center;
 }
 
 .is-note {

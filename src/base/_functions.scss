@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use 'sass:math';
 
 // -----------------------------------------------------------------------------
 // GRID
@@ -63,4 +64,16 @@
     }
   }
   @return $areas;
+}
+
+@function rem($value) {
+  @if $value == 0 {
+    @return $value;
+  }
+
+  @if math.is-unitless($value) {
+    $value: $value * 1px;
+  }
+
+  @return math.div($value, $html-font-size) * 1rem;
 }

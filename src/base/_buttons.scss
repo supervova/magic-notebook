@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 %btn {
   appearance: none;
   border: 0;
@@ -66,16 +68,16 @@
     background-image: none;
   }
 
-  &:focus,
-  &.is-focused {
-    box-shadow:
-      0 0 0 1px hsla(0, 0%, 0%, .32),
-      inset 0 1px 0 hsla(0, 0%, 100%, .32),
-      0 0 0 4px lighten($blue, 25%);
-    // outline: auto 2px Highlight;
-    // outline: auto 5px -webkit-focus-ring-color;
-  }
-}
+	  &:focus,
+	  &.is-focused {
+	    box-shadow:
+	      0 0 0 1px hsla(0, 0%, 0%, .32),
+	      inset 0 1px 0 hsla(0, 0%, 100%, .32),
+	      0 0 0 4px color.adjust($blue, $lightness: 25%);
+	    // outline: auto 2px Highlight;
+	    // outline: auto 5px -webkit-focus-ring-color;
+	  }
+	}
 
 .btn.is-primary .icon,
 .btn.is-whatsapp .icon {
@@ -84,29 +86,41 @@
 }
 
 .btn.is-primary .icon {
-  fill: lighten($color-primary, 25%);
+  fill: color.adjust($color-primary, $lightness: 25%);
 }
 
 .btn.is-whatsapp .icon {
-  fill: lighten($color-success, 35%);
+  fill: color.adjust($color-success, $lightness: 35%);
 }
 
 
 .btn.is-primary {
   background-color: $color-primary;
-  background-image: linear-gradient(lighten($color-primary, 2%), darken($color-primary, 2%));
+  background-image: linear-gradient(
+    color.adjust($color-primary, $lightness: 2%),
+    color.adjust($color-primary, $lightness: -2%)
+  );
 
   &:hover {
-    background-image: linear-gradient(lighten($color-primary, 4%), $color-primary);
+    background-image: linear-gradient(
+      color.adjust($color-primary, $lightness: 4%),
+      $color-primary
+    );
   }
 }
 
 .btn.is-whatsapp {
   background-color: $color-success;
-  background-image: linear-gradient($color-success, darken($color-success, 10%));
+  background-image: linear-gradient(
+    $color-success,
+    color.adjust($color-success, $lightness: -10%)
+  );
 
   &:hover {
-    background-image: linear-gradient(lighten($color-success, 5%), darken($color-success, 5%));
+    background-image: linear-gradient(
+      color.adjust($color-success, $lightness: 5%),
+      color.adjust($color-success, $lightness: -5%)
+    );
   }
 }
 

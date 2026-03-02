@@ -79,16 +79,23 @@
   color: $color-primary-dark;
   font-size: var(--font-size-hero-title);
   font-weight: var(--font-weight-hero-title);
+  letter-spacing: rem(-2);
   line-height: var(--line-height-hero-title);
   padding-top: var(--padding-top-hero-title);
   padding-bottom: var(--padding-bottom-hero-title);
+
+  @include media-breakpoint-up(md) {
+    letter-spacing: rem(-3);
+  }
 }
 
 .hero__display .h1 {
   color: $color-primary-dark;
   display: block;
+  letter-spacing: rem(-2);
 
   @include media-breakpoint-down(md) {
+    letter-spacing: rem(-1.5);
     margin-top: -$size-2;
   }
 }

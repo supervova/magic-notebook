@@ -1,5 +1,7 @@
 // $font-face-primary: '/path/to/font-without-extension';
 
+@use 'sass:color';
+
 // @font-face {
 //   font-family: 'Font Name';
 //   font-style: normal;
@@ -24,6 +26,7 @@ body {
   // flex-direction: column;
   font-family: $font-family-base;
   font-size: var(--font-size-base);
+  letter-spacing: 0;
   line-height: var(--line-height-base);
   text-align: left;
   min-height: 100%;
@@ -41,7 +44,7 @@ a {
   transition: color $duration-xs $easing;
 
   &:hover {
-    color: lighten($color-ink-link, 5%);
+    color: color.adjust($color-ink-link, $lightness: 5%);
     text-decoration: underline;
   }
 }
@@ -53,6 +56,7 @@ dl,
 p,
 pre,
 %body-copy {
+  letter-spacing: 0;
   margin-top: 0;
   margin-bottom: 0;
   padding-top: var(--padding-top-base);
@@ -228,7 +232,7 @@ hr {
 .sr-only,
 %sr-only {
   border: 0;
-  clip: rect(0 0 0 0);
+  clip-path: inset(0);
   white-space: nowrap;
   margin: -1px;
   padding: 0;
@@ -243,7 +247,7 @@ hr {
   background-color: $transparent;
   border: 0;
   color: $transparent;
-  font: 0/0 a;
+  font: 0/0 a, sans-serif;
   text-shadow: none;
 }
 
@@ -290,13 +294,14 @@ hr {
 }
 
 .w-100 {
-  width: 100% !important;
+  width: 100%;
 }
 
 // -----------------------------------------------------------------------------
 
 // Development stuff
 
+// stylelint-disable declaration-no-important
 %reset {
   box-sizing: border-box !important;
   border: 0 !important;

@@ -3,7 +3,7 @@ input[type='range'] {
   margin: $size-1 0;
   padding: $size-1 0;
 
-  &::focus {
+  &:focus {
     outline: none;
   }
 

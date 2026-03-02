@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // -----------------------------------------------------------------------------
 // CONTAINER
 // -----------------------------------------------------------------------------
@@ -9,7 +11,7 @@
   margin-right: auto;
   margin-left: auto;
   width: 100%;
-  max-width: map-get($container-max-widths, 'lg');
+  max-width: map.get($container-max-widths, 'lg');
 
   @include media-breakpoint-up(sm) {
     padding-right: $size-3;
@@ -47,7 +49,7 @@
 .grid,
 %grid {
   display: grid;
-  grid-gap: $size-2;
+  gap: $size-2;
   grid-template-columns: repeat(4, 1fr);
 
   @include media-breakpoint-up(sm) {
@@ -55,25 +57,25 @@
   }
 
   @include media-breakpoint-up(lg) {
-    grid-gap: $size-4;
+    gap: $size-4;
     grid-template-columns: repeat(12, 1fr);
   }
 }
 
 .has-wide-gutters {
-  grid-gap: $size-line;
+  gap: $size-line;
 
   @include media-breakpoint-up(lg) {
-    grid-gap: $size-4;
+    gap: $size-4;
   }
 }
 
 .grid.has-small-gap {
-  grid-gap: $size-1;
+  gap: $size-1;
 }
 
 .grid.has-no-gutters {
-  grid-gap: 0;
+  gap: 0;
 }
 
 // grid item doesn't need any special styling except width and/or starting

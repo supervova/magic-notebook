@@ -46,14 +46,16 @@ sitemap.xml.gz
 
 # Package managers
 .npm
+.pnpm-store
 .yarn
 .yarn-integrity
 jspm_packages
 node_modules
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-# All yarn.lock files should be checked into source control
+# Lockfiles should be checked into source control (e.g. pnpm-lock.yaml, yarn.lock).
 
 # Optional eslint cache
 .eslintcache
@@ -93,4 +95,3 @@ $RECYCLE.BIN/
 /-copy.publish
 /src/base/_variables-v1.scss
 /src/pages/notes
-

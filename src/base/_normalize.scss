@@ -6,6 +6,8 @@
 
 // stylelint-disable selector-list-comma-newline-after, selector-no-qualifying-type, property-no-vendor-prefix, number-leading-zero, string-quotes, declaration-property-value-blacklist
 
+@use 'sass:color';
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 // ☝️🧐 The extensions added at the bottom of the document.
@@ -72,7 +74,7 @@ hr {
  */
 
 pre {
-  font-family: monospace, monospace; /* 1 */
+  font-family: monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -110,7 +112,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
+  font-family: monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -378,7 +380,7 @@ template {
 }
 
 [tabindex='-1']:focus {
-  outline: 0 !important;
+  outline: 0;
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
@@ -387,7 +389,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 // DOCUMENT
 
-html {
+:where(html) {
   -webkit-tap-highlight-color: $transparent;
   font-size: 62.5%;
   text-size-adjust: 100%;
@@ -403,7 +405,7 @@ html {
 }
 // stylelint-enable at-rule-no-vendor-prefix
 
-body {
+:where(body) {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-align: left;
@@ -416,12 +418,12 @@ body {
 // stylelint-disable property-no-vendor-prefix
 
 ::selection {
-  background: darken($color-primary, 5%);
+  background: color.adjust($color-primary, $lightness: -5%);
   color: $color-ink-inverse-normal;
   text-shadow: none;
 }
 
-a {
+:where(a) {
   -webkit-text-decoration-skip: objects;
 
   &:active,
@@ -442,7 +444,7 @@ a {
 }
 // stylelint-enable property-no-vendor-prefix
 
-abbr[title] {
+:where(abbr[title]) {
   cursor: help;
 }
 
@@ -474,7 +476,7 @@ samp {
   font-family: $font-family-monospace;
 }
 
-pre {
+:where(pre) {
   -ms-overflow-style: scrollbar;
   overflow: auto;
 }
@@ -519,7 +521,7 @@ iframe {
   border: 0;
 }
 
-img {
+:where(img) {
   display: inline-block;
 
   // Offset 'alt' text from surrounding copy.
@@ -536,14 +538,14 @@ svg {
 
 // FORMS
 
-fieldset {
+:where(fieldset) {
   border: 0;
   margin: 0;
   padding: 0;
   min-width: 0;
 }
 
-legend {
+:where(legend) {
   line-height: inherit;
   width: 100%;
 }
@@ -563,11 +565,11 @@ label {
   display: inline-block;
 }
 
-input,
-button,
-select,
-optgroup,
-textarea {
+:where(input),
+:where(button),
+:where(select),
+:where(optgroup),
+:where(textarea) {
   line-height: inherit;
 }
 
@@ -575,7 +577,7 @@ input[type='date'],
 input[type='time'],
 input[type='datetime-local'],
 input[type='month'] {
-  appearance: listbox;
+  appearance: auto;
 }
 
 optgroup {
@@ -587,7 +589,7 @@ select::-ms-expand {
   display: none;
 }
 
-textarea {
+:where(textarea) {
   resize: vertical;
 }
 
@@ -623,11 +625,11 @@ output {
   display: inline-block;
 }
 
-progress {
+:where(progress) {
   display: inline-block;
 }
 
-summary {
+:where(summary) {
   cursor: pointer;
   display: block;
 }

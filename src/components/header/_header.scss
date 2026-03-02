@@ -47,7 +47,7 @@
 
   &:hover {
     color: $color-ink-inverse-normal;
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   @include media-breakpoint-up(md) {

@@ -159,7 +159,7 @@
   @include media-breakpoint-up(lg) {
     margin-right: auto;
     margin-left: auto;
-    max-width: percentage(math.div(632, 952));
+    max-width: math.percentage(math.div(632, 952));
   }
 }
 

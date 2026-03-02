@@ -5,12 +5,20 @@
   "author": "Vladimir Nikishin",
   "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "b": "gulp --p"
+    "dev": "gulp s",
+    "build": "gulp --p",
+    "build:dev": "gulp",
+    "lint:js": "eslint .",
+    "lint:scss": "stylelint \"src/**/*.scss\"",
+    "lint": "pnpm -s lint:js && pnpm -s lint:scss",
+    "format": "prettier . --write",
+    "b": "pnpm -s build"
   },
   "engines": {
-    "node": ">=10",
-    "npm": ">=3"
+    "node": ">=18",
+    "pnpm": ">=9"
   },
   "stylelint": {
     "extends": [
@@ -86,71 +94,6 @@
         }
       ],
       "value-no-vendor-prefix": true
-    }
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "airbnb-base",
-      "plugin:prettier/recommended"
-    ],
-    "env": {
-      "browser": true,
-      "es2023": true,
-      "node": true
-    },
-    "plugins": [
-      "import"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2023,
-      "sourceType": "module"
-    },
-    "settings": {
-      "import/ignore": [
-        "node_modules",
-        "\\.(coffee|scss|css|less|hbs|svg|json)$"
-      ]
-    },
-    "rules": {
-      "import/no-extraneous-dependencies": "off",
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          "js": "always",
-          "jsx": "always",
-          "ts": "never",
-          "tsx": "never"
-        }
-      ],
-      "max-len": [
-        "error",
-        {
-          "ignoreComments": true,
-          "ignoreStrings": true,
-          "ignoreTemplateLiterals": true
-        }
-      ],
-      "no-multi-spaces": [
-        "error",
-        {
-          "exceptions": {
-            "BinaryExpression": true,
-            "VariableDeclarator": true
-          }
-        }
-      ],
-      "no-plusplus": [
-        2,
-        {
-          "allowForLoopAfterthoughts": true
-        }
-      ],
-      "quotes": [
-        "error",
-        "single"
-      ]
     }
   },
   "prettier": {
@@ -246,6 +189,51 @@
     ]
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.9",
+    "@babel/preset-env": "^7.24.8",
+    "@babel/register": "^7.24.6",
+    "browser-sync": "^3.0.4",
+    "del": "^8.0.0",
+    "@eslint/eslintrc": "^3.0.0",
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.39.2",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.0.0",
+    "gulp": "^5.0.1",
+    "gulp-autoprefixer": "^10.0.0",
+    "gulp-changed": "^5.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^3.1.0",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^9.1.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^10.0.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^6.0.1",
+    "gulp-size": "^5.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg-sprite": "^2.0.0",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-svgo": "^11.0.1",
+    "postcss": "^8.4.38",
+    "postcss-scss": "^4.0.9",
+    "postcss-uncss": "^0.17.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8",
+    "stylelint": "^17.1.0",
+    "stylelint-config-recommended-scss": "^17.0.0",
+    "webpack": "^5.93.0",
+    "webpack-stream": "^7.0.0",
+    "yargs": "^18.0.0"
   }
 }

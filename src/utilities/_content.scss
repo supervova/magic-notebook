@@ -99,19 +99,19 @@
 .article__title {
   // Right margin for quote predecessor to compensate negative one in line
   .hp-space {
-    margin-right: 1.2rem;
+    margin-right: .75rem;
 
     @include media-breakpoint-up(md) {
-      margin-right: 1.9rem;
+      margin-right: 1.1875rem;
     }
   }
 
   // Left negative margin for quote
   .hp-quote {
-    margin-left: -1.2rem;
+    margin-left: -.75rem;
 
     @include media-breakpoint-up(md) {
-      margin-left: -1.9rem;
+      margin-left: -1.1875rem;
     }
   }
 }

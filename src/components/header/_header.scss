@@ -26,15 +26,15 @@
   font-size: var(--font-size-small);
   line-height: var(--line-height-small);
   text-align: center;
-  padding-top: 2.8rem;
-  padding-bottom: 2.8rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
   height: auto;
 }
 
 .header__logo {
   fill: $color-ink-inverse-2ry;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 1.5rem;
+  height: 1.5rem;
 
   @include media-breakpoint-up(md) {
     fill: $color-ink-3ry;

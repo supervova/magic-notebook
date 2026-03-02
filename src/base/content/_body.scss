@@ -175,7 +175,7 @@ nav ul {
     display: inline-block;
 
     &:not(:last-child) {
-      margin-right: .5rem;
+      margin-right: .3125rem;
     }
   }
 }
@@ -202,7 +202,7 @@ mark {
   background-color: $color-highlight;
   border-radius: $border-radius-sm;
   color: $color-ink-normal;
-  padding: 0 .2rem;
+  padding: 0 .125rem;
 }
 
 small,
@@ -216,7 +216,7 @@ small,
 hr {
   border: 0;
   border-top: $border-width solid $color-ink-border;
-  margin-top: $size-line * 3 - .1rem;
+  margin-top: $size-line * 3 - .0625rem;
   margin-bottom: $size-line * 3;
 }
 

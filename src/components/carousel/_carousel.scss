@@ -17,8 +17,8 @@
 $carousel-control-width:                $size-8;
 $carousel-control-opacity:              .64;
 $carousel-control-prev-icon:            url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2222%22%20viewBox%3D%220%200%2011%2022%22%3E%20%3Cpolygon%20fill%3D%22%23FFF%22%20fill-rule%3D%22evenodd%22%20points%3D%221.968%20.393%2010.968%2011%201.968%2021.607%200%2019.289%207.034%2011%20.001%202.711%22%2F%3E%20%3C%2Fsvg%3E');
-$carousel-control-icon-width:           6.4rem;
-$carousel-control-icon-height:          6.4rem;
+$carousel-control-icon-width:           4rem;
+$carousel-control-icon-height:          4rem;
 
 // Indicators
 $carousel-indicator-width:              $size-2;
@@ -41,7 +41,7 @@ $carousel-transition:                   transform $duration-xl $easing;
 
 .carousel__inner {
   overflow: hidden;
-  padding-top: .1rem;
+  padding-top: .0625rem;
   padding-bottom: $carousel-caption-height;
   position: relative;
   width: 100%;
@@ -167,7 +167,7 @@ $carousel-transition:                   transform $duration-xl $easing;
   padding-left: 0; // override <ol> default
   position: absolute;
   right: 0;
-  bottom: .4rem;
+  bottom: .25rem;
   left: 0;
   z-index: 15;
 
@@ -175,8 +175,8 @@ $carousel-transition:                   transform $duration-xl $easing;
     background-clip: padding-box;
     background-color: $color-ink-border;
     // Use transparent borders to increase the hit area by 10px on top and bottom.
-    border-top: 1rem solid transparent;
-    border-bottom: 1rem solid transparent;
+    border-top: .625rem solid transparent;
+    border-bottom: .625rem solid transparent;
     box-sizing: content-box;
     cursor: pointer;
     flex: 0 1 auto;
@@ -202,8 +202,8 @@ $carousel-transition:                   transform $duration-xl $easing;
 
 .carousel__caption {
   text-align: center;
-  padding-top: 3rem;
-  padding-bottom: 2.3rem;
+  padding-top: 1.875rem;
+  padding-bottom: 1.4375rem;
   padding-left: $size-2;
   padding-right: $size-2;
   opacity: 0;

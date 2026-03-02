@@ -153,7 +153,7 @@ html:has(.modal-open) {
   margin-bottom: 0;
 
   @include media-breakpoint-up(md) {
-    letter-spacing: -.1rem;
+    letter-spacing: -.0625rem;
     margin-bottom: 0;
   }
 }
@@ -166,7 +166,7 @@ html:has(.modal-open) {
   box-shadow:
     0 0 0 1px $color-ink-border,
     $box-shadow-z2;
-  border-radius: 50rem;
+  border-radius: 31.25rem;
   padding: 0;
   position: absolute;
   top: -$size-1;

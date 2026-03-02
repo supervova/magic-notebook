@@ -8,8 +8,8 @@ $table-cell-padding:                    ($table-cell-padding-y - $border-width) 
 $table-accent-bg:                       $color-bg-accent;
 $table-hover-bg:                        hsla(0, 0%, 0%, .03);
 
-$table-fixed-column-width:              14.4rem;
-$table-fixed-column-width-md:           24rem;
+$table-fixed-column-width:              9rem;
+$table-fixed-column-width-md:           15rem;
 
 // MIXINS
 // table-has-fixed-col() ⚠️ it's work only for tables with one-line nowrapped cells

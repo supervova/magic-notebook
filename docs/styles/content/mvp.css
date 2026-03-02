@@ -1,0 +1,325 @@
+/* -------------------------------------------------------------------------- */
+/* #region: GENERAL                                                           */
+/* -------------------------------------------------------------------------- */
+
+::selection {
+  background-color: var(--color-fill-interactive);
+  color: var(--color-text-neutral);
+  text-shadow: none;
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: HEADINGS                                                          */
+/* -------------------------------------------------------------------------- */
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, h6 {
+  text-wrap: balance;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-family: var(--font-family-titles);
+}
+
+.h1, .h2, .h3, .h4 {
+  display: block;
+  hyphens: manual;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+h1, .h1 {
+  @mixin text-format title;
+
+  &:not(header *) {
+    margin-block: 0 var(--margin-bottom-title, calc(var(--spacer-flow) * 3));
+  }
+}
+
+h2, .h2 {
+  @mixin text-format h2;
+  margin-block: 0 var(--margin-bottom-h2, var(--spacer-flow));
+}
+
+h3, .h3 {
+  @mixin text-format h3;
+  margin-block: 0 var(--margin-bottom-h3, var(--spacer-flow));
+}
+
+h4, .h4, h5, h6 {
+  @mixin text-format base;
+  font-weight: var(--font-weight-strong, 600);
+  margin-block: 0;
+}
+
+:where(address, blockquote, div, dl, figure, form, ol, p, pre, table, ul)
+  + :is(h2, .h2, h3, .h3, h4, .h4, h5, h6) {
+  margin-top: var(--margin-top-subhead, calc(var(--spacer-flow) * 3));
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: BODY COPY                                                         */
+/* -------------------------------------------------------------------------- */
+
+p, li, dd {
+  text-wrap: pretty;
+}
+
+:is(address, dd, dt, li, p) {
+  padding-block: var(--padding-top-base, 0px) var(--padding-bottom-base, 0px);
+}
+
+:is(address, blockquote, dl, figure, ol, p, pre, table, ul, .scroll-x) {
+  margin-block: 0 var(--spacer-flow);
+}
+
+.scroll-x table {
+  /* -2px compensates for the block border */
+  margin-block: -1px;
+}
+
+a:not(.btn, [role='button'], [role='tab']) {
+  color: var(--color-link);
+  text-decoration: none;
+  transition:
+    color var(--duration-50) var(--easing-base),
+    text-decoration var(--duration-50) var(--easing-base);
+
+  &:is(:active, :focus-visible) {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: max(0.08em, 1px);
+    text-underline-offset: 0.125em;
+  }
+
+  &:focus-visible {
+    --outline-offset: 2px;
+
+    /* The base :focus-visible styles are set on reset level */
+    border-radius: var(--radius-xs);
+  }
+
+  &:visited {
+    color: var(--color-link-visited);
+  }
+
+  &[aria-current] {
+    color: var(--color-current, var(--color-text));
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--color-link-hover);
+      text-decoration-skip-ink: auto;
+      text-decoration: underline;
+      text-decoration-thickness: max(0.05em, 1px);
+      text-underline-offset: 0.125em;
+    }
+  }
+}
+
+b, strong {
+  font-weight: var(--font-weight-strong, 600);
+}
+
+/* Use this to highlight with color. E.g. `.text-success` */
+b[class] { font-weight: inherit; }
+em[class] { font-style: inherit; }
+
+small {
+  font-size: var(--font-size-fine-print);
+  line-height: var(--line-height-fine-print);
+}
+
+hr {
+  --spacer-y: var(--spacer);
+
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin-block: calc(var(--spacer-y) - 1px) var(--spacer-y);
+  height: 0;
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: LISTS                                                             */
+/* -------------------------------------------------------------------------- */
+
+ul,
+ol {
+  --list-padding: var(--dim-3);
+  --list-gap: var(--dim-1);
+  --list-indent: var(--dim-2plus);
+
+  margin-inline: 0;
+  padding: 0;
+}
+
+/* List items */
+:is(ul, ol) > li {
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: var(--list-gap);
+  }
+}
+
+/* UL */
+ul:not([role='list'], :is(nav ul)) {
+  --list-bullet-top: calc(0.2em + var(--padding-top-base, 0px));
+  list-style-type: none;
+  padding-inline-start: var(--list-padding);
+
+  > li::before {
+    color: var(--color-brand);
+    content: '\2022';
+    line-height: 1;
+    text-transform: none;
+    position: absolute;
+    top: var(--list-bullet-top);
+    left: -20px;
+  }
+}
+
+/* OL */
+ol {
+  --list-number-top: var(--padding-top-base, 0px);
+
+  /* <ol start="9" style="--ol-start: 9"> */
+  counter-reset: list-counter var(--ol-start, 0);
+  list-style-type: none;
+
+  > li {
+    padding-inline-start: calc(2ch + var(--dim-1));
+
+    &::before {
+      color: var(--color-text-02);
+      content: counter(list-counter, decimal) '.';
+      counter-increment: list-counter;
+      font-variant-numeric: tabular-nums;
+      text-align: end;
+      position: absolute;
+      top: var(--list-number-top);
+      left: 0;
+    }
+  }
+}
+
+/* Nested lists
+`--list-indent` is default. To align nested lists to the baseline, use the utility
+classes `pt-[value]` from rhythm-compensation.css */
+
+/* Description list */
+dl {
+  --grid-columns: 1fr 3fr;
+
+  @media (--phone-l) {
+    display: grid;
+    gap: var(--dim-1) var(--spacer);
+    grid-template-columns: var(--grid-columns);
+  }
+}
+
+dt {
+  font-weight: var(--font-weight-strong, 600);
+}
+
+dd {
+  margin-left: 0;
+}
+
+:is(dd, li) {
+  & p { margin-bottom: 0; }
+
+  & > p:first-child { padding-top: 0; }
+
+  & > p:last-child { padding-bottom: 0; }
+}
+
+li:has(> ul, > ol),
+li.has-sublist {
+  margin-block: var(--list-gap) 0;
+  padding-bottom: 0;
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: MEDIA AND EMBEDS                                                  */
+/* -------------------------------------------------------------------------- */
+
+img,
+svg,
+video {
+  height: auto;
+}
+
+figcaption {
+  @mixin text-format body-sm;
+  color: var(--color-text-02);
+  text-align: center;
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: TABLE                                                             */
+/* -------------------------------------------------------------------------- */
+
+table {
+  --table-border-color: var(--color-border);
+  --table-border-width: var(--border-width);
+  --cell-height: var(--dim-6);
+  --cell-padding-x: var(--dim-2);
+  --cell-padding-y: var(--dim-1plus);
+
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+  text-indent: 0;
+  width: 100%;
+}
+
+thead {
+  background-color: var(--color-bg-02);
+}
+
+th {
+  color: var(--color-text-02);
+  font-weight: var(--font-weight-strong, 600);
+  text-align: start;
+  position: relative;
+  vertical-align: bottom;
+
+  thead & {
+    font-size: var(--font-size-body-sm);
+    line-height: var(--line-height-body-sm);
+  }
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--color-border);
+  padding-block: calc(var(--cell-padding-y) - 1px) var(--cell-padding-y);
+  padding-inline: var(--cell-padding-x);
+  min-width: 10ch;
+
+  /* In tables, this behaves like min-height */
+  height: var(--cell-height);
+}
+
+td, tbody th {
+  vertical-align: top;
+}
+
+/* #endregion */

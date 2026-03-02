@@ -101,7 +101,7 @@ abbr[title] {
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 600;
 }
 
 /**
@@ -391,7 +391,6 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 :where(html) {
   -webkit-tap-highlight-color: $transparent;
-  font-size: 62.5%;
   text-size-adjust: 100%;
   overflow-y: scroll;
   min-height: 100%;

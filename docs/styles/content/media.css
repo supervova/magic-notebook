@@ -1,0 +1,71 @@
+/* -------------------------------------------------------------------------- */
+/* #region: FIGURES AND IFRAMES                                               */
+/* -------------------------------------------------------------------------- */
+
+iframe,
+img,
+video {
+  border-style: none;
+}
+
+figure {
+  display: grid;
+  gap: var(--dim-2);
+  margin: var(--figure-margin, 0);
+}
+
+figcaption {
+  color: var(--color-text-02);
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: IMAGES, VIDEO, SVG                                                */
+/* -------------------------------------------------------------------------- */
+
+img,
+video {
+  max-width: 100%;
+}
+
+/* Images without a class are block-level; add a class if you need inline ones */
+img:not([class]),
+figure img {
+  display: block;
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: MEDIA BORDER                                                      */
+/* -------------------------------------------------------------------------- */
+
+.media-border {
+  display: flex;
+  position: relative;
+  max-width: max-content;
+  overflow: hidden;
+  border-radius: var(--radius-base);
+
+  /* Applies to direct children only. */
+  & > :is(iframe, img) {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  &::after {
+    border-radius: var(--radius-base);
+    box-shadow: inset 0 0 0 1px var(--color-border-neutral);
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+/* #endregion */

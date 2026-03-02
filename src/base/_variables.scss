@@ -132,7 +132,7 @@ $hover-brightness:         1.2;
 // ---------------------------------------------------------------------------
 // #region
 
-$size-1:    .8rem;
+$size-1:    .5rem;
 $size-2:    $size-1 * 2;
 $size-3:    $size-1 * 3;
 $size-4:    $size-1 * 4;
@@ -177,7 +177,7 @@ $grid-gutter-xl:    $size-6;
 // Maps to generate maximum width of the container for each breakpoint
 $container-max-widths: (
   // Screenshots width + side paddings
-  lg: (115.2rem + 6.4rem),
+  lg: (72rem + 4rem),
 );
 
 // Using: @media #{$mq-retina} { … }
@@ -249,90 +249,90 @@ $font-family-serif:
 // below.
 
 :root {
-  --font-size-hero-title:      3.4rem;
+  --font-size-hero-title:      2.125rem;
   --font-weight-hero-title:    600;
   // Keep parentheses to do math using interpolation
   --line-height-hero-title:    #{math.div(40, 34)};
   --padding-top-hero-title:    #{$size-2};
   --padding-bottom-hero-title: #{$size-2};
 
-  --font-size-h1:              3.4rem;
+  --font-size-h1:              2.125rem;
   --font-weight-h1:            500;
   --line-height-h1:            #{math.div(40, 34)};
   --padding-top-h1:            #{$size-2};
   --padding-bottom-h1:         #{$size-2};
   --margin-top-h1-has-eyebrow: #{-$size-line};
 
-  --font-size-h2:              2.4rem;
+  --font-size-h2:              1.5rem;
   --line-height-h2:            #{math.div(32, 24)};
   --font-weight-h2:            500;
   --padding-top-h2:            0;
-  --padding-bottom-h2:         1.7rem;
+  --padding-bottom-h2:         1.0625rem;
   --margin-top-subhead:        #{$size-line};
 
-  --font-size-big:             2rem;
+  --font-size-big:             1.25rem;
   --line-height-big:           #{math.div(24, 20)};
   --font-weight-big:           500;
-  --padding-top-big:           .5rem;
-  --padding-bottom-big:        1.9rem;
+  --padding-top-big:           .3125rem;
+  --padding-bottom-big:        1.1875rem;
 
-  --font-size-base:            1.7rem;
+  --font-size-base:            1.0625rem;
   --line-height-base:          1.4117647059;    // 24px
-  --padding-top-base:          .6rem;
-  --padding-bottom-base:       1.8rem;
+  --padding-top-base:          .375rem;
+  --padding-bottom-base:       1.125rem;
 
-  --font-size-small:           1.2rem;
-  --line-height-small:         1.6rem;
-  --padding-top-small:         .4rem;
-  --padding-bottom-small:      1.2rem;
+  --font-size-small:           .75rem;
+  --line-height-small:         1rem;
+  --padding-top-small:         .25rem;
+  --padding-bottom-small:      .75rem;
 
   // Lists
-  --padding-bottom-li:   .2rem;
+  --padding-bottom-li:   .125rem;
   --padding-bottom-list: #{$size-2};
 
   // Table
-  --margin-top-table:  1.8rem;
-  --margin-top-bottom: 3rem;
+  --margin-top-table:  1.125rem;
+  --margin-top-bottom: 1.875rem;
   --padding-x-cell:    #{$size-2};
-  --padding-y-cell:    1.2rem;
+  --padding-y-cell:    .75rem;
 
   // Form
   --padding-bottom-form-group:   #{$size-1};
-  --padding-y-input:             1.1rem;
-  --padding-right-input:         1.2rem;
-  --padding-left-input:          3.9rem;
-  --padding-bottom-label:        .4rem;
-  --padding-bottom-form-actions: 2.2rem;
-  --padding-top-select:          1.6rem;
-  --padding-bottom-select:       1.2rem;
+  --padding-y-input:             .6875rem;
+  --padding-right-input:         .75rem;
+  --padding-left-input:          2.4375rem;
+  --padding-bottom-label:        .25rem;
+  --padding-bottom-form-actions: 1.375rem;
+  --padding-top-select:          1rem;
+  --padding-bottom-select:       .75rem;
 
   --padding-x-section:           #{$size-2};
   --spacer:                      #{$size-line};
 
   @media screen and (min-width: #{map.get($grid-breakpoints, 'md')}) {
-    --font-size-hero-title:      7.2rem;
+    --font-size-hero-title:      4.5rem;
     --line-height-hero-title:    1;
-    --padding-top-hero-title:    1rem;
-    --padding-bottom-hero-title: 1.4rem;
+    --padding-top-hero-title:    .625rem;
+    --padding-bottom-hero-title: .875rem;
 
-    --font-size-h1:      4.5rem;
+    --font-size-h1:      2.8125rem;
     --line-height-h1:    #{math.div(56, 45)};
     --font-weight-h1:    600;
-    --padding-top-h1:    .5rem;
-    --padding-bottom-h1: 1.2rem;
+    --padding-top-h1:    .3125rem;
+    --padding-bottom-h1: .75rem;
 
-    --font-size-h2:      2.8rem;
+    --font-size-h2:      1.75rem;
     --line-height-h2:    #{math.div(32, 28)};
-    --padding-top-h2:    2.2rem;
-    --padding-bottom-h2: 1.8rem;
+    --padding-top-h2:    1.375rem;
+    --padding-bottom-h2: 1.125rem;
 
-    --font-size-big:      2.3rem;
+    --font-size-big:      1.4375rem;
     --line-height-big:    #{math.div(24, 23)};
     --font-weight-big:    normal;
-    --padding-top-big:    .4rem;
-    --padding-bottom-big: 2rem;
+    --padding-top-big:    .25rem;
+    --padding-bottom-big: 1.25rem;
 
-    --font-size-small:           1.3rem;
+    --font-size-small:           .8125rem;
     --line-height-small:         1.231; // 16px
 
     --padding-bottom-form-group: #{$size-2};
@@ -359,21 +359,21 @@ $font-family-serif:
 // ---------------------------------------------------------------------------
 // #region
 
-$border-width:     .1rem;
+$border-width:     .0625rem;
 
 // BOX BORDER RADIUS
 
 // Alerts, Cards, Rectangular Images
-$border-radius-sm: .4rem;
+$border-radius-sm: .25rem;
 
 // Buttons
-$border-radius:    .8rem;
+$border-radius:    .5rem;
 
 // Dropdowns, Modal Bottom Sheets, Pickers, Sticky Blocks, Popovers, Tooltips
-$border-radius-lg: 1.6rem;
+$border-radius-lg: 1rem;
 
 // Modals
-$border-radius-xl: 3.2rem;
+$border-radius-xl: 2rem;
 
 // BOX SHADOWS
 // Increasing the number of shadows and decreasing the alpha value.

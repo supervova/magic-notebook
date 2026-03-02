@@ -32,7 +32,7 @@
     margin: 0 auto;
     padding-left: $size-6;
     position: relative;
-    min-height: 4.8rem;
+    min-height: 3rem;
     // Max width is 7 global columns on desktops
     max-width: round(math.div(map.get($container-max-widths, 'lg'), 7) * 12);
   }
@@ -43,8 +43,8 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }
 

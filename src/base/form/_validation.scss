@@ -26,13 +26,13 @@
 
 // To hide message paddings we should wrap it in another div
 .form__feedback.is-invalid > div {
-  padding-top: .8rem;
-  padding-bottom: 1.4rem;
+  padding-top: .5rem;
+  padding-bottom: .875rem;
 }
 
 .form__control:not(:focus):invalid + .form__feedback.is-invalid {
   opacity: 1;
-  height: 3.4rem;
+  height: 2.125rem;
 }
 
 // Honey pot

@@ -9,7 +9,6 @@ import * as sass from 'sass';
 import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
 import changed from 'gulp-changed';
-import cleanCSS from 'gulp-clean-css';
 import gulpif from 'gulp-if';
 import gulpSass from 'gulp-sass';
 import imageminGIF from 'imagemin-gifsicle';
@@ -18,6 +17,7 @@ import imageminPNG from 'imagemin-pngquant';
 import imageminSVG from 'imagemin-svgo';
 import newer from 'gulp-newer';
 import plumber from 'gulp-plumber';
+import cssnano from 'cssnano';
 import postcss from 'gulp-postcss';
 import pug from 'gulp-pug';
 import size from 'gulp-size';
@@ -259,7 +259,22 @@ const cssTasks = (source, subtitle, uncssHTML, destination, link = true) =>
         )
       )
     )
-    .pipe(gulpif(IS_PRODUCTION, cleanCSS()))
+    .pipe(
+      gulpif(
+        IS_PRODUCTION,
+        postcss([
+          cssnano({
+            preset: [
+              'default',
+              {
+                discardUnused: false,
+                mergeRules: false,
+              },
+            ],
+          }),
+        ])
+      )
+    )
     .pipe(size({ title: `styles: ${subtitle}` }))
     .pipe(dest(destination))
     .pipe(bsInstance.stream());
@@ -269,7 +284,8 @@ const css = () =>
     paths.css.src,
     'main',
     [`${root.src}/pages/uncss/*.html`],
-    paths.css.dest
+    paths.css.dest,
+    false
   );
 // #endregion
 

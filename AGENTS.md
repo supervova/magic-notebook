@@ -16,25 +16,24 @@
 ### Порядок слоёв (фиксируется один раз в точке входа)
 
 ```css
-@layer base, details, details.content, details.mvp, details.forms, details.components, layout, components, pages, utils;
+@layer base, content, components.base, components.form, layout;
+@layer components.ui, components.sections, pages, utils, print;
 ```
 
-| Слой                 | Содержимое                                                 |
-| -------------------- | ---------------------------------------------------------- |
-| `base`               | Токены, ресет, корневые HTML-элементы                      |
-| `details.content`    | Семантические элементы (заголовки, списки, таблицы)        |
-| `details.mvp/forms`  | Примитивы: `.btn`, `.input`, `.icon`                       |
-| `details.components` | UI-компоненты без знания о домене (`.accordion`, `.modal`) |
-| `layout`             | Контейнеры, сетка                                          |
-| `components`         | Бизнес-компоненты (`.header`, `.checkout-cart`)            |
-| `pages`              | Компоненты уровня страниц                                  |
-| `utils`              | Утилиты                                                    |
-
-**Граница:** `details.components` не знает о домене; `components` — знает.
+| Слой                    | Содержимое                                                 |
+| ----------------------- | ---------------------------------------------------------- |
+| `base`                  | Токены, ресет, корневые HTML-элементы                      |
+| `content`               | Семантические элементы (заголовки, списки, таблицы)        |
+| `components.base/forms` | Примитивы: `.btn`, `.input`, `.icon`                       |
+| `layout`                | Контейнеры, сетка                                          |
+| `components.ui`         | UI-компоненты без знания о домене (`.accordion`, `.modal`) |
+| `components.sections`   | Бизнес-компоненты (`.header`, `.checkout-cart`)            |
+| `pages`                 | Компоненты уровня страниц                                  |
+| `utils`                 | Утилиты                                                    |
 
 ## Принципы LSD
 
-1. **Фреймворк ≠ бизнес-логика.** `base + details + layout + utils` не знают о `.checkout`, `.cart` и т.п.
+1. **Фреймворк ≠ бизнес-логика.** `base + layout + components.(base,form,ui) + utils` не знают о `.checkout`, `.cart` и т.п.
 2. **Каждый прикладной компонент имеет корневой класс** — якорь для `@scope` и композиции.
 3. **Компоненты не зависят от селекторов фреймворка в CSS** — только через переменные или `@scope`.
 4. **Layout-утилиты не используются как CSS-селекторы.**
@@ -140,12 +139,13 @@ src/
 `main.css` — точка входа, собирается через `postcss-import`:
 
 ```css
-@layer base, details, details.content, details.mvp, details.forms, details.components, layout, components, pages, utils;
+@layer base, content, components.base, components.form, layout;
+@layer components.ui, components.sections, pages, utils, print;
 
-@import url('./styles/mixins.css');
-@import url('./styles/tokens.css');
-@import url('./styles/reset.css');
-@import url('./styles/global.css');
+@import url('./base/mixins.css');
+@import url('./base/vars.css');
+@import url('./base/reset.css');
+@import url('./base/doc.css');
 /* компоненты и утилиты */
 ```
 
@@ -177,6 +177,98 @@ src/
 ### Именование файлов
 
 `kebab-case` везде.
+
+## Internationalization (i18n)
+
+- Сайт должен поддерживать мультиязычность.
+- Базовые языки: `en` (default) и `ru`.
+- В дальнейшем планируется расширение до европейских языков и CJK.
+
+### Стратегия
+
+- Использовать **route-based i18n** (не runtime-переводы).
+- Каждый язык имеет собственные URL:
+  - `/` → английский (default)
+  - `/ru/` → русский
+  - `/de/`, `/fr/`, `/zh/` и т.д. — в будущем
+
+- Не использовать i18n-библиотеки с runtime-переключением (i18next и т.п.).
+- Все страницы должны быть статически сгенерированы для каждого языка.
+
+### Структура страниц
+
+```txt
+src/pages/
+  index.astro            # EN
+  ru/
+    index.astro          # RU
+
+  blog/
+  ru/blog/
+
+  changelog/
+  ru/changelog/
+```
+
+- Для каждого языка — отдельная директория.
+- Не использовать динамический runtime-switch языка.
+- Язык определяется только через URL.
+
+### Контент
+
+- Контент хранить раздельно по языкам:
+
+```txt
+src/content/
+  blog/
+    en/
+    ru/
+  changelog/
+    en/
+    ru/
+  roadmap/
+    en/
+    ru/
+```
+
+- Не смешивать языки в одном markdown-файле.
+- Каждый язык — отдельный файл.
+
+### Локализация UI
+
+- Статические тексты (кнопки, меню, заголовки) хранить в словарях:
+
+```txt
+src/i18n/
+  en.ts
+  ru.ts
+```
+
+- Без внешних библиотек.
+- Простой объект-словарь.
+
+### Переключение языка
+
+- Переключение языка — через ссылки:
+  - `/` ↔ `/ru/`
+
+- Не использовать JS для переключения.
+- Сохранять путь при переключении (если есть перевод страницы).
+
+### SEO
+
+- Для каждой страницы:
+  - `lang` атрибут в `<html>`
+  - `hreflang` ссылки
+
+- Default язык (`en`) — без префикса.
+
+### Правила
+
+- Любая новая страница должна иметь версию как минимум на `en`.
+- Если есть `ru`, страницы должны быть синхронизированы по структуре.
+- Не допускать ситуации, когда языки имеют разную архитектуру страниц.
+- Не внедрять CMS до появления реальной потребности.
 
 ### SEO
 

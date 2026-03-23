@@ -1,0 +1,171 @@
+@layer components.ui {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .menu {
+    --menu-current-bg: var(--color-fill);
+    --menu-color: var(--color-text-02);
+    --menu-padding: var(--size-2);
+    --menu-item-padding-x: var(--size-2);
+    --menu-item-padding-y: var(--size-1);
+
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: var(--menu-padding);
+    width: max-content;
+    min-width: var(--width-sm);
+    max-width: var(--width-base);
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: CHILDREN                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.menu) {
+    /* #region: ITEMS */
+
+    li {
+      color: var(--menu-color);
+      display: block;
+      padding: 0;
+      width: 100%;
+
+      &::before {
+        content: none;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: var(--size-half);
+      }
+    }
+
+    li > a {
+      @mixin text-format base;
+
+      background-color: transparent;
+      border: 0;
+      border-radius: var(--radius-sm);
+      color: var(--menu-color);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--size-1);
+      justify-content: flex-start;
+      text-align: start;
+      text-decoration: none;
+      text-transform: none;
+      padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
+      outline: 0;
+      position: relative;
+      transition:
+        background var(--duration-50) var(--easing-base),
+        color var(--duration-50) var(--easing-base);
+      user-select: none;
+      width: 100%;
+      height: auto;
+
+      &:is(:active, :focus-visible),
+      &[aria-current] {
+        background-color: var(--menu-current-bg);
+        text-decoration: none;
+      }
+
+      &[aria-current] {
+        cursor: default;
+        pointer-events: none;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: var(--menu-current-bg);
+        }
+      }
+    }
+
+    /* #endregion */
+
+    /* #region: ITEM DESCENDANTS */
+
+    .menu-label {
+      @mixin text-truncate;
+
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .icon {
+      flex-shrink: 0;
+    }
+
+    /* #endregion */
+
+    /* #region: ITEM MODIFIERS */
+
+    :is(.menu-item-icon-start, .menu-item-icons) {
+      padding-inline-start: calc(var(--menu-item-padding-x) - var(--size-half));
+    }
+
+    :is(.menu-item-icon-end, .menu-item-icons) {
+      padding-inline-end: calc(var(--menu-item-padding-x) - var(--size-half));
+    }
+
+    /* #endregion */
+
+    /* #region: ACTION */
+
+    .menu-action {
+      @mixin text-format base;
+
+      background: transparent;
+      border-radius: var(--button-radius, var(--radius-base));
+      color: var(--button-color, var(--color-brand-primary));
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: var(--button-gap, var(--size-1h));
+      justify-content: start;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-inline: var(--button-padding-x, var(--size-2h));
+      outline: 0;
+      touch-action: manipulation;
+      transition: background var(--duration-50) var(--easing-base);
+      user-select: none;
+      white-space: nowrap;
+      width: 100%;
+      height: var(--button-height, var(--size-6));
+
+      &.is-disabled {
+        cursor: default;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: var(--menu-current-bg);
+        }
+      }
+    }
+
+    /* #endregion */
+
+    /* #region: DIVIDER */
+
+    .menu-divider {
+      border-top: 1px solid var(--color-border);
+      margin: 0;
+      height: 0;
+    }
+
+    /* #endregion */
+  }
+
+  /* #endregion */
+}

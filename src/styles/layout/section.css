@@ -1,0 +1,40 @@
+@layer layout {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .section {
+    margin-top: var(--spacer-xl);
+    padding-block: var(--spacer);
+  }
+
+  @scope (.section) {
+    .title {
+      color: var(--color-text);
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: MODIFIERS                                                       */
+  /* ------------------------------------------------------------------------ */
+
+  .section-centered {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-inline: auto;
+    padding-bottom: var(--size-7);
+    max-width: var(--section-width, 622px);
+  }
+
+  @scope (.section-centered) {
+    h2 {
+      margin-block: var(--size-1) 0;
+    }
+  }
+
+  /* #endregion */
+}

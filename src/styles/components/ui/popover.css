@@ -1,0 +1,257 @@
+@layer components.ui {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .popover {
+    --popover-body-background: var(--color-bg);
+    --popover-body-color: var(--color-text-02);
+    --popover-body-offset: var(--size-1);
+    --popover-body-inset-inline-start: 0;
+    --popover-body-padding-block: var(--size-2);
+    --popover-body-padding-inline: var(--padding-x-md, var(--size-2));
+    --popover-body-radius: var(--radius-md);
+    --popover-body-shadow: var(--shadow-z2);
+    --popover-body-translate-inline: 0;
+    --popover-body-translate-block-base: 0;
+    --popover-body-translate-block-motion: var(--popover-body-offset);
+    --popover-body-w: var(--width-sm);
+    --popover-body-max-w: calc(100vw - var(--size-2h) * 2);
+
+    position: relative;
+    width: fit-content;
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: CHILDREN                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.popover) {
+    /* #region: SUMMARY / TRIGGER */
+
+    summary,
+    [data-role='popover-summary'] {
+      cursor: pointer;
+    }
+
+    :scope.popover-chevron :where(summary, [data-role='popover-summary']) {
+      display: flex;
+      align-items: center;
+    }
+
+    :scope.popover-chevron :where(summary, [data-role='popover-summary'])::after {
+      background-image: var(--icon-chevron-down);
+      background-position: center;
+      background-repeat: no-repeat;
+      content: '';
+      display: block;
+      flex-shrink: 0;
+      margin-inline-start: var(--size-half);
+      transition: rotate var(--duration-50) var(--easing-base);
+      width: var(--size-2);
+      height: var(--size-2);
+    }
+
+    :scope.popover-chevron[open] :where(summary, [data-role='popover-summary'])::after,
+    :scope.popover-chevron.is-open :where(summary, [data-role='popover-summary'])::after {
+      rotate: 180deg;
+    }
+
+    /* #endregion */
+
+    /* #region: DETAILS CONTENT */
+
+    :scope::details-content {
+      transition: content-visibility var(--duration-200) var(--easing-base);
+      transition-behavior: allow-discrete;
+    }
+
+    /* #endregion */
+
+    /* #region: BODY */
+
+    .body {
+      background-color: var(--popover-body-background);
+      border-radius: var(--popover-body-radius);
+      box-shadow: var(--popover-body-shadow);
+      color: var(--popover-body-color);
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      inset-inline-start: var(--popover-body-inset-inline-start);
+      opacity: 0;
+      padding-block: var(--popover-body-padding-block);
+      padding-inline: var(--popover-body-padding-inline);
+      pointer-events: none;
+      position: absolute;
+      text-align: start;
+      transition:
+        opacity var(--duration-200) var(--easing-out),
+        translate var(--duration-200) var(--easing-out);
+      translate: var(--popover-body-translate-inline)
+        calc(var(--popover-body-translate-block-base) + var(--popover-body-translate-block-motion));
+      width: var(--popover-body-w);
+      max-width: var(--popover-body-max-w);
+      z-index: var(--z-popover);
+    }
+
+    .body:has(> .menu),
+    .body.has-menu {
+      padding: 0;
+    }
+
+    :scope[open] .body,
+    :scope.is-open > .body {
+      --popover-body-translate-block-motion: 0;
+      opacity: 1;
+      pointer-events: auto;
+      transition:
+        opacity var(--duration-200) var(--easing-base),
+        translate var(--duration-200) var(--easing-base);
+    }
+
+    @starting-style {
+      :scope[open] > .body,
+      :scope.is-open > .body {
+        --popover-body-translate-block-motion: var(--popover-body-offset);
+        opacity: 0;
+      }
+    }
+
+    /* #endregion */
+
+    /* #region: HEADING */
+
+    .heading {
+      @mixin text-format base;
+
+      color: var(--color-text);
+      font-variation-settings: 'wdth' 100;
+      margin-block: var(--size-1h) -8px;
+    }
+
+    /* #endregion */
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: MODIFIERS                                                       */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.popover-up) {
+    .body {
+      --popover-body-translate-block-motion: calc(var(--popover-body-offset) * -1);
+      inset-block-end: 100%;
+    }
+
+    :scope[open] > .body,
+    :scope.is-open > .body {
+      --popover-body-translate-block-motion: 0;
+    }
+
+    @starting-style {
+      :scope[open] > .body,
+      :scope.is-open > .body {
+        --popover-body-translate-block-motion: calc(var(--popover-body-offset) * -1);
+      }
+    }
+  }
+
+  @scope (.popover-end) {
+    .body {
+      @media (--phone-l) {
+        inset-inline: auto 0;
+      }
+    }
+  }
+
+  @scope (.popover-center) {
+    .body {
+      --popover-body-inset-inline-start: 50%;
+      --popover-body-translate-inline: -50%;
+    }
+  }
+
+  @scope (.popover-middle) {
+    .body {
+      inset-block: 50% auto;
+      translate: var(--popover-body-translate-inline) calc(-50% + var(--popover-body-offset));
+    }
+
+    :scope[open] > .body,
+    :scope.is-open > .body {
+      translate: var(--popover-body-translate-inline) -50%;
+    }
+  }
+
+  @scope (.popover-middle.popover-end) {
+    .body {
+      inset-block: 50% auto;
+      inset-inline: auto 100%;
+      translate: calc(var(--popover-body-offset) * -1) calc(-50% + var(--popover-body-offset));
+    }
+
+    :scope[open] > .body,
+    :scope.is-open > .body {
+      translate: calc(var(--popover-body-offset) * -1) -50%;
+    }
+  }
+
+  .phone\:popover-center > .body {
+    @media (--phone) {
+      --popover-body-inset-inline-start: 50%;
+      --popover-body-translate-inline: -50%;
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: ANCHOR POSITIONING                                              */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.popover) {
+    @supports (anchor-name: --a) and (position-anchor: --a) {
+      summary,
+      [data-role='popover-summary'] {
+        anchor-name: --popover-anchor;
+      }
+
+      .body {
+        position-anchor: --popover-anchor;
+        inset-area: bottom start;
+      }
+
+      :scope.popover-up > .body {
+        inset-area: top start;
+      }
+
+      :scope.popover-end > .body {
+        inset-area: bottom end;
+      }
+
+      :scope.popover-center > .body {
+        inset-area: bottom center;
+      }
+
+      :scope.popover-up.popover-end > .body {
+        inset-area: top end;
+      }
+
+      :scope.popover-up.popover-center > .body {
+        inset-area: top center;
+      }
+
+      :scope.phone\:popover-center > .body {
+        @media (--phone) {
+          inset-area: bottom center;
+        }
+      }
+    }
+  }
+
+  /* #endregion */
+}

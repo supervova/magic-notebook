@@ -1,97 +1,92 @@
+# -------------------------------
 # Working stuff
-.publish
-/-copy.publish
-/src/base/_variables-v1.scss
-/src/css
-/src/pages/notes
-backup
-dist
+# -------------------------------
 
-# Media Files
-*.avi
-*.doc
-*.docx
-# *.gif
-# *.jpeg
-# *.jpg
-*.mov
-*.mp3
-# *.mp4
-*.mpeg
-*.pdf
-# *.png
-# *.svg
-*.webm
-*.webp
-*.wmv
+*.tmp
+*~.*
+.obsidian/
+.vault-nickname
+docs/notes/
 
-# Misc
-sitemap.xml
-sitemap.xml.gz
+# -------------------------------
+# Build / runtime
+# -------------------------------
+.cache/
+.eslintcache
+.tmp/
+.vitepress/cache/
+dist/
 
-# Editors
-.vscode/*
-!.vscode/extensions.json
-!.vscode/launch.json
-!.vscode/settings.json
-!.vscode/tasks.json
-*.code-workspace
-*_notes
+# -------------------------------
+# Generated types
+# -------------------------------
+.astro/
 
-#Build generated
-*.sass-cache*
-.tmp
-
-# Logs, backups
-*.bak
-*.log
-*.swp
-
+# -------------------------------
 # Package managers
-.npm
-.pnpm-store
-.yarn
-.yarn-integrity
-jspm_packages
-node_modules
+# -------------------------------
+*.tgz
+.pnp.*
+.pnpm-store/
+node_modules/
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-# Lockfiles should be checked into source control (e.g. pnpm-lock.yaml, yarn.lock).
 
-# Optional eslint cache
-.eslintcache
-
-# dotenv environment variables file(s)
+# -------------------------------
+# Environment variables
+# -------------------------------
 .env
 .env.*
 !.env.example
 
-# SYSTEM FILES
-*.DS_Store
-*.app
+# -------------------------------
+# Logs / backups
+# -------------------------------
+*.bak
+*.log
+*.swp
+.stylelintcache
+backup/
+logs/
 
-# Windows thumbnail cache files
+# -------------------------------
+# Editors / IDE
+# -------------------------------
+*.njsproj
+*.ntvs*
+*.sln
+*.suo
+.idea/
+.settings/
+.vscode/
+
+# -------------------------------
+# Test artifacts
+# -------------------------------
+output/
+playwright-report/
+test-results/
+blob-report/
+coverage/
+.nyc_output/
+
+# -------------------------------
+# OS / system files
+# -------------------------------
+$RECYCLE.BIN/
+.DS_Store
+._*
+Desktop.ini
 Thumbs.db
 ehthumbs.db
-ehthumbs_vista.db
 
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
+# macOS
 .DocumentRevisions-V100
-.fseventsd
 .Spotlight-V100
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
-
+.fseventsd

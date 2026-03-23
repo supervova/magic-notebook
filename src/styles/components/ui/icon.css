@@ -1,0 +1,59 @@
+@layer components.base {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .icon {
+    --icon-fill: transparent;
+    --icon-stroke: var(--color-icon);
+    --icon-stroke-width: 2;
+    --icon-size: var(--size-3);
+
+    display: inline-block;
+    fill: var(--icon-fill);
+    flex-shrink: 0;
+    overflow: hidden;
+    transition:
+      fill var(--duration-50),
+      opacity var(--duration-50);
+    vertical-align: middle;
+    width: var(--icon-size);
+    height: var(--icon-size);
+
+    @media (--retina) {
+      --icon-stroke-width: 1.5;
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: VARIANTS                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  .icon-sm {
+    --icon-size: var(--size-2h);
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: ICON BADGE                                                       */
+  /* ------------------------------------------------------------------------ */
+
+  /* figure */.icon-badge {
+    --icon-badge-size: var(--size-7);
+
+    background: var(--color-bg-02-brand);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-bottom: var(--margin-bottom, 0);
+    width: var(--icon-badge-size);
+    height: var(--icon-badge-size);
+  }
+
+  /* #endregion */
+}

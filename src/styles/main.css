@@ -1,0 +1,45 @@
+@layer base, content, components.base, components.form, layout;
+@layer components.ui, components.sections, pages, utils, print;
+
+/* Mixins, custom media and variable fonts are defined outside layers — excluded
+from build but available globally. */
+@import url('./base/custom.css');
+@import url('./base/mixins.css');
+@import url('./base/fonts.css');
+
+@import url('./base/reset.css');
+@import url('./base/vars.css');
+@import url('./base/vars-light.css');
+@import url('./base/doc.css');
+
+/* Optional: enables pixel-perfect baseline compensation via `--padding-*` vars */
+@import url('./content/rhythm-compensation.css');
+@import url('./content/base.css');
+
+@import url('./components/ui/icon.css');
+@import url('./components/ui/button.css');
+@import url('./layout/containers.css');
+@import url('./utils/base.css');
+
+/* -------------------------------------------------------------------------- */
+/* #region: EXTENDED                                                          */
+/* -------------------------------------------------------------------------- */
+
+/* Content */
+
+/* Components: Base */
+
+/* Components: Form */
+
+/* Layout */
+
+/* Components: UI */
+@import url('./components/ui/menu.css');
+@import url('./components/ui/popover.css');
+
+/* Components: Sections */
+
+/* Utils and print */
+@import url('./print.css') layer(print);
+
+/* #endregion */

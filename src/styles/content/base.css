@@ -1,4 +1,4 @@
-@layer content {
+@layer base {
   /* ------------------------------------------------------------------------ */
   /* #region: GENERAL                                                         */
   /* ------------------------------------------------------------------------ */
@@ -27,6 +27,7 @@
   h2, .h2,
   h3, .h3 {
     font-family: var(--font-family-titles);
+    font-feature-settings: 'ss07' on;
   }
 
   .h1, .h2, .h3, .h4 {
@@ -137,7 +138,7 @@
     font-weight: var(--font-weight-strong, 600);
   }
 
-  /* Use this to highlight with color. E.g. `.text-success` */
+  /* Use this to highlight with color. E.g. `.text-positive` */
   b[class] {
     font-weight: inherit;
   }
@@ -197,7 +198,7 @@
       line-height: 1;
       position: absolute;
       top: var(--list-bullet-top);
-      left: -20px;
+      inset-inline-start: -20px;
     }
   }
 
@@ -220,7 +221,7 @@
         text-align: end;
         position: absolute;
         top: var(--list-number-top);
-        left: 0;
+        inset-inline-start: 0;
       }
     }
   }
@@ -241,7 +242,7 @@
   }
 
   dd {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   :is(dd, li) {
@@ -269,12 +270,6 @@
   /* ------------------------------------------------------------------------ */
   /* #region: MEDIA AND EMBEDS                                                */
   /* ------------------------------------------------------------------------ */
-
-  img,
-  svg,
-  video {
-    height: auto;
-  }
 
   figcaption {
     @mixin text-format body-sm;

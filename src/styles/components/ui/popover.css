@@ -3,20 +3,30 @@
   /* #region: BASE                                                            */
   /* ------------------------------------------------------------------------ */
 
+  /*
+   * <details class="popover [popover-end] [popover-up]" data-role="popover">
+   *   <summary>…</summary>
+   *   <div class="body">
+   *     h3.heading, ul.menu, whatever
+   *   </div>
+   * </details>
+   */
+
   .popover {
-    --popover-body-background: var(--color-bg);
-    --popover-body-color: var(--color-text-02);
-    --popover-body-offset: var(--size-1);
-    --popover-body-inset-inline-start: 0;
-    --popover-body-padding-block: var(--size-2);
-    --popover-body-padding-inline: var(--padding-x-md, var(--size-2));
-    --popover-body-radius: var(--radius-md);
-    --popover-body-shadow: var(--shadow-z2);
-    --popover-body-translate-inline: 0;
-    --popover-body-translate-block-base: 0;
-    --popover-body-translate-block-motion: var(--popover-body-offset);
-    --popover-body-w: var(--width-sm);
-    --popover-body-max-w: calc(100vw - var(--size-2h) * 2);
+    --popover-background: var(--color-bg);
+    --popover-radius: var(--radius-md);
+    --popover-shadow: var(--shadow-z2);
+    --popover-color: var(--color-text-02);
+
+    --popover-padding-y: var(--size-2);
+    --popover-padding-x: var(--padding-x-md, var(--size-2));
+
+    --popover-offset: var(--size-1);
+    --popover-x-end: auto;
+    --popover-x-start: 0;
+
+    --popover-width: var(--width-sm);
+    --popover-max-width: calc(100vw - var(--size-2h) * 2);
 
     position: relative;
     width: fit-content;
@@ -36,6 +46,7 @@
       cursor: pointer;
     }
 
+    /* Chevron created with a pseudo-element */
     :scope.popover-chevron :where(summary, [data-role='popover-summary']) {
       display: flex;
       align-items: center;
@@ -54,46 +65,52 @@
       height: var(--size-2);
     }
 
-    :scope.popover-chevron[open] :where(summary, [data-role='popover-summary'])::after,
-    :scope.popover-chevron.is-open :where(summary, [data-role='popover-summary'])::after {
+    :scope.popover-chevron:is([open], .is-open)
+      :where(summary, [data-role='popover-summary'])::after {
       rotate: 180deg;
-    }
-
-    /* #endregion */
-
-    /* #region: DETAILS CONTENT */
-
-    :scope::details-content {
-      transition: content-visibility var(--duration-200) var(--easing-base);
-      transition-behavior: allow-discrete;
     }
 
     /* #endregion */
 
     /* #region: BODY */
 
+    :scope::details-content {
+      transition: content-visibility var(--duration-100) var(--easing-base);
+      transition-behavior: allow-discrete;
+    }
+
     .body {
-      background-color: var(--popover-body-background);
-      border-radius: var(--popover-body-radius);
-      box-shadow: var(--popover-body-shadow);
-      color: var(--popover-body-color);
+      --popover-translate-x: 0;
+      --popover-translate-y: calc(var(--popover-offset) * -1);
+
+      background-color: var(--popover-background);
+      border-radius: var(--popover-radius);
+      box-shadow: var(--popover-shadow);
+      color: var(--popover-color);
       display: flex;
       flex-direction: column;
-      margin: 0;
-      inset-inline-start: var(--popover-body-inset-inline-start);
-      opacity: 0;
-      padding-block: var(--popover-body-padding-block);
-      padding-inline: var(--popover-body-padding-inline);
-      pointer-events: none;
-      position: absolute;
       text-align: start;
+
+      margin: 0;
+      padding-block: var(--popover-padding-y);
+      padding-inline: var(--popover-padding-x);
+      opacity: 0;
+      pointer-events: none;
+
+      position: absolute;
+      inset-inline:
+        var(--popover-x-start)
+        var(--popover-x-end);
+
+      transform:
+        translateX(var(--popover-translate-x))
+        translateY(var(--popover-translate-y));
       transition:
-        opacity var(--duration-200) var(--easing-out),
-        translate var(--duration-200) var(--easing-out);
-      translate: var(--popover-body-translate-inline)
-        calc(var(--popover-body-translate-block-base) + var(--popover-body-translate-block-motion));
-      width: var(--popover-body-w);
-      max-width: var(--popover-body-max-w);
+        opacity var(--duration-100) var(--easing-out),
+        transform var(--duration-100) var(--easing-out);
+
+      width: var(--popover-width);
+      max-width: var(--popover-max-width);
       z-index: var(--z-popover);
     }
 
@@ -102,34 +119,25 @@
       padding: 0;
     }
 
-    :scope[open] .body,
-    :scope.is-open > .body {
-      --popover-body-translate-block-motion: 0;
+    /* Open State */
+    :scope:is([open], .is-open) > .body {
       opacity: 1;
       pointer-events: auto;
+      transform:
+        translateX(var(--popover-translate-x))
+        translateY(0);
       transition:
-        opacity var(--duration-200) var(--easing-base),
-        translate var(--duration-200) var(--easing-base);
+        opacity var(--duration-100) var(--easing-base),
+        transform var(--duration-100) var(--easing-base);
     }
 
     @starting-style {
-      :scope[open] > .body,
-      :scope.is-open > .body {
-        --popover-body-translate-block-motion: var(--popover-body-offset);
+      :scope:is([open], .is-open) > .body {
         opacity: 0;
+        transform:
+          translateX(var(--popover-translate-x))
+          translateY(var(--popover-translate-y));
       }
-    }
-
-    /* #endregion */
-
-    /* #region: HEADING */
-
-    .heading {
-      @mixin text-format base;
-
-      color: var(--color-text);
-      font-variation-settings: 'wdth' 100;
-      margin-block: var(--size-1h) -8px;
     }
 
     /* #endregion */
@@ -141,49 +149,64 @@
   /* #region: MODIFIERS                                                       */
   /* ------------------------------------------------------------------------ */
 
+  /* Panel opens upward */
   @scope (.popover-up) {
     .body {
-      --popover-body-translate-block-motion: calc(var(--popover-body-offset) * -1);
+      --popover-translate-y: var(--popover-offset);
+
       inset-block-end: 100%;
-    }
-
-    :scope[open] > .body,
-    :scope.is-open > .body {
-      --popover-body-translate-block-motion: 0;
-    }
-
-    @starting-style {
-      :scope[open] > .body,
-      :scope.is-open > .body {
-        --popover-body-translate-block-motion: calc(var(--popover-body-offset) * -1);
-      }
     }
   }
 
-  @scope (.popover-end) {
-    .body {
-      @media (--phone-l) {
-        inset-inline: auto 0;
-      }
+  /* Panel is aligned to the right (LTR) edge of the trigger */
+  .popover-end {
+    @media (--phone-l) {
+      --popover-x-end: 0;
+      --popover-x-start: auto;
     }
+  }
+
+  /* Panel is horizontally centered relative to the trigger… */
+  .popover-center {
+    --popover-x-end: auto;
+    --popover-x-start: 50%;
   }
 
   @scope (.popover-center) {
     .body {
-      --popover-body-inset-inline-start: 50%;
-      --popover-body-translate-inline: -50%;
+      --popover-translate-x: -50%;
     }
   }
 
+  /* …on mobile only */
+  @media (--phone) {
+    .phone\:popover-center {
+      --popover-x-end: auto;
+      --popover-x-start: 50%;
+    }
+  }
+
+  /* #region: Panel is vertically centered relative to the trigger */
   @scope (.popover-middle) {
     .body {
       inset-block: 50% auto;
-      translate: var(--popover-body-translate-inline) calc(-50% + var(--popover-body-offset));
+      transform:
+        translateX(var(--popover-translate-x))
+        translateY(calc(-50% + var(--popover-offset)));
     }
 
-    :scope[open] > .body,
-    :scope.is-open > .body {
-      translate: var(--popover-body-translate-inline) -50%;
+    :scope:is([open], .is-open) > .body {
+      transform:
+        translateX(var(--popover-translate-x))
+        translateY(-50%);
+    }
+
+    @starting-style {
+      :scope:is([open], .is-open) > .body {
+        transform:
+          translateX(var(--popover-translate-x))
+          translateY(calc(-50% + var(--popover-offset)));
+      }
     }
   }
 
@@ -191,21 +214,27 @@
     .body {
       inset-block: 50% auto;
       inset-inline: auto 100%;
-      translate: calc(var(--popover-body-offset) * -1) calc(-50% + var(--popover-body-offset));
+      transform:
+        translateX(calc(var(--popover-offset) * -1))
+        translateY(calc(-50% + var(--popover-offset)));
     }
 
-    :scope[open] > .body,
-    :scope.is-open > .body {
-      translate: calc(var(--popover-body-offset) * -1) -50%;
+    :scope:is([open], .is-open) > .body {
+      transform:
+        translateX(calc(var(--popover-offset) * -1))
+        translateY(-50%);
+    }
+
+    @starting-style {
+      :scope:is([open], .is-open) > .body {
+        transform:
+          translateX(calc(var(--popover-offset) * -1))
+          translateY(calc(-50% + var(--popover-offset)));
+      }
     }
   }
 
-  .phone\:popover-center > .body {
-    @media (--phone) {
-      --popover-body-inset-inline-start: 50%;
-      --popover-body-translate-inline: -50%;
-    }
-  }
+  /* #endregion */
 
   /* #endregion */
 
@@ -220,31 +249,53 @@
         anchor-name: --popover-anchor;
       }
 
+      /* Default - Panel opens downward */
       .body {
         position-anchor: --popover-anchor;
         inset-area: bottom start;
       }
 
+      /* Panel opens upward */
       :scope.popover-up > .body {
         inset-area: top start;
       }
 
-      :scope.popover-end > .body {
-        inset-area: bottom end;
-      }
-
-      :scope.popover-center > .body {
-        inset-area: bottom center;
-      }
-
+      /* Upward, right-aligned */
       :scope.popover-up.popover-end > .body {
         inset-area: top end;
       }
 
+      /* Upward, center-aligned */
       :scope.popover-up.popover-center > .body {
         inset-area: top center;
       }
 
+      /* Panel is vertically centered relative to the trigger */
+      :scope.popover-middle > .body {
+        inset-area: center start;
+      }
+
+      /* Vertically centered, right-aligned */
+      :scope.popover-middle.popover-end > .body {
+        inset-area: center end;
+      }
+
+      /* Vertically and horizontally centered */
+      :scope.popover-middle.popover-center > .body {
+        inset-area: center center;
+      }
+
+      /* Panel is aligned to the right (LTR) edge of the trigger */
+      :scope.popover-end > .body {
+        inset-area: bottom end;
+      }
+
+      /* Panel is horizontally centered relative to the trigger… */
+      :scope.popover-center > .body {
+        inset-area: bottom center;
+      }
+
+      /* …on mobile only */
       :scope.phone\:popover-center > .body {
         @media (--phone) {
           inset-area: bottom center;

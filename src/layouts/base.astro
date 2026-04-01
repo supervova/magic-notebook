@@ -35,5 +35,6 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
 
   <body class={bodyClass}>
     <slot />
+    <script src="../js/main.js"></script>
   </body>
 </html>

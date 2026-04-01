@@ -24,11 +24,11 @@
   }
 
   .main {
-    padding-bottom: var(--spacer);
+    padding-bottom: var(--spacer-xl);
     max-width: 100%;
 
     &:not(:has(> .hero)) {
-      padding-top: var(--spacer);
+      padding-top: var(--spacer-xl);
     }
 
     @media (--tablet) {

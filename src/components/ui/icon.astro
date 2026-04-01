@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string;
+  label?: string;
+  name: string;
+}
+
+const { class: className, label, name, ...attrs } = Astro.props;
+const isDecorative = !label;
+const href = `/assets/icons/sprite.svg#${name}`;
+---
+
+<svg
+  {...attrs}
+  aria-hidden={isDecorative ? 'true' : undefined}
+  aria-label={label}
+  class:list={['icon', className]}
+  focusable="false"
+  role={label ? 'img' : undefined}
+>
+  <use href={href}></use>
+</svg>

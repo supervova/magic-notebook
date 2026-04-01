@@ -1,0 +1,163 @@
+@layer components.ui {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .accordion {
+    --accordion-border-color: var(--color-border-02);
+    --accordion-marker-bg: var(--color-bg-03);
+    --accordion-marker-bg-active: var(--color-bg-01);
+    --accordion-marker-border: 1px solid var(--color-border-02);
+    --accordion-marker-offset: var(--flow-gap);
+    --accordion-marker-size: var(--size-3);
+    --accordion-marker-stroke: var(--color-text-03);
+    --accordion-summary-color: var(--color-text);
+    --accordion-summary-color-active: var(--color-text-02);
+    --accordion-summary-padding-block: var(--flow-gap);
+    --accordion-summary-padding-inline-end: calc(
+      var(--flow-gap) + var(--accordion-marker-size) + var(--flow-gap) / 2
+    );
+
+    border-top: 1px solid var(--accordion-border-color);
+    display: block;
+    overflow: hidden;
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: OPEN STATE                                                      */
+  /* ------------------------------------------------------------------------ */
+
+  .accordion[open] {
+    --accordion-marker-bg: var(--accordion-marker-bg-active);
+    --accordion-marker-border: transparent;
+    --accordion-marker-stroke: var(--color-text-02);
+
+    .marker {
+      rotate: 180deg;
+    }
+
+    ::details-content,
+    .accordion-body {
+      height: auto;
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: CHILDREN                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.accordion) {
+    summary {
+      color: var(--accordion-summary-color);
+      cursor: pointer;
+      font-weight: 500;
+
+      /* -1px compensates for parent border-top to align visual rhythm */
+      padding-top: calc(var(--accordion-summary-padding-block) - 1px);
+      padding-bottom: var(--accordion-summary-padding-block);
+      padding-inline-end: var(--accordion-summary-padding-inline-end);
+      position: relative;
+      transition: color var(--duration-50) var(--easing-base);
+      width: 100%;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &:focus-visible {
+        @mixin state-focus;
+      }
+
+      /* Summary with subheading — tighter padding */
+      &:has(hgroup),
+      &.has-hgroup {
+        --accordion-summary-padding-block: calc(var(--flow-gap) / 2);
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          color: var(--accordion-summary-color-active);
+        }
+      }
+    }
+
+    hgroup {
+      flex: 1 1 auto;
+
+      strong {
+        display: block;
+        font-weight: inherit;
+      }
+
+      .text-02 {
+        @mixin text-truncate;
+
+        display: block;
+        font-weight: 400;
+      }
+
+      .marker {
+        top: 50%;
+        translate: 0 -50%;
+      }
+    }
+
+    .marker {
+      --icon-stroke: var(--accordion-marker-stroke);
+
+      background: var(--accordion-marker-bg);
+      border: var(--accordion-marker-border);
+      border-radius: var(--radius-pill);
+      color: var(--accordion-marker-stroke);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 2px;
+      position: absolute;
+      top: var(--accordion-marker-offset);
+      inset-inline-end: 0;
+      transition:
+        background-color var(--duration-50) var(--easing-base),
+        rotate var(--duration-50) var(--easing-base);
+      width: var(--accordion-marker-size);
+      height: var(--accordion-marker-size);
+    }
+
+    ::details-content {
+      color: var(--color-text-02);
+      transition:
+        content-visibility var(--duration-200) var(--easing-base),
+        height var(--duration-200) var(--easing-base);
+      transition-behavior: allow-discrete;
+      height: 0;
+    }
+
+    .body :is(h3, .h3) {
+      color: var(--color-text);
+      font-size: var(--font-size-body-sm);
+      font-weight: 500;
+      letter-spacing: var(--letter-spacing-body-sm, 0);
+      line-height: var(--line-height-body-sm);
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: SPACING                                                         */
+  /* ------------------------------------------------------------------------ */
+
+  .accordion + :not(.accordion) {
+    margin-top: var(--flow-gap);
+
+    @media (--tablet) {
+      margin-top: calc(var(--flow-gap) * 2);
+    }
+  }
+
+  /* #endregion */
+}

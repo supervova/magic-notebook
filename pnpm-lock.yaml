@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      embla-carousel:
+        specifier: ^8.6.0
+        version: 8.6.0
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.8
@@ -59,6 +63,9 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.8.1
+      sharp:
+        specifier: ^0.34.5
+        version: 0.34.5
       stylelint:
         specifier: ^17.1.1
         version: 17.5.0(typescript@5.9.3)
@@ -1905,6 +1912,9 @@ packages:
 
   electron-to-chromium@1.5.321:
     resolution: {integrity: sha512-L2C7Q279W2D/J4PLZLk7sebOILDSWos7bMsMNN06rK482umHUrh/3lM8G7IlHFOYip2oAg5nha1rCMxr/rs6ZQ==}
+
+  embla-carousel@8.6.0:
+    resolution: {integrity: sha512-SjWyZBHJPbqxHOzckOfo8lHisEaJWmwd23XppYFYVh10bU66/Pn5tkVkbkCMZVdbUE5eTCI2nD8OyIP4Z+uwkA==}
 
   emmet@2.4.11:
     resolution: {integrity: sha512-23QPJB3moh/U9sT4rQzGgeyyGIrcM+GH5uVYg2C6wZIxAIJq7Ng3QLT79tl8FUwDXhyq9SusfknOrofAKqvgyQ==}
@@ -5472,8 +5482,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@img/colour@1.1.0':
-    optional: true
+  '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.34.5':
     optionalDependencies:
@@ -6594,8 +6603,7 @@ snapshots:
 
   destr@2.0.5: {}
 
-  detect-libc@2.1.2:
-    optional: true
+  detect-libc@2.1.2: {}
 
   devalue@5.6.4: {}
 
@@ -6689,6 +6697,8 @@ snapshots:
   duplexer3@0.1.5: {}
 
   electron-to-chromium@1.5.321: {}
+
+  embla-carousel@8.6.0: {}
 
   emmet@2.4.11:
     dependencies:
@@ -9305,7 +9315,6 @@ snapshots:
       '@img/sharp-win32-arm64': 0.34.5
       '@img/sharp-win32-ia32': 0.34.5
       '@img/sharp-win32-x64': 0.34.5
-    optional: true
 
   shebang-command@1.2.0:
     dependencies:

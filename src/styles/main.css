@@ -1,5 +1,5 @@
-@layer base, content, components.base, components.form, layout;
-@layer components.ui, components.sections, pages, utils, print;
+@layer base, content, layout, components, features, pages, utils, print;
+@layer components.ui, components.form, components.custom;
 
 /* Mixins, custom media and variable fonts are defined outside layers — excluded
 from build but available globally. */
@@ -27,17 +27,21 @@ from build but available globally. */
 
 /* Content */
 
-/* Components: Base */
+/* Layout */
 
 /* Components: Form */
 
-/* Layout */
-
 /* Components: UI */
+@import url('./components/ui/button-split.css');
+@import url('./components/ui/carousel.css');
 @import url('./components/ui/menu.css');
 @import url('./components/ui/popover.css');
 
-/* Components: Sections */
+/* Components: Custom */
+
+/* Features */
+
+/* Pages */
 
 /* Utils and print */
 @import url('./print.css') layer(print);

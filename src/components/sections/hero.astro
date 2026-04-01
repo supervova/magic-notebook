@@ -1,4 +1,7 @@
 ---
+import { appLinks } from '../../config/app-links';
+import { getLocalizedPath } from '../../i18n/utils';
+
 interface HeroCopy {
   app: string,
   hero: {
@@ -16,8 +19,8 @@ interface Props {
 
 const { copy, locale } = Astro.props;
 
-const downloadHref = locale === 'ru' ? '/ru/download/' : '/download/';
-const videoHref = locale === 'ru' ? '/ru/video/' : '/video/';
+const downloadHref = appLinks.latestRelease;
+const videoHref = getLocalizedPath(locale, 'video');
 ---
 
 <section class='hero'>

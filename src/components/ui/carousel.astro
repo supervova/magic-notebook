@@ -1,0 +1,119 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { EmblaOptionsType } from 'embla-carousel';
+
+import Icon from './icon.astro';
+
+interface CarouselLabels {
+  goTo: string;
+  next: string;
+  pagination: string;
+  previous: string;
+  status: string;
+}
+
+interface Props extends HTMLAttributes<'div'> {
+  labels?: Partial<CarouselLabels>;
+  options?: EmblaOptionsType;
+  showControls?: boolean;
+  showPagination?: boolean;
+  slideGap?: string;
+  slideSize?: string;
+}
+
+const {
+  'aria-label': ariaLabel = 'Carousel',
+  class: className,
+  id = `carousel-${crypto.randomUUID()}`,
+  labels = {},
+  options = {},
+  showControls = true,
+  showPagination = true,
+  slideGap = '16px',
+  slideSize = '100%',
+  style,
+  ...attrs
+} = Astro.props;
+
+const carouselLabels: CarouselLabels = {
+  goTo: 'Go to slide {index}',
+  next: 'Next slide',
+  pagination: 'Choose slide',
+  previous: 'Previous slide',
+  status: 'Slide {index} of {total}',
+  ...labels,
+};
+
+const hasActions = showControls || showPagination;
+const rootStyle =
+  [
+    style,
+    `--carousel-slide-gap: ${slideGap}`,
+    `--carousel-slide-size: ${slideSize}`,
+  ]
+    .filter(Boolean)
+    .join('; ') || undefined;
+const viewportId = `${id}-viewport`;
+---
+
+<div
+  {...attrs}
+  aria-label={ariaLabel}
+  aria-roledescription="carousel"
+  class:list={['carousel', className]}
+  data-carousel-go-to-label={carouselLabels.goTo}
+  data-carousel-next-label={carouselLabels.next}
+  data-carousel-options={JSON.stringify(options)}
+  data-carousel-previous-label={carouselLabels.previous}
+  data-carousel-status-label={carouselLabels.status}
+  data-carousel-viewport-id={viewportId}
+  data-role="carousel"
+  id={id}
+  style={rootStyle}
+>
+  <div class="viewport" data-role="carousel-viewport" id={viewportId}>
+    <div class="track" data-role="carousel-track">
+      <slot />
+    </div>
+  </div>
+
+  {
+    hasActions && (
+      <div class="actions">
+        {showControls && (
+          <div class="nav">
+            <button
+              aria-controls={viewportId}
+              class="btn btn-icon action action-prev"
+              data-role="carousel-prev"
+              type="button"
+            >
+              <span class="visually-hidden">{carouselLabels.previous}</span>
+              <Icon class="icon-sm" name="sm-chevron-down" />
+            </button>
+
+            <button
+              aria-controls={viewportId}
+              class="btn btn-icon action action-next"
+              data-role="carousel-next"
+              type="button"
+            >
+              <span class="visually-hidden">{carouselLabels.next}</span>
+              <Icon class="icon-sm" name="sm-chevron-down" />
+            </button>
+          </div>
+        )}
+
+        {showPagination && (
+          <div
+            aria-label={carouselLabels.pagination}
+            class="pagination"
+            data-role="carousel-pagination"
+          ></div>
+        )}
+      </div>
+    )
+  }
+
+  <p aria-atomic="true" aria-live="polite" class="visually-hidden" data-role="carousel-status"></p>
+</div>

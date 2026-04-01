@@ -1,0 +1,68 @@
+@layer components.ui {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  /* TODO: попробовать сделать с Popover'ом и Menu */
+  /*
+   * <div class="btn-split" data-split-button>
+   *   <a class="btn btn-main" href="…">…</a>
+   *   <button class="btn-toggle" type="button" aria-haspopup="menu" aria-expanded="false">…</button>
+   *   <ul class="menu" role="menu" hidden>…</ul>
+   * </div>
+   */
+
+  .btn-split {
+    --split-divider: var(--color-border);
+
+    --split-menu-background: var(--color-bg);
+    --split-menu-current-bg: var(--color-fill);
+    --split-menu-color: var(--color-text-02);
+    --split-menu-padding: var(--size-2);
+    --split-menu-item-padding-x: var(--size-2);
+    --split-menu-item-padding-y: var(--size-1);
+
+    display: inline-flex;
+    align-items: stretch;
+    position: relative;
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: CHILDREN                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.btn-split) {
+    .btn-main {
+      border-radius: var(--button-radius) 0 0 var(--button-radius);
+      gap: var(--size-1);
+      padding-inline: var(--size-2) var(--size-1h);
+    }
+
+    .btn-toggle {
+      border-radius: 0 var(--button-radius) var(--button-radius) 0;
+      padding-inline: 0 var(--size-half);
+      position: relative;
+      width: var(--button-height);
+
+      &::after {
+        border-inline-start: 1px solid var(--button-divider, var(--color-border));
+        content: '';
+        position: absolute;
+        inset-inline-start: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: var(--size-3);
+        z-index: 1;
+      }
+    }
+
+    .icon {
+      flex-shrink: 0;
+    }
+  }
+
+  /* #endregion */
+}

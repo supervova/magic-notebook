@@ -65,6 +65,12 @@
     max-width: 100%;
   }
 
+  img,
+  svg,
+  video {
+    height: auto;
+  }
+
   pre {
     max-width: 100%;
     overflow-x: auto;

@@ -1,0 +1,170 @@
+@layer components.ui {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .carousel {
+    --carousel-gap: var(--size-2);
+    --carousel-slide-gap: var(--size-2);
+    --carousel-slide-size: 100%;
+
+    --carousel-action-bg: var(--color-bg-alpha);
+    --carousel-action-bg-hover: var(--color-bg-brand);
+    --carousel-action-size: var(--size-5);
+
+    --carousel-dot-bg: color-mix(in oklch, var(--color-text-03) 32%, transparent);
+    --carousel-dot-bg-active: var(--color-brand);
+    --carousel-dot-size: var(--size-1);
+
+    display: grid;
+    gap: var(--carousel-gap);
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: STATES                                                          */
+  /* ------------------------------------------------------------------------ */
+
+  .carousel.is-inactive {
+    display: none;
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: CHILDREN                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.carousel) {
+    .viewport {
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    /* Slides in row */
+    .track {
+      display: flex;
+
+      /* margin-inline-start: calc(var(--carousel-slide-gap) * -1); */
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .track > * {
+      flex: 0 0 var(--carousel-slide-size);
+
+      /* padding-inline-start: var(--carousel-slide-gap); */
+      min-width: 0;
+    }
+
+    /* Prev / Next */
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: var(--size-1);
+
+      @media (--tablet) {
+        --pager-offset: calc(-50% - 35px);
+
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        inset-inline: var(--size-2h);
+        transform: translateY(var(--pager-offset));
+      }
+
+      @media (--laptop) {
+        inset-inline: var(--size-1h);
+      }
+    }
+
+    .action {
+      --button-bg: var(--carousel-action-bg);
+      --button-bg-hover: var(--carousel-action-bg-hover);
+      --button-border-color: var(--color-border);
+      --button-border-width: 1px;
+      --button-height: var(--carousel-action-size);
+
+      backdrop-filter: var(--backdrop-blur-min);
+    }
+
+    .action-prev .icon {
+      rotate: 90deg;
+    }
+
+    .action-next .icon {
+      rotate: -90deg;
+    }
+
+    /* Dots */
+    .pagination {
+      display: none;
+
+      @media (--tablet) {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--size-1);
+        justify-content: flex-end;
+        min-height: var(--carousel-action-size);
+      }
+    }
+
+    .dot {
+      appearance: none;
+      background: var(--carousel-dot-bg);
+      border: 0;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      display: inline-flex;
+      padding: 0;
+      transition:
+        background-color var(--duration-50) var(--easing-base),
+        scale var(--duration-50) var(--easing-base);
+      width: var(--carousel-dot-size);
+      height: var(--carousel-dot-size);
+
+      &:focus-visible {
+        @mixin state-focus;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          background: color-mix(in oklch, var(--carousel-dot-bg-active) 64%, transparent);
+        }
+      }
+    }
+
+    .dot.is-active {
+      background: var(--carousel-dot-bg-active);
+      scale: 1.2;
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: RESPONSIVE                                                      */
+  /* ------------------------------------------------------------------------ */
+
+  @media (--phone) {
+    @scope (.carousel) {
+      .actions {
+        justify-content: center;
+      }
+
+      .pagination {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  }
+
+  /* #endregion */
+}

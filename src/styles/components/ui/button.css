@@ -1,4 +1,4 @@
-@layer components.base {
+@layer base {
   /* ------------------------------------------------------------------------ */
   /* #region: BASE                                                            */
   /* ------------------------------------------------------------------------ */
@@ -13,17 +13,18 @@
     --button-bg-hover: var(--color-bg-brand);
     --button-border-color: transparent;
     --button-border-width: 0;
-    --button-color: var(--color-text);
+    --button-color: var(--color-text-02);
     --button-color-hover: var(--button-color);
     --button-filter-hover: none;
     --button-radius: var(--radius-base);
 
-    --button-padding-x: var(--flow-gap);
     --button-gap: var(--size-1);
+    --button-padding-x-start: var(--size-2h);
+    --button-padding-x-end: var(--size-2h);
 
-    --button-font-size: var(--font-size-fine-print);
-    --button-font-weight: 500;
-    --button-letter-spacing: var(--letter-spacing-fine-print);
+    --button-font-size: var(--font-size-fine-base);
+    --button-font-weight: 400;
+    --button-letter-spacing: var(--letter-spacing-base);
     --button-line-height: 1;
     --button-decoration-hover: none;
 
@@ -37,7 +38,7 @@
       color var(--duration-50) var(--easing-base);
 
     --button-width: auto;
-    --button-height: var(--size-5);
+    --button-height: var(--size-6);
 
     appearance: none;
     background: var(--button-bg);
@@ -58,10 +59,8 @@
     letter-spacing: var(--button-letter-spacing);
     line-height: var(--button-line-height);
     text-decoration: none;
-    text-transform: uppercase;
     white-space: nowrap;
-    padding-top: 1px;
-    padding-inline: var(--button-padding-x);
+    padding: 1px var(--button-padding-x-end) 0 var(--button-padding-x-start);
     position: relative;
     transition: var(--button-transition);
     user-select: none;
@@ -106,13 +105,14 @@
   }
 
   .btn-primary {
-    --button-bg: var(--color-brand);
-    --button-bg-hover: var(--color-brand);
+    --button-bg: var(--color-gradient-brand);
+    --button-bg-hover: var(--button-bg);
+    --button-shadow:
+        0 0.5px 1.5px hsl(var(--h) var(--s) 20% / 0.24),
+        inset 0 2px 0 hsl(var(--h) var(--s) 99% / 0.12),
+        inset 0 0 0 1px hsl(var(--h) var(--s) 63% / 0.4);
+    --button-shadow-hover: var(--button-shadow);
     --button-filter-hover: var(--filter-brightness-up);
-    --button-font-weight: 600;
-    --button-shadow-hover:
-      inset 0 0 0 1px hsl(0 0% 0% / 0.08), inset 0 0 2px hsl(0 0% 100% / 0.4),
-      inset 0 0 4px 2px rgb(255 255 255 / 0.24), inset 0 0 16px 2px rgb(255 255 255 / 0.12);
     --button-color: var(--color-light-max);
     --button-border-color: transparent;
     --button-transition:
@@ -149,7 +149,8 @@
     --button-color: var(--color-link);
     --button-border-color: transparent;
     --button-height: auto;
-    --button-padding-x: 0;
+    --button-padding-x-start: 0;
+    --button-padding-x-end: 0;
     --button-radius: 0;
     --button-bg-hover: transparent;
     --button-decoration-hover: underline;
@@ -158,8 +159,9 @@
 
   .btn-close {
     --button-bg: var(--color-bg);
-    --button-hover: color-mix(in oklch, var(--button-bg) 80%, var(--color-error));
-    --button-padding-x: 0;
+    --button-hover: color-mix(in oklch, var(--button-bg) 80%, var(--color-negative));
+    --button-padding-x-start: 0;
+    --button-padding-x-end: 0;
     --button-height: var(--size-3);
     --button-shadow-hover: var(--shadow-z1);
 
@@ -176,9 +178,18 @@
     }
   }
 
+  .btn-icon-start {
+    padding-inline-start: calc(var(--button-padding-x-start) - var(--size-half));
+  }
+
+  .btn-icon-end {
+    padding-inline-end: calc(var(--button-padding-x-end) - var(--size-half));
+  }
+
   .btn-sm {
     --button-height: var(--size-4);
-    --button-padding-x: var(--size-2);
+    --button-padding-x-start: var(--size-2);
+    --button-padding-x-end: var(--size-2);
     --button-font-size: var(--font-size-sm);
   }
 

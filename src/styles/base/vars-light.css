@@ -6,6 +6,7 @@
     /* ---------------------------------------------------------------------- */
 
     --color-bg-brand: hsl(var(--h) var(--s) 96%);
+    --color-bg-02-brand: hsl(var(--h) var(--s) 89%);
     --color-text-brand: hsl(var(--h) var(--s) 20%);
     --color-text-02-brand: hsl(var(--h) var(--s) 55%);
     --color-border-brand: hsl(var(--h) var(--s) 93%);
@@ -70,20 +71,20 @@
     --color-text-info: hsl(var(--h-blue) var(--s) 41%);
     --color-text-02-info: hsl(var(--h-blue) var(--s) 52%);
 
-    --color-error: hsl(var(--h-red) var(--s) 73%);
-    --color-bg-error: hsl(var(--h-red) var(--s) 94%);
-    --color-text-error: hsl(var(--h-red) var(--s) 44%);
-    --color-text-02-error: hsl(var(--h-red) var(--s) 60%);
+    --color-negative: hsl(var(--h-red) var(--s) 73%);
+    --color-bg-negative: hsl(var(--h-red) var(--s) 94%);
+    --color-text-negative: hsl(var(--h-red) var(--s) 44%);
+    --color-text-02-negative: hsl(var(--h-red) var(--s) 60%);
 
     --color-warning: hsl(var(--h-yellow) var(--s) 46%);
     --color-bg-warning: hsl(var(--h-yellow) var(--s) 84%);
     --color-text-warning: hsl(var(--h-yellow) var(--s) 22%);
     --color-text-02-warning: hsl(var(--h-yellow) var(--s) 29%);
 
-    --color-success: hsl(var(--h-green) var(--s) 39%);
-    --color-bg-success: hsl(var(--h-green) var(--s) 83%);
-    --color-text-success: hsl(var(--h-green) var(--s) 25%);
-    --color-text-02-success: hsl(var(--h-green) var(--s) 32%);
+    --color-positive: hsl(var(--h-green) var(--s) 39%);
+    --color-bg-positive: hsl(var(--h-green) var(--s) 83%);
+    --color-text-positive: hsl(var(--h-green) var(--s) 25%);
+    --color-text-02-positive: hsl(var(--h-green) var(--s) 32%);
 
     --color-focus: color-mix(in oklch, var(--color-brand) 55%, transparent);
 

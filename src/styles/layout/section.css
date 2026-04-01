@@ -4,8 +4,7 @@
   /* ------------------------------------------------------------------------ */
 
   .section {
-    margin-top: var(--spacer-xl);
-    padding-block: var(--spacer);
+    padding-block: var(--spacer-xl);
   }
 
   @scope (.section) {

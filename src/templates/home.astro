@@ -18,6 +18,12 @@ const { locale, dictionary } = Astro.props;
   lang={locale}
 >
   <main>
-    <HeroSection copy={dictionary.home} locale={locale} />
+    <HeroSection
+      copy={{
+        app: dictionary.base.app,
+        hero: dictionary.home.hero,
+      }}
+      locale={locale}
+    />
   </main>
 </BaseLayout>

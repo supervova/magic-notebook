@@ -1,6 +1,50 @@
 # TODO
 
-## План ChatGPT
+## Мой исходный план
+
+- [x] [Собрать boilerplate](/Users/supervova/Sites/vladimir-nikishin/mn/web/docs/notes/getting-started.md)
+- [x] перевод на английский
+
+- [ ] Главная страница.
+  - [x] Дизайн-макеты мобильной и планшетной версии.
+  - [x] Экспортировать картинки и иконки
+  - [x] Настроить значения шрифтовых переменных
+  - [ ] Стилизация
+    - [x] topnav
+    - [x] Герой
+    - [x] Карусель / Embla
+    - [ ] Why?
+    - [ ] Benefits
+    - [ ] Duo
+    - [ ] Comparison
+    - [ ] CTA
+    - [ ] Подвал
+
+    - сразу разрезать бы её на секции;
+    - убрал бы весь текст из `.astro` в словарь;
+    - только потом добавил бы `ru/index.astro`.
+
+  - [ ] новое видео, 45–60 сек. Cкринкасты + немного (из-за короткого хронометража) [приемов юмористических влогов](../docs/marketing/how-to/youtube-vlog-best-practices.md).
+    - [ ] Сценарий написать вместе с ChatGPT
+    - AI-generated: Анна улыбается, потирает руки открывает ноутбук
+    - сделать скринкасты по сценариям предложенным ChatGPT и смонтировать
+    - AI-generated: Анна улыбается и, подняв указательный палец вверх, говорит, что, если вы разрабочик можете включить режим Markdown
+  - [ ] Залить видос на YouTube, Dribbble и Behance
+
+- [ ] Страница [Support the Project](../docs/monetization/03--support-the-project.md). Примеры: [Bulma](https://bulma.io/become-a-bulma-sponsor/), [Prettier](https://github.com/sponsors/prettier)
+- [ ] Страница /whats-new [1](https://desktop.github.com/release-notes/), [2](https://antigravity.google/changelog)
+- [ ] Страница Privacy policy 👩🏻‍💼Privacy and Terms
+- [ ] английская версия.
+- [ ] переезд на magic-notebook.com
+- [ ] Добавить [release notes](magic-notebook.com/changelog) в диалог About
+
+- [ ] [подключение платформ сбыта и монетизации до релиза](../docs/monetization/before-release.md)
+  - [ ] Разовые донаты – ko-fi.com
+  - [ ] Запустить проект на Producthunt.
+
+
+
+## Astro-boilerplate
 
 - [x] 1. Создать проект
 
@@ -295,7 +339,7 @@
   - `/ru/`
   - `/playground/home/`
 
-  - [ ] Проверить production build
+- [x] Проверить production build
 
   ```bash
   pnpm build
@@ -340,10 +384,10 @@
 
 - [x] Первый коммит
 
-```bash
-git add .
-git commit -m "init astro website foundation"
-```
+  ```bash
+  git add .
+  git commit -m "init astro website foundation"
+  ```
 
 ### Что у тебя получится после этого
 
@@ -356,41 +400,3 @@ git commit -m "init astro website foundation"
 
 Следующий логичный шаг: завести `src/content.config.ts` и первую контент-коллекцию `blog`.
 
-## Мой исходный план
-
-- [ ] [Собрать boilerplate](/Users/supervova/Sites/vladimir-nikishin/mn/web/docs/notes/getting-started.md)
-- [ ] перевод на английский
-
-- [ ] Главная страница.
-  - [ ] Дизайн-макеты мобильной и планшетной версии.
-  - [ ] Подгонка стилей и разметки Claud'а; В том числе – левитация Ани в герое.
-    - сразу разрезать бы её на секции;
-    - убрал бы весь текст из `.astro` в словарь;
-    - только потом добавил бы `ru/index.astro`.
-
-  - [ ] новое видео, 45–60 сек. Cкринкасты + немного (из-за короткого хронометража) [приемов юмористических влогов](../docs/marketing/how-to/youtube-vlog-best-practices.md).
-    - [ ] Сценарий написать вместе с ChatGPT
-    - AI-generated: Анна улыбается, потирает руки открывает ноутбук
-    - сделать скринкасты по сценариям предложенным ChatGPT и смонтировать
-    - AI-generated: Анна улыбается и, подняв указательный палец вверх, говорит, что, если вы разрабочик можете включить режим Markdown
-  - [ ] Залить видос на YouTube, Dribbble и Behance
-
-- [ ] Страница [Become a sponsor](../docs/monetization/become-a-sponsor.md). Примеры: [Bulma](https://bulma.io/become-a-bulma-sponsor/), [Prettier](https://github.com/sponsors/prettier)
-- [ ] Страница /changelog [1](https://desktop.github.com/release-notes/), [2](https://antigravity.google/changelog)
-- [ ] Страница Privacy policy 👩🏻‍💼Privacy and Terms
-- [ ] английская версия.
-- [ ] переезд на magic-notebook.com
-- [ ] Добавить [release notes](magic-notebook.com/changelog) в диалог About
-
-- [ ] [подключение платформ сбыта и монетизации до релиза](../docs/monetization/before-release.md)
-  - [ ] Разовые донаты – ko-fi.com
-  - [ ] Запустить проект на Producthunt.
-
-Сначала:
-
-То есть твоя мысль верная: **прототип нужен первым**.
-Просто его лучше делать так, чтобы потом не пришлось переписывать всё под i18n.
-
-Следующим сообщением могу дать **точный стартовый порядок файлов и команд**, чтобы ты это внедрил без лишних переделок.
-
-[1]: https://docs.astro.build/en/guides/internationalization/?utm_source=chatgpt.com 'Internationalization (i18n) Routing - Docs'

@@ -1,0 +1,268 @@
+@layer components.ui {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  /*
+   * <button type="button" data-action="open-modal" aria-controls="my-dialog">Open modal</button>
+   *
+   * <dialog class="modal" id="my-dialog">
+   *   <article class="modal-base">
+   *     <header>
+   *       <h2 class="title">…</h2>
+   *       <button class="btn-close" type="button" data-action="close-modal" aria-label="Close">˟</button>
+   *     </header>
+   *     <section>Body</section>
+   *     <footer>
+   *       <!-- Don't use the Cancel button together with `.btn-close` -->
+   *       <button type="button" data-action="close-modal">Cancel</button>
+   *       <button class="btn-primary" type="submit">Confirm</button>
+   *     </footer>
+   *   </article>
+   * </dialog>
+   */
+
+  .modal {
+    --modal-bg: var(--color-bg);
+    --modal-text: var(--color-text);
+    --modal-shadow: var(--shadow-z3);
+
+    --modal-overlay-bg: var(--color-backdrop);
+    --modal-overlay-filter: var(--backdrop-glass);
+
+    --modal-radius-mobile: var(--radius-base);
+    --modal-radius: var(--radius-lg);
+    --modal-gap: var(--size-1);
+    --modal-offset: var(--size-5);
+    --modal-padding-y: var(--size-2);
+
+    /* Plus the parent padding var(--size-1) added for the scrollbar outer spacing */
+    --modal-padding-x: var(--size-1h);
+    --modal-scroll-inset: var(--size-2);
+
+    --modal-duration: var(--duration-300);
+    --modal-max-width: var(--width-xl);
+
+    background-color: var(--modal-overlay-bg);
+    backdrop-filter: var(--modal-overlay-filter);
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    padding: 0;
+    position: fixed;
+    inset: 0;
+    transition: opacity var(--modal-duration) var(--easing-base);
+    min-height: 100%;
+    min-width: 100%;
+
+    &:not([open]) {
+      display: none;
+    }
+
+    &[closing] {
+      opacity: 0;
+    }
+
+    @starting-style {
+      opacity: 0;
+    }
+
+    @media (--tablet) {
+      --modal-padding-x: var(--size-3);
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: CHILDREN                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  /* Window */
+  @scope (.modal) {
+    .modal-base {
+      background-color: var(--modal-bg);
+      border-radius: var(--modal-radius-mobile) var(--modal-radius-mobile) 0 0;
+      box-shadow: var(--modal-shadow);
+      color: var(--modal-text);
+      display: flex;
+      flex-direction: column;
+      opacity: 1;
+      padding: var(--size-1);
+      position: fixed;
+      inset: auto 0 0;
+      translate: 0;
+      transition:
+        opacity var(--modal-duration) var(--easing-base),
+        translate var(--modal-duration) var(--easing-base);
+      width: 100%;
+      max-width: var(--modal-max-width);
+      max-height: calc(100% - var(--modal-offset));
+
+      @starting-style {
+        opacity: 0;
+        translate: 0 50%;
+      }
+
+      @media (--tablet) {
+        border-radius: var(--modal-radius);
+        position: static;
+        inset: unset;
+        height: max-content;
+        max-height: calc(100vh - var(--size-8));
+
+        @starting-style {
+          translate: 0 -50%;
+        }
+      }
+    }
+  }
+
+  /* Closing state for the window */
+  .modal[closing] > .modal-base {
+    opacity: 0;
+    translate: 0 50%;
+
+    @media (--tablet) {
+      translate: 0 -50%;
+    }
+  }
+
+  /* Header */
+  @scope (.modal-base) {
+    header {
+      padding-top: var(--size-1);
+      padding-inline: var(--modal-padding-x);
+
+      @media (--tablet) {
+        padding-block: var(--size-3) var(--size-1);
+      }
+    }
+
+    .title {
+      margin: 0;
+
+      @media (--phone) {
+        @mixin text-truncate;
+
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-strong);
+        line-height: 1;
+        text-align: center;
+        pointer-events: none;
+
+        /* Reserve space for footer buttons that move to the header on mobile */
+        padding-inline: var(--size-7);
+      }
+    }
+
+    .btn-close {
+      background: transparent;
+      position: absolute;
+      inset-block-start: var(--size-2);
+      inset-inline-end: var(--size-2);
+
+      @media (any-hover: hover) {
+        &:hover {
+          --icon-stroke: var(--color-text);
+
+          background-color: var(--color-fill);
+        }
+      }
+    }
+
+    /* Body */
+    section {
+      /* params: --fade-top, --fade-bottom */
+      @mixin gradient-mask;
+
+      overflow-y: auto;
+      padding-top: var(--size-3);
+      padding-inline: var(--modal-padding-x);
+
+      @media (pointer: fine) {
+        /* Hide the scrollbar in the default state */
+        clip-path: inset(0 var(--modal-scroll-inset));
+        scrollbar-color: var(--color-scroll-thumb) var(--color-scroll-track);
+        scrollbar-width: thin;
+        transition: clip-path var(--modal-duration) var(--easing-base);
+
+        &:hover {
+          clip-path: inset(0);
+        }
+
+        &::-webkit-scrollbar {
+          width: var(--size-1);
+        }
+
+        &::-webkit-scrollbar-track {
+          background: var(--color-scroll-track);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: var(--color-scroll-thumb);
+          border-radius: var(--radius-pill);
+        }
+      }
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--modal-gap);
+      justify-content: space-between;
+      padding-inline: var(--modal-padding-x);
+
+      /* On mobile, move the buttons into the header area */
+      position: absolute;
+      top: var(--size-1);
+      inset-inline: 0;
+      z-index: 1;
+
+      @media (--phone) {
+        /* Hide text labels in buttons and keep only icons */
+        :where(.btn, button) {
+          padding: 0;
+          width: var(--button-height);
+        }
+
+        .btn-label {
+          @mixin visually-hidden;
+        }
+      }
+
+      @media (--tablet) {
+        position: static;
+        justify-content: flex-end;
+        padding-block: var(--size-1) var(--size-1h);
+        padding-inline: var(--size-2);
+      }
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: MODIFIERS                                                       */
+  /* ------------------------------------------------------------------------ */
+
+  .modal-sm {
+    --modal-max-width: var(--width-md);
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: GLOBAL                                                          */
+  /* ------------------------------------------------------------------------ */
+
+  html:has(dialog[open]) {
+    overflow: clip;
+  }
+
+  /* #endregion */
+}

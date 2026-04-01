@@ -16,24 +16,25 @@
 ### Порядок слоёв (фиксируется один раз в точке входа)
 
 ```css
-@layer base, content, components.base, components.form, layout;
-@layer components.ui, components.sections, pages, utils, print;
+@layer base, content, layout, components, features, pages, utils, print;
+@layer components.ui, components.form, components.custom;
 ```
 
-| Слой                    | Содержимое                                                 |
-| ----------------------- | ---------------------------------------------------------- |
-| `base`                  | Токены, ресет, корневые HTML-элементы                      |
-| `content`               | Семантические элементы (заголовки, списки, таблицы)        |
-| `components.base/forms` | Примитивы: `.btn`, `.input`, `.icon`                       |
-| `layout`                | Контейнеры, сетка                                          |
-| `components.ui`         | UI-компоненты без знания о домене (`.accordion`, `.modal`) |
-| `components.sections`   | Бизнес-компоненты (`.header`, `.checkout-cart`)            |
-| `pages`                 | Компоненты уровня страниц                                  |
-| `utils`                 | Утилиты                                                    |
+| Слой                | Содержимое                                                                                                    |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `base`              | Токены, ресет, корневые HTML-элементы, базовая типографика, UI-примитивы                                      |
+| `content`           | Семантические элементы (заголовки, списки, таблицы)                                                           |
+| `layout`            | Контейнеры, сетка                                                                                             |
+| `components.ui`     | UI-компоненты без знания о домене (`.accordion`, `.modal`)                                                    |
+| `components.form`   | Поля ввода и элементы управления                                                                              |
+| `components.custom` | Компоненты, специфичные для конкретного приложения / веб-сайта (`.logo`, `.header`)                           |
+| `features`          | Части системы, реализующие конкретный пользовательский сценарий или бизнес-возможность (`.auth`, `.checkout`) |
+| `pages`             | Компоненты уровня страниц                                                                                     |
+| `utils`             | Утилиты                                                                                                       |
 
 ## Принципы LSD
 
-1. **Фреймворк ≠ бизнес-логика.** `base + layout + components.(base,form,ui) + utils` не знают о `.checkout`, `.cart` и т.п.
+1. **Фреймворк ≠ бизнес-логика.** `base + content + layout + components.(ui, form) + utils` не знают о `.checkout`, `.cart` и т.п.
 2. **Каждый прикладной компонент имеет корневой класс** — якорь для `@scope` и композиции.
 3. **Компоненты не зависят от селекторов фреймворка в CSS** — только через переменные или `@scope`.
 4. **Layout-утилиты не используются как CSS-селекторы.**
@@ -127,26 +128,40 @@ src/
     sections/
     ui/
   styles/
-    vars.css            ← дизайн-токены
-    global.css            ← базовые глобальные стили
-    prose.css             ← типографика markdown-контента
-    mixins.css
-    reset.css
-    vars-light.css
-    vars-dark.css
+    base/
+      doc.css
+      fonts.css
+      mixins.css
+      reset.css
+      vars.css          ← дизайн-токены
+      vars-light.css
+    components/
+      custom/
+      form/
+      ui/
+    content/
+    features/
+    layout/
+    pages/
+    utils/
+    main.css            ← точка входа со списком `@layer`
+    print.css
 ```
 
 `main.css` — точка входа, собирается через `postcss-import`:
 
 ```css
-@layer base, content, components.base, components.form, layout;
-@layer components.ui, components.sections, pages, utils, print;
+@layer base, content, layout, components, features, pages, utils, print;
+@layer components.ui, components.form, components.custom;
 
 @import url('./base/mixins.css');
 @import url('./base/vars.css');
 @import url('./base/reset.css');
 @import url('./base/doc.css');
-/* компоненты и утилиты */
+@import url('./content/base.css');
+@import url('./layout/containers.css');
+@import url('./utils/base.css');
+/* components/*, features/*, pages/*, print.css */
 ```
 
 Слой предпочтительно указывать в импортируемом файле (работает при импорте в `.astro`/`.tsx`). Допустимо и в `main.css`: `@import url('…') layer(utils)`.

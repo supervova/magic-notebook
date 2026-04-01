@@ -1,9 +1,11 @@
-import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const ICONS_DIR = path.resolve('src/assets/icons');
 const OUTPUT_DIR = path.resolve('public/assets/icons');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'sprite.svg');
+const WATCH_MODE = process.argv.includes('--watch');
+const WATCH_INTERVAL = 300;
 
 const loadIcons = async () => {
   try {
@@ -79,17 +81,97 @@ const compileSprite = async (icons) => {
   return result.symbol.sprite.contents;
 };
 
-const icons = await loadIcons();
+const buildSprite = async () => {
+  const icons = await loadIcons();
 
-if (icons.length === 0) {
-  await rm(OUTPUT_FILE, { force: true });
-  console.log('SVG sprite skipped: no icons in src/assets/icons.');
-  process.exit(0);
+  if (icons.length === 0) {
+    await rm(OUTPUT_FILE, { force: true });
+    console.log('SVG sprite skipped: no icons in src/assets/icons.');
+    return;
+  }
+
+  const sprite = await compileSprite(icons);
+
+  await mkdir(OUTPUT_DIR, { recursive: true });
+  await writeFile(OUTPUT_FILE, sprite);
+
+  console.log(`SVG sprite generated: public/assets/icons/sprite.svg (${icons.length} icons).`);
+};
+
+const getIconsSignature = async () => {
+  const icons = await loadIcons();
+  const parts = await Promise.all(
+    icons.map(async (icon) => {
+      const { mtimeMs, size } = await stat(icon.path);
+
+      return `${icon.name}:${size}:${mtimeMs}`;
+    })
+  );
+
+  return parts.sort().join('|');
+};
+
+const watchIcons = async () => {
+  let isBuilding = false;
+  let hasPendingBuild = false;
+  let lastSignature = '';
+
+  const scheduleBuild = () => {
+    if (isBuilding) {
+      hasPendingBuild = true;
+      return;
+    }
+
+    isBuilding = true;
+
+    Promise.resolve()
+      .then(async () => {
+        await buildSprite();
+        lastSignature = await getIconsSignature();
+      })
+      .catch((error) => {
+        console.error('SVG sprite build failed.');
+        console.error(error);
+      })
+      .finally(() => {
+        isBuilding = false;
+
+        if (hasPendingBuild) {
+          hasPendingBuild = false;
+          scheduleBuild();
+        }
+      });
+  };
+
+  await buildSprite();
+  lastSignature = await getIconsSignature();
+
+  const watcher = setInterval(async () => {
+    try {
+      const nextSignature = await getIconsSignature();
+
+      if (nextSignature !== lastSignature) {
+        scheduleBuild();
+      }
+    } catch (error) {
+      console.error('SVG sprite watcher failed.');
+      console.error(error);
+    }
+  }, WATCH_INTERVAL);
+
+  const stopWatching = () => {
+    clearInterval(watcher);
+    process.exit(0);
+  };
+
+  process.on('SIGINT', stopWatching);
+  process.on('SIGTERM', stopWatching);
+
+  console.log('Watching src/assets/icons for SVG changes...');
+};
+
+if (WATCH_MODE) {
+  await watchIcons();
+} else {
+  await buildSprite();
 }
-
-const sprite = await compileSprite(icons);
-
-await mkdir(OUTPUT_DIR, { recursive: true });
-await writeFile(OUTPUT_FILE, sprite);
-
-console.log(`SVG sprite generated: public/assets/icons/sprite.svg (${icons.length} icons).`);

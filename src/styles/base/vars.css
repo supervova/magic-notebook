@@ -18,6 +18,8 @@
     --s-03: 27%; /* Additional saturation level for dark theme backgrounds. */
     --s-min: 8%;
 
+    --l-max: 99%;
+
     --h: 10;
     --s: 87%;
     --l: 69%;
@@ -36,35 +38,24 @@
     --color-link-hover: color-mix(in oklch, var(--color-link) 80%, #fff);
     --color-link-visited: color-mix(in oklch, var(--color-link) 85%, #000);
 
-    --color-bg-alpha: #{color-mix(in oklab, var(--color-bg) 88%, transparent)};
+    --color-bg-alpha: color-mix(in oklab, var(--color-bg) 88%, transparent);
+
+    --color-gradient-brand-crimson:
+      hsl(10 87% 69%),
+      hsl(4 81% 67%) 26%,
+      hsl(359 74% 65%) 40%,
+      hsl(353 68% 64%) 50%,
+      hsl(348 62% 62%) 58%,
+      hsl(342 55% 60%) 65%,
+      hsl(336 48% 58%) 71%,
+      hsl(330 42% 57%) 77%,
+      hsl(325 36% 55%) 85%,
+      hsl(319 29% 53%);
 
     --color-gradient-brand:
-      radial-gradient(
-        circle farthest-corner at 0% 100%,
-        rgb(255 255 255 / 0.8),
-        rgb(255 255 255 / 0.76) 2%,
-        rgb(255 255 255 / 0.64) 10%,
-        rgb(255 255 255 / 0.49) 21%,
-        rgb(255 255 255 / 0.31) 36%,
-        rgb(255 255 255 / 0.16) 54%,
-        rgb(255 255 255 / 0.04) 76%,
-        rgb(255 255 255 / 0)
-      ),
-      radial-gradient(
-        circle farthest-side at 100% 0%,
-        #fff,
-        rgb(255 255 255 / 0.75) 2%,
-        rgb(255 255 255 / 0.6) 10%,
-        rgb(255 255 255 / 0.41) 21%,
-        rgb(255 255 255 / 0.19) 36%,
-        rgb(255 255 255 / 0) 54%,
-        rgb(255 255 255 / 0) 76%,
-        rgb(255 255 255 / 0)
-      ),
       linear-gradient(
-        to bottom right,
-        hsl(var(--h) var(--s) var(--l-brand-start, 15%)),
-        hsl(var(--h) var(--s) var(--l-brand-end, 25%))
+        hsl(var(--h) var(--s) 71%),
+        hsl(var(--h) var(--s) 67%)
       );
 
     /* Shadow base color */
@@ -99,12 +90,9 @@
     /* stylelint-disable declaration-block-no-duplicate-custom-properties */
     --size-1: 8px;
     --size-half: calc(var(--size-1) * 0.5); /* 4px */
-    --size-half: round(nearest, calc(var(--size-1) * 0.5), 1px);
     --size-1h: calc(var(--size-1) * 1.5); /* 12px */
-    --size-1h: round(nearest, calc(var(--size-1) * 1.5), 1px);
     --size-2: calc(var(--size-1) * 2); /* 16px */
     --size-2h: calc(var(--size-1) * 2.5); /* 20px */
-    --size-2h: round(nearest, calc(var(--size-1) * 2.5), 1px);
     --size-3: calc(var(--size-1) * 3); /* 24px */
     --size-4: calc(var(--size-1) * 4); /* 32px */
     --size-5: calc(var(--size-1) * 5); /* 40px */
@@ -113,21 +101,23 @@
     --size-8: calc(var(--size-1) * 8); /* 64px */
     /* stylelint-enable declaration-block-no-duplicate-custom-properties */
 
+    .icon { --icon-size: 24px; }
+    .icon-sm { --icon-size: 16px; }
+
     /* Body copy line height */
     --flow-gap-sm: var(--size-2);
     --flow-gap: var(--size-3);
 
     --spacer: var(--flow-gap);
-    --spacer-lg: var(--size-4);
-    --spacer-xl: var(--size-8);
+
+    /* Section vertical paddings or margins */
+    --spacer-xl: calc(var(--flow-gap) * 3);
 
     --gap: var(--size-2h);
     --gap-lg: var(--size-4);
 
     @media (--tablet) {
-      --spacer: calc(var(--flow-gap) * 3);
-      --spacer-lg: var(--size-8);
-      --spacer-xl: calc(var(--size-8) * 2);
+      --spacer-xl: calc(var(--flow-gap) * 4);
 
       --gap: var(--flow-gap);
     }
@@ -153,33 +143,32 @@
     --font-family-titles: var(--font-family-base);
 
     --font-weight-base: 400;
-    --font-weight-strong: 600;
+    --font-weight-strong: 500;
 
-    /* A typographic scale using a major third ratio (4:5 or 1.25)  */
+    /* Scale factor: 1.25 (4/5; major third) */
     /* pxtorem will convert it */
-    --font-size-title: 29px;
-    --font-weight-title: 600;
-    --letter-spacing-title: 0;
-    --line-height-title: calc(32 / 29);
+    --font-size-title: 33px;
+    --font-weight-title: var(--font-weight-strong);
+    --letter-spacing-title:  -0.02em;
+    --line-height-title: calc(40 / 33);
 
-    /* On mobile, the hero title and the title have the same size. */
     --font-size-hero: var(--font-size-title);
-    --font-weight-hero: 700;
+    --font-weight-hero: var(--font-weight-strong);
     --letter-spacing-hero: var(--letter-spacing-title);
     --line-height-hero: var(--line-height-title);
 
-    --font-size-h2: 24px;
-    --font-weight-h2: 600;
-    --letter-spacing-h2: 0;
-    --line-height-h2: calc(32 / 24);
+    --font-size-h2: 27px;
+    --font-weight-h2: var(--font-weight-strong);
+    --letter-spacing-h2: -0.011em;
+    --line-height-h2: calc(32 / 27);
 
-    --font-size-h3: 20px;
-    --font-weight-h3: 600;
-    --letter-spacing-h3: 0.15px;
-    --line-height-h3: calc(24 / 20);
+    --font-size-h3: 21px;
+    --font-weight-h3: var(--font-weight-strong);
+    --letter-spacing-h3: 0.011em;
+    --line-height-h3: calc(24 / 21);
 
     --font-size-base: 17px;
-    --letter-spacing-base: 0.15px;
+    --letter-spacing-base: 0;
     --line-height-base: calc(24 / 17);
 
     --font-size-body-sm: 14px;
@@ -189,29 +178,22 @@
 
     --font-size-fine-print: 12px;
     --font-weight-fine-print: 400;
-    --letter-spacing-fine-print: 0.16px;
+    --letter-spacing-fine-print: 0.013em;
     --line-height-fine-print: calc(16 / 12);
 
+    /* Scale factor: 1.369 (custom) */
     @media (--tablet) {
-      /* Increases the scale factor to 1.414 (1:√2, augmented fourth). */
+      --font-size-title: 44px;
+      --font-weight-title: 500;
+      --line-height-title: calc(48 / 44);
 
-      --font-size-title: 31px;
-      --letter-spacing-title: 0;
-      --line-height-title: calc(32 / 31);
+      --font-size-h2: 32px;
+      --font-weight-h2: 500;
+      --letter-spacing-h2: -0.02em;
+      --line-height-h2: calc(40 / 32);
 
-      --font-size-h2: 26px;
-      --letter-spacing-h2: 0;
-      --line-height-h2: calc(32 / 26);
-
-      --font-size-h3: 22px;
-      --font-weight-h3: 600;
-      --line-height-h3: calc(32 / 22);
-    }
-
-    @media (--tablet-l) {
-      --font-size-hero: 68px;
-      --letter-spacing-hero: -2px;
-      --line-height-hero: calc(72 / 68);
+      --font-size-h3: 24px;
+      --line-height-h3: calc(32 / 24);
     }
 
     /* #endregion */
@@ -315,7 +297,7 @@
     --button-padding-block: 0;
     --button-padding-inline: var(--size-2);
 
-    --header-offset: calc(var(--size-1) * 9);
+    --header-height: var(--size-6);
 
     --input-padding-block: 5px;
     --input-padding-inline: var(--size-2);

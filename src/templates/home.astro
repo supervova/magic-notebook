@@ -1,8 +1,20 @@
 ---
-import HeroSection from '../components/sections/hero.astro';
+import { appLinks } from '../config/app-links';
+
+import SiteFooter from '../components/layout/site-footer.astro';
+import SiteHeader from '../components/layout/site-header.astro';
+import ComparisonSection from '../components/sections/home/comparison-section.astro';
+import CtaSection from '../components/sections/home/cta-section.astro';
+import FeaturesSection from '../components/sections/home/features-section.astro';
+import HeroSection from '../components/sections/home/hero-section.astro';
+import PreviewSection from '../components/sections/home/preview-section.astro';
+import TadaTodoSection from '../components/sections/home/tada-todo-section.astro';
+import WhySection from '../components/sections/home/why-section.astro';
 import BaseLayout from '../layouts/base.astro';
 import type { Locale } from '../i18n/config';
 import type { dictionaries } from '../i18n/config';
+
+import '../styles/pages/home.css';
 
 interface Props {
   locale: Locale;
@@ -10,20 +22,117 @@ interface Props {
 }
 
 const { locale, dictionary } = Astro.props;
+
+const baseCopy = dictionary.base;
+const comparisonCopy = dictionary.home.comparison;
+const ctaCopy = dictionary.home.cta;
+const featuresCopy = dictionary.home.features;
+const heroCopy = dictionary.home.hero;
+const navCopy = dictionary.nav;
+const previewCopy = dictionary.home.carousel;
+const tadaTodoCopy = dictionary.home.tadaTodo;
+const whyCopy = dictionary.home.why;
+
+const macosDownloadHref = appLinks.downloads.macos;
+const windowsDownloadHref = appLinks.downloads.windows;
 ---
 
 <BaseLayout
-  title={dictionary.home.title}
-  description={dictionary.home.desc}
+  bodyClass='page-home'
+  title={dictionary.home.meta.title}
+  description={dictionary.home.meta.desc}
   lang={locale}
 >
+  <script is:inline>
+    document.documentElement.classList.add('has-js');
+  </script>
+
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={macosDownloadHref}
+    navCopy={navCopy}
+    windowsDownloadHref={windowsDownloadHref}
+  />
+
   <main>
     <HeroSection
-      copy={{
-        app: dictionary.base.app,
-        hero: dictionary.home.hero,
-      }}
+      baseCopy={baseCopy}
+      heroCopy={heroCopy}
+      macosDownloadHref={macosDownloadHref}
+      windowsDownloadHref={windowsDownloadHref}
+    />
+    <PreviewSection carouselCopy={previewCopy} />
+    <WhySection baseCopy={baseCopy} whyCopy={whyCopy} />
+    <FeaturesSection featuresCopy={featuresCopy} />
+    <TadaTodoSection tadaTodoCopy={tadaTodoCopy} />
+    <ComparisonSection
+      baseCopy={baseCopy}
+      comparisonCopy={comparisonCopy}
+      macosDownloadHref={macosDownloadHref}
+    />
+    <CtaSection
+      baseCopy={baseCopy}
+      ctaCopy={ctaCopy}
+      heroCopy={heroCopy}
       locale={locale}
+      macosDownloadHref={macosDownloadHref}
+      navCopy={navCopy}
+      windowsDownloadHref={windowsDownloadHref}
     />
   </main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+
+  <script type='module'>
+    const video = document.querySelector('#video-magic');
+
+    if (video instanceof HTMLVideoElement) {
+      let hasPlayedOnce = false;
+
+      const observer = new IntersectionObserver(
+        async ([entry]) => {
+          if (!entry?.isIntersecting || hasPlayedOnce) return;
+
+          hasPlayedOnce = true;
+          observer.unobserve(video);
+
+          try {
+            await video.play();
+          } catch {
+            hasPlayedOnce = false;
+            observer.observe(video);
+          }
+        },
+        {
+          threshold: 0.4,
+        }
+      );
+
+      observer.observe(video);
+    }
+  </script>
+
+  <script type='module'>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -10% 0px',
+      }
+    );
+
+    document.querySelectorAll('[data-anim-enter]').forEach((element) => {
+      observer.observe(element);
+    });
+  </script>
 </BaseLayout>

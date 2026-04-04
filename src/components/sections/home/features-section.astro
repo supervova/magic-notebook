@@ -1,0 +1,52 @@
+---
+interface FeaturesCopy {
+  audience: {
+    desc: string;
+    title: string;
+  };
+  desc: string;
+  product: {
+    list: string[];
+    title: string;
+  };
+  title: string;
+}
+
+interface Props {
+  featuresCopy: FeaturesCopy;
+}
+
+const { featuresCopy } = Astro.props;
+---
+
+<section class='section-features' id='features-detail'>
+  <div class='container'>
+    <header class='section-heading'>
+      <h2>{featuresCopy.title}</h2>
+      <p class='text-base text-02'>{featuresCopy.desc}</p>
+    </header>
+    <div class='card-set'>
+      <div class='card' data-anim-enter style='--anim-delay: 0ms;'>
+        <figure class='icon-badge'>
+          <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#suggestion'></use></svg>
+        </figure>
+        <h3 class='text-base'>{featuresCopy.product.title}</h3>
+        <ul class='text-base'>
+          {featuresCopy.product.list.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <figure class='video-wrap' data-anim-enter style='--anim-delay: 240ms;'>
+        <video id='video-magic' muted playsinline preload='metadata' width='330' height='440'>
+          <source src='/assets/video/magic.mp4' type='video/mp4' />
+        </video>
+      </figure>
+      <div class='card' data-anim-enter style='--anim-delay: 480ms;'>
+        <figure class='icon-badge'>
+          <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#group'></use></svg>
+        </figure>
+        <h3 class='text-base'>{featuresCopy.audience.title}</h3>
+        <p class='text-base'>{featuresCopy.audience.desc}</p>
+      </div>
+    </div>
+  </div>
+</section>

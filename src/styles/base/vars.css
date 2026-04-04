@@ -101,9 +101,6 @@
     --size-8: calc(var(--size-1) * 8); /* 64px */
     /* stylelint-enable declaration-block-no-duplicate-custom-properties */
 
-    .icon { --icon-size: 24px; }
-    .icon-sm { --icon-size: 16px; }
-
     /* Body copy line height */
     --flow-gap-sm: var(--size-2);
     --flow-gap: var(--size-3);
@@ -278,12 +275,7 @@
     --duration-500: 0.8s;
     --duration-600: 1.2s;
 
-    --easing-base: cubic-bezier(
-      0.2,
-      0,
-      0.38,
-      0.9
-    ); /* form of easing-in-out; apple-style: (0.4, 0, 0.25, 1) */
+    --easing-base: cubic-bezier(0.2, 0, 0.38, 0.9); /* form of easing-in-out; apple-style: (0.4, 0, 0.25, 1) */
     --easing-out: cubic-bezier(0.2, 0, 1, 0.9); /* form of ease-in; slow start → acceleration */
     --easing-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
@@ -294,13 +286,13 @@
     /* ---------------------------------------------------------------------- */
 
     --button-height: var(--size-5);
-    --button-padding-block: 0;
-    --button-padding-inline: var(--size-2);
+    --button-padding-y: 0;
+    --button-padding-x: var(--size-2);
 
     --header-height: var(--size-6);
 
-    --input-padding-block: 5px;
-    --input-padding-inline: var(--size-2);
+    --input-padding-y: 5px;
+    --input-padding-x: var(--size-2);
 
     --padding-x-md: var(--size-2);
     --padding-x-xl: var(--size-2h);

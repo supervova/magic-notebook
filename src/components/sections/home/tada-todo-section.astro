@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+
+import imgAnn from '../../../assets/img/pages/home/avatar-ann.png';
+import imgVladimir from '../../../assets/img/pages/home/avatar-vladimir.png';
+
+interface TadaTodoCopy {
+  anna: {
+    alt: string;
+    list: string[];
+    title: string;
+  };
+  title: string;
+  vladimir: {
+    alt: string;
+    desc: string;
+    title: string;
+  };
+}
+
+interface Props {
+  tadaTodoCopy: TadaTodoCopy;
+}
+
+const { tadaTodoCopy } = Astro.props;
+---
+
+<section class='section-tada-todo'>
+  <h2 class='visually-hidden'>{tadaTodoCopy.title}</h2>
+  <div class='container'>
+    <div class='card-set'>
+      <div class='card'>
+        <h3 class='text-base'>{tadaTodoCopy.vladimir.title}</h3>
+        <Image alt={tadaTodoCopy.vladimir.alt} class='avatar' densities={[2]} format='png' loading='lazy' src={imgVladimir} width={imgVladimir.width / 2} />
+        <p class='text-base'>{tadaTodoCopy.vladimir.desc}</p>
+      </div>
+
+      <div class='card'>
+        <h3 class='text-base'>{tadaTodoCopy.anna.title}</h3>
+        <Image alt={tadaTodoCopy.anna.alt} class='avatar' densities={[2]} format='png' loading='lazy' src={imgAnn} width={imgAnn.width / 2} />
+        <ul class='text-base'>
+          {tadaTodoCopy.anna.list.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

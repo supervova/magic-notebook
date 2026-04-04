@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets';
+
+import { getLocalizedPath } from '../../../i18n/utils';
+import type { Locale } from '../../../i18n/config';
+
+import Icon from '../../ui/icon.astro';
+
+import imgLogo from '../../../assets/img/pages/home/logomark.png';
+
+interface BaseCopy {
+  app: string;
+  downloadMacos: string;
+  downloadOptions: string;
+  downloadWindows: string;
+}
+
+interface CtaCopy {
+  supportPrefix: string;
+  supportSuffix: string;
+  title: string;
+}
+
+interface HeroCopy {
+  linkPrimary: string;
+}
+
+interface NavCopy {
+  supportTheProject: string;
+}
+
+interface Props {
+  baseCopy: BaseCopy;
+  ctaCopy: CtaCopy;
+  heroCopy: HeroCopy;
+  locale: Locale;
+  macosDownloadHref: string;
+  navCopy: NavCopy;
+  windowsDownloadHref: string;
+}
+
+const { baseCopy, ctaCopy, heroCopy, locale, macosDownloadHref, navCopy, windowsDownloadHref } = Astro.props;
+const supportHref = getLocalizedPath(locale, 'support-project');
+---
+
+<section class='section-cta' id='start'>
+  <div class='container'>
+    <div class='card' data-anim-enter>
+      <h2>{ctaCopy.title}</h2>
+      <Image alt={baseCopy.app} class='logo' densities={[2]} format='png' loading='lazy' src={imgLogo} width={imgLogo.width / 2} />
+      <div class='btn-split' data-split-button>
+        <a class='btn btn-main' href={macosDownloadHref}>
+          <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
+          <span>{heroCopy.linkPrimary}</span>
+        </a>
+
+        <details class='popover popover-center' data-role='popover'>
+          <summary class='btn btn-toggle' aria-label={baseCopy.downloadOptions}>
+            <Icon class='icon-sm' name='sm-chevron-down' />
+          </summary>
+          <div class='body w-max'>
+            <ul class='menu' role='menu'>
+              <li role='none'>
+                <a role='menuitem' href={macosDownloadHref} aria-current='true'>{baseCopy.downloadMacos}</a>
+              </li>
+              <li role='none'>
+                <a role='menuitem' href={windowsDownloadHref}>{baseCopy.downloadWindows}</a>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <p>
+        {ctaCopy.supportPrefix}{' '}
+        <a href={supportHref}>{ctaCopy.support}</a>
+      </p>
+    </div>
+  </div>
+</section>

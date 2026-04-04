@@ -12,17 +12,17 @@
   - [ ] Стилизация
     - [x] topnav
     - [x] Герой
-    - [x] Карусель / Embla
-    - [ ] Why?
-    - [ ] Benefits
-    - [ ] Duo
-    - [ ] Comparison
-    - [ ] CTA
-    - [ ] Подвал
+    - [x] Карусель
+    - [x] Why?
+    - [x] Benefits
+    - [x] Duo
+    - [x] Comparison
+    - [x] CTA
+    - [x] Подвал
+    - [x] Сделать [intersection observer + .animate.animate-move-in](/Users/supervova/notes/👨🏻‍💻 development/frontend/styles/animation/01-on-scroll-tldr.md)
 
-    - сразу разрезать бы её на секции;
-    - убрал бы весь текст из `.astro` в словарь;
-    - только потом добавил бы `ru/index.astro`.
+    - [x] разрезать на разделы;
+    - [x] `./index.astro` и `ru/index.astro`.
 
   - [ ] новое видео, 45–60 сек. Cкринкасты + немного (из-за короткого хронометража) [приемов юмористических влогов](../docs/marketing/how-to/youtube-vlog-best-practices.md).
     - [ ] Сценарий написать вместе с ChatGPT
@@ -31,10 +31,9 @@
     - AI-generated: Анна улыбается и, подняв указательный палец вверх, говорит, что, если вы разрабочик можете включить режим Markdown
   - [ ] Залить видос на YouTube, Dribbble и Behance
 
-- [ ] Страница [Support the Project](../docs/monetization/03--support-the-project.md). Примеры: [Bulma](https://bulma.io/become-a-bulma-sponsor/), [Prettier](https://github.com/sponsors/prettier)
 - [ ] Страница /whats-new [1](https://desktop.github.com/release-notes/), [2](https://antigravity.google/changelog)
 - [ ] Страница Privacy policy 👩🏻‍💼Privacy and Terms
-- [ ] английская версия.
+- [ ] Страница [Support the Project](../docs/monetization/03--support-the-project.md). Примеры: [Bulma](https://bulma.io/become-a-bulma-sponsor/), [Prettier](https://github.com/sponsors/prettier)
 - [ ] переезд на magic-notebook.com
 - [ ] Добавить [release notes](magic-notebook.com/changelog) в диалог About
 

@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+
+import imgLifestyle from '../../../assets/img/pages/home/lifestyle.jpg';
+import imgLogoWhy from '../../../assets/img/pages/home/logomark.png';
+
+interface BaseCopy {
+  app: string;
+}
+
+interface WhyCopy {
+  alt: string;
+  list: string[];
+  offer: string;
+  title: string;
+}
+
+interface Props {
+  baseCopy: BaseCopy;
+  whyCopy: WhyCopy;
+}
+
+const { baseCopy, whyCopy } = Astro.props;
+---
+
+<section class='section-why'>
+  <header>
+    <h2>{whyCopy.title}</h2>
+    <ul>
+      {whyCopy.list.map((item) => <li>{item}</li>)}
+    </ul>
+    <p set:html={whyCopy.offer} />
+    <Image alt={baseCopy.app} class='logo' densities={[2]} format='png' loading='lazy' src={imgLogoWhy} width={imgLogoWhy.width / 2} />
+  </header>
+
+  <figure data-anim-enter>
+    <Image alt={whyCopy.alt} densities={[2]} loading='lazy' src={imgLifestyle} width={imgLifestyle.width / 2} />
+  </figure>
+</section>

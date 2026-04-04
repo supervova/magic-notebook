@@ -1,0 +1,176 @@
+---
+import { Image } from 'astro:assets';
+
+import imgLogoCompare from '../../../assets/img/pages/home/logo-compare.png';
+
+interface BaseCopy {
+  app: string;
+}
+
+interface ComparisonCopy {
+  caption: string;
+  desc: string;
+  download: string;
+  downloadApp: string;
+  features: {
+    cleanInterface: string;
+    longTexts: string;
+    noCloud: string;
+    price: string;
+    realFiles: string;
+    th: string;
+  };
+  prices: {
+    free: string;
+    notion: string;
+    word: string;
+  };
+  title: string;
+}
+
+interface Props {
+  baseCopy: BaseCopy;
+  comparisonCopy: ComparisonCopy;
+  macosDownloadHref: string;
+}
+
+const { baseCopy, comparisonCopy, macosDownloadHref } = Astro.props;
+---
+
+<section class='section-compare' id='compare'>
+  <div class='container'>
+    <header>
+      <h2>{comparisonCopy.title}</h2>
+      <p class='text-base text-02'>{comparisonCopy.desc}</p>
+    </header>
+  </div>
+
+  <div class='scroll-x'>
+    <table>
+      <caption class='visually-hidden'>{comparisonCopy.caption}</caption>
+
+      <colgroup>
+        <col class='col-feature' />
+        <col class='col-featured' />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+
+      <thead>
+        <tr>
+          <th scope='col' class='visually-hidden'>{comparisonCopy.features.th}</th>
+          <th scope='col' class='th-featured'>
+            <div class='brand-featured'>
+              <Image alt={baseCopy.app} densities={[2]} format='png' src={imgLogoCompare} width={imgLogoCompare.width / 2} />
+              <span>Magic Notebook</span>
+            </div>
+          </th>
+          <th scope='col'>
+            <div class='brand'>
+              <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-word'></use></svg>
+              <span>Word</span>
+            </div>
+          </th>
+          <th scope='col'>
+            <div class='brand'>
+              <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-google'></use></svg>
+              <span>Google Docs</span>
+            </div>
+          </th>
+          <th scope='col'>
+            <div class='brand'>
+              <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-notion'></use></svg>
+              <span>Notion</span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope='row' class='visually-hidden'>{comparisonCopy.features.cleanInterface}</th>
+
+          <td class='cell-featured'>
+            <div class='cell-row'>
+              <svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg>
+              <span>{comparisonCopy.features.cleanInterface}</span>
+            </div>
+          </td>
+
+          <td><svg class='icon icon-negative' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#x-mark'></use></svg></td>
+          <td><svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg></td>
+          <td><svg class='icon icon-negative' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#x-mark'></use></svg></td>
+        </tr>
+
+        <tr>
+          <th scope='row' class='visually-hidden'>{comparisonCopy.features.realFiles}</th>
+
+          <td class='cell-featured'>
+            <div class='cell-row'>
+              <svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg>
+              <span>{comparisonCopy.features.realFiles}</span>
+            </div>
+          </td>
+
+          <td><svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg></td>
+          <td><svg class='icon icon-negative' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#x-mark'></use></svg></td>
+          <td><svg class='icon icon-negative' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#x-mark'></use></svg></td>
+        </tr>
+
+        <tr>
+          <th scope='row' class='visually-hidden'>{comparisonCopy.features.noCloud}</th>
+
+          <td class='cell-featured'>
+            <div class='cell-row'>
+              <svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg>
+              <span>{comparisonCopy.features.noCloud}</span>
+            </div>
+          </td>
+
+          <td><svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg></td>
+          <td><svg class='icon icon-negative' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#x-mark'></use></svg></td>
+          <td><svg class='icon icon-negative' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#x-mark'></use></svg></td>
+        </tr>
+
+        <tr>
+          <th scope='row' class='visually-hidden'>{comparisonCopy.features.longTexts}</th>
+
+          <td class='cell-featured'>
+            <div class='cell-row'>
+              <svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg>
+              <span>{comparisonCopy.features.longTexts}</span>
+            </div>
+          </td>
+
+          <td><svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg></td>
+          <td><svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg></td>
+          <td><svg class='icon icon-negative' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#x-mark'></use></svg></td>
+        </tr>
+
+        <tr>
+          <th scope='row' class='visually-hidden'>{comparisonCopy.features.price}</th>
+
+          <td class='cell-featured'>
+            <div class='cell-row'>
+              <svg class='icon icon-positive' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#check'></use></svg>
+              <strong>{comparisonCopy.prices.free}</strong>
+            </div>
+          </td>
+
+          <td class='cell-price'>{comparisonCopy.prices.word}</td>
+          <td class='cell-price'>{comparisonCopy.prices.free}</td>
+          <td class='cell-price'>{comparisonCopy.prices.notion}</td>
+        </tr>
+
+        <tr>
+          <th scope='row' class='visually-hidden'>{comparisonCopy.downloadApp}</th>
+          <td class='cell-featured cell-last'>
+            <a class='btn btn-primary' href={macosDownloadHref} set:text={comparisonCopy.download}></a>
+          </td>
+          <td class='cell-empty' colspan='3'></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

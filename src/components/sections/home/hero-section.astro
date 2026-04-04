@@ -1,0 +1,89 @@
+---
+import { Image } from 'astro:assets';
+
+import Icon from '../../ui/icon.astro';
+
+import imgHeroAnn from '../../../assets/img/pages/home/hero-ann.png';
+import imgLogoEyebrow from '../../../assets/img/pages/home/logo-eyebrow.png';
+
+interface BaseCopy {
+  app: string;
+  downloadMacos: string;
+  downloadOptions: string;
+  downloadWindows: string;
+  scrollDown: string;
+}
+
+interface HeroCopy {
+  alt: string;
+  desc: string;
+  eyebrow: string;
+  linkPrimary: string;
+  linkSecondary: string;
+  title: string;
+}
+
+interface Props {
+  baseCopy: BaseCopy;
+  heroCopy: HeroCopy;
+  macosDownloadHref: string;
+  windowsDownloadHref: string;
+}
+
+const { baseCopy, heroCopy, macosDownloadHref, windowsDownloadHref } = Astro.props;
+---
+
+<section class='hero'>
+  <div class='layout'>
+    <div class='copy'>
+      <span class='eyebrow'>
+        <Image src={imgLogoEyebrow} width={imgLogoEyebrow.width / 2} densities={[2]} alt={baseCopy.app} />
+        <span>{heroCopy.eyebrow}</span>
+      </span>
+      <h1>
+        <em class='text-gradient'>{baseCopy.app}</em>
+        <span>{heroCopy.title}</span>
+      </h1>
+
+      <p class='text-base' set:html={heroCopy.desc} />
+
+      <div class='actions'>
+        <div class='btn-split' data-split-button>
+          <a class='btn btn-primary btn-main' href={macosDownloadHref}>
+            <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
+            <span>{heroCopy.linkPrimary}</span>
+          </a>
+
+          <details class='popover popover-center' data-role='popover'>
+            <summary class='btn btn-primary btn-toggle' aria-label={baseCopy.downloadOptions}>
+              <Icon class='icon-sm' name='sm-chevron-down' />
+            </summary>
+            <div class='body w-max'>
+              <ul class='menu' role='menu'>
+                <li role='none'>
+                  <a role='menuitem' href={macosDownloadHref} aria-current='true'>{baseCopy.downloadMacos}</a>
+                </li>
+                <li role='none'>
+                  <a role='menuitem' href={windowsDownloadHref}>{baseCopy.downloadWindows}</a>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <a class='btn btn-icon-end' href='#demo'>
+          <span>{heroCopy.linkSecondary}</span>
+          <Icon name='play' />
+        </a>
+      </div>
+    </div>
+
+    <figure>
+      <Image class='character' src={imgHeroAnn} width={imgHeroAnn.width / 2} densities={[2]} alt={heroCopy.alt} />
+    </figure>
+  </div>
+
+  <a class='btn btn-icon btn-down' href='#features' aria-label={baseCopy.scrollDown}>
+    <Icon name='arrow-down' />
+  </a>
+</section>

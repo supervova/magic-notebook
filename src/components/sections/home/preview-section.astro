@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+
+import Carousel from '../../ui/carousel.astro';
+
+import imgCarouselAutosave from '../../../assets/img/pages/home/carousel/06-autosave.png';
+import imgCarouselEditor from '../../../assets/img/pages/home/carousel/01-editor.png';
+import imgCarouselFormatting from '../../../assets/img/pages/home/carousel/03-formatting.png';
+import imgCarouselOpenFolder from '../../../assets/img/pages/home/carousel/02-open-folder.png';
+import imgCarouselSettings from '../../../assets/img/pages/home/carousel/05-settings.png';
+import imgCarouselSidebar from '../../../assets/img/pages/home/carousel/04-sidebar.png';
+
+interface CarouselCopy {
+  labels: {
+    aria: string;
+    counter: string;
+    goTo: string;
+    next: string;
+    pagination: string;
+    prev: string;
+  };
+  slide01: {
+    desc: string;
+    title: string;
+  };
+  slide02: {
+    desc: string;
+    title: string;
+  };
+  slide03: {
+    desc: string;
+    title: string;
+  };
+  slide04: {
+    desc: string;
+    title: string;
+  };
+  slide05: {
+    desc: string;
+    title: string;
+  };
+  slide06: {
+    desc: string;
+    title: string;
+  };
+}
+
+interface Props {
+  carouselCopy: CarouselCopy;
+}
+
+const { carouselCopy } = Astro.props;
+---
+
+<section class='section-preview' id='features'>
+  <div class='container' data-anim-enter>
+    <Carousel
+      aria-label={carouselCopy.labels.aria}
+      slideSize='100%'
+      options={{ loop: true, align: 'start' }}
+      labels={{
+        previous: carouselCopy.labels.prev,
+        next: carouselCopy.labels.next,
+        pagination: carouselCopy.labels.pagination,
+        goTo: carouselCopy.labels.goTo,
+        status: carouselCopy.labels.counter,
+      }}>
+      <article class='slide slide-row slide-1'>
+        <div class='copy'>
+          <h2>{carouselCopy.slide01.title}</h2>
+          <p class='text-base'>{carouselCopy.slide01.desc}</p>
+        </div>
+
+        <figure>
+          <Image alt={carouselCopy.slide01.title} decoding='async' densities={[2]} format='png' loading='lazy' src={imgCarouselEditor} width={imgCarouselEditor.width / 2} />
+        </figure>
+      </article>
+
+      <article class='slide slide-row slide-2'>
+        <div class='copy'>
+          <h2>{carouselCopy.slide02.title}</h2>
+          <p class='text-base'>{carouselCopy.slide02.desc}</p>
+        </div>
+
+        <figure>
+          <Image alt={carouselCopy.slide02.title} decoding='async' densities={[2]} format='png' loading='lazy' src={imgCarouselOpenFolder} width={imgCarouselOpenFolder.width / 2} />
+        </figure>
+      </article>
+
+      <article class='slide slide-row slide-3'>
+        <div class='copy'>
+          <h2>{carouselCopy.slide03.title}</h2>
+          <p class='text-base'>{carouselCopy.slide03.desc}</p>
+        </div>
+
+        <figure>
+          <Image alt={carouselCopy.slide03.title} decoding='async' densities={[2]} format='png' loading='lazy' src={imgCarouselFormatting} width={imgCarouselFormatting.width / 2} />
+        </figure>
+      </article>
+
+      <article class='slide slide-row slide-4'>
+        <div class='copy'>
+          <h2>{carouselCopy.slide04.title}</h2>
+          <p class='text-base'>{carouselCopy.slide04.desc}</p>
+        </div>
+
+        <figure>
+          <Image alt={carouselCopy.slide04.title} decoding='async' densities={[2]} format='png' loading='lazy' src={imgCarouselSidebar} width={imgCarouselSidebar.width / 2} />
+        </figure>
+      </article>
+
+      <article class='slide slide-5'>
+        <div class='copy'>
+          <h2>{carouselCopy.slide05.title}</h2>
+          <p class='text-base'>{carouselCopy.slide05.desc}</p>
+        </div>
+
+        <figure>
+          <Image alt={carouselCopy.slide05.title} decoding='async' densities={[2]} format='png' loading='lazy' src={imgCarouselSettings} width={imgCarouselSettings.width / 2} />
+        </figure>
+      </article>
+
+      <article class='slide slide-6'>
+        <div class='copy'>
+          <h2>{carouselCopy.slide06.title}</h2>
+          <p class='text-base'>{carouselCopy.slide06.desc}</p>
+        </div>
+
+        <figure>
+          <Image alt={carouselCopy.slide06.title} decoding='async' densities={[2]} format='png' loading='lazy' src={imgCarouselAutosave} width={imgCarouselAutosave.width / 2} />
+        </figure>
+      </article>
+    </Carousel>
+  </div>
+</section>

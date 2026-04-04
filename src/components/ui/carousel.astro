@@ -69,6 +69,7 @@ const viewportId = `${id}-viewport`;
   data-carousel-viewport-id={viewportId}
   data-role="carousel"
   id={id}
+  role="region"
   style={rootStyle}
 >
   <div class="viewport" data-role="carousel-viewport" id={viewportId}>
@@ -109,6 +110,7 @@ const viewportId = `${id}-viewport`;
             aria-label={carouselLabels.pagination}
             class="pagination"
             data-role="carousel-pagination"
+            role="group"
           ></div>
         )}
       </div>

@@ -228,6 +228,7 @@
     "overrides": [
       {
         "files": [
+          "*.astro",
           "*.html"
         ],
         "options": {
@@ -262,7 +263,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@eslint/js": "^10.0.1",
-    "astro": "^6.0.8",
+    "astro": "^6.1.3",
     "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",

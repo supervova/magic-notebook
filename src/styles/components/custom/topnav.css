@@ -1,0 +1,93 @@
+@layer components.custom {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .topnav {
+    backdrop-filter: var(--backdrop-glass);
+    background: color-mix(in oklch, var(--color-bg-02) 90%, transparent);
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+    z-index: var(--z-sticky);
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: CHILDREN                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.topnav) {
+    nav {
+      display: flex;
+      align-items: center;
+      gap: var(--size-4);
+      height: var(--header-height);
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: var(--size-3);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+      @media (--tablet) {
+        justify-content: center;
+      }
+    }
+
+    .links > li {
+      margin: 0;
+      padding: 0;
+
+      &:first-child {
+        margin-inline-end: auto;
+      }
+
+      &:first-child .icon {
+        translate: 0 -1px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        display: none;
+      }
+
+      @media (--phone-l) {
+        &:nth-child(2),
+        &:nth-child(3) {
+          display: block;
+        }
+      }
+
+      @media (--tablet) {
+        &:first-child {
+          margin-inline-end: 0;
+        }
+      }
+    }
+
+    .link {
+      color: var(--color-text-02);
+      display: block;
+      font-size: var(--font-size-body-sm);
+      font-weight: 400;
+      line-height: var(--line-height-body-sm);
+      text-decoration: none;
+      text-transform: lowercase;
+      transition: color var(--duration-100) var(--easing-base);
+
+      @media (any-hover: hover) {
+        &:hover {
+          color: var(--color-text);
+        }
+      }
+    }
+  }
+
+  /* #endregion */
+}

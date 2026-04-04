@@ -1,0 +1,36 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+import type { Locale } from '../../i18n/config';
+
+interface BaseCopy {
+  footer: string;
+}
+
+interface NavCopy {
+  privacy: string;
+  supportTheProject: string;
+  terms: string;
+}
+
+interface Props {
+  baseCopy: BaseCopy;
+  locale: Locale;
+  navCopy: NavCopy;
+}
+
+const { baseCopy, locale, navCopy } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class='footer'>
+  <div class='container'>
+    <div class='layout'>
+      <p class='copy'>© Magic Notebook {currentYear}</p>
+      <nav aria-label={baseCopy.footer}>
+        <a href={getLocalizedPath(locale, 'support-project')}>{navCopy.supportTheProject}</a>
+        <a href={getLocalizedPath(locale, 'privacy')}>{navCopy.privacy}</a>
+        <a href={getLocalizedPath(locale, 'terms')}>{navCopy.terms}</a>
+      </nav>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,87 @@
+---
+import { getLocalizedPath } from '../../i18n/utils';
+import type { Locale } from '../../i18n/config';
+
+import Icon from '../ui/icon.astro';
+
+interface BaseCopy {
+  downloadMacos: string;
+  downloadOptions: string;
+  downloadWindows: string;
+}
+
+interface NavCopy {
+  download: string;
+  home: string;
+  lang: string;
+  supportTheProject: string;
+  whatsNew: string;
+}
+
+interface Props {
+  baseCopy: BaseCopy;
+  locale: Locale;
+  macosDownloadHref: string;
+  navCopy: NavCopy;
+  windowsDownloadHref: string;
+}
+
+const { baseCopy, locale, macosDownloadHref, navCopy, windowsDownloadHref } = Astro.props;
+const localeFlagName = locale === 'en' ? 'flag-en' : 'flag-ru';
+---
+
+<header class='topnav'>
+  <div class='container'>
+    <nav>
+      <ul class='links'>
+        <li>
+          <a class='link link-home' href='/' data-label={navCopy.home}>
+            <Icon name='home' />
+          </a>
+        </li>
+        <li>
+          <details class='popover popover-center' data-role='popover'>
+            <summary class='link'>
+              {navCopy.download}
+            </summary>
+            <div class='body w-max'>
+              <ul class='menu'>
+                <li>
+                  <a class='menu-item menu-item-icon-start' href={macosDownloadHref}>
+                    <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
+                    <span class='label'>{baseCopy.downloadMacos}</span>
+                  </a>
+                </li>
+                <li>
+                  <a class='menu-item menu-item-icon-start' href={windowsDownloadHref}>
+                    <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-windows'></use></svg>
+                    <span class='label'>{baseCopy.downloadWindows}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </li>
+        <li><a class='link' href={getLocalizedPath(locale, 'whats-new')}>{navCopy.whatsNew}</a></li>
+        <li><a class='link' href={getLocalizedPath(locale, 'support-project')}>{navCopy.supportTheProject}</a></li>
+        <li>
+          <details class='popover popover-end' data-role='popover'>
+            <summary aria-label={navCopy.lang}>
+              <Icon name={localeFlagName} />
+            </summary>
+            <div class='body w-max'>
+              <ul class='menu'>
+                <li>
+                  <a class='menu-item' href={getLocalizedPath('en')} lang='en' aria-current={locale === 'en' ? 'true' : undefined}>English</a>
+                </li>
+                <li>
+                  <a class='menu-item' href={getLocalizedPath('ru')} lang='ru' aria-current={locale === 'ru' ? 'true' : undefined}>Русский</a>
+                </li>
+              </ul>
+            </div>
+          </details>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

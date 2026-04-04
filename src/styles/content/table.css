@@ -1,0 +1,76 @@
+/* Base table styles are set in content/base.css */
+
+@layer content {
+  /* ------------------------------------------------------------------------ */
+  /* #region: CAPTION AND HEADER                                              */
+  /* ------------------------------------------------------------------------ */
+
+  caption {
+    font-weight: var(--font-weight-strong, 600);
+    text-align: left;
+    margin-bottom: var(--size-1);
+  }
+
+  thead th[colspan] {
+    text-align: center;
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: BORDER RESETS                                                   */
+  /* ------------------------------------------------------------------------ */
+
+  /* Remove top border from header cells and first row when no <thead> */
+  /* stylelint-disable-next-line selector-max-combinators, selector-max-compound-selectors */
+  :where(
+    thead th,
+    thead td,
+    table:not(:has(thead)) > tbody > tr:first-child td,
+    table:not(:has(thead)) > tbody > tr:first-child th,
+    table.is-no-thead > tbody > tr:first-child td,
+    table.is-no-thead > tbody > tr:first-child th
+  ) {
+    border-top: 0;
+  }
+
+  tfoot th,
+  tfoot td {
+    border-bottom: 0;
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: SCROLL WRAPPER                                                  */
+  /* ------------------------------------------------------------------------ */
+
+  .scroll-x table {
+    max-width: none;
+    min-width: 100%;
+    width: auto;
+  }
+
+  .scroll-x td,
+  .scroll-x th {
+    scroll-snap-align: start;
+  }
+
+  :where(.scroll-x) tr:last-child > :is(td, th) {
+    border-bottom: 0;
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: HOVER                                                           */
+  /* ------------------------------------------------------------------------ */
+
+  @media (any-hover: hover) {
+    :where(.table-hover tbody) tr:hover {
+      background-color: var(--color-bg-02);
+    }
+  }
+
+  /* #endregion */
+}

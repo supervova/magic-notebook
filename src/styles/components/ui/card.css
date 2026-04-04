@@ -1,0 +1,64 @@
+@layer components.ui {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .card {
+    --card-bg: var(--color-bg);
+    --card-border: 1px solid var(--color-border);
+    --card-color-headings: var(--color-text);
+    --card-color: var(--color-text-02);
+    --card-gap: 0;
+    --card-max-w: var(--width-lg);
+    --card-padding-y: var(--size-2h);
+    --card-padding-x: var(--size-2h);
+    --card-radius: var(--radius-md);
+    --card-shadow: none;
+
+    background-color: var(--card-bg);
+    border: var(--card-border);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    color: var(--card-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap);
+    padding-block: var(--card-padding-y);
+    padding-inline: var(--card-padding-x);
+    position: relative;
+    width: min(100%, var(--card-max-w));
+
+    @media (--phone-l) {
+      --card-padding-y: var(--size-3);
+      --card-padding-x: var(--size-3);
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: CHILDREN                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.card) {
+    h2,
+    h3 {
+      color: var(--card-color-headings);
+      margin-bottom: 0;
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: MODIFIERS                                                       */
+  /* ------------------------------------------------------------------------ */
+
+  .card-featured {
+    --card-border: 0;
+    --card-bg: var(--color-bg-z1);
+    --card-shadow: var(--shadow-z2);
+  }
+
+  /* #endregion */
+}

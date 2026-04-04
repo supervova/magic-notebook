@@ -13,8 +13,8 @@
     --accordion-marker-stroke: var(--color-text-03);
     --accordion-summary-color: var(--color-text);
     --accordion-summary-color-active: var(--color-text-02);
-    --accordion-summary-padding-block: var(--flow-gap);
-    --accordion-summary-padding-inline-end: calc(
+    --accordion-summary-padding-y: var(--flow-gap);
+    --accordion-summary-padding-x-end: calc(
       var(--flow-gap) + var(--accordion-marker-size) + var(--flow-gap) / 2
     );
 
@@ -57,9 +57,9 @@
       font-weight: 500;
 
       /* -1px compensates for parent border-top to align visual rhythm */
-      padding-top: calc(var(--accordion-summary-padding-block) - 1px);
-      padding-bottom: var(--accordion-summary-padding-block);
-      padding-inline-end: var(--accordion-summary-padding-inline-end);
+      padding-top: calc(var(--accordion-summary-padding-y) - 1px);
+      padding-bottom: var(--accordion-summary-padding-y);
+      padding-inline-end: var(--accordion-summary-padding-x-end);
       position: relative;
       transition: color var(--duration-50) var(--easing-base);
       width: 100%;
@@ -75,7 +75,7 @@
       /* Summary with subheading — tighter padding */
       &:has(hgroup),
       &.has-hgroup {
-        --accordion-summary-padding-block: calc(var(--flow-gap) / 2);
+        --accordion-summary-padding-y: calc(var(--flow-gap) / 2);
       }
 
       @media (any-hover: hover) {

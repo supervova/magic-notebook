@@ -6,8 +6,10 @@
   .icon {
     --icon-fill: transparent;
     --icon-stroke: var(--color-icon);
-    --icon-stroke-width: 2;
-    --icon-size: var(--size-3);
+    --icon-stroke-width: 2px;
+
+    /* Do not use the --size-3 variable to avoid icon scaling when --size-1 changes */
+    --icon-size: 24px;
 
     display: inline-block;
     fill: var(--icon-fill);
@@ -21,7 +23,7 @@
     height: var(--icon-size);
 
     @media (--retina) {
-      --icon-stroke-width: 1.5;
+      --icon-stroke-width: 1.5px;
     }
   }
 
@@ -32,7 +34,15 @@
   /* ------------------------------------------------------------------------ */
 
   .icon-sm {
-    --icon-size: var(--size-2);
+    --icon-size: 20px;
+  }
+
+  .icon-positive {
+    --icon-stroke: var(--color-text-02-positive);
+  }
+
+  .icon-negative {
+    --icon-stroke: var(--color-text-02-negative);
   }
 
   /* #endregion */
@@ -43,9 +53,10 @@
 
   /* figure */.icon-badge {
     --icon-badge-size: var(--size-7);
+    --icon-badge-radius: 14px;
 
-    background: var(--color-bg-02-brand);
-    border-radius: var(--radius-md);
+    background: var(--color-bg-brand);
+    border-radius: var(--icon-badge-radius);
     display: flex;
     align-items: center;
     justify-content: center;

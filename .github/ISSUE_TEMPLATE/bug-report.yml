@@ -1,0 +1,106 @@
+name: Bug report
+description: Report a reproducible problem in the app or website
+title: '[Bug]: '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill in the fields below.
+        You may write in English or Russian.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Where did the problem happen?
+      options:
+        - Desktop app
+        - Website
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Briefly describe the problem
+      placeholder: What went wrong?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide exact steps
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. See error ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: What actually happened?
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: App or site version (if known)
+      placeholder: e.g. 0.1.0
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Windows
+        - Linux
+        - Other
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      description: Only for website issues
+      placeholder: e.g. Chrome 123, Safari 17
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error message or logs
+      description: Paste any relevant error text
+      render: shell
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or additional context
+      description: Drag screenshots here if needed
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched existing issues
+          required: true

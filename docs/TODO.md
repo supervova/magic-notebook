@@ -31,9 +31,9 @@
     - AI-generated: Анна улыбается и, подняв указательный палец вверх, говорит, что, если вы разрабочик можете включить режим Markdown
   - [ ] Залить видос на YouTube, Dribbble и Behance
 
-- [ ] Страница /whats-new [1](https://desktop.github.com/release-notes/), [2](https://antigravity.google/changelog)
+- [ ] Страница /whats-new [1](https://desktop.github.com/release-notes/), [2](https://antigravity.google/changelog). Последние release notes за год, как в Github, но написанные для non-tech savvy
 - [ ] Страница Privacy policy 👩🏻‍💼Privacy and Terms
-- [ ] Страница [Support the Project](../docs/monetization/03--support-the-project.md). Примеры: [Bulma](https://bulma.io/become-a-bulma-sponsor/), [Prettier](https://github.com/sponsors/prettier)
+- [ ] Страница [Support the Project](../docs/monetization/03--support-the-project.md). Примеры: [Zen](https://zen-browser.app/donate/), [Bulma](https://bulma.io/become-a-bulma-sponsor/), [Prettier](https://github.com/sponsors/prettier). [Текст ChatGPT](../../app/docs/website/content/ru/support-the-project.md) (на мой взгляд, слишком многословный)
 - [ ] переезд на magic-notebook.com
 - [ ] Добавить [release notes](magic-notebook.com/changelog) в диалог About
 

@@ -1,0 +1,45 @@
+name: Question
+description: Ask a question about the project
+title: '[Question]: '
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for support questions or clarification.
+        You may write in English or Russian.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: Describe your question clearly
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Add any relevant details
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - General
+        - Desktop app
+        - Website
+        - Privacy
+        - Terms
+        - Donations
+        - Other
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: If related to the app
+      placeholder: e.g. 0.1.0

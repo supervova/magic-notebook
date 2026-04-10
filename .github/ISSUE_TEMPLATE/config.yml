@@ -1,0 +1,10 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Privacy Policy
+    url: https://magic-notebook.com/privacy
+    about: Read the project's privacy policy.
+
+  - name: Terms and Conditions
+    url: https://magic-notebook.com/terms
+    about: Read the terms of use for the project.

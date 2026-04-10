@@ -17,6 +17,8 @@
     /* #region: BACKGROUNDS                                                   */
     /* ---------------------------------------------------------------------- */
 
+    /* HSL does not match the colors in the JPG */
+    /* --color-bg: #fdfcfc; */
     --color-bg: hsl(var(--h) var(--s-min) var(--l-max));
     --color-bg-02: hsl(var(--h) var(--s-min) 97%);
     --color-bg-z1: hsl(from var(--color-bg) h s l / 0.88);

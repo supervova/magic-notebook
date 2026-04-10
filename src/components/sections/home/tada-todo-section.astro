@@ -28,7 +28,7 @@ const { tadaTodoCopy } = Astro.props;
 <section class='section-tada-todo'>
   <h2 class='visually-hidden'>{tadaTodoCopy.title}</h2>
   <div class='container'>
-    <div class='card-set'>
+    <div class='list-cards'>
       <div class='card'>
         <h3 class='text-base'>{tadaTodoCopy.vladimir.title}</h3>
         <Image alt={tadaTodoCopy.vladimir.alt} class='avatar' densities={[2]} format='png' loading='lazy' src={imgVladimir} width={imgVladimir.width / 2} />

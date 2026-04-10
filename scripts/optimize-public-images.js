@@ -41,7 +41,7 @@ const optimizeRaster = async (sharp, inputPath, outputPath, extension) => {
   const image = sharp(inputPath, { animated: true });
 
   if (extension === '.png') {
-    await image.png({ compressionLevel: 9, palette: true, quality: 85 }).toFile(outputPath);
+    await image.png({ adaptiveFiltering: true, compressionLevel: 9 }).toFile(outputPath);
     return;
   }
 

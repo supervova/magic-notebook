@@ -1,13 +1,47 @@
-import { en } from './en';
-import { ru } from './ru';
+import { en as commonEn } from './common/en';
+import { ru as commonRu } from './common/ru';
+import { en as homeEn } from './pages/home/en';
+import { ru as homeRu } from './pages/home/ru';
+import { en as privacyEn } from './pages/privacy/en';
+import { ru as privacyRu } from './pages/privacy/ru';
+import { en as termsEn } from './pages/terms/en';
+import { ru as termsRu } from './pages/terms/ru';
 
-export const dictionaries = {
-  en,
-  ru,
+export const commonDictionaries = {
+  en: commonEn,
+  ru: commonRu,
 } as const;
 
-export type Locale = keyof typeof dictionaries;
+export const pageDictionaries = {
+  home: {
+    en: homeEn,
+    ru: homeRu,
+  },
+  privacy: {
+    en: privacyEn,
+    ru: privacyRu,
+  },
+  terms: {
+    en: termsEn,
+    ru: termsRu,
+  },
+} as const;
 
-export const getDictionary = (locale: Locale) => {
-  return dictionaries[locale];
+export type Locale = keyof typeof commonDictionaries;
+export type PageName = keyof typeof pageDictionaries;
+
+export const getCommonDictionary = <CurrentLocale extends Locale>(locale: CurrentLocale) => {
+  return commonDictionaries[locale];
 };
+
+export const getPageDictionary = <
+  Page extends PageName,
+  CurrentLocale extends keyof (typeof pageDictionaries)[Page],
+>(
+  page: Page,
+  locale: CurrentLocale
+) => {
+  return pageDictionaries[page][locale];
+};
+
+export const getDictionary = getCommonDictionary;

@@ -65,6 +65,12 @@ export default [
       quotes: ['error', 'single', { avoidEscape: true }],
     },
   },
+  {
+    files: ['scripts/**/*.{js,mjs}'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
   /*
    * 📏 File & function size control (optional block)
    *

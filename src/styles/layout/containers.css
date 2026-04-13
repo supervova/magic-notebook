@@ -3,6 +3,26 @@
   /* #region: BASE                                                            */
   /* ------------------------------------------------------------------------ */
 
+  .wrapper {
+    --wrapper-padding-x: var(--padding-x-xl);
+
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-inline: var( --wrapper-padding-x);
+    padding-bottom: var(--spacer-xl);
+    width: min(100%, var(--width-wrapper));
+
+    @media (--tablet-l) {
+      --wrapper-padding-x: 80px;
+      box-shadow:
+        inset 1px 0 0 var(--color-border-dark),
+        inset -1px 0 0 var(--color-border-dark);
+    }
+  }
+
+  .wrapper,
   .prose,
   .container {
     margin-inline: auto;
@@ -10,8 +30,17 @@
   }
 
   .container {
+    --container-max-width: var(--width-container);
     padding-inline: var(--padding-x-xl);
-    width: min(100%, var(--width-container));
+    width: min(100%, var(--container-max-width));
+  }
+
+  .col-2\/3 {
+    width: min(100%,  692px);
+  }
+
+  .col-5\/6 {
+    width: min(100%,  776px);
   }
 
   .prose {
@@ -21,6 +50,10 @@
     &:not(.container .prose) {
       padding-inline: var(--padding-x-xl);
     }
+  }
+
+  main {
+    flex-grow: 1;
   }
 
   .main {
@@ -110,7 +143,7 @@
   }
 
   @scope (.list-view) {
-    li {
+    & > li {
       margin: 0;
       padding: 0;
 

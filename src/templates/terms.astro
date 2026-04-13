@@ -1,0 +1,99 @@
+---
+import { appLinks } from '../config/app-links';
+import SiteFooter from '../components/layout/site-footer.astro';
+import SiteHeader from '../components/layout/site-header.astro';
+import Accordion from '../components/ui/accordion.astro';
+import type { Locale } from '../i18n/config';
+import type { commonDictionaries } from '../i18n/config';
+import type { pageDictionaries } from '../i18n/config';
+import type { TermsSubsection } from '../i18n/pages/terms/types';
+import BaseLayout from '../layouts/base.astro';
+
+interface Props {
+  locale: Locale;
+  commonDictionary: (typeof commonDictionaries)[Locale];
+  pageDictionary: (typeof pageDictionaries)['terms'][Locale];
+}
+
+const { locale, commonDictionary, pageDictionary } = Astro.props;
+
+const baseCopy = commonDictionary.base;
+const navCopy = commonDictionary.nav;
+const macosDownloadHref = appLinks.downloads.macos;
+const windowsDownloadHref = appLinks.downloads.windows;
+---
+
+<BaseLayout
+  bodyClass='page-inner'
+  title={pageDictionary.meta.title}
+  description={pageDictionary.meta.desc}
+  lang={locale}
+>
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={macosDownloadHref}
+    navCopy={navCopy}
+    showBanner={true}
+    windowsDownloadHref={windowsDownloadHref}
+  />
+
+  <main class='wrapper'>
+    <header class='page-header col-5/6 mx-auto'>
+      <h1>{pageDictionary.page.title}</h1>
+      <p class='text-02'>
+        {pageDictionary.page.lastUpdatedLabel}
+        {' '}
+        {pageDictionary.page.lastUpdatedValue}
+      </p>
+    </header>
+
+    <div class='list-view col-5/6 mx-auto'>
+      {
+        pageDictionary.sections.map((section) => (
+          <Accordion title={section.title} open={section.open}>
+            {section.paragraphs?.map((paragraph: string) => <p set:html={paragraph} />)}
+
+            {section.list && (
+              <ul>
+                {section.list.map((item: string) => <li set:html={item} />)}
+              </ul>
+            )}
+
+            {section.trailingParagraphs?.map((paragraph: string) => <p set:html={paragraph} />)}
+
+            {section.trailingList && (
+              <ul>
+                {section.trailingList.map((item: string) => <li set:html={item} />)}
+              </ul>
+            )}
+
+            {section.subsections?.map((subsection: TermsSubsection) => (
+              <Fragment>
+                <h3>{subsection.title}</h3>
+
+                {subsection.paragraphs?.map((paragraph: string) => <p set:html={paragraph} />)}
+
+                {subsection.list && (
+                  <ul>
+                    {subsection.list.map((item: string) => <li set:html={item} />)}
+                  </ul>
+                )}
+
+                {subsection.trailingParagraphs?.map((paragraph: string) => <p set:html={paragraph} />)}
+
+                {subsection.trailingList && (
+                  <ul>
+                    {subsection.trailingList.map((item: string) => <li set:html={item} />)}
+                  </ul>
+                )}
+              </Fragment>
+            ))}
+          </Accordion>
+        ))
+      }
+    </div>
+  </main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+</BaseLayout>

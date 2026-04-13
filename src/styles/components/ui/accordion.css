@@ -4,43 +4,27 @@
   /* ------------------------------------------------------------------------ */
 
   .accordion {
-    --accordion-border-color: var(--color-border-02);
-    --accordion-marker-bg: var(--color-bg-03);
-    --accordion-marker-bg-active: var(--color-bg-01);
-    --accordion-marker-border: 1px solid var(--color-border-02);
-    --accordion-marker-offset: var(--flow-gap);
+    --accordion-bg: var(--color-bg-02);
+    --accordion-border-color: var(--color-border);
+    --accordion-marker-bg: var(--color-border);
+    --accordion-marker-offset: 6px;
     --accordion-marker-size: var(--size-3);
-    --accordion-marker-stroke: var(--color-text-03);
+    --accordion-marker-stroke: var(--color-icon);
+    --accordion-radius: var(--radius-md);
     --accordion-summary-color: var(--color-text);
     --accordion-summary-color-active: var(--color-text-02);
-    --accordion-summary-padding-y: var(--flow-gap);
-    --accordion-summary-padding-x-end: calc(
-      var(--flow-gap) + var(--accordion-marker-size) + var(--flow-gap) / 2
-    );
+    --accordion-summary-padding-x-end: var(--size-5);
 
-    border-top: 1px solid var(--accordion-border-color);
+    background-color: var(--accordion-bg);
+    border-radius: var(--accordion-radius);
     display: block;
+    padding: var(--size-1h) var(--size-2h) var(--size-2);
     overflow: hidden;
-  }
 
-  /* #endregion */
+    @media (--tablet) {
+      --accordion-marker-offset: var(--size-1h);
 
-  /* ------------------------------------------------------------------------ */
-  /* #region: OPEN STATE                                                      */
-  /* ------------------------------------------------------------------------ */
-
-  .accordion[open] {
-    --accordion-marker-bg: var(--accordion-marker-bg-active);
-    --accordion-marker-border: transparent;
-    --accordion-marker-stroke: var(--color-text-02);
-
-    .marker {
-      rotate: 180deg;
-    }
-
-    ::details-content,
-    .accordion-body {
-      height: auto;
+      padding-inline: var(--size-4);
     }
   }
 
@@ -51,17 +35,18 @@
   /* ------------------------------------------------------------------------ */
 
   @scope (.accordion) {
+    /* #region: Header / Trigger */
     summary {
       color: var(--accordion-summary-color);
       cursor: pointer;
+      display: block;
       font-weight: 500;
-
-      /* -1px compensates for parent border-top to align visual rhythm */
-      padding-top: calc(var(--accordion-summary-padding-y) - 1px);
-      padding-bottom: var(--accordion-summary-padding-y);
       padding-inline-end: var(--accordion-summary-padding-x-end);
+      padding-bottom: 0;
       position: relative;
-      transition: color var(--duration-50) var(--easing-base);
+      transition:
+        color var(--duration-50) var(--easing-base),
+        padding-bottom var(--duration-50) var(--easing-base);
       width: 100%;
 
       &::-webkit-details-marker {
@@ -72,12 +57,6 @@
         @mixin state-focus;
       }
 
-      /* Summary with subheading — tighter padding */
-      &:has(hgroup),
-      &.has-hgroup {
-        --accordion-summary-padding-y: calc(var(--flow-gap) / 2);
-      }
-
       @media (any-hover: hover) {
         &:hover {
           color: var(--accordion-summary-color-active);
@@ -85,49 +64,33 @@
       }
     }
 
-    hgroup {
-      flex: 1 1 auto;
-
-      strong {
-        display: block;
-        font-weight: inherit;
-      }
-
-      .text-02 {
-        @mixin text-truncate;
-
-        display: block;
-        font-weight: 400;
-      }
-
-      .marker {
-        top: 50%;
-        translate: 0 -50%;
-      }
+    summary :is(h2, h3) {
+      margin-bottom: 0;
     }
 
     .marker {
-      --icon-stroke: var(--accordion-marker-stroke);
-
       background: var(--accordion-marker-bg);
-      border: var(--accordion-marker-border);
       border-radius: var(--radius-pill);
-      color: var(--accordion-marker-stroke);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding-top: 2px;
       position: absolute;
       top: var(--accordion-marker-offset);
       inset-inline-end: 0;
-      transition:
-        background-color var(--duration-50) var(--easing-base),
-        rotate var(--duration-50) var(--easing-base);
+      transition: rotate var(--duration-50) var(--easing-base);
       width: var(--accordion-marker-size);
       height: var(--accordion-marker-size);
     }
 
-    ::details-content {
+    .marker .icon {
+      --icon-stroke: var(--accordion-marker-stroke);
+    }
+
+    /* #endregion */
+
+    /* #region: Body */
+
+    &::details-content {
       color: var(--color-text-02);
       transition:
         content-visibility var(--duration-200) var(--easing-base),
@@ -138,17 +101,44 @@
 
     .body :is(h3, .h3) {
       color: var(--color-text);
-      font-size: var(--font-size-body-sm);
+      font-size: var(--font-size-base);
       font-weight: 500;
-      letter-spacing: var(--letter-spacing-body-sm, 0);
-      line-height: var(--line-height-body-sm);
+      letter-spacing: var(--letter-spacing-base, 0);
+      line-height: var(--line-height-base);
+      margin-top: var(--flow-gap);
+    }
+
+    li {
+      margin-bottom: 0;
+    }
+
+    /* #endregion */
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: OPEN STATE                                                      */
+  /* ------------------------------------------------------------------------ */
+
+  @scope (.accordion[open]) {
+    summary {
+      padding-bottom: var(--size-1);
+    }
+
+    .marker {
+      rotate: 180deg;
+    }
+
+    &::details-content {
+      height: auto;
     }
   }
 
   /* #endregion */
 
   /* ------------------------------------------------------------------------ */
-  /* #region: SPACING                                                         */
+  /* #region: FLOW                                                            */
   /* ------------------------------------------------------------------------ */
 
   .accordion + :not(.accordion) {

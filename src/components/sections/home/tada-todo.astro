@@ -7,7 +7,7 @@ import imgVladimir from '../../../assets/img/pages/home/avatar-vladimir.png';
 interface TadaTodoCopy {
   anna: {
     alt: string;
-    list: string[];
+    list: readonly string[];
     title: string;
   };
   title: string;
@@ -30,7 +30,7 @@ const { tadaTodoCopy } = Astro.props;
   <div class='container'>
     <div class='list-cards'>
       <div class='card'>
-        <h3 class='text-base'>{tadaTodoCopy.vladimir.title}</h3>
+        <h3 class='text-base' set:html={tadaTodoCopy.vladimir.title} />
         <Image alt={tadaTodoCopy.vladimir.alt} class='avatar' densities={[2]} format='png' loading='lazy' src={imgVladimir} width={imgVladimir.width / 2} />
         <p class='text-base'>{tadaTodoCopy.vladimir.desc}</p>
       </div>

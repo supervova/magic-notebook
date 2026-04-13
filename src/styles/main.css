@@ -33,6 +33,7 @@ from build but available globally. */
 /* Components: Form */
 
 /* Components: UI */
+@import url('./components/ui/accordion.css');
 @import url('./components/ui/button-split.css');
 @import url('./components/ui/card.css');
 @import url('./components/ui/carousel.css');
@@ -40,8 +41,9 @@ from build but available globally. */
 @import url('./components/ui/popover.css');
 
 /* Components: Custom */
-@import url('./components/custom/topnav.css');
 @import url('./components/custom/footer.css');
+@import url('./components/custom/page-header.css');
+@import url('./components/custom/topnav.css');
 
 /* Features */
 

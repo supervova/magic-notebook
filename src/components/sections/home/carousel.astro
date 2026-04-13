@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-import Carousel from '../../ui/carousel.astro';
+import UiCarousel from '../../ui/carousel.astro';
 
 import imgCarouselAutosave from '../../../assets/img/pages/home/carousel/06-autosave.png';
 import imgCarouselEditor from '../../../assets/img/pages/home/carousel/01-editor.png';
@@ -54,7 +54,7 @@ const { carouselCopy } = Astro.props;
 
 <section class='section-preview' id='features'>
   <div class='container' data-anim-enter>
-    <Carousel
+    <UiCarousel
       aria-label={carouselCopy.labels.aria}
       slideSize='100%'
       options={{ loop: true, align: 'start' }}
@@ -130,6 +130,6 @@ const { carouselCopy } = Astro.props;
           <Image alt={carouselCopy.slide06.title} decoding='async' densities={[2]} format='png' loading='lazy' src={imgCarouselAutosave} width={imgCarouselAutosave.width / 2} />
         </figure>
       </article>
-    </Carousel>
+    </UiCarousel>
   </div>
 </section>

@@ -29,9 +29,6 @@
     --padding-bottom-li: 10px;
 
     @media (--tablet) {
-      --padding-top-title: 4px;
-      --padding-bottom-title: 4px;
-
       --padding-top-h2: 1px;
       --padding-bottom-h2: 7px;
 

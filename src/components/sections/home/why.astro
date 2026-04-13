@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 
 import imgLifestyle from '../../../assets/img/pages/home/lifestyle.jpg';
-import imgLogoWhy from '../../../assets/img/pages/home/logomark.png';
+import imgLogoWhy from '../../../assets/img/components/logomark.png';
 
 interface BaseCopy {
   app: string;
@@ -10,7 +10,7 @@ interface BaseCopy {
 
 interface WhyCopy {
   alt: string;
-  list: string[];
+  list: readonly string[];
   offer: string;
   title: string;
 }

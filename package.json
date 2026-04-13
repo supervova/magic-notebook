@@ -12,13 +12,15 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
+    "ci:local": "pnpm -s lint && pnpm -s typecheck && pnpm -s build",
     "dev": "node scripts/dev.js",
     "format": "prettier . --write",
     "lint": "pnpm -s lint:js && pnpm -s lint:css",
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint:js": "eslint .",
     "prebuild": "node scripts/build-svg-sprite.js && node scripts/optimize-public-images.js",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "typecheck": "astro check"
   },
   "stylelint": {
     "extends": [

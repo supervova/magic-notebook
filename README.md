@@ -1,30 +1,25 @@
-# Magi Notebook website
+# Magic Notebook — Website
 
-## 🚀 Project Structure
+Official website for **Magic Notebook** — a calm, writing-first desktop app for bloggers, journalists, and authors.
 
-Inside of your Astro project, you'll see the following folders and files:
+**Principles:** static-first, content-first, minimal JS.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Stack
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- Astro (SSG)
+- Native `.astro` templates
+- Markdown / Content Collections
+- CSS + PostCSS
+- GitHub Pages (static deploy)
 
-## 🧞 Commands
+## Structure
 
-All commands are run from the root of the project, from a terminal:
+- `/` — landing
+- `/whats-new/` — releases
+- `/support-project/` — make your donation
+- `/ru/*` - Russian version
+
+## Commands
 
 | Command                        | Action                                                |
 | :----------------------------- | :---------------------------------------------------- |
@@ -35,3 +30,7 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm astro ...`               | Run CLI commands like `astro add`, `astro check`      |
 | `pnpm astro -- --help`         | Get help using the Astro CLI                          |
 | `pnpm outdated --format table` | Shows a table of outdated dependencies in the project |
+
+## Deployment
+
+Automatic via GitHub Actions → GitHub Pages.

@@ -3,35 +3,37 @@ import { appLinks } from '../config/app-links';
 
 import SiteFooter from '../components/layout/site-footer.astro';
 import SiteHeader from '../components/layout/site-header.astro';
-import ComparisonSection from '../components/sections/home/comparison-section.astro';
-import CtaSection from '../components/sections/home/cta-section.astro';
-import FeaturesSection from '../components/sections/home/features-section.astro';
-import HeroSection from '../components/sections/home/hero-section.astro';
-import PreviewSection from '../components/sections/home/preview-section.astro';
-import TadaTodoSection from '../components/sections/home/tada-todo-section.astro';
-import WhySection from '../components/sections/home/why-section.astro';
+import PreviewSection from '../components/sections/home/carousel.astro';
+import ComparisonSection from '../components/sections/home/comparison.astro';
+import CtaSection from '../components/sections/home/cta.astro';
+import FeaturesSection from '../components/sections/home/features.astro';
+import HeroSection from '../components/sections/home/hero.astro';
+import TadaTodoSection from '../components/sections/home/tada-todo.astro';
+import WhySection from '../components/sections/home/why.astro';
 import BaseLayout from '../layouts/base.astro';
 import type { Locale } from '../i18n/config';
-import type { dictionaries } from '../i18n/config';
+import type { commonDictionaries } from '../i18n/config';
+import type { pageDictionaries } from '../i18n/config';
 
 import '../styles/pages/home.css';
 
 interface Props {
   locale: Locale;
-  dictionary: (typeof dictionaries)[Locale];
+  commonDictionary: (typeof commonDictionaries)[Locale];
+  pageDictionary: (typeof pageDictionaries)['home'][Locale];
 }
 
-const { locale, dictionary } = Astro.props;
+const { locale, commonDictionary, pageDictionary } = Astro.props;
 
-const baseCopy = dictionary.base;
-const comparisonCopy = dictionary.home.comparison;
-const ctaCopy = dictionary.home.cta;
-const featuresCopy = dictionary.home.features;
-const heroCopy = dictionary.home.hero;
-const navCopy = dictionary.nav;
-const previewCopy = dictionary.home.carousel;
-const tadaTodoCopy = dictionary.home.tadaTodo;
-const whyCopy = dictionary.home.why;
+const baseCopy = commonDictionary.base;
+const comparisonCopy = pageDictionary.comparison;
+const ctaCopy = pageDictionary.cta;
+const featuresCopy = pageDictionary.features;
+const heroCopy = pageDictionary.hero;
+const navCopy = commonDictionary.nav;
+const previewCopy = pageDictionary.carousel;
+const tadaTodoCopy = pageDictionary.tadaTodo;
+const whyCopy = pageDictionary.why;
 
 const macosDownloadHref = appLinks.downloads.macos;
 const windowsDownloadHref = appLinks.downloads.windows;
@@ -39,19 +41,16 @@ const windowsDownloadHref = appLinks.downloads.windows;
 
 <BaseLayout
   bodyClass='page-home'
-  title={dictionary.home.meta.title}
-  description={dictionary.home.meta.desc}
+  title={pageDictionary.meta.title}
+  description={pageDictionary.meta.desc}
   lang={locale}
 >
-  <script is:inline>
-    document.documentElement.classList.add('has-js');
-  </script>
-
   <SiteHeader
     baseCopy={baseCopy}
     locale={locale}
     macosDownloadHref={macosDownloadHref}
     navCopy={navCopy}
+    showBanner={false}
     windowsDownloadHref={windowsDownloadHref}
   />
 
@@ -84,7 +83,7 @@ const windowsDownloadHref = appLinks.downloads.windows;
 
   <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
 
-  <script type='module'>
+  <script is:inline type='module'>
     const video = document.querySelector('#video-magic');
 
     if (video instanceof HTMLVideoElement) {
@@ -113,7 +112,7 @@ const windowsDownloadHref = appLinks.downloads.windows;
     }
   </script>
 
-  <script type='module'>
+  <script is:inline type='module'>
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

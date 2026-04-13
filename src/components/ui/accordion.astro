@@ -1,0 +1,24 @@
+---
+import Icon from './icon.astro';
+
+interface Props {
+  open?: boolean;
+  title: string;
+  titleTag?: 'h2' | 'h3';
+}
+
+const { open = false, title, titleTag = 'h2' } = Astro.props;
+const TitleTag = titleTag;
+---
+
+<details class='accordion' open={open}>
+  <summary>
+    <TitleTag class='h3'>{title}</TitleTag>
+    <span class='marker'>
+      <Icon class='icon-sm' name='sm-chevron-down' />
+    </span>
+  </summary>
+  <div class='body text-02'>
+    <slot />
+  </div>
+</details>

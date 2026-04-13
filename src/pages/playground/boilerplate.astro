@@ -1,0 +1,33 @@
+---
+import SiteFooter from '../../components/layout/site-footer.astro';
+import SiteHeader from '../../components/layout/site-header.astro';
+import { appLinks } from '../../config/app-links';
+import { getCommonDictionary } from '../../i18n/config';
+import BaseLayout from '../../layouts/base.astro';
+import './_tmp.css';
+
+const locale = 'ru';
+const dictionary = getCommonDictionary(locale);
+const baseCopy = dictionary.base;
+const navCopy = dictionary.nav;
+---
+
+<BaseLayout
+  bodyClass='page-playground'
+  title='Playground Prototype'
+  description='Prototype page'
+  lang={locale}
+>
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={appLinks.downloads.macos}
+    navCopy={navCopy}
+    showBanner={true}
+    windowsDownloadHref={appLinks.downloads.windows}
+  />
+
+  <main></main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+</BaseLayout>

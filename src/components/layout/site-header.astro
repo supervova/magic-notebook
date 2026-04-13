@@ -1,13 +1,18 @@
 ---
+import { Image } from 'astro:assets';
+
+import logoMark from '../../assets/img/components/logomark.png';
 import { getLocalizedPath } from '../../i18n/utils';
 import type { Locale } from '../../i18n/config';
 
 import Icon from '../ui/icon.astro';
 
 interface BaseCopy {
+  app: string;
   downloadMacos: string;
   downloadOptions: string;
   downloadWindows: string;
+  logo: string;
 }
 
 interface NavCopy {
@@ -23,14 +28,30 @@ interface Props {
   locale: Locale;
   macosDownloadHref: string;
   navCopy: NavCopy;
+  showBanner?: boolean;
   windowsDownloadHref: string;
 }
 
-const { baseCopy, locale, macosDownloadHref, navCopy, windowsDownloadHref } = Astro.props;
+const { baseCopy, locale, macosDownloadHref, navCopy, showBanner = false, windowsDownloadHref } = Astro.props;
 const localeFlagName = locale === 'en' ? 'flag-en' : 'flag-ru';
 ---
 
 <header class='topnav'>
+  {
+    showBanner && (
+      <div class='banner'>
+        <Image
+          alt={`${baseCopy.app}, ${baseCopy.logo}`}
+          class="logomark"
+          densities={[2]}
+          src={logoMark}
+          width={logoMark.width / 2}
+        />
+        <span class='brand-name'>{baseCopy.app}</span>
+      </div>
+    )
+  }
+
   <div class='container'>
     <nav>
       <ul class='links'>

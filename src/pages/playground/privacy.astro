@@ -1,0 +1,57 @@
+---
+import SiteFooter from '../../components/layout/site-footer.astro';
+import SiteHeader from '../../components/layout/site-header.astro';
+
+import { appLinks } from '../../config/app-links';
+import { getCommonDictionary } from '../../i18n/config';
+import BaseLayout from '../../layouts/base.astro';
+
+import Icon from '../../components/ui/icon.astro';
+
+// import './_tmp.css';
+
+const locale = 'ru';
+const dictionary = getCommonDictionary(locale);
+const baseCopy = dictionary.base;
+const navCopy = dictionary.nav;
+---
+
+<BaseLayout
+  bodyClass='page-inner'
+  title='Playground Prototype'
+  description='Prototype page'
+  lang={locale}
+>
+
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={appLinks.downloads.macos}
+    navCopy={navCopy}
+    showBanner={true}
+    windowsDownloadHref={appLinks.downloads.windows}
+  />
+
+
+  <main class="wrapper">
+    <header class="page-header col-5/6 mx-auto">
+      <h1>Политика конфиденциальности</h1>
+      <p class="text-02">Последнее обновление: 1 мая 2026 г.</p>
+    </header>
+
+    <div class="col-5/6 mx-auto">
+      <details class="accordion" open>
+        <summary>
+          <h2 class="h3">Общие положения</h2>
+          <span class="marker"><Icon class='icon-sm' name='sm-chevron-down' /></span>
+        </summary>
+        <div class="body text-02">
+          <p>Magic Notebook — это macOS и Windows-приложение для набора и редактирования текстовых файлов. Мы уважаем вашу конфиденциальность и стремимся минимизировать сбор данных. Настоящая Политика описывает, какие данные обрабатываются при использовании приложения.</p>
+        </div>
+      </details>
+    </div>
+
+  </main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+</BaseLayout>

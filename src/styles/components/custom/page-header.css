@@ -1,0 +1,10 @@
+@layer components.custom {
+  .page-header {
+    margin-inline: auto;
+    padding-block: var(--size-6);
+
+    @media (--tablet) {
+      padding-top: 80px;
+    }
+  }
+}

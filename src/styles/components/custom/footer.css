@@ -1,5 +1,23 @@
 @layer components.custom {
   /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .footer {
+    background-color: var(--color-bg);
+
+    @media (--tablet-l) {
+      box-shadow:
+        inset -1px 0 0 var(--color-border-dark),
+        inset 1px 0 0 var(--color-border-dark);
+      margin-inline: auto;
+      width: min(100%, var(--width-wrapper));
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
   /* #region: FOOTER - JUST CHILDREN                                          */
   /* ------------------------------------------------------------------------ */
 

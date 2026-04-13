@@ -1,0 +1,10 @@
+---
+import { getCommonDictionary, getPageDictionary } from '../i18n/config';
+import TermsPage from '../templates/terms.astro';
+
+const locale = 'en';
+const commonDictionary = getCommonDictionary(locale);
+const pageDictionary = getPageDictionary('terms', locale);
+---
+
+<TermsPage locale={locale} commonDictionary={commonDictionary} pageDictionary={pageDictionary} />

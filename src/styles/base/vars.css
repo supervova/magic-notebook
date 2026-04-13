@@ -28,6 +28,7 @@
     --color-brand: hsl(var(--h) var(--s) var(--l));
 
     --color-text-dark: rgb(0 0 0 / 0.87);
+    --color-border-dark: rgb(0 0 0 / 0.08);
 
     --color-light-max: #fff;
     --color-text-light: hsl(0 0% 100% / 0.87);
@@ -258,7 +259,8 @@
     --width-lg: 544px;
     --width-xl: 720px;
 
-    --width-container: 1176px;
+    --width-container: 1130px;
+    --width-wrapper: 1210px;
     --width-prose: 70ch;
 
     /* #endregion */
@@ -300,13 +302,13 @@
     --tooltip-background: hsl(var(--h) var(--h) 32% / 0.92);
 
     @media (--phone-l) {
-      --padding-x-xl: var(--flow-gap);
+      --padding-x-xl: var(--size-3);
     }
 
     @media (--tablet) {
       --sidenav-width: 96px;
 
-      --padding-x-md: var(--flow-gap);
+      --padding-x-md: var(--size-3);
       --padding-x-xl: var(--size-5);
     }
 

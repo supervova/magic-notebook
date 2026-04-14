@@ -34,6 +34,14 @@ interface Props {
 
 const { baseCopy, locale, macosDownloadHref, navCopy, showBanner = false, windowsDownloadHref } = Astro.props;
 const localeFlagName = locale === 'en' ? 'flag-en' : 'flag-ru';
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+const isCurrentPath = (path: string) => {
+  const localizedPath = getLocalizedPath(locale, path);
+  const normalizedLocalizedPath = localizedPath.replace(/\/+$/, '') || '/';
+
+  return pathname === normalizedLocalizedPath;
+};
 ---
 
 <header class='topnav'>
@@ -56,7 +64,12 @@ const localeFlagName = locale === 'en' ? 'flag-en' : 'flag-ru';
     <nav>
       <ul class='links'>
         <li>
-          <a class='link link-home' href='/' data-label={navCopy.home}>
+          <a
+            class='link link-home'
+            href={getLocalizedPath(locale)}
+            data-label={navCopy.home}
+            aria-current={isCurrentPath('/') ? 'page' : undefined}
+          >
             <Icon name='home' />
           </a>
         </li>
@@ -83,8 +96,24 @@ const localeFlagName = locale === 'en' ? 'flag-en' : 'flag-ru';
             </div>
           </details>
         </li>
-        <li><a class='link' href={getLocalizedPath(locale, 'whats-new')}>{navCopy.whatsNew}</a></li>
-        <li><a class='link' href={getLocalizedPath(locale, 'support-project')}>{navCopy.supportTheProject}</a></li>
+        <li>
+          <a
+            class='link'
+            href={getLocalizedPath(locale, 'whats-new')}
+            aria-current={isCurrentPath('whats-new') ? 'page' : undefined}
+          >
+            {navCopy.whatsNew}
+          </a>
+        </li>
+        <li>
+          <a
+            class='link'
+            href={getLocalizedPath(locale, 'support-project')}
+            aria-current={isCurrentPath('support-project') ? 'page' : undefined}
+          >
+            {navCopy.supportTheProject}
+          </a>
+        </li>
         <li>
           <details class='popover popover-end' data-role='popover'>
             <summary aria-label={navCopy.lang}>

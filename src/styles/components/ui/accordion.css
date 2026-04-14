@@ -42,11 +42,8 @@
       display: block;
       font-weight: 500;
       padding-inline-end: var(--accordion-summary-padding-x-end);
-      padding-bottom: 0;
       position: relative;
-      transition:
-        color var(--duration-50) var(--easing-base),
-        padding-bottom var(--duration-50) var(--easing-base);
+      transition: color var(--duration-50) var(--easing-base);
       width: 100%;
 
       &::-webkit-details-marker {
@@ -99,13 +96,16 @@
       height: 0;
     }
 
+    .body {
+      padding-top: var(--size-1);
+    }
+
     .body :is(h3, .h3) {
       color: var(--color-text);
       font-size: var(--font-size-base);
       font-weight: 500;
       letter-spacing: var(--letter-spacing-base, 0);
       line-height: var(--line-height-base);
-      margin-top: var(--flow-gap);
     }
 
     li {
@@ -122,10 +122,6 @@
   /* ------------------------------------------------------------------------ */
 
   @scope (.accordion[open]) {
-    summary {
-      padding-bottom: var(--size-1);
-    }
-
     .marker {
       rotate: 180deg;
     }

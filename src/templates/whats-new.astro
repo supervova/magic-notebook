@@ -1,0 +1,98 @@
+---
+import { appLinks } from '../config/app-links';
+import SiteFooter from '../components/layout/site-footer.astro';
+import SiteHeader from '../components/layout/site-header.astro';
+import type { Locale } from '../i18n/config';
+import type { commonDictionaries } from '../i18n/config';
+import type { WhatsNewDictionary } from '../i18n/pages/whats-new/types';
+import BaseLayout from '../layouts/base.astro';
+
+import '../styles/pages/whats-new.css';
+
+interface Props {
+  locale: Locale;
+  commonDictionary: (typeof commonDictionaries)[Locale];
+  pageDictionary: WhatsNewDictionary;
+}
+
+const { locale, commonDictionary, pageDictionary } = Astro.props;
+
+const baseCopy = commonDictionary.base;
+const navCopy = commonDictionary.nav;
+const macosDownloadHref = appLinks.downloads.macos;
+const windowsDownloadHref = appLinks.downloads.windows;
+---
+
+<BaseLayout
+  bodyClass='page-whats-new'
+  title={pageDictionary.meta.title}
+  description={pageDictionary.meta.desc}
+  lang={locale}
+>
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={macosDownloadHref}
+    navCopy={navCopy}
+    showBanner={true}
+    windowsDownloadHref={windowsDownloadHref}
+  />
+
+  <main class='wrapper'>
+    <header class='page-header col-2/3'>
+      <h1>{pageDictionary.page.title}</h1>
+
+      <ul class='list-unstyled'>
+        {
+          pageDictionary.legend.map((tag) => (
+            <li>
+              <span class={`tag tag-${tag.tone}`} aria-label={tag.label}>
+                {tag.shortLabel}
+              </span>
+              {tag.label}
+            </li>
+          ))
+        }
+      </ul>
+    </header>
+
+    <div class='release-notes'>
+      {
+        pageDictionary.releases.map((release) => (
+          <section class='release-note col-2/3'>
+            <h2>
+              {release.date}
+              {' '}
+              <span class='text-02'>
+                - {pageDictionary.page.versionLabel} {release.version}
+              </span>
+            </h2>
+
+            <ul class='list-tagged col-5/6'>
+              {
+                release.items.map((item) => {
+                  const tag = pageDictionary.legend.find(({ tone }) => tone === item.tone);
+
+                  if (!tag) {
+                    return null;
+                  }
+
+                  return (
+                    <li>
+                      <span class={`tag tag-${tag.tone}`} aria-label={tag.label}>
+                        {tag.shortLabel}
+                      </span>
+                      <span class='desc'>{item.text}</span>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+</BaseLayout>

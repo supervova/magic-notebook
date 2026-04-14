@@ -6,6 +6,8 @@ import { en as privacyEn } from './pages/privacy/en';
 import { ru as privacyRu } from './pages/privacy/ru';
 import { en as termsEn } from './pages/terms/en';
 import { ru as termsRu } from './pages/terms/ru';
+import { en as whatsNewEn } from './pages/whats-new/en';
+import { ru as whatsNewRu } from './pages/whats-new/ru';
 
 export const commonDictionaries = {
   en: commonEn,
@@ -24,6 +26,10 @@ export const pageDictionaries = {
   terms: {
     en: termsEn,
     ru: termsRu,
+  },
+  'whats-new': {
+    en: whatsNewEn,
+    ru: whatsNewRu,
   },
 } as const;
 

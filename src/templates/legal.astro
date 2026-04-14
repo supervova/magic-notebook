@@ -5,14 +5,13 @@ import SiteHeader from '../components/layout/site-header.astro';
 import Accordion from '../components/ui/accordion.astro';
 import type { Locale } from '../i18n/config';
 import type { commonDictionaries } from '../i18n/config';
-import type { pageDictionaries } from '../i18n/config';
-import type { TermsSubsection } from '../i18n/pages/terms/types';
+import type { LegalDictionary, LegalSubsection } from '../i18n/pages/legal/types';
 import BaseLayout from '../layouts/base.astro';
 
 interface Props {
   locale: Locale;
   commonDictionary: (typeof commonDictionaries)[Locale];
-  pageDictionary: (typeof pageDictionaries)['terms'][Locale];
+  pageDictionary: LegalDictionary;
 }
 
 const { locale, commonDictionary, pageDictionary } = Astro.props;
@@ -39,7 +38,7 @@ const windowsDownloadHref = appLinks.downloads.windows;
   />
 
   <main class='wrapper'>
-    <header class='page-header col-5/6 mx-auto'>
+    <header class='page-header col-5/6'>
       <h1>{pageDictionary.page.title}</h1>
       <p class='text-02'>
         {pageDictionary.page.lastUpdatedLabel}
@@ -68,7 +67,7 @@ const windowsDownloadHref = appLinks.downloads.windows;
               </ul>
             )}
 
-            {section.subsections?.map((subsection: TermsSubsection) => (
+            {section.subsections?.map((subsection: LegalSubsection) => (
               <Fragment>
                 <h3>{subsection.title}</h3>
 

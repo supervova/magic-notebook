@@ -1,0 +1,10 @@
+---
+import { getCommonDictionary, getPageDictionary } from '../i18n/config';
+import WhatsNewPage from '../templates/whats-new.astro';
+
+const locale = 'en';
+const commonDictionary = getCommonDictionary(locale);
+const pageDictionary = getPageDictionary('whats-new', locale);
+---
+
+<WhatsNewPage locale={locale} commonDictionary={commonDictionary} pageDictionary={pageDictionary} />

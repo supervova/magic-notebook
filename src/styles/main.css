@@ -26,6 +26,7 @@ from build but available globally. */
 /* -------------------------------------------------------------------------- */
 
 /* Content */
+@import url('./content/advanced.css');
 @import url('./content/table.css');
 
 /* Layout */
@@ -39,15 +40,16 @@ from build but available globally. */
 @import url('./components/ui/carousel.css');
 @import url('./components/ui/menu.css');
 @import url('./components/ui/popover.css');
+@import url('./components/ui/tag.css');
 
 /* Components: Custom */
 @import url('./components/custom/footer.css');
-@import url('./components/custom/page-header.css');
 @import url('./components/custom/topnav.css');
 
 /* Features */
 
 /* Pages */
+@import url('./pages/whats-new.css');
 
 /* Utils and print */
 @import url('./utils/animation.css');

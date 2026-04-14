@@ -176,6 +176,11 @@
       text-transform: lowercase;
       transition: color var(--duration-100) var(--easing-base);
 
+      &[aria-current='page'] {
+        color: var(--color-text);
+        pointer-events: none;
+      }
+
       @media (any-hover: hover) {
         &:hover {
           color: var(--color-text);

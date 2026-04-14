@@ -1,6 +1,6 @@
 import type { PrivacyDictionary } from './types';
 
-export const ru = {
+export const ru: PrivacyDictionary = {
   meta: {
     title: 'Политика конфиденциальности - Magic Notebook',
     desc: 'Политика конфиденциальности для десктопного приложения Magic Notebook.',
@@ -94,4 +94,4 @@ export const ru = {
       ],
     },
   ],
-} satisfies PrivacyDictionary;
+};

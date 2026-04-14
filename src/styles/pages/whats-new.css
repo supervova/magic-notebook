@@ -1,0 +1,52 @@
+/* -------------------------------------------------------------------------- */
+/* #region: BASE                                                              */
+/* -------------------------------------------------------------------------- */
+
+@layer pages {
+  @scope (.page-whats-new .page-header) {
+    .list-unstyled {
+      color: var(--color-text-02);
+      font-size: var(--font-size-fine-print);
+      line-height: var(--line-height-fine-print);
+      margin-inline: auto;
+      padding-top: var(--size-2);
+      max-width: max-content;
+
+      @media (--phone-l) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--size-2h);
+        row-gap: var(--size-1);
+        justify-content: center;
+      }
+    }
+
+    li {
+      max-width: max-content;
+
+      @media (--phone-l) {
+        padding: 0;
+      }
+    }
+
+    .tag { margin-inline-end: var(--size-1); }
+  }
+
+  @scope (.page-whats-new) {
+    .release-note { margin-inline: auto; }
+
+    .release-note h2 {
+      text-align: center;
+
+      @media (--phone-l) {
+        text-align: start;
+      }
+    }
+
+    .release-note + .release-note {
+      margin-top: var(--size-8);
+    }
+  }
+}
+
+/* #endregion */

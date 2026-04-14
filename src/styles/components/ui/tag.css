@@ -1,0 +1,76 @@
+@layer components.ui {
+  /* ------------------------------------------------------------------------ */
+  /* #region: BASE                                                            */
+  /* ------------------------------------------------------------------------ */
+
+  .tag {
+    --tag-bg: var(--color-bg-brand);
+    --tag-color: var(--color-text-02-brand);
+    --tag-radius: var(--radius-pill);
+    --tag-font-size: var(--font-size-body-sm);
+    --tag-font-weight: 500;
+    --tag-letter-spacing: 0;
+    --tag-gap: var(--size-half);
+    --tag-padding-y: var(--size-half);
+    --tag-padding-x: var(--size-1h);
+    --tag-max-w: 208px;
+    --tag-min-h: var(--size-3);
+
+    background: var(--tag-bg);
+    border-radius: var(--tag-radius);
+    color: var(--tag-color);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--tag-gap);
+    justify-content: center;
+    font-size: var(--tag-font-size);
+    font-weight: var(--tag-font-weight);
+    line-height: 1;
+    text-align: center;
+    text-transform: none;
+    white-space: nowrap;
+    padding: var(--tag-padding-y) var(--tag-padding-x);
+    vertical-align: baseline;
+    width: auto;
+    max-width: var(--tag-max-w);
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .tag:not(.tag-chip) {
+    cursor: default;
+    min-height: var(--tag-min-h);
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: MODIFIERS                                                       */
+  /* ------------------------------------------------------------------------ */
+
+  .tag-brand,
+  .tag-new,
+  .tag-improvement,
+  .tag-fix {
+    --tag-color: var(--color-bg);
+  }
+
+  .tag-new,
+  .tag-improvement,
+  .tag-fix {
+    width: var(--size-5);
+  }
+
+  .tag-brand,
+  .tag-new{
+    --tag-bg: var(--color-brand);
+  }
+
+  .tag-improvement { --tag-bg: hsl(45 var(--s) 43%); }
+  .tag-fix { --tag-bg: hsl(335 var(--s) 72%); }
+
+
+  /* #endregion */
+}

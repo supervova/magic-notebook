@@ -1,5 +1,5 @@
 ---
-import PrivacyPage from '../../templates/privacy.astro';
+import LegalPage from '../../templates/legal.astro';
 import { getCommonDictionary, getPageDictionary } from '../../i18n/config';
 
 const locale = 'ru';
@@ -7,4 +7,4 @@ const commonDictionary = getCommonDictionary(locale);
 const pageDictionary = getPageDictionary('privacy', locale);
 ---
 
-<PrivacyPage locale={locale} commonDictionary={commonDictionary} pageDictionary={pageDictionary} />
+<LegalPage locale={locale} commonDictionary={commonDictionary} pageDictionary={pageDictionary} />

@@ -1,0 +1,60 @@
+@layer content {
+  /* ------------------------------------------------------------------------ */
+  /* #region: LISTS                                                           */
+  /* ------------------------------------------------------------------------ */
+
+  .list-inline,
+  .list-unstyled,
+  .list-tagged {
+    list-style: none;
+    margin: 0;
+    padding-inline-start: 0;
+
+    & > li::before {
+      content: none;
+    }
+  }
+
+  .list-inline li {
+    display: inline-block;
+    margin-inline-end: var(--size-half);
+    padding: 0;
+
+    &:last-child {
+      margin-inline-end: 0;
+    }
+  }
+
+  .list-tagged li {
+    display: grid;
+    align-items: start;
+    gap: var(--size-1h);
+    grid-template-columns: var(--size-5) 1fr;
+
+    @media (--tablet) {
+      gap: var(--size-3);
+    }
+  }
+
+  .list-tagged .tag {
+    vertical-align: baseline;
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
+  /* #region: PAGE HEADER                                                      */
+  /* ------------------------------------------------------------------------ */
+
+  .page-header {
+    --ph-align: center;
+
+    text-align: var(--ph-align);
+    margin-inline: auto;
+    padding-block: var(--size-6);
+
+    @media (--tablet) {
+      padding-top: 80px;
+    }
+  }
+}

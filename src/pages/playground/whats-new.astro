@@ -1,0 +1,62 @@
+---
+import SiteFooter from '../../components/layout/site-footer.astro';
+import SiteHeader from '../../components/layout/site-header.astro';
+import { appLinks } from '../../config/app-links';
+import { getCommonDictionary } from '../../i18n/config';
+import BaseLayout from '../../layouts/base.astro';
+import './_tmp.css';
+
+const locale = 'ru';
+const dictionary = getCommonDictionary(locale);
+const baseCopy = dictionary.base;
+const navCopy = dictionary.nav;
+---
+
+<BaseLayout
+  bodyClass='page-whats-new'
+  title='Playground Prototype'
+  description='Prototype page'
+  lang={locale}
+>
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={appLinks.downloads.macos}
+    navCopy={navCopy}
+    showBanner={true}
+    windowsDownloadHref={appLinks.downloads.windows}
+  />
+
+  <main class="wrapper">
+
+    <header class="page-header col-5/6">
+      <h1>Что нового</h1>
+      <ul class="list-unstyled">
+        <li><span class="tag tag-new" aria-label="Новое">Н</span> новое</li>
+        <li><span class="tag tag-improvement" aria-label="Улучшение">У</span> улучшение</li>
+        <li><span class="tag tag-addition" aria-label="Дополнение">Д</span> дополнение</li>
+        <li><span class="tag tag-fix" aria-label="Исправление">И</span> исправление</li>
+      </ul>
+    </header>
+
+    <section class="release-note col-5/6">
+      <h2>
+        1 мая 2026 <span class="text-02">– версия 1.0.0</span>
+      </h2>
+
+      <ul class="list-tagged col-5/6">
+        <li>
+          <span class="tag tag-new" aria-label="Новое">Н</span>
+          <span class="desc">Редактируйте заметки в удобном визуальном редакторе.</span>
+        </li>
+
+        <li>
+          <span class="tag tag-new" aria-label="Новое">Н</span>
+          <span class="desc">Работайте с файлами Word, Markdown или простым текстом.</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+</BaseLayout>

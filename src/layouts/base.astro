@@ -2,14 +2,26 @@
 import '../styles/main.css';
 
 interface Props {
+  alternates?: Partial<Record<'en' | 'ru', string>>;
   bodyClass?: string;
   description: string;
   lang: 'en' | 'ru';
   title: string;
 }
 
-const { title, description, lang, bodyClass } = Astro.props;
+const { title, description, lang, bodyClass, alternates } = Astro.props;
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const ogImageUrl = Astro.site ? new URL('/assets/img/cover.jpg', Astro.site).toString() : undefined;
+const localeToOgLocale = {
+  en: 'en_US',
+  ru: 'ru_RU',
+} as const;
+const alternateUrls = Astro.site
+  ? Object.entries(alternates ?? {}).map(([locale, path]) => ({
+      href: new URL(path, Astro.site).toString(),
+      locale,
+    }))
+  : [];
 ---
 
 <!doctype html>
@@ -22,10 +34,15 @@ const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toStri
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={localeToOgLocale[lang]} />
     <meta name="twitter:card" content="summary_large_image" />
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {alternateUrls.map(({ href, locale }) => <link rel='alternate' hreflang={locale} href={href} />)}
+    {alternateUrls.length > 0 && <link rel='alternate' hreflang='x-default' href={alternateUrls[0]?.href} />}
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

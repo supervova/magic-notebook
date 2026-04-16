@@ -18,6 +18,7 @@
     --popover-shadow: var(--shadow-z2);
     --popover-color: var(--color-text-02);
 
+    --popover-align: normal;
     --popover-padding-y: var(--size-2);
     --popover-padding-x: var(--padding-x-md, var(--size-2));
 
@@ -88,9 +89,9 @@
       box-shadow: var(--popover-shadow);
       color: var(--popover-color);
       display: flex;
+      align-items: var(--popover-align);
       flex-direction: column;
       text-align: start;
-
       margin: 0;
       padding-block: var(--popover-padding-y);
       padding-inline: var(--popover-padding-x);

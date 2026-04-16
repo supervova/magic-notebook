@@ -1,0 +1,299 @@
+---
+import SiteFooter from '../../components/layout/site-footer.astro';
+import SiteHeader from '../../components/layout/site-header.astro';
+import { appLinks } from '../../config/app-links';
+import { getCommonDictionary } from '../../i18n/config';
+
+import { Image } from 'astro:assets';
+
+import BaseLayout from '../../layouts/base.astro';
+import Icon from '../../components/ui/icon.astro';
+import './_tmp.css';
+
+import imgMale from '../../assets/img/pages/support-project/avatar-placeholder-male.png';
+import imgMaleSurprise from '../../assets/img/pages/support-project/avatar-placeholder-male-surprise.png';
+import imgFemale from '../../assets/img/pages/support-project/avatar-placeholder-female.png';
+import imgAnnie from '../../assets/img/pages/support-project/avatar-placeholder-annie.png';
+
+const locale = 'ru';
+const dictionary = getCommonDictionary(locale);
+const baseCopy = dictionary.base;
+const navCopy = dictionary.nav;
+---
+
+<BaseLayout
+  bodyClass='page-support-project'
+  title='Playground Prototype'
+  description='Prototype page'
+  lang={locale}
+>
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={appLinks.downloads.macos}
+    navCopy={navCopy}
+    showBanner={true}
+    windowsDownloadHref={appLinks.downloads.windows}
+  />
+
+  <main class="wrapper">
+    <header class="page-header col-2/3 pb-1lh">
+      <h1 class="mb-1lh">Сделай хорошее дело ♥️ <span class="text-02">Поддержи проект</span></h1>
+      <p>
+        Magic Notebook разрабатывает один человек. И я поставил перед собой цель создать самое комфортное приложение для письма. Пока мне приходится делать это вечерами, после работы. Но, если вам нравится проект, небольшой денежный взнос сможет освободить больше времени на новый функционал. Кстати, следующие три пункта плана: книга жалоб и предложений, тестирование Windows-версии, публикация в Microsoft Store.
+      </p>
+    </header>
+
+    <div class="text-center col-5/6 mx-auto">
+      <a class="btn btn-primary btn-lg mb-5" href="#" target="_blank" rel="noopener">✨ Приобрести на Gumroad ✨</a>
+      <p class="text-02">Хотя редактор бесплатный, вы можете его купить в системе Gumroad за ту цену, которую сами посчитаете достаточной. Вы получите: ✔️ собственно приложение и ранний доступ к новым версиям, ✔️ прямую загрузку сборок, ✔️ быстрые обновления, ✔️ карточку или аватар на сайте, ✔️ +100 в карму</p>
+    </div>
+
+    <section class="section">
+      <header class="col-2/3 mx-auto text-center">
+        <h2>Место для вашего аватара и ссылки на соцмедиа</h2>
+        <p class="text-02">Покупка/донат на $100 и выше – карточка на месяц. На $10 и выше – аватар со всплывающей панелью.</p>
+      </header>
+
+      <div class="set-centered set-cards">
+        <article class="card card-supporter">
+          <div class="media">
+            <Image class="avatar" src={imgMaleSurprise} width={imgMaleSurprise.width / 2} densities={[2]} alt="Джон До" />
+          </div>
+
+          <div class="body">
+            <h3 class="title-base">Джон До</h3>
+
+            <a
+              class="link-icon-start text-sm"
+              href="https://x.com/supervova"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Джона До в X.com (Twitter)"
+            >
+              <Icon class='icon-sm' name='sm-social-x' />
+              <span>profile</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="card card-supporter">
+          <div class="media">
+            <Image class="avatar" src={imgFemale} width={imgFemale.width / 2} densities={[2]} alt="Джейн До" />
+          </div>
+
+          <div class="body">
+            <h3 class="title-base">Джейн До</h3>
+
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.tiktok.com/@janedoetiktok.com"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Джейн До в TikTok"
+            >
+              <Icon class='icon-sm' name='sm-social-tiktok' />
+              <span>profile</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="card card-supporter">
+          <div class="media">
+            <Image class="avatar" src={imgAnnie} width={imgAnnie.width / 2} densities={[2]} alt="Анна" />
+          </div>
+
+          <div class="body">
+            <h3 class="title-base">Анна</h3>
+
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.facebook.com/magicNotebookApp/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Анны в Facebook"
+            >
+              <Icon class='icon-sm' name='sm-social-facebook' />
+              <span>profile</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="card card-supporter">
+          <div class="media">
+            <Image class="avatar" src={imgMale} width={imgMale.width / 2} densities={[2]} alt="Ричард Ро" />
+          </div>
+
+          <div class="body">
+            <h3 class="title-base">Ричард Ро</h3>
+
+            <a
+              class="link-icon-start text-sm"
+              href="https://t.me/VladimirNikishin"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Ричарда Ро в Telegram"
+            >
+              <Icon class='icon-sm' name='sm-social-telegram' />
+              <span>profile</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="set-centered set-avatars mt-2lh">
+        <details class="popover popover-center popover-up" data-role="popover">
+          <summary><Image class="avatar" src={imgFemale} width={imgFemale.width / 2} densities={[2]} alt="Джейн До" /></summary>
+          <div class="body">
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.facebook.com/magicNotebookApp/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Джейн До в Facebook"
+            >
+              <Icon class='icon-sm' name='sm-social-facebook' />
+              <span>Джейн До</span>
+            </a>
+          </div>
+        </details>
+
+        <details class="popover popover-center popover-up" data-role="popover">
+          <summary><Image class="avatar" src={imgMale} width={imgMale.width / 2} densities={[2]} alt="Ричард Ро" /></summary>
+          <div class="body">
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.linkedin.com/in/nikishin/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Ричарда Ро в LinkedIn"
+            >
+              <Icon class='icon-sm' name='sm-social-linkedin' />
+              <span>Ричард Ро</span>
+            </a>
+          </div>
+        </details>
+
+        <details class="popover popover-center popover-up" data-role="popover">
+          <summary><Image class="avatar" src={imgFemale} width={imgFemale.width / 2} densities={[2]} alt="Джейн До" /></summary>
+          <div class="body">
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.facebook.com/magicNotebookApp/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Джейн До в Facebook"
+            >
+              <Icon class='icon-sm' name='sm-social-facebook' />
+              <span>Джейн До</span>
+            </a>
+          </div>
+        </details>
+
+        <details class="popover popover-center popover-up" data-role="popover">
+          <summary><Image class="avatar" src={imgMale} width={imgMale.width / 2} densities={[2]} alt="Ричард Ро" /></summary>
+          <div class="body">
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.linkedin.com/in/nikishin/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Ричарда Ро в LinkedIn"
+            >
+              <Icon class='icon-sm' name='sm-social-linkedin' />
+              <span>Ричард Ро</span>
+            </a>
+          </div>
+        </details>
+
+        <details class="popover popover-center popover-up" data-role="popover">
+          <summary><Image class="avatar" src={imgFemale} width={imgFemale.width / 2} densities={[2]} alt="Джейн До" /></summary>
+          <div class="body">
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.facebook.com/magicNotebookApp/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Джейн До в Facebook"
+            >
+              <Icon class='icon-sm' name='sm-social-facebook' />
+              <span>Джейн До</span>
+            </a>
+          </div>
+        </details>
+
+        <details class="popover popover-center popover-up" data-role="popover">
+          <summary><Image class="avatar" src={imgMale} width={imgMale.width / 2} densities={[2]} alt="Ричард Ро" /></summary>
+          <div class="body">
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.linkedin.com/in/nikishin/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Ричарда Ро в LinkedIn"
+            >
+              <Icon class='icon-sm' name='sm-social-linkedin' />
+              <span>Ричард Ро</span>
+            </a>
+          </div>
+        </details>
+
+        <details class="popover popover-center popover-up" data-role="popover">
+          <summary><Image class="avatar" src={imgFemale} width={imgFemale.width / 2} densities={[2]} alt="Джейн До" /></summary>
+          <div class="body">
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.facebook.com/magicNotebookApp/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Джейн До в Facebook"
+            >
+              <Icon class='icon-sm' name='sm-social-facebook' />
+              <span>Джейн До</span>
+            </a>
+          </div>
+        </details>
+
+        <details class="popover popover-center popover-up" data-role="popover">
+          <summary><Image class="avatar" src={imgMale} width={imgMale.width / 2} densities={[2]} alt="Ричард Ро" /></summary>
+          <div class="body">
+            <a
+              class="link-icon-start text-sm"
+              href="https://www.linkedin.com/in/nikishin/"
+              target="_blank"
+              rel="noopener"
+              aria-label="См. профиль Ричарда Ро в LinkedIn"
+            >
+              <Icon class='icon-sm' name='sm-social-linkedin' />
+              <span>Ричард Ро</span>
+            </a>
+          </div>
+        </details>
+
+
+
+      </div>
+
+    </section>
+
+    <section class="section row col-5/6 mx-auto">
+      <div class="text-center">
+        <h3>Ссылки</h3>
+        <ul class="list-inline">
+          <li><a class="btn btn-product-hunt" href="https://www.producthunt.com/posts/magic-notebook" target="_blank" rel="noopener">Product Hunt</a></li>
+          <li><a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://magic-notebook.com" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a class="btn btn-x" href="https://twitter.com/intent/tweet?url=https://magic-notebook.com&text=A%20calm%20writing%20app%20for%20people%20who%20just%20want%20to%20write" target="_blank" rel="noopener">X (Twitter)</a></li>
+          <li><a class="btn btn-vk" href="https://vk.com/share.php?url=https://magic-notebook.com" target="_blank" rel="noopener">ВКонтакте</a></li>
+          <li><a class="btn btn-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https://magic-notebook.com" target="_blank" rel="noopener">Linked In</a></li>
+          <li><a class="btn btn-telegram" href="https://t.me/share/url?url=https://magic-notebook.com&text=A%20calm%20writing%20app%20for%20people%20who%20just%20want%20to%20write" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a class="btn btn-email" href="mailto:?subject=Magic%20Notebook&body=Check%20out%20this%20writing%20app:%20https://magic-notebook.com" target="_blank" rel="noopener">Email</a></li>
+        </ul>
+      </div>
+
+
+
+    </section>
+  </main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+</BaseLayout>

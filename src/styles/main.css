@@ -30,11 +30,14 @@ from build but available globally. */
 @import url('./content/table.css');
 
 /* Layout */
+@import url('./layout/grid.css');
+@import url('./layout/flex.css');
 
 /* Components: Form */
 
 /* Components: UI */
 @import url('./components/ui/accordion.css');
+@import url('./components/ui/avatar.css');
 @import url('./components/ui/button-split.css');
 @import url('./components/ui/card.css');
 @import url('./components/ui/carousel.css');
@@ -49,6 +52,7 @@ from build but available globally. */
 /* Features */
 
 /* Pages */
+@import url('./pages/support-project.css');
 @import url('./pages/whats-new.css');
 
 /* Utils and print */

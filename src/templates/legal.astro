@@ -20,9 +20,15 @@ const baseCopy = commonDictionary.base;
 const navCopy = commonDictionary.nav;
 const macosDownloadHref = appLinks.downloads.macos;
 const windowsDownloadHref = appLinks.downloads.windows;
+const pathnameWithoutLocale = Astro.url.pathname.replace(/^\/ru(?=\/|$)/, '');
+const localizedAlternates = {
+  en: pathnameWithoutLocale,
+  ru: pathnameWithoutLocale === '/' ? '/ru/' : `/ru${pathnameWithoutLocale}`,
+};
 ---
 
 <BaseLayout
+  alternates={localizedAlternates}
   bodyClass='page-inner'
   title={pageDictionary.meta.title}
   description={pageDictionary.meta.desc}

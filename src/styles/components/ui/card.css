@@ -3,6 +3,15 @@
   /* #region: BASE                                                            */
   /* ------------------------------------------------------------------------ */
 
+  /*
+   * <article class="card">
+   *   <div class="body">
+   *     <h2>…</h2>
+   *     <p>…</p>
+   *   </div>
+   * </article>
+   */
+
   .card {
     --card-bg: var(--color-bg);
     --card-border: 1px solid var(--color-border);
@@ -45,6 +54,12 @@
     h3 {
       color: var(--card-color-headings);
       margin-bottom: 0;
+    }
+
+    .title-base {
+      @mixin text-format base;
+
+      font-weight: var(--font-weight-strong);
     }
   }
 

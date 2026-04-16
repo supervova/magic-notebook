@@ -177,8 +177,6 @@
       }
 
       img {
-        @mixin media-border;
-
         border-radius: 50%;
       }
 

@@ -10,14 +10,37 @@
 
 @layer layout {
   /* ------------------------------------------------------------------------ */
+  /* #region: ROW                                                             */
+  /* ------------------------------------------------------------------------ */
+  .row {
+    --row-columns: 1;
+    --row-gap: var(--size-2);
+
+    display: grid;
+    gap: var(--row-gap);
+
+    @media (--tablet) {
+      --row-columns: 2;
+      --row-gap: var(--flow-gap);
+
+      grid-template-columns: repeat(var(--row-columns), 1fr);
+    }
+  }
+
+  .row-3 {
+    @media (--tablet) {
+      --row-columns: 3;
+    }
+  }
+
+  /* #endregion */
+
+  /* ------------------------------------------------------------------------ */
   /* #region: GRID                                                            */
   /* ------------------------------------------------------------------------ */
 
   .grid {
-    display: grid;
-    gap: var(--grid-gap, var(--gap));
-    grid-template-columns: var(--grid-columns, 1fr);
-    grid-template-rows: var(--grid-rows, auto);
+    @mixin grid-base;
 
     @media (--tablet) {
       --grid-columns: var(--grid-cols-equal);
@@ -25,10 +48,7 @@
   }
 
   .tablet-l\:grid {
-    display: grid;
-    gap: var(--grid-gap, var(--gap));
-    grid-template-columns: var(--grid-columns, 1fr);
-    grid-template-rows: var(--grid-rows, auto);
+    @mixin grid-base;
 
     @media (--tablet-l) {
       --grid-columns: var(--grid-cols-equal);

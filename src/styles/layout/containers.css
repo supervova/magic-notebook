@@ -79,18 +79,20 @@
   .section {
     --section-bg: transparent;
     --section-color: var(--color-text-02);
+    --section-margin-top: 0;
+    --section-padding-y: var(--spacer-xl);
     --section-title-color: var(--color-tex);
     --section-title-margin-y: 0 var(--size-2);
 
     background: var(--section-bg);
     color: var(--section-color);
-    margin-top: var(--spacer-xl);
-    padding-block: var(--spacer-xl);
+    margin-top: var(--section-margin-top);
+    padding-block: var(--section-padding-y);
   }
 
   @scope (.section) {
     h2 {
-      color: var(--section-title-color);
+      color: var(--section-title-color, var(--color-text));
       margin-block: var(--section-title-margin-y);
     }
   }

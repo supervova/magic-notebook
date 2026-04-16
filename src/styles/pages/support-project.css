@@ -1,0 +1,154 @@
+/* -------------------------------------------------------------------------- */
+/* #region: SUPPORTER CARD                                                    */
+/* -------------------------------------------------------------------------- */
+
+@layer components.ui {
+  /*
+   * <article class="card card-supporter">
+   *   <div class="media"><img class="avatar" src="…" alt="…"></div>
+   *   <div class="body">
+   *     <h3 class="title-base">…</h3>
+   *     <a class="link-icon-start" href="…">…</a>
+   *   </div>
+   * </article>
+   */
+
+  .card-supporter {
+    --card-border: 0;
+    --card-bg: var(--color-bg-02);
+
+    align-items: center;
+    text-align: center;
+    padding: var(--size-1h);
+    position: relative;
+    transition: translate var(--duration-50) var(--easing-base);
+
+    @media (any-hover: hover) {
+      &:hover {
+        translate: 0 -2px;
+      }
+    }
+  }
+
+  @scope (.card-supporter) {
+    .media {
+      background-color: var(--color-brand);
+      background-image: var(--card-media-image, none);
+      background-repeat: no-repeat;
+      border-radius: var(--radius-base);
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .avatar {
+      --avatar-size: var(--size-7);
+      --avatar-bg: var(--color-bg-02-brand);
+      --avatar-border: var(--size-half) solid var(--color-bg-02);
+      --avatar-fallback-text: var(--color-text-02-brand);
+
+      outline: none;
+      translate: 0 calc(var(--avatar-size) / 2);
+    }
+
+    .body {
+      padding: var(--size-4) var(--size-1) var(--size-1);
+    }
+  }
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: PAGE-LEVEL OVERRIDES                                              */
+/* -------------------------------------------------------------------------- */
+
+@layer pages {
+  @scope (.page-support-project) {
+    /* Profile cards */
+    .set-cards {
+      margin-top: var(--size-3);
+
+      @media (width > 870px) {
+        --set-item-max: calc((100% - var(--set-gap) * 2) / 3);
+      }
+
+      @media (--laptop) {
+        --set-item-max: calc((100% - var(--set-gap) * 3) / 4);
+      }
+    }
+
+    .card-supporter .link-icon-start {
+      color: var(--color-brand);
+
+      &::after {
+        content: '';
+        inset: 0;
+        position: absolute;
+      }
+    }
+
+    .card-supporter:nth-child(2) .media {
+      --card-light:
+        rgb(255 255 255 / 0.6) 2%,
+        rgb(255 255 255 / 0.57) 3%,
+        rgb(255 255 255 / 0.48) 10%,
+        rgb(255 255 255 / 0.36) 21%,
+        rgb(255 255 255 / 0.24) 36%,
+        rgb(255 255 255 / 0.12) 54%,
+        rgb(255 255 255 / 0.03) 76%,
+        rgb(255 255 255 / 0);
+
+      background-image:
+        radial-gradient(
+          circle 8px at 75% 50%,
+          var(--card-light)
+        ),
+
+        radial-gradient(
+          circle 4px at 18% 50%,
+          var(--card-light)
+        ),
+
+        radial-gradient(
+          circle 96px at 50% 0%,
+          var(--card-light)
+        );
+    }
+
+    .card-supporter:nth-child(3) .media {
+      background:
+        linear-gradient(
+          to bottom right,
+          var(--color-brand) 5%,
+          #ec8779 31%,
+          #e18c89 41%,
+          #d68f98 48%,
+          #ca96a8 55%,
+          #bd99b7 60%,
+          #ac9dc6 67%,
+          #97a0d3 74%,
+          #81a5e4 83%,
+          #5caaf4
+        );
+    }
+
+    /* Avatars */
+
+    .set-avatars {
+      --set-item-size: var(--size-6);
+
+      > * {
+        flex: 0 0 var(--set-item-size);
+        max-width: var(--set-item-size);
+      }
+    }
+
+    .set-avatars .popover {
+      --popover-width: var(--width-xs);
+      --popover-align: center;
+    }
+
+  }
+}
+

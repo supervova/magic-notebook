@@ -1,4 +1,9 @@
+
 /* stylelint-disable custom-property-pattern */
+
+/* -------------------------------------------------------------------------- */
+/* #region: TYPOGRAPHY                                                        */
+/* -------------------------------------------------------------------------- */
 
 /**
  * Text formatting mixin
@@ -20,26 +25,26 @@
     var(--padding-bottom-$(level), 0);
 }
 
-/* Text truncation */
+/** Text truncation */
 @define-mixin text-truncate {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* Text gradient */
+/** Text gradient */
 @define-mixin text-gradient {
   background-image:
     linear-gradient(
       var(--direction, 180deg),
-      var(--gradient, var(--color-gradient-brand-crimson))
+      var(--gradient, var(--color-gradient-brand-tint-shade))
       var(--color-stop-end, 100%)
     );
 
   background-clip: text;
-  color: transparent;
   background-repeat: no-repeat;
   background-size: 100%;
+  color: transparent;
 
   @supports not (background-clip: text) {
     background-image: none;
@@ -77,13 +82,37 @@
   height: var(--height);
 }
 
-/* Focus state */
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: LAYOUT                                                            */
+/* -------------------------------------------------------------------------- */
+
+/** Grid general layout */
+
+@define-mixin grid-base {
+  display: grid;
+  gap: var(--grid-gap, var(--gap));
+  grid-template-columns: var(--grid-columns, 1fr);
+  grid-template-rows: var(--grid-rows, auto);
+}
+
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: ACCESSIBILITY                                                     */
+/* -------------------------------------------------------------------------- */
+
+/** Focus state */
 @define-mixin state-focus {
   outline: var(--focus-outline, 3px) solid var(--color-focus, AccentColor, -webkit-focus-ring-color);
   outline-offset: var(--focus-offset, 0);
 }
 
-/* Use this mixin when it’s not possible to use the .visually-hidden class */
+/**
+ * Visually hidden pattern
+ * Use this mixin when it’s not possible to use the .visually-hidden class
+ */
 @define-mixin visually-hidden {
   border: 0;
   clip-path: inset(50%);
@@ -96,7 +125,16 @@
   width: 1px;
 }
 
-/* Vertical fade mask: hides edges with configurable top/bottom gradients */
+/* #endregion */
+
+/* -------------------------------------------------------------------------- */
+/* #region: MISC                                                              */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Vertical fade mask
+ * hides edges with configurable top/bottom gradients
+ */
 @define-mixin gradient-mask {
   mask-image: linear-gradient(
     to bottom,
@@ -107,7 +145,4 @@
   );
 }
 
-@define-mixin media-border {
-  outline: 1px solid var(--color-border-neutral);
-  outline-offset: -1px;
-}
+/* #endregion */

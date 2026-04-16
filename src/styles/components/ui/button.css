@@ -194,6 +194,8 @@
   }
 
   .btn-lg {
+    --button-font-weight: 500;
+    --button-radius: 14px;
     --button-height: var(--size-7);
   }
 

@@ -1,0 +1,23 @@
+@layer layout {
+  /* ------------------------------------------------------------------------ */
+  /* #region: FLEX SET                                                        */
+  /* ------------------------------------------------------------------------ */
+
+  .set-centered {
+    --set-gap: var(--size-3);
+    --set-item-min: 244px;
+    --set-item-max: 372px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--set-gap);
+    justify-content: center;
+
+    > * {
+      flex: 1 1 var(--set-item-min);
+      max-width: var(--set-item-max);
+    }
+  }
+
+  /* #endregion */
+}

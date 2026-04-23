@@ -10,6 +10,7 @@ export const en = {
     alt: 'Anna, your AI assistant',
     linkPrimary: 'Download',
     linkSecondary: 'Watch',
+    linkSecondaryPlaceholder: "It's free and",
   },
   carousel: {
     labels: {

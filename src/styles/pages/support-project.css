@@ -1,8 +1,9 @@
 /* -------------------------------------------------------------------------- */
-/* #region: SUPPORTER CARD                                                    */
+/* #region: COMPONENTS THAT CAN BE USED ON OTHER PAGES                        */
 /* -------------------------------------------------------------------------- */
 
 @layer components.ui {
+  /* #region: Supporter Card */
   /*
    * <article class="card card-supporter">
    *   <div class="media"><img class="avatar" src="…" alt="…"></div>
@@ -55,6 +56,55 @@
       padding: var(--size-4) var(--size-1) var(--size-1);
     }
   }
+
+  /* #endregion */
+
+  /* #region: Social Buttons */
+  .btn-x,
+  .btn-vk,
+  .btn-facebook,
+  .btn-linkedin,
+  .btn-telegram,
+  .btn-product-hunt {
+    --button-color: var(--color-text-light);
+    --button-font-weight: 500;
+
+    .icon {
+      --icon-stroke: var(--color-text-light);
+    }
+  }
+
+  .btn-x {
+    --button-bg: hsl(var(--h) var(--s-min) 9%);
+    --button-bg-hover: hsl(var(--h) var(--s-min) 29%);
+  }
+
+  .btn-vk {
+    --button-bg: hsl(213 var(--s) 41%);
+    --button-bg-hover: hsl(213 var(--s) 51%);
+  }
+
+  .btn-facebook {
+    --button-bg: hsl(214 var(--s) 52%);
+    --button-bg-hover: hsl(214 var(--s) 62%);
+  }
+
+  .btn-linkedin {
+    --button-bg: hsl(210 var(--s) 40%);
+    --button-bg-hover: hsl(210 var(--s) 50%);
+  }
+
+  .btn-telegram {
+    --button-bg: hsl(200 var(--s) 40%);
+    --button-bg-hover: hsl(200 var(--s) 50%);
+  }
+
+  .btn-product-hunt {
+    --button-bg: hsl(13 var(--s) 49%);
+    --button-bg-hover: hsl(13 var(--s) 59%);
+  }
+
+  /* #endregion */
 }
 
 /* #endregion */
@@ -65,6 +115,33 @@
 
 @layer pages {
   @scope (.page-support-project) {
+    /* Support options */
+
+    .support-options {
+      padding-bottom: var(--size-4);
+    }
+
+    .support-option {
+      --card-bg: var(--color-bg-02);
+      --card-border: 0;
+
+      text-align: center;
+    }
+
+    @scope (.support-option) {
+      .body {
+        display: grid;
+        gap: var(--size-2);
+        justify-items: center;
+        min-height: 100%;
+        padding: var(--size-3);
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+
     /* Profile cards */
     .set-cards {
       margin-top: var(--size-3);
@@ -151,4 +228,3 @@
 
   }
 }
-

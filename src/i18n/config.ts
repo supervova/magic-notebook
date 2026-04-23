@@ -4,6 +4,8 @@ import { en as homeEn } from './pages/home/en';
 import { ru as homeRu } from './pages/home/ru';
 import { en as privacyEn } from './pages/privacy/en';
 import { ru as privacyRu } from './pages/privacy/ru';
+import { en as supportProjectEn } from './pages/support-project/en';
+import { ru as supportProjectRu } from './pages/support-project/ru';
 import { en as termsEn } from './pages/terms/en';
 import { ru as termsRu } from './pages/terms/ru';
 import { en as whatsNewEn } from './pages/whats-new/en';
@@ -22,6 +24,10 @@ export const pageDictionaries = {
   privacy: {
     en: privacyEn,
     ru: privacyRu,
+  },
+  'support-project': {
+    en: supportProjectEn,
+    ru: supportProjectRu,
   },
   terms: {
     en: termsEn,

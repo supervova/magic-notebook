@@ -20,6 +20,7 @@ interface HeroCopy {
   eyebrow: string;
   linkPrimary: string;
   linkSecondary: string;
+  linkSecondaryPlaceholder: string;
   title: string;
 }
 
@@ -71,10 +72,12 @@ const { baseCopy, heroCopy, macosDownloadHref, windowsDownloadHref } = Astro.pro
           </details>
         </div>
 
-        <a class='btn btn-icon-end' href='#demo'>
+        <span><strong class="text-02">{heroCopy.linkSecondaryPlaceholder}</strong> ✨</span>
+
+        <!-- <a class='btn btn-icon-end' href='#demo'>
           <span>{heroCopy.linkSecondary}</span>
           <Icon name='play' />
-        </a>
+        </a> -->
       </div>
     </div>
 

@@ -28,7 +28,7 @@ export const ru: WhatsNewDictionary = {
   ],
   releases: [
     {
-      date: '9 апреля 2026',
+      date: '27 апреля 2026',
       version: '1.0.0',
       items: [
         {

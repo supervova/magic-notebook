@@ -1,34 +1,29 @@
 # TODO
 
-## Промо-ролик
-
-- [ ] [производство](../../app/docs/website/content/ru/video/01-production.md).
-- [ ] Залить видео на YouTube, Dribbble и Behance
-
 ## Переезд на magic-notebook.com, выкат сайта
 
-- [ ] Сделать `https://magic-notebook.com` единственным каноническим доменом сайта.
+- [ ] Сделать `https://www.magic-notebook.com` единственным каноническим доменом сайта.
 - [ ] Не хостить `https://magic-nb.ru` как вторую копию сайта через GitHub Pages.
 - [ ] Использовать `magic-nb.ru` только как домен с постоянным `301`-редиректом на основной домен.
 - [ ] Определить канонический URL:
   - [ ] Вариант A: `https://magic-notebook.com`
-  - [ ] Вариант B: `https://www.magic-notebook.com`
+  - [x] Вариант B: `https://www.magic-notebook.com`
 - [x] Если финальный production-домен уже известен, задать `site` в `astro.config.*`.
-- [x] Прописать `site: 'https://magic-notebook.com'`, если основной домен остаётся без `www`.
-- [ ] Либо прописать `site: 'https://www.magic-notebook.com'`, если каноническим выбран `www`.
+- [ ] Прописать `site: 'https://magic-notebook.com'`, если основной домен остаётся без `www`.
+- [x] Либо прописать `site: 'https://www.magic-notebook.com'`, если каноническим выбран `www`.
 - [ ] Сохранить текущую `coming-soon` страницу на `magic-nb.ru` до момента релиза.
 - [ ] Когда production-сайт готов, переключить custom domain репозитория GitHub Pages на основной домен.
 - [ ] Включить HTTPS после переключения custom domain.
 - [ ] Проверить, что `canonical`, `og:url`, `og:image`, sitemap и RSS используют домен из `site`.
 - [ ] Не использовать `.ru` домен как отдельную живую русскую версию сайта.
 - [x] Оставить route-based i18n:
-  - [x] `https://magic-notebook.com/` → `en`
-  - [x] `https://magic-notebook.com/ru/` → `ru`
-- [ ] Настроить `magic-nb.ru/*` на `301`-редирект в `https://magic-notebook.com/ru/`.
+  - [x] `https://www.magic-notebook.com/` → `en`
+  - [x] `https://www.magic-notebook.com/ru/` → `ru`
+- [ ] Настроить `magic-nb.ru/*` на `301`-редирект в `https://www.magic-notebook.com/ru/`.
 - [ ] Если провайдер поддерживает сохранение пути, настроить path-preserving redirect:
-  - [ ] `https://magic-nb.ru/some/path` → `https://magic-notebook.com/ru/some/path`
-- [ ] Если сохранение пути недоступно, хотя бы направить весь `magic-nb.ru` на `https://magic-notebook.com/ru/`.
-- [ ] Не держать один и тот же контент одновременно доступным по `magic-notebook.com` и `magic-nb.ru`.
+  - [ ] `https://magic-nb.ru/some/path` → `https://www.magic-notebook.com/ru/some/path`
+- [ ] Если сохранение пути недоступно, хотя бы направить весь `magic-nb.ru` на `https://www.magic-notebook.com/ru/`.
+- [ ] Не держать один и тот же контент одновременно доступным по `magic-notebook.com`/`www.magic-notebook.com` и `magic-nb.ru`.
 - [ ] После переезда проверить `hreflang`, `lang`, `canonical`, `og:image` и редиректы.
 
 - [ ] DNS-схема для `magic-notebook.com` без `www` как канонического домена:
@@ -47,8 +42,8 @@
 - [ ] DNS-схема для `magic-nb.ru` с редиректом на `/ru/`:
   - [ ] Не подключать `magic-nb.ru` как второй custom domain к этому же GitHub Pages сайту
   - [ ] Настроить у DNS/хостинг-провайдера `301`-редирект:
-  - [ ] `https://magic-nb.ru/` → `https://magic-notebook.com/ru/`
-  - [ ] `https://www.magic-nb.ru/` → `https://magic-notebook.com/ru/`
+  - [ ] `https://magic-nb.ru/` → `https://www.magic-notebook.com/ru/`
+  - [ ] `https://www.magic-nb.ru/` → `https://www.magic-notebook.com/ru/`
   - [ ] Если поддерживается, включить сохранение пути и query string
   - [ ] Проверить, что сертификат для `magic-nb.ru` и `www.magic-nb.ru` выпускается на стороне провайдера редиректа
 
@@ -95,3 +90,47 @@
 - [ ] [Проект на Patreon](/Users/supervova/Sites/vladimir-nikishin/mn/app/docs/_tasks/00-beta/monetization-donations-patreon.md)
 
 - [ ] План продаж с ChatGPT
+
+## Промо-ролик - MVP: 20 sec video
+
+- [ ] [производство](../../app/docs/website/content/ru/video/02-checklist.md).
+
+  - [x] 🎬 Скринкаст 1 — Запуск + выбор папки (10–18 сек)
+
+  - [x] 🎬 Скринкаст 2 — Печать текста (8–10 сек)
+
+    - Начинаем запись с чистого листа.
+    - Печатаем текст из Screen Studio Keynotes
+      - **не быстро**
+      - паузы:
+        - после каждой строки
+        - микро-пауза после точки
+    - Пауза под титры
+
+  - [ ] 🎬 Скринкаст 3
+
+    - Перед записью создать окно Finder'а, с открытой ~/_tmp/current/
+    - открыть меню Toolbar'а Format
+    - Выбрать H1
+
+      ```text
+      The room is quiet. → # The room is quiet.
+      ```
+
+    - bold шорткатом: **no pressure**
+
+    - открыть Finder
+    - drag & drop `room.jpg` прямо в текст
+    - изображение появляется
+
+    - открыть меню Toolbar'а Insert
+    - Выбрать 2 колонки
+    - Таблица появляется
+    - Заполнить - см. Simplenote
+      - важно: не редактировать долго
+      - 1–2 ввода максимум
+
+    - клик по файлу article.docx в sidebar
+    - затем обратно
+
+- [ ] Быстрый монтаж: склейка, музыка, титры только в конце: Magic Notebook - Write Your Way

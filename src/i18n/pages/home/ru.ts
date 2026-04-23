@@ -10,6 +10,7 @@ export const ru = {
     alt: 'Анна, ваша ИИ-помощница',
     linkPrimary: 'Скачать',
     linkSecondary: 'Смотреть видео',
+    linkSecondaryPlaceholder: 'редактор бесплатный и',
   },
   carousel: {
     labels: {

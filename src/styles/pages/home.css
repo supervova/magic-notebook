@@ -191,6 +191,7 @@
 
       em {
         --direction: to bottom right;
+        --gradient: var(--color-gradient-brand-crimson);
 
         font-style: normal;
       }
@@ -268,12 +269,12 @@
       );
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 450px 480px;
+      background-size: 437px 480px;
       flex: 1 1 auto;
       margin-bottom: 0;
       position: relative;
       width: 100%;
-      max-width: 450px;
+      max-width: 437px;
       min-height: 480px;
 
       @media (--tablet) {

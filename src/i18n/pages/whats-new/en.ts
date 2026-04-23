@@ -28,7 +28,7 @@ export const en: WhatsNewDictionary = {
   ],
   releases: [
     {
-      date: 'May 1, 2026',
+      date: 'April 27, 2026',
       version: '1.0.0',
       items: [
         {

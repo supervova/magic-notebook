@@ -1,0 +1,216 @@
+---
+import { Image } from 'astro:assets';
+
+import SiteFooter from '../components/layout/site-footer.astro';
+import SiteHeader from '../components/layout/site-header.astro';
+import Icon from '../components/ui/icon.astro';
+import { appLinks } from '../config/app-links';
+import {
+  supportProjectLinks,
+  supportProjectShareOrder,
+  supportProjectSupporters,
+} from '../data/support-project';
+import type { Locale } from '../i18n/config';
+import type { commonDictionaries, pageDictionaries } from '../i18n/config';
+import BaseLayout from '../layouts/base.astro';
+
+interface Props {
+  commonDictionary: (typeof commonDictionaries)[Locale];
+  locale: Locale;
+  pageDictionary: (typeof pageDictionaries)['support-project'][Locale];
+}
+
+const { commonDictionary, locale, pageDictionary } = Astro.props;
+
+const baseCopy = commonDictionary.base;
+const navCopy = commonDictionary.nav;
+const siteUrl = Astro.site ? new URL('/', Astro.site).toString() : 'https://www.magic-notebook.com/';
+
+const socialIcons = {
+  email: 'sm-mail',
+  facebook: 'sm-social-facebook',
+  linkedin: 'sm-social-linkedin',
+  productHunt: 'sm-social-product-hunt',
+  telegram: 'sm-social-telegram',
+  tiktok: 'sm-social-tiktok',
+  vk: 'sm-social-vk',
+  x: 'sm-social-x',
+} as const;
+
+const socialButtonClasses = {
+  email: 'btn-email',
+  facebook: 'btn-facebook',
+  linkedin: 'btn-linkedin',
+  productHunt: 'btn-product-hunt',
+  telegram: 'btn-telegram',
+  vk: 'btn-vk',
+  x: 'btn-x',
+} as const;
+
+const buildProfileAriaLabel = (name: string, platform: string) => {
+  return pageDictionary.supporters.profileAriaLabel
+    .replace('{name}', name)
+    .replace('{platform}', platform);
+};
+
+const shareHrefByPlatform = {
+  productHunt: 'https://www.producthunt.com/posts/magic-notebook',
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}`,
+  x: `https://twitter.com/intent/tweet?url=${encodeURIComponent(siteUrl)}`,
+  vk: `https://vk.com/share.php?url=${encodeURIComponent(siteUrl)}`,
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(siteUrl)}`,
+  telegram: `https://t.me/share/url?url=${encodeURIComponent(siteUrl)}`,
+  email: `mailto:?subject=${encodeURIComponent('Magic Notebook')}&body=${encodeURIComponent(siteUrl)}`,
+} as const;
+---
+
+<BaseLayout
+  alternates={{
+    en: '/support-project/',
+    ru: '/ru/support-project/',
+  }}
+  bodyClass='page-support-project'
+  title={pageDictionary.meta.title}
+  description={pageDictionary.meta.desc}
+  lang={locale}
+>
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={appLinks.downloads.macos}
+    navCopy={navCopy}
+    showBanner={true}
+    windowsDownloadHref={appLinks.downloads.windows}
+  />
+
+  <main class='wrapper'>
+    <header class='page-header col-2/3 pb-1lh'>
+      <h1 class='mb-1lh'>
+        {pageDictionary.title}
+        <span class='text-02'>{pageDictionary.titleSuffix}</span>
+      </h1>
+      <p>{pageDictionary.intro}</p>
+    </header>
+
+    <div class='text-center col-5/6 mx-auto'>
+      <a
+        class='btn btn-primary btn-lg mb-5'
+        href={supportProjectLinks.sponsorship}
+        target='_blank'
+        rel='noopener'
+      >
+        {pageDictionary.options.sponsorship.cta}
+      </a>
+      {pageDictionary.options.sponsorship.desc && (
+        <p class='text-02'>{pageDictionary.options.sponsorship.desc}</p>
+      )}
+    </div>
+
+    <section class='section'>
+      <header class='col-2/3 mx-auto text-center'>
+        <h2>{pageDictionary.supporters.title}</h2>
+        <p class='text-02'>{pageDictionary.supporters.cardThreshold}</p>
+      </header>
+
+      <div class='set-centered set-cards'>
+        {
+          supportProjectSupporters.cards.map((supporter) => (
+            <article class='card card-supporter'>
+              <div class='media'>
+                <Image
+                  alt={supporter.name}
+                  class='avatar'
+                  densities={[2]}
+                  src={supporter.avatar}
+                  width={supporter.avatar.width / 2}
+                />
+              </div>
+
+              <div class='body'>
+                <h3 class='title-base'>{supporter.name}</h3>
+
+                <a
+                  class='link-icon-start text-sm'
+                  href={supporter.href}
+                  target='_blank'
+                  rel='noopener'
+                  aria-label={buildProfileAriaLabel(
+                    supporter.name,
+                    pageDictionary.platforms[supporter.platform]
+                  )}
+                >
+                  <Icon class='icon-sm' name={socialIcons[supporter.platform]} />
+                  <span>{pageDictionary.platforms[supporter.platform]}</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class='set-centered set-avatars mt-2lh'>
+        {
+          supportProjectSupporters.avatars.map((supporter) => (
+            <details class='popover popover-center popover-up' data-role='popover'>
+              <summary>
+                <Image
+                  alt={supporter.name}
+                  class='avatar'
+                  densities={[2]}
+                  src={supporter.avatar}
+                  width={supporter.avatar.width / 2}
+                />
+              </summary>
+              <div class='body'>
+                <a
+                  class='link-icon-start text-sm'
+                  href={supporter.href}
+                  target='_blank'
+                  rel='noopener'
+                  aria-label={buildProfileAriaLabel(
+                    supporter.name,
+                    pageDictionary.platforms[supporter.platform]
+                  )}
+                >
+                  <Icon class='icon-sm' name={socialIcons[supporter.platform]} />
+                  <span>{supporter.name}</span>
+                </a>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class='section text-center'>
+      <header class='col-2/3 mx-auto'>
+        <h2>{pageDictionary.thanks.title}</h2>
+        <p class='text-02'>{pageDictionary.thanks.desc}</p>
+      </header>
+
+      <h3>{pageDictionary.thanks.shareTitle}</h3>
+
+      <ul class='list-inline'>
+        {
+          supportProjectShareOrder
+            .filter(({ platform }) => platform !== 'vk' || locale === 'ru')
+            .map(({ platform }) => (
+            <li>
+              <a
+                class:list={['btn', 'btn-icon-start', socialButtonClasses[platform]]}
+                href={shareHrefByPlatform[platform]}
+                target='_blank'
+                rel='noopener'
+              >
+                <Icon class='icon-sm' name={socialIcons[platform]} />
+                {pageDictionary.platforms[platform]}
+              </a>
+            </li>
+            ))
+        }
+      </ul>
+    </section>
+  </main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+</BaseLayout>

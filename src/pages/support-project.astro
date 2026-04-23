@@ -1,0 +1,14 @@
+---
+import SupportProjectPage from '../templates/support-project.astro';
+import { getCommonDictionary, getPageDictionary } from '../i18n/config';
+
+const locale = 'en';
+const commonDictionary = getCommonDictionary(locale);
+const pageDictionary = getPageDictionary('support-project', locale);
+---
+
+<SupportProjectPage
+  locale={locale}
+  commonDictionary={commonDictionary}
+  pageDictionary={pageDictionary}
+/>

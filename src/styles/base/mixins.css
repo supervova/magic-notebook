@@ -37,7 +37,7 @@
   background-image:
     linear-gradient(
       var(--direction, 180deg),
-      var(--gradient, var(--color-gradient-brand-tint-shade))
+      var(--gradient, var(--color-gradient-brand-crimson))
       var(--color-stop-end, 100%)
     );
 

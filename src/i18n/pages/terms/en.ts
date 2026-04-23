@@ -8,7 +8,7 @@ export const en: TermsDictionary = {
   page: {
     title: 'Terms and Conditions',
     lastUpdatedLabel: 'Last updated:',
-    lastUpdatedValue: 'May 1, 2026',
+    lastUpdatedValue: 'April 27, 2026',
   },
   sections: [
     {

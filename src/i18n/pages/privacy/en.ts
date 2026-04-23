@@ -8,7 +8,7 @@ export const en: PrivacyDictionary = {
   page: {
     title: 'Privacy Policy',
     lastUpdatedLabel: 'Last updated:',
-    lastUpdatedValue: 'May 1, 2026',
+    lastUpdatedValue: 'April 27, 2026',
   },
   sections: [
     {

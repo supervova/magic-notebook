@@ -22,4 +22,3 @@ jobs:
         with:
           path: .
           node-version: 22
-          package-manager: pnpm

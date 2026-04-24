@@ -841,7 +841,7 @@
       }
     }
 
-    .avatar {
+    .person {
       order: -1;
       margin-bottom: var(--spacer);
     }

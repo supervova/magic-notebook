@@ -31,13 +31,13 @@ const { tadaTodoCopy } = Astro.props;
     <div class='list-cards'>
       <div class='card'>
         <h3 class='text-base' set:html={tadaTodoCopy.vladimir.title} />
-        <Image alt={tadaTodoCopy.vladimir.alt} class='avatar' densities={[2]} format='png' loading='lazy' src={imgVladimir} width={imgVladimir.width / 2} />
+        <Image class='person' alt={tadaTodoCopy.vladimir.alt} densities={[2]} format='png' loading='lazy' src={imgVladimir} width={imgVladimir.width / 2} />
         <p class='text-base'>{tadaTodoCopy.vladimir.desc}</p>
       </div>
 
       <div class='card'>
         <h3 class='text-base'>{tadaTodoCopy.anna.title}</h3>
-        <Image alt={tadaTodoCopy.anna.alt} class='avatar' densities={[2]} format='png' loading='lazy' src={imgAnn} width={imgAnn.width / 2} />
+        <Image class='person' alt={tadaTodoCopy.anna.alt} densities={[2]} format='png' loading='lazy' src={imgAnn} width={imgAnn.width / 2} />
         <ul class='text-base'>
           {tadaTodoCopy.anna.list.map((item) => <li>{item}</li>)}
         </ul>

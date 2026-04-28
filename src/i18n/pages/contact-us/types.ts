@@ -3,6 +3,15 @@ export interface ContactUsDictionary {
     submit: string;
   };
   fields: {
+    category: {
+      error: string;
+      label: string;
+      options: {
+        bug: string;
+        feature: string;
+        question: string;
+      };
+    };
     email: {
       error: string;
       label: string;

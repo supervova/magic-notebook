@@ -7,6 +7,7 @@ interface BaseCopy {
 }
 
 interface NavCopy {
+  contact: string;
   privacy: string;
   supportTheProject: string;
   terms: string;
@@ -27,6 +28,7 @@ const currentYear = new Date().getFullYear();
     <div class='layout'>
       <p class='copy'>© Magic Notebook {currentYear}</p>
       <nav aria-label={baseCopy.footer}>
+        <a href={getLocalizedPath(locale, 'contact-us')}>{navCopy.contact}</a>
         <a href={getLocalizedPath(locale, 'support-project')}>{navCopy.supportTheProject}</a>
         <a href={getLocalizedPath(locale, 'privacy')}>{navCopy.privacy}</a>
         <a href={getLocalizedPath(locale, 'terms')}>{navCopy.terms}</a>

@@ -49,6 +49,10 @@ Cloudflare Worker
   - `src/pages/ru/contact-us.astro`
 - Worker:
   - `workers/contact.js`
+- Типы сообщений:
+  - `bug` -> GitHub label `bug`, title prefix `[Bug]`
+  - `feature` -> GitHub label `enhancement`, title prefix `[Feature]`
+  - `question` -> GitHub label `question`, title prefix `[Question]`
 - Страница по умолчанию отправляет форму на:
 
 ```txt
@@ -156,6 +160,9 @@ CONTACT_GITHUB_LABELS=feedback,website
 ```txt
 feedback
 website
+bug
+enhancement
+question
 ```
 
 ## Этап 4: CORS

@@ -43,13 +43,25 @@ const contactEndpoint =
 
   <main class='wrapper'>
     <header class='page-header col-2/3 pb-1lh'>
-      <h1>{pageDictionary.page.title}</h1>
-      <p>{pageDictionary.page.intro}</p>
+      <h1 class="mb-2">{pageDictionary.page.title}</h1>
+      <p class="text-02">{pageDictionary.page.intro}</p>
     </header>
 
     <section class='contact-panel col-2/3 mx-auto'>
       <form class='contact-form' data-contact-form novalidate>
         <p class='form-error-box' data-error-summary role='alert'></p>
+
+        <p>
+          <label for='form-category'>{pageDictionary.fields.category.label}</label>
+          <select id='form-category' name='category' aria-describedby='form-category-error' required>
+            <option value='bug'>{pageDictionary.fields.category.options.bug}</option>
+            <option value='feature'>{pageDictionary.fields.category.options.feature}</option>
+            <option value='question'>{pageDictionary.fields.category.options.question}</option>
+          </select>
+          <span class='form-error' id='form-category-error' role='alert'>
+            {pageDictionary.fields.category.error}
+          </span>
+        </p>
 
         <p>
           <label for='form-name'>{pageDictionary.fields.name.label}</label>
@@ -82,8 +94,6 @@ const contactEndpoint =
             {pageDictionary.fields.message.error}
           </span>
         </p>
-
-        <p class='note text-sm text-02'>{pageDictionary.form.note}</p>
 
         <p class='field-hidden' aria-hidden='true'>
           <label for='form-company'>Company</label>
@@ -131,6 +141,7 @@ const contactEndpoint =
 
       return {
         company: data.get('company')?.toString() ?? '',
+        category: data.get('category')?.toString() ?? '',
         email: data.get('email')?.toString() ?? '',
         message: data.get('message')?.toString() ?? '',
         name: data.get('name')?.toString() ?? '',
@@ -141,7 +152,11 @@ const contactEndpoint =
     };
 
     form?.addEventListener('input', (event) => {
-      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+      if (
+        event.target instanceof HTMLInputElement ||
+        event.target instanceof HTMLSelectElement ||
+        event.target instanceof HTMLTextAreaElement
+      ) {
         markField(event.target);
       }
     });
@@ -149,7 +164,7 @@ const contactEndpoint =
     form?.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      const fields = ['name', 'subject', 'email', 'message'].map(getField);
+      const fields = ['category', 'name', 'subject', 'email', 'message'].map(getField);
       const isValid = fields
         .map((field) => field instanceof HTMLElement && markField(field))
         .every(Boolean);

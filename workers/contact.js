@@ -1,16 +1,35 @@
 import { EmailMessage } from 'cloudflare:email';
 
-/* global Response, fetch */
+/* global Response, console, fetch */
 
 const JSON_HEADERS = {
   'Content-Type': 'application/json; charset=utf-8',
 };
 
 const MAX_LENGTH = {
+  category: 20,
   email: 255,
   message: 10000,
   name: 120,
   subject: 250,
+};
+
+const ISSUE_CATEGORIES = {
+  bug: {
+    label: 'bug',
+    titlePrefix: '[Bug]',
+    type: 'Bug report',
+  },
+  feature: {
+    label: 'enhancement',
+    titlePrefix: '[Feature]',
+    type: 'Feature request',
+  },
+  question: {
+    label: 'question',
+    titlePrefix: '[Question]',
+    type: 'Question',
+  },
 };
 
 const DEFAULT_ALLOWED_ORIGINS = [
@@ -63,6 +82,7 @@ const isValidEmail = value =>
   isStringInRange(value, MAX_LENGTH.email) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 const normalizePayload = payload => ({
+  category: typeof payload.category === 'string' ? payload.category.trim() : '',
   company: typeof payload.company === 'string' ? payload.company.trim() : '',
   email: typeof payload.email === 'string' ? payload.email.trim() : '',
   message: typeof payload.message === 'string' ? payload.message.trim() : '',
@@ -73,6 +93,7 @@ const normalizePayload = payload => ({
 });
 
 const validatePayload = payload =>
+  Object.hasOwn(ISSUE_CATEGORIES, payload.category) &&
   isStringInRange(payload.name, MAX_LENGTH.name) &&
   isStringInRange(payload.subject, MAX_LENGTH.subject) &&
   isValidEmail(payload.email) &&
@@ -114,6 +135,7 @@ const buildFeedbackBody = payload =>
   [
     'Submitted from the Magic Notebook website contact form.',
     '',
+    `Type: ${ISSUE_CATEGORIES[payload.category].type}`,
     `Name: ${payload.name}`,
     `Email: ${payload.email}`,
     `Page: ${payload.page || 'unknown'}`,
@@ -136,16 +158,13 @@ const createGitHubIssue = async ({ env, payload }) => {
 
   const owner = env.CONTACT_GITHUB_OWNER || 'supervova';
   const repo = env.CONTACT_GITHUB_REPO || 'magic-notebook';
-  const labels = (env.CONTACT_GITHUB_LABELS || 'feedback,website')
-    .split(',')
-    .map(label => label.trim())
-    .filter(Boolean);
+  const labels = buildIssueLabels(env, payload);
 
   const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
     body: JSON.stringify({
       body: buildFeedbackBody(payload),
       labels,
-      title: `[Feedback]: ${payload.subject}`,
+      title: `${ISSUE_CATEGORIES[payload.category].titlePrefix}: ${payload.subject}`,
     }),
     headers: {
       Accept: 'application/vnd.github+json',
@@ -161,7 +180,57 @@ const createGitHubIssue = async ({ env, payload }) => {
     throw new Error(`GitHub issue creation failed: ${response.status}`);
   }
 
-  return response.json();
+  const issue = await response.json();
+
+  try {
+    await addGitHubIssueLabels({
+      env,
+      issueNumber: issue.number,
+      labels,
+      owner,
+      repo,
+    });
+  } catch (error) {
+    console.warn(error);
+  }
+
+  return issue;
+};
+
+const buildIssueLabels = (env, payload) => {
+  const baseLabels = (env.CONTACT_GITHUB_LABELS || 'feedback,website')
+    .split(',')
+    .map(label => label.trim())
+    .filter(Boolean);
+
+  return [...new Set([...baseLabels, ISSUE_CATEGORIES[payload.category].label])];
+};
+
+const addGitHubIssueLabels = async ({ env, issueNumber, labels, owner, repo }) => {
+  if (labels.length === 0) {
+    return;
+  }
+
+  const response = await fetch(
+    `https://api.github.com/repos/${owner}/${repo}/issues/${issueNumber}/labels`,
+    {
+    body: JSON.stringify({
+      labels,
+    }),
+    headers: {
+      Accept: 'application/vnd.github+json',
+      Authorization: `Bearer ${env.GITHUB_ISSUES_TOKEN}`,
+      'Content-Type': 'application/json',
+      'User-Agent': 'magic-notebook-contact-form',
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
+    method: 'POST',
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`GitHub issue label assignment failed: ${response.status}`);
+  }
 };
 
 const escapeHeader = value => value.replace(/[\r\n]/g, ' ').trim();

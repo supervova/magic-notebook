@@ -11,13 +11,14 @@ export const ru = {
     scrollDown: 'Прокрутите вниз',
   },
   nav: {
-    home: 'Главная',
-    download: 'Скачать',
-    whatsNew: 'Что нового?',
     becomeASponsor: 'Стать спонсором',
-    supportTheProject: 'Поддержать проект',
+    contact: 'Контакты',
+    download: 'Скачать',
+    home: 'Главная',
     lang: 'Выберите язык',
     privacy: 'Политика конфиденциальности',
+    supportTheProject: 'Поддержать проект',
     terms: 'Условия использования',
+    whatsNew: 'Что нового?',
   },
 } as const;

@@ -35,7 +35,7 @@
         gap: var(--size-3);
         justify-content: space-between;
 
-        @media (--tablet) {
+        @media (--tablet-l) {
           flex-direction: row;
         }
       }

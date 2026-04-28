@@ -8,16 +8,24 @@ export const en: ContactUsDictionary = {
   page: {
     title: 'Contact us',
     intro:
-      'Tell us what happened, what you expected, or what would make Magic Notebook better.',
+      'Is something unclear? Did the app run into an error? Or maybe you have ideas on how to improve Magic Notebook? Write to us – we’ll figure something out.',
   },
   form: {
     errorSummary: 'Please check the highlighted fields.',
-    note:
-      'Your message goes directly to the project feedback queue. No GitHub account is needed.',
+    note: 'Your message goes directly to the project feedback queue. No GitHub account is needed.',
     serverError: 'The message was not sent. Please try again in a few minutes.',
     success: 'Thank you. Your message has been sent.',
   },
   fields: {
+    category: {
+      label: 'What is this about?',
+      error: 'Please choose a message type.',
+      options: {
+        bug: 'Bug report',
+        feature: 'Feature request',
+        question: 'Question',
+      },
+    },
     name: {
       label: 'Name',
       error: 'Please enter your name.',

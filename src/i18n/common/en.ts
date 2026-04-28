@@ -11,13 +11,14 @@ export const en = {
     scrollDown: 'Scroll down',
   },
   nav: {
-    home: 'Home',
-    download: 'Download',
-    whatsNew: 'What’s New',
     becomeASponsor: 'Become a Sponsor',
-    supportTheProject: 'Support the Project',
+    contact: 'Contact Us',
+    download: 'Download',
+    home: 'Home',
     lang: 'Choose your language',
     privacy: 'Privacy Policy',
+    supportTheProject: 'Support the Project',
     terms: 'Terms of Service',
+    whatsNew: 'What’s New',
   },
 } as const;

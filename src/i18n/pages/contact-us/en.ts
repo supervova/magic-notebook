@@ -18,7 +18,7 @@ export const en: ContactUsDictionary = {
   },
   fields: {
     category: {
-      label: 'What is this about?',
+      label: 'Request type',
       error: 'Please choose a message type.',
       options: {
         bug: 'Bug report',

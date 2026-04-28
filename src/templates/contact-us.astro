@@ -52,18 +52,6 @@ const contactEndpoint =
         <p class='form-error-box' data-error-summary role='alert'></p>
 
         <p>
-          <label for='form-category'>{pageDictionary.fields.category.label}</label>
-          <select id='form-category' name='category' aria-describedby='form-category-error' required>
-            <option value='bug'>{pageDictionary.fields.category.options.bug}</option>
-            <option value='feature'>{pageDictionary.fields.category.options.feature}</option>
-            <option value='question'>{pageDictionary.fields.category.options.question}</option>
-          </select>
-          <span class='form-error' id='form-category-error' role='alert'>
-            {pageDictionary.fields.category.error}
-          </span>
-        </p>
-
-        <p>
           <label for='form-name'>{pageDictionary.fields.name.label}</label>
           <input id='form-name' name='name' type='text' autocomplete='name' aria-describedby='form-name-error' required />
           <span class='form-error' id='form-name-error' role='alert'>
@@ -72,18 +60,30 @@ const contactEndpoint =
         </p>
 
         <p>
-          <label for='form-subject'>{pageDictionary.fields.subject.label}</label>
-          <input id='form-subject' name='subject' type='text' autocomplete='off' maxlength='250' aria-describedby='form-subject-error' required />
-          <span class='form-error' id='form-subject-error' role='alert'>
-            {pageDictionary.fields.subject.error}
-          </span>
-        </p>
-
-        <p>
           <label for='form-email'>{pageDictionary.fields.email.label}</label>
           <input id='form-email' name='email' type='email' autocomplete='email' maxlength='255' aria-describedby='form-email-error' required />
           <span class='form-error' id='form-email-error' role='alert'>
             {pageDictionary.fields.email.error}
+          </span>
+        </p>
+
+        <p>
+          <label for='form-category'>{pageDictionary.fields.category.label}</label>
+          <select id='form-category' name='category' aria-describedby='form-category-error' required>
+            <option value='question'>{pageDictionary.fields.category.options.question}</option>
+            <option value='feature'>{pageDictionary.fields.category.options.feature}</option>
+            <option value='bug'>{pageDictionary.fields.category.options.bug}</option>
+          </select>
+          <span class='form-error' id='form-category-error' role='alert'>
+            {pageDictionary.fields.category.error}
+          </span>
+        </p>
+
+        <p>
+          <label for='form-subject'>{pageDictionary.fields.subject.label}</label>
+          <input id='form-subject' name='subject' type='text' autocomplete='off' maxlength='250' aria-describedby='form-subject-error' required />
+          <span class='form-error' id='form-subject-error' role='alert'>
+            {pageDictionary.fields.subject.error}
           </span>
         </p>
 

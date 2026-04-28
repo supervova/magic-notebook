@@ -18,7 +18,7 @@ export const ru: ContactUsDictionary = {
   },
   fields: {
     category: {
-      label: 'Что вы хотите отправить?',
+      label: 'Тип обращения',
       error: 'Выберите тип сообщения.',
       options: {
         bug: 'Сообщение об ошибке',

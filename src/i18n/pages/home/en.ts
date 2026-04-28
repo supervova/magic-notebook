@@ -11,6 +11,7 @@ export const en = {
     linkPrimary: 'Download',
     linkSecondary: 'Watch',
     linkSecondaryPlaceholder: "It's free and",
+    linkSecondaryComingSoon: 'Release — May 15',
   },
   carousel: {
     labels: {

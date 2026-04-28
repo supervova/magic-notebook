@@ -21,6 +21,7 @@ interface HeroCopy {
   linkPrimary: string;
   linkSecondary: string;
   linkSecondaryPlaceholder: string;
+  linkSecondaryComingSoon: string;
   title: string;
 }
 
@@ -49,7 +50,7 @@ const { baseCopy, heroCopy, macosDownloadHref, windowsDownloadHref } = Astro.pro
       <p class='text-base' set:html={heroCopy.desc} />
 
       <div class='actions'>
-        <div class='btn-split' data-split-button>
+        <div class='btn-split is-disabled' data-split-button>
           <a class='btn btn-primary btn-main' href={macosDownloadHref}>
             <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
             <span>{heroCopy.linkPrimary}</span>
@@ -72,7 +73,7 @@ const { baseCopy, heroCopy, macosDownloadHref, windowsDownloadHref } = Astro.pro
           </details>
         </div>
 
-        <span><strong class="text-02">{heroCopy.linkSecondaryPlaceholder}</strong> ✨</span>
+        <span><strong class="text-02">{heroCopy.linkSecondaryComingSoon}</strong> ✨</span>
 
         <!-- <a class='btn btn-icon-end' href='#demo'>
           <span>{heroCopy.linkSecondary}</span>

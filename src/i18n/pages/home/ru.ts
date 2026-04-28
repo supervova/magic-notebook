@@ -11,6 +11,7 @@ export const ru = {
     linkPrimary: 'Скачать',
     linkSecondary: 'Смотреть видео',
     linkSecondaryPlaceholder: 'редактор бесплатный и',
+    linkSecondaryComingSoon: 'релиз – 15 мая',
   },
   carousel: {
     labels: {

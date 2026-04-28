@@ -25,6 +25,14 @@
     display: inline-flex;
     align-items: stretch;
     position: relative;
+
+    &.is-disabled {
+      cursor: not-allowed;
+
+      .btn, .popover {
+        pointer-events: none;
+      }
+    }
   }
 
   /* #endregion */

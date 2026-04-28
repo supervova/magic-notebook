@@ -1,5 +1,7 @@
 import { en as commonEn } from './common/en';
 import { ru as commonRu } from './common/ru';
+import { en as contactUsEn } from './pages/contact-us/en';
+import { ru as contactUsRu } from './pages/contact-us/ru';
 import { en as homeEn } from './pages/home/en';
 import { ru as homeRu } from './pages/home/ru';
 import { en as privacyEn } from './pages/privacy/en';
@@ -17,6 +19,10 @@ export const commonDictionaries = {
 } as const;
 
 export const pageDictionaries = {
+  'contact-us': {
+    en: contactUsEn,
+    ru: contactUsRu,
+  },
   home: {
     en: homeEn,
     ru: homeRu,

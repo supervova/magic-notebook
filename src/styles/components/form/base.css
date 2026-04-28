@@ -1,0 +1,119 @@
+@layer base {
+  /* ------------------------------------------------------------------------ */
+  /* #region: CONTAINERS                                                      */
+  /* ------------------------------------------------------------------------ */
+
+  .form, form {
+    --field-bg: var(--color-bg);
+    --field-bg-disabled: var(--color-bg-02);
+    --field-border-color: var(--color-border-bold);
+    --field-fg-disabled: var(--color-text-03);
+    --field-flow-gap: var(--size-2);
+    --field-padding-x: var(--size-2);
+    --field-padding-y: 11px;
+    --field-radius: var(--radius-sm);
+
+    position: relative;
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+
+    &:not(:last-child) {
+      margin-bottom: var(--size-6);
+    }
+  }
+
+  legend {
+    font-weight: var(--font-weight-strong);
+    overflow-wrap: anywhere;
+    margin-bottom: var(--size-1);
+  }
+
+  label {
+    color: var(--color-text);
+    display: block;
+    font-weight: 500;
+    margin-bottom: var(--size-half);
+  }
+
+  :is(form, .form) {
+    > :is(p, div:not([class])),
+    :where(.grid) > p {
+      margin-block: 0 var(--field-flow-gap);
+      padding: 0;
+      position: relative;
+    }
+  }
+
+  /* #endregion */
+
+  /* -------------------------------------------------------------------------- */
+  /* #region: INPUTS                                                            */
+  /* -------------------------------------------------------------------------- */
+
+  :--text-field {
+    appearance: none;
+    background-color: var(--field-bg);
+    border: 1px solid var(--field-border-color);
+    border-radius: var(--field-radius);
+    color: var(--color-text);
+    display: block;
+    font-size: inherit;
+    line-height: inherit;
+    padding: var(--field-padding-y) var(--field-padding-x);
+    transition: border-color var(--duration-200) var(--easing-base);
+    width: 100%;
+
+    &:focus-visible {
+      /* Prevent mixing of the semi-transparent border color with the outline color */
+      border-color: var(--color-focus);
+    }
+
+    &:disabled {
+      background-color: var(--field-bg-disabled);
+      color: var(--field-fg-disabled);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 6rem;
+  }
+
+  select:not([multiple]) {
+    background-image: var(--icon-chevron-down);
+    background-position: center right var(--size-1);
+    background-repeat: no-repeat;
+    background-size: var(--flow-gap);
+    padding-inline-end: var(--size-6);
+    overflow-x: clip;
+
+    /* Hide arrow icon in IE browsers */
+    &::-ms-expand {
+      display: none;
+    }
+  }
+
+  [type='checkbox'],
+  [type='radio'] {
+    cursor: pointer;
+    margin-inline-end: var(--size-1);
+    vertical-align: text-bottom;
+    width: var(--size-2h);
+    height: var(--size-2h);
+  }
+
+  [type='checkbox'] + label,
+  [type='radio'] + label {
+    cursor: pointer;
+    display: inline-block;
+    margin-inline-start: var(--size-1);
+    vertical-align: middle;
+  }
+
+  /* #endregion */
+}

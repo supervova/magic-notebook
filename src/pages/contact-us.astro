@@ -1,0 +1,14 @@
+---
+import ContactUsPage from '../templates/contact-us.astro';
+import { getCommonDictionary, getPageDictionary } from '../i18n/config';
+
+const locale = 'en';
+const commonDictionary = getCommonDictionary(locale);
+const pageDictionary = getPageDictionary('contact-us', locale);
+---
+
+<ContactUsPage
+  locale={locale}
+  commonDictionary={commonDictionary}
+  pageDictionary={pageDictionary}
+/>

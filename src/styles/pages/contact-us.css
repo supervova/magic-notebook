@@ -1,0 +1,53 @@
+/* -------------------------------------------------------------------------- */
+/* #region: BASE                                                              */
+/* -------------------------------------------------------------------------- */
+
+@layer pages {
+  .contact-panel {
+    --contact-panel-bg: var(--color-bg-02);
+    --contact-panel-radius: var(--radius-lg);
+
+    background: var(--contact-panel-bg);
+    border-radius: var(--contact-panel-radius);
+    padding: var(--size-2);
+
+    @media (--tablet) {
+      padding: var(--size-3);
+    }
+
+    @media (--laptop) {
+      padding: var(--size-4);
+    }
+  }
+
+  @scope (.page-contact-us) {
+    .contact-form {
+      max-width: var(--width-xl);
+    }
+
+    .note {
+      margin-bottom: var(--size-2);
+    }
+
+    .field-hidden {
+      display: none;
+    }
+
+    .form-status {
+      color: var(--color-text-positive);
+      min-height: var(--line-height-base);
+    }
+
+    .form-status.is-error {
+      color: var(--color-text-negative);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--size-1);
+    }
+  }
+}
+
+/* #endregion */

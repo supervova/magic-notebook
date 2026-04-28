@@ -1,0 +1,195 @@
+---
+import { appLinks } from '../config/app-links';
+import SiteFooter from '../components/layout/site-footer.astro';
+import SiteHeader from '../components/layout/site-header.astro';
+import type { Locale } from '../i18n/config';
+import type { commonDictionaries, pageDictionaries } from '../i18n/config';
+import BaseLayout from '../layouts/base.astro';
+
+interface Props {
+  commonDictionary: (typeof commonDictionaries)[Locale];
+  locale: Locale;
+  pageDictionary: (typeof pageDictionaries)['contact-us'][Locale];
+}
+
+const { commonDictionary, locale, pageDictionary } = Astro.props;
+
+const baseCopy = commonDictionary.base;
+const navCopy = commonDictionary.nav;
+const macosDownloadHref = appLinks.downloads.macos;
+const windowsDownloadHref = appLinks.downloads.windows;
+const contactEndpoint =
+  import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? 'https://feedback.magic-notebook.com/contact';
+---
+
+<BaseLayout
+  alternates={{
+    en: '/contact-us/',
+    ru: '/ru/contact-us/',
+  }}
+  bodyClass='page-contact-us'
+  title={pageDictionary.meta.title}
+  description={pageDictionary.meta.desc}
+  lang={locale}
+>
+  <SiteHeader
+    baseCopy={baseCopy}
+    locale={locale}
+    macosDownloadHref={macosDownloadHref}
+    navCopy={navCopy}
+    showBanner={true}
+    windowsDownloadHref={windowsDownloadHref}
+  />
+
+  <main class='wrapper'>
+    <header class='page-header col-2/3 pb-1lh'>
+      <h1>{pageDictionary.page.title}</h1>
+      <p>{pageDictionary.page.intro}</p>
+    </header>
+
+    <section class='contact-panel col-2/3 mx-auto'>
+      <form class='contact-form' data-contact-form novalidate>
+        <p class='form-error-box' data-error-summary role='alert'></p>
+
+        <p>
+          <label for='form-name'>{pageDictionary.fields.name.label}</label>
+          <input id='form-name' name='name' type='text' autocomplete='name' aria-describedby='form-name-error' required />
+          <span class='form-error' id='form-name-error' role='alert'>
+            {pageDictionary.fields.name.error}
+          </span>
+        </p>
+
+        <p>
+          <label for='form-subject'>{pageDictionary.fields.subject.label}</label>
+          <input id='form-subject' name='subject' type='text' autocomplete='off' maxlength='250' aria-describedby='form-subject-error' required />
+          <span class='form-error' id='form-subject-error' role='alert'>
+            {pageDictionary.fields.subject.error}
+          </span>
+        </p>
+
+        <p>
+          <label for='form-email'>{pageDictionary.fields.email.label}</label>
+          <input id='form-email' name='email' type='email' autocomplete='email' maxlength='255' aria-describedby='form-email-error' required />
+          <span class='form-error' id='form-email-error' role='alert'>
+            {pageDictionary.fields.email.error}
+          </span>
+        </p>
+
+        <p>
+          <label for='form-message'>{pageDictionary.fields.message.label}</label>
+          <textarea id='form-message' name='message' maxlength='524288' aria-describedby='form-message-error' required></textarea>
+          <span class='form-error' id='form-message-error' role='alert'>
+            {pageDictionary.fields.message.error}
+          </span>
+        </p>
+
+        <p class='note text-sm text-02'>{pageDictionary.form.note}</p>
+
+        <p class='field-hidden' aria-hidden='true'>
+          <label for='form-company'>Company</label>
+          <input id='form-company' name='company' type='text' tabindex='-1' autocomplete='off' />
+        </p>
+
+        <p class='form-status' data-form-status role='status' aria-live='polite'></p>
+
+        <div class='actions'>
+          <button class='btn btn-primary' type='submit'>
+            {pageDictionary.actions.submit}
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <SiteFooter baseCopy={baseCopy} locale={locale} navCopy={navCopy} />
+
+  <script is:inline define:vars={{ contactEndpoint, errorSummary: pageDictionary.form.errorSummary, serverError: pageDictionary.form.serverError, successMessage: pageDictionary.form.success }}>
+    const form = document.querySelector('[data-contact-form]');
+    const summary = form?.querySelector('[data-error-summary]');
+    const status = form?.querySelector('[data-form-status]');
+
+    if (
+      !(form instanceof HTMLFormElement) ||
+      !(summary instanceof HTMLElement) ||
+      !(status instanceof HTMLElement)
+    ) {
+      throw new Error('Contact form is missing.');
+    }
+
+    const getField = (name) => form.elements.namedItem(name);
+
+    const markField = (field) => {
+      const isInvalid = !field.checkValidity();
+
+      field.classList.toggle('is-invalid', isInvalid);
+
+      return !isInvalid;
+    };
+
+    const readFormData = () => {
+      const data = new FormData(form);
+
+      return {
+        company: data.get('company')?.toString() ?? '',
+        email: data.get('email')?.toString() ?? '',
+        message: data.get('message')?.toString() ?? '',
+        name: data.get('name')?.toString() ?? '',
+        page: window.location.href,
+        subject: data.get('subject')?.toString() ?? '',
+        userAgent: navigator.userAgent,
+      };
+    };
+
+    form?.addEventListener('input', (event) => {
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+        markField(event.target);
+      }
+    });
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const fields = ['name', 'subject', 'email', 'message'].map(getField);
+      const isValid = fields
+        .map((field) => field instanceof HTMLElement && markField(field))
+        .every(Boolean);
+
+      if (!isValid) {
+        summary.textContent = errorSummary;
+        form.querySelector('.is-invalid')?.focus();
+        return;
+      }
+
+      summary.textContent = '';
+      status.textContent = '';
+      status.classList.remove('is-error');
+      form.querySelector('[type="submit"]')?.setAttribute('aria-busy', 'true');
+
+      const data = readFormData();
+
+      fetch(contactEndpoint, {
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Contact request failed.');
+          }
+
+          form.reset();
+          status.classList.remove('is-error');
+          status.textContent = successMessage;
+        })
+        .catch(() => {
+          status.classList.add('is-error');
+          status.textContent = serverError;
+        })
+        .finally(() => {
+          form.querySelector('[type="submit"]')?.removeAttribute('aria-busy');
+        });
+    });
+  </script>
+</BaseLayout>

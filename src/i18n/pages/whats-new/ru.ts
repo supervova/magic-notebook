@@ -28,8 +28,8 @@ export const ru: WhatsNewDictionary = {
   ],
   releases: [
     {
-      date: '27 апреля 2026',
-      version: '1.0.0',
+      date: '15 мая 2026',
+      version: '1.0.14',
       items: [
         {
           tone: 'new',

@@ -8,7 +8,7 @@ export const ru: TermsDictionary = {
   page: {
     title: 'Условия использования',
     lastUpdatedLabel: 'Последнее обновление:',
-    lastUpdatedValue: '27 апреля 2026 г.',
+    lastUpdatedValue: '15 мая 2026 г.',
   },
   sections: [
     {

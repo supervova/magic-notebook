@@ -11,7 +11,7 @@ interface Props {
 
 const { title, description, lang, bodyClass, alternates } = Astro.props;
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
-const ogImageUrl = Astro.site ? new URL('/assets/img/cover.jpg', Astro.site).toString() : undefined;
+const ogImageUrl = Astro.site ? new URL('/assets/img/magic-notebook.jpg', Astro.site).toString() : undefined;
 const localeToOgLocale = {
   en: 'en_US',
   ru: 'ru_RU',

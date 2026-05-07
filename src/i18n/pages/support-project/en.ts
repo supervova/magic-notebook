@@ -8,7 +8,7 @@ export const en: SupportProjectDictionary = {
   title: 'Do a Good Thing',
   titleSuffix: '♥️ Support the Project',
   intro:
-    'Magic Notebook is built by a single developer with a simple goal: to create the most comfortable writing app possible. Right now, I work on it in the evenings after my main job. If you enjoy using the app, even a small contribution can help me spend more time improving it. Next up on the roadmap: a feedback board, publishing on the Microsoft Store, and new interface languages.',
+    'Magic Notebook is built by a single developer with a simple goal: to create the most comfortable writing app possible. Right now, I work on it in the evenings after my main job. If you enjoy using the app, even a small contribution can help me spend more time improving it. Next up on the roadmap: AI assistant, knowledge base features (tags, internal links), and smart tables.',
   options: {
     title: 'Ways to Support the Project',
     donation: {

@@ -29,7 +29,7 @@ export const en: WhatsNewDictionary = {
   releases: [
     {
       date: 'May 15, 2026',
-      version: '1.0.14',
+      version: '1.1.0',
       items: [
         {
           tone: 'new',

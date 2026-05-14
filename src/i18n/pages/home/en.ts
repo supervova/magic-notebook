@@ -28,8 +28,8 @@ export const en = {
       desc: 'A simple writing app for notes, articles and documents.',
     },
     slide02: {
-      title: 'Open a folder and start writing',
-      desc: 'No sign-up, no setup, no complicated systems.',
+      title: 'Open a folder and start writing',
+      desc: 'No sign-up, no setup, no complicated systems.',
     },
     slide03: {
       title: 'Formatting made easy',
@@ -37,14 +37,14 @@ export const en = {
     },
     slide04: {
       title: 'Your texts are just files',
-      desc: 'DOCX, Markdown and TXT in your regular folders.',
+      desc: 'DOCX, Markdown and TXT in your regular folders.',
     },
     slide05: {
       title: 'Make it yours',
-      desc: 'Light or dark theme, interface language and developer mode.',
+      desc: 'Light or dark theme, interface language and developer mode.',
     },
     slide06: {
-      title: 'Autosave, no stress',
+      title: 'Autosave, no stress',
       desc: 'Nothing gets lost - all changes are saved automatically.',
     },
   },

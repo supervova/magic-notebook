@@ -6,6 +6,7 @@ const require = createRequire(import.meta.url);
 const astroPackagePath = require.resolve('astro/package.json');
 const astroPackage = require(astroPackagePath);
 const astroBin = path.resolve(path.dirname(astroPackagePath), astroPackage.bin.astro);
+const astroArgs = process.argv.slice(2).filter((arg) => arg !== '--');
 
 const spriteWatcher = spawn(process.execPath, ['scripts/build-svg-sprite.js', '--watch'], {
   stdio: 'inherit',
@@ -14,7 +15,7 @@ const cssImagesWatcher = spawn(process.execPath, ['scripts/optimize-public-image
   stdio: 'inherit',
 });
 
-const astroDev = spawn(process.execPath, [astroBin, 'dev'], {
+const astroDev = spawn(process.execPath, [astroBin, 'dev', ...astroArgs], {
   stdio: 'inherit',
 });
 

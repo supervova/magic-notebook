@@ -109,6 +109,11 @@
         text-decoration: none;
       }
 
+      &[aria-disabled='true'] {
+        cursor: default;
+        pointer-events: none;
+      }
+
       &[aria-current] {
         cursor: default;
         pointer-events: none;

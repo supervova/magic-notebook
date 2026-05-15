@@ -188,6 +188,11 @@
       }
     }
 
+    .popover-end .menu {
+      overflow-y: auto;
+      max-height: 420px;
+    }
+
     /* #endregion */
   }
 

@@ -2,8 +2,9 @@
 import { Image } from 'astro:assets';
 
 import logoMark from '../../assets/img/components/logomark.png';
-import { getLocalizedPath } from '../../i18n/utils';
+import { getLocaleName, getLocalizedPath, getPathWithoutLocale } from '../../i18n/utils';
 import type { Locale } from '../../i18n/config';
+import { supportedLocales } from '../../i18n/config';
 
 import Icon from '../ui/icon.astro';
 
@@ -12,6 +13,7 @@ interface BaseCopy {
   downloadMacos: string;
   downloadOptions: string;
   downloadWindows: string;
+  downloadWindowsComingSoon: string;
   logo: string;
 }
 
@@ -32,9 +34,23 @@ interface Props {
   windowsDownloadHref: string;
 }
 
-const { baseCopy, locale, macosDownloadHref, navCopy, showBanner = false, windowsDownloadHref } = Astro.props;
-const localeFlagName = locale === 'en' ? 'flag-en' : 'flag-ru';
+const { baseCopy, locale, macosDownloadHref, navCopy, showBanner = false } = Astro.props;
+const localeFlagNames = {
+  en: 'flag-en',
+  ru: 'flag-ru',
+  de: 'flag-de',
+  es: 'flag-es',
+  fr: 'flag-fr',
+  it: 'flag-it',
+  pt: 'flag-pt-br',
+  uk: 'flag-uk',
+  ja: 'flag-ja',
+  ko: 'flag-ko',
+  zh: 'flag-zh',
+} as const satisfies Record<Locale, string>;
+const localeFlagName = localeFlagNames[locale];
 const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const pathWithoutLocale = getPathWithoutLocale(pathname);
 
 const isCurrentPath = (path: string) => {
   const localizedPath = getLocalizedPath(locale, path);
@@ -87,10 +103,10 @@ const isCurrentPath = (path: string) => {
                   </a>
                 </li>
                 <li>
-                  <a class='menu-item menu-item-icon-start' href={windowsDownloadHref}>
+                  <span class='menu-item menu-item-icon-start' aria-disabled='true'>
                     <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-windows'></use></svg>
-                    <span class='label'>{baseCopy.downloadWindows}</span>
-                  </a>
+                    <span class='label'>{baseCopy.downloadWindowsComingSoon}</span>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -121,12 +137,20 @@ const isCurrentPath = (path: string) => {
             </summary>
             <div class='body w-max'>
               <ul class='menu'>
-                <li>
-                  <a class='menu-item' href={getLocalizedPath('en')} lang='en' aria-current={locale === 'en' ? 'true' : undefined}>English</a>
-                </li>
-                <li>
-                  <a class='menu-item' href={getLocalizedPath('ru')} lang='ru' aria-current={locale === 'ru' ? 'true' : undefined}>Русский</a>
-                </li>
+                {
+                  supportedLocales.map((availableLocale) => (
+                    <li>
+                      <a
+                        class='menu-item'
+                        href={getLocalizedPath(availableLocale, pathWithoutLocale)}
+                        lang={availableLocale}
+                        aria-current={locale === availableLocale ? 'true' : undefined}
+                      >
+                        {getLocaleName(availableLocale)}
+                      </a>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </details>

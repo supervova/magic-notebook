@@ -14,6 +14,7 @@ import BaseLayout from '../layouts/base.astro';
 import type { Locale } from '../i18n/config';
 import type { commonDictionaries } from '../i18n/config';
 import type { pageDictionaries } from '../i18n/config';
+import { getLocalizedAlternates } from '../i18n/utils';
 
 import '../styles/pages/home.css';
 
@@ -40,10 +41,7 @@ const windowsDownloadHref = appLinks.downloads.windows;
 ---
 
 <BaseLayout
-  alternates={{
-    en: '/',
-    ru: '/ru/',
-  }}
+  alternates={getLocalizedAlternates('/')}
   bodyClass='page-home'
   title={pageDictionary.meta.title}
   description={pageDictionary.meta.desc}

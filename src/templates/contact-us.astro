@@ -9,7 +9,7 @@ import BaseLayout from '../layouts/base.astro';
 interface Props {
   commonDictionary: (typeof commonDictionaries)[Locale];
   locale: Locale;
-  pageDictionary: (typeof pageDictionaries)['contact-us'][Locale];
+  pageDictionary: (typeof pageDictionaries)['contact-us'][keyof (typeof pageDictionaries)['contact-us']];
 }
 
 const { commonDictionary, locale, pageDictionary } = Astro.props;

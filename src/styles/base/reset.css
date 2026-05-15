@@ -128,7 +128,7 @@
     display: none;
   }
 
-  :where([hidden]) {
+  [hidden][hidden] {
     display: none;
   }
 

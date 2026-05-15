@@ -1,0 +1,10 @@
+---
+import HomePage from '../../templates/home.astro';
+import { getCommonDictionary, getPageDictionary } from '../../i18n/config';
+
+const locale = 'fr';
+const commonDictionary = getCommonDictionary(locale);
+const pageDictionary = getPageDictionary('home', locale);
+---
+
+<HomePage locale={locale} commonDictionary={commonDictionary} pageDictionary={pageDictionary} />

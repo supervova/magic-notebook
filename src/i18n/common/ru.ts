@@ -6,6 +6,8 @@ export const ru = {
     downloadMacos: 'Скачать для macOS',
     downloadOptions: 'Другие варианты загрузки',
     downloadWindows: 'Скачать для Windows',
+    downloadWindowsComingSoon: 'Windows — Выпуск в июне',
+    downloadWindowsComingSoonShort: 'Выпуск в июне',
     footer: 'Подвал',
     logo: 'Логотип',
     scrollDown: 'Прокрутите вниз',

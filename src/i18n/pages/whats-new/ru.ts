@@ -29,7 +29,7 @@ export const ru: WhatsNewDictionary = {
   releases: [
     {
       date: '15 мая 2026',
-      version: '1.1.0',
+      version: '1.1.1',
       items: [
         {
           tone: 'new',

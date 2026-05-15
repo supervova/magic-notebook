@@ -1,11 +1,12 @@
 ---
+import type { Locale } from '../i18n/config';
 import '../styles/main.css';
 
 interface Props {
-  alternates?: Partial<Record<'en' | 'ru', string>>;
+  alternates?: Partial<Record<Locale, string>>;
   bodyClass?: string;
   description: string;
-  lang: 'en' | 'ru';
+  lang: Locale;
   title: string;
 }
 
@@ -15,6 +16,15 @@ const ogImageUrl = Astro.site ? new URL('/assets/img/magic-notebook.jpg', Astro.
 const localeToOgLocale = {
   en: 'en_US',
   ru: 'ru_RU',
+  de: 'de_DE',
+  es: 'es_ES',
+  fr: 'fr_FR',
+  it: 'it_IT',
+  pt: 'pt_PT',
+  uk: 'uk_UA',
+  ja: 'ja_JP',
+  ko: 'ko_KR',
+  zh: 'zh_CN',
 } as const;
 const alternateUrls = Astro.site
   ? Object.entries(alternates ?? {}).map(([locale, path]) => ({
@@ -48,9 +58,9 @@ const alternateUrls = Astro.site
     <link rel="apple-touch-icon" href="/icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <!-- Google Analytics -->
-    <script src="https://www.googletagmanager.com/gtag/js?id=G-PKZCFV9HGK" async></script>
+    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-PKZCFV9HGK" async></script>
 
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
 
       function gtag() {

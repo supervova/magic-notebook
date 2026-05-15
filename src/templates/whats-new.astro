@@ -5,6 +5,7 @@ import SiteHeader from '../components/layout/site-header.astro';
 import type { Locale } from '../i18n/config';
 import type { commonDictionaries } from '../i18n/config';
 import type { WhatsNewDictionary } from '../i18n/pages/whats-new/types';
+import { getLocalizedAlternates } from '../i18n/utils';
 import BaseLayout from '../layouts/base.astro';
 
 import '../styles/pages/whats-new.css';
@@ -24,10 +25,7 @@ const windowsDownloadHref = appLinks.downloads.windows;
 ---
 
 <BaseLayout
-  alternates={{
-    en: '/whats-new/',
-    ru: '/ru/whats-new/',
-  }}
+  alternates={getLocalizedAlternates('whats-new')}
   bodyClass='page-whats-new'
   title={pageDictionary.meta.title}
   description={pageDictionary.meta.desc}

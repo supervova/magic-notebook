@@ -12,6 +12,7 @@ import {
 } from '../data/support-project';
 import type { Locale } from '../i18n/config';
 import type { commonDictionaries, pageDictionaries } from '../i18n/config';
+import { getLocalizedAlternates } from '../i18n/utils';
 import BaseLayout from '../layouts/base.astro';
 
 interface Props {
@@ -65,10 +66,7 @@ const shareHrefByPlatform = {
 ---
 
 <BaseLayout
-  alternates={{
-    en: '/support-project/',
-    ru: '/ru/support-project/',
-  }}
+  alternates={getLocalizedAlternates('support-project')}
   bodyClass='page-support-project'
   title={pageDictionary.meta.title}
   description={pageDictionary.meta.desc}

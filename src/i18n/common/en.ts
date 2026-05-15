@@ -6,6 +6,8 @@ export const en = {
     downloadMacos: 'Download for macOS',
     downloadOptions: 'More download options',
     downloadWindows: 'Download for Windows',
+    downloadWindowsComingSoon: 'Windows — Coming June',
+    downloadWindowsComingSoonShort: 'Coming June',
     footer: 'Footer',
     logo: 'Logo',
     scrollDown: 'Scroll down',

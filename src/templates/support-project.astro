@@ -90,19 +90,35 @@ const shareHrefByPlatform = {
       <p>{pageDictionary.intro}</p>
     </header>
 
-    <div class='text-center col-5/6 mx-auto'>
-      <a
-        class='btn btn-primary btn-lg mb-5'
-        href={supportProjectLinks.sponsorship}
-        target='_blank'
-        rel='noopener'
-      >
-        {pageDictionary.options.sponsorship.cta}
-      </a>
-      {pageDictionary.options.sponsorship.desc && (
-        <p class='text-02'>{pageDictionary.options.sponsorship.desc}</p>
-      )}
-    </div>
+    <section class="section section-support-options">
+      <h2 class="visually-hidden">{pageDictionary.options.title}</h2>
+      <div class="row row-3">
+        <div>
+          <h3>{pageDictionary.options.donation.title}</h3>
+          <a class="btn btn-lg btn-icon-end mb-2" href="https://ko-fi.com/magicnotebook" target="_blank" rel="noopener">
+            Ko-fi
+            <Icon name='sm-chevron-right' />
+          </a>
+          <p class="text-02">{pageDictionary.options.donation.desc}</p>
+        </div>
+        <div>
+          <h3>{pageDictionary.options.purchase.title}</h3>
+          <a class="btn btn-primary btn-icon-end btn-lg mb-2" href="https://magicnotebook.gumroad.com/l/magic-notebook-macos" target="_blank" rel="noopener">
+            Gumroad
+            <Icon name='sm-chevron-right' />
+          </a>
+          <p class="text-02">{pageDictionary.options.purchase.desc}</p>
+        </div>
+        <div>
+          <h3>{pageDictionary.options.sponsorship.title}</h3>
+          <a class="btn btn-lg btn-icon-end mb-2" href="https://patreon.com/MagicNotebook" target="_blank" rel="noopener">
+            Patreon
+            <Icon class='icon-sm' name='sm-chevron-right' />
+          </a>
+          <p class="text-02">{pageDictionary.options.sponsorship.desc}</p>
+        </div>
+      </div>
+    </section>
 
     <section class='section'>
       <header class='col-2/3 mx-auto text-center'>

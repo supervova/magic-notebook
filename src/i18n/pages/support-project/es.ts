@@ -15,20 +15,20 @@ export const es = {
 
     donation: {
       title: 'Donación',
-      cta: 'Ir a Ko-fi →',
+      cta: 'Ko-fi',
       desc: 'Si ya usas la aplicación y quieres apoyar su desarrollo — y además obtener una tarjeta o avatar en la web.',
     },
 
     purchase: {
       title: 'Compra',
-      cta: 'Comprar en Gumroad →',
+      cta: 'Gumroad',
       desc: 'El editor es gratuito, pero también puedes comprarlo en Gumroad. Recibirás: ✔️ la aplicación y acceso anticipado a nuevas versiones, ✔️ descargas directas de builds, ✔️ actualizaciones más rápidas, ✔️ una tarjeta o avatar en la web, ✔️ +100 puntos de karma.',
     },
 
     sponsorship: {
       title: 'Patrocinio',
-      cta: 'Apoyar en Patreon',
-      desc: 'El editor seguirá siendo gratuito, pero puedes convertirte en patrocinador en Patreon. Recibirás: ✔️ la aplicación y acceso anticipado a nuevas versiones, ✔️ descargas directas de builds, ✔️ actualizaciones más rápidas, ✔️ una tarjeta o avatar en la web, ✔️ +100 puntos de karma.',
+      cta: 'Patreon',
+      desc: 'Si ya usas la aplicación y quieres apoyar su desarrollo — y además obtener una tarjeta o avatar en la web.',
     },
   },
 
@@ -36,7 +36,7 @@ export const es = {
     title: 'Aquí podría aparecer tu avatar con enlace a tus redes',
 
     cardThreshold:
-      'Desde una donación o compra de $100 — tarjeta de perfil durante un mes. Desde $10 — avatar con información al pasar el cursor.',
+      'Desde una donación o compra de $100 — tarjeta de perfil durante un mes. Desde $10 — avatar con información al pasar el cursor. Cada aporte adicional de 100 $ o 10 $ amplía la publicación un mes más.',
 
     profileAriaLabel: 'Abrir perfil de {name} en {platform}',
   },

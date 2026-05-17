@@ -13,24 +13,24 @@ export const en: SupportProjectDictionary = {
     title: 'Ways to Support the Project',
     donation: {
       title: 'Donations',
-      cta: 'Donate via Ko-fi →',
+      cta: 'Ko-fi',
       desc: 'If you’re already using the app and want to support its development.',
     },
     purchase: {
       title: 'Purchase',
-      cta: 'Get it on Gumroad →',
+      cta: 'Gumroad',
       desc: 'Magic Notebook is free, but you can choose to purchase it via Gumroad for any price you feel is fair. You’ll get: ✔️ early access to new versions, ✔️ direct downloads of builds, ✔️ faster updates, ✔️ a profile card or avatar on the website, ✔️ +100 karma',
     },
     sponsorship: {
       title: 'Sponsorship',
-      cta: 'Support on Patreon →',
-      desc: 'Although the editor is free, you can support it by becoming a sponsor on Patreon. You’ll get: ✔️ early access to new versions, ✔️ direct downloads of builds, ✔️ faster updates, ✔️ a profile card or avatar on the website, ✔️ +100 karma',
+      cta: 'Patreon',
+      desc: 'If you’re already using the app and want to support its development.',
     },
   },
   supporters: {
     title: 'A spot for your avatar and social links',
     cardThreshold:
-      'A $100 purchase or donation gets you a featured card for one month. A $10 contribution gets you an avatar with a hover profile.',
+      'A $100 purchase or donation gets you a featured card for one month. A $10 contribution gets you an avatar with a hover profile. Each extra $100 or $10 extends the placement by one more month.',
     profileAriaLabel: 'See {name} on {platform}',
   },
   thanks: {

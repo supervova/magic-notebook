@@ -117,28 +117,17 @@
   @scope (.page-support-project) {
     /* Support options */
 
-    .support-options {
+    .section-support-options {
       padding-bottom: var(--size-4);
-    }
 
-    .support-option {
-      --card-bg: var(--color-bg-02);
-      --card-border: 0;
+      .row {
+        align-items: center;
+        text-align: center;
 
-      text-align: center;
-    }
 
-    @scope (.support-option) {
-      .body {
-        display: grid;
-        gap: var(--size-2);
-        justify-items: center;
-        min-height: 100%;
-        padding: var(--size-3);
-      }
-
-      p {
-        margin-bottom: 0;
+        @media (--tablet) {
+          --row-gap: var(--size-4);
+        }
       }
     }
 

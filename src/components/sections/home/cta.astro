@@ -51,11 +51,11 @@ const supportHref = getLocalizedPath(locale, 'support-project');
       <h2>{ctaCopy.title}</h2>
       <Image alt={baseCopy.app} class='logo' densities={[2]} format='png' loading='lazy' src={imgLogo} width={imgLogo.width / 2} />
       <div class='btn-split' data-split-button>
-        <a class='btn btn-main' href={macosDownloadHref} data-platform-target='macos'>
+        <a class='btn btn-main' href={macosDownloadHref} data-platform-target='macos' data-analytics-event='download_click'>
           <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
           <span>{heroCopy.linkPrimary}</span>
         </a>
-        <span class='btn btn-main' data-platform-target='windows' hidden>
+        <span class='btn btn-main' data-platform-target='windows' data-analytics-event='download_click' hidden>
           <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-windows'></use></svg>
           <span>{baseCopy.downloadWindowsComingSoonShort}</span>
         </span>
@@ -67,10 +67,10 @@ const supportHref = getLocalizedPath(locale, 'support-project');
           <div class='body w-max'>
             <ul class='menu' role='menu'>
               <li role='none'>
-                <a role='menuitem' href={macosDownloadHref} aria-current='true' data-platform-current='macos'>{baseCopy.downloadMacos}</a>
+                <a role='menuitem' href={macosDownloadHref} aria-current='true' data-platform-current='macos' data-platform-target='macos' data-analytics-event='download_click'>{baseCopy.downloadMacos}</a>
               </li>
               <li role='none'>
-                <span role='menuitem' aria-disabled='true' data-platform-current='windows'>{baseCopy.downloadWindowsComingSoon}</span>
+                <span role='menuitem' aria-disabled='true' data-platform-current='windows' data-platform-target='windows' data-analytics-event='download_click'>{baseCopy.downloadWindowsComingSoon}</span>
               </li>
             </ul>
           </div>

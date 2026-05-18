@@ -97,13 +97,13 @@ const isCurrentPath = (path: string) => {
             <div class='body w-max'>
               <ul class='menu'>
                 <li>
-                  <a class='menu-item menu-item-icon-start' href={macosDownloadHref}>
+                  <a class='menu-item menu-item-icon-start' href={macosDownloadHref} data-platform-target='macos' data-analytics-event='download_click'>
                     <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
                     <span class='label'>{baseCopy.downloadMacos}</span>
                   </a>
                 </li>
                 <li>
-                  <span class='menu-item menu-item-icon-start' aria-disabled='true'>
+                  <span class='menu-item menu-item-icon-start' data-platform-target='windows' data-analytics-event='download_click' aria-disabled='true'>
                     <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-windows'></use></svg>
                     <span class='label'>{baseCopy.downloadWindowsComingSoon}</span>
                   </span>

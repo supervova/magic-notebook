@@ -20,6 +20,13 @@ export default [
       },
     },
     plugins: { import: importPlugin, prettier: eslintPluginPrettier },
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.mjs', '.ts'],
+        },
+      },
+    },
     rules: {
       ...js.configs.recommended.rules,
       ...importPlugin.configs.recommended.rules,
@@ -52,7 +59,11 @@ export default [
 
       // other stuff
       'prettier/prettier': 'error',
-      'import/extensions': ['error', 'ignorePackages', { js: 'always' }],
+      'import/extensions': [
+        'error',
+        'ignorePackages',
+        { js: 'always', mjs: 'always', ts: 'never' },
+      ],
       'max-len': [
         'error',
         {

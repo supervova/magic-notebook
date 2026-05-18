@@ -167,8 +167,8 @@ const { baseCopy, comparisonCopy, macosDownloadHref } = Astro.props;
         <tr>
           <th scope='row' class='visually-hidden'>{comparisonCopy.downloadApp}</th>
           <td class='cell-featured cell-last'>
-            <a class='btn btn-primary' href={macosDownloadHref} data-platform-target='macos' set:text={comparisonCopy.download}></a>
-            <span class='btn btn-primary' data-platform-target='windows' hidden>{baseCopy.downloadWindowsComingSoon}</span>
+            <a class='btn btn-primary' href={macosDownloadHref} data-platform-target='macos' data-analytics-event='download_click' set:text={comparisonCopy.download}></a>
+            <span class='btn btn-primary' data-platform-target='windows' data-analytics-event='download_click' hidden>{baseCopy.downloadWindowsComingSoon}</span>
           </td>
           <td class='cell-empty' colspan='3'></td>
         </tr>

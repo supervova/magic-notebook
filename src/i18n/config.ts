@@ -50,17 +50,17 @@ import { uk as whatsNewUk } from './pages/whats-new/uk';
 import { zh as whatsNewZh } from './pages/whats-new/zh';
 
 export const supportedLocales = [
-  'en',
-  'ru',
   'de',
+  'en',
   'es',
   'fr',
   'it',
   'pt',
+  'ru',
   'uk',
+  'zh',
   'ja',
   'ko',
-  'zh',
 ] as const;
 
 export const commonDictionaries = {

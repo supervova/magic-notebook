@@ -13,17 +13,17 @@ const localizedPageLocales = {
 type LocalizedPageKey = keyof typeof localizedPageLocales;
 
 const localeNames = {
-  en: 'English',
-  ru: 'Русский',
   de: 'Deutsch',
+  en: 'English',
   es: 'Español',
   fr: 'Français',
   it: 'Italiano',
   pt: 'Português',
+  ru: 'Русский',
   uk: 'Українська',
+  zh: '中文',
   ja: '日本語',
   ko: '한국어',
-  zh: '中文',
 } as const satisfies Record<Locale, string>;
 
 const getPathKey = (path = '/') => {
@@ -57,15 +57,18 @@ export const getLocalizedAlternates = (path = '/') => {
   const locales: readonly Locale[] =
     pathKey in localizedPageLocales ? localizedPageLocales[pathKey as LocalizedPageKey] : ['en'];
 
-  return Object.fromEntries(locales.map((locale) => [locale, getLocalizedPath(locale, pathKey)])) as Partial<
-    Record<Locale, string>
-  >;
+  return Object.fromEntries(
+    locales.map((locale) => [locale, getLocalizedPath(locale, pathKey)])
+  ) as Partial<Record<Locale, string>>;
 };
 
 export const getLocaleName = (locale: Locale) => localeNames[locale];
 
 export const getPathWithoutLocale = (pathname: string) => {
-  const segments = pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+  const segments = pathname
+    .replace(/^\/+|\/+$/g, '')
+    .split('/')
+    .filter(Boolean);
   const [firstSegment, ...restSegments] = segments;
 
   if (supportedLocales.includes(firstSegment as Locale)) {

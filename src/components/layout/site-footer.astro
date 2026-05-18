@@ -2,6 +2,8 @@
 import { getLocalizedPath } from '../../i18n/utils';
 import type { Locale } from '../../i18n/config';
 
+import Icon from '../ui/icon.astro';
+
 interface BaseCopy {
   footer: string;
 }
@@ -32,6 +34,10 @@ const currentYear = new Date().getFullYear();
         <a href={getLocalizedPath(locale, 'support-project')}>{navCopy.supportTheProject}</a>
         <a href={getLocalizedPath(locale, 'privacy')}>{navCopy.privacy}</a>
         <a href={getLocalizedPath(locale, 'terms')}>{navCopy.terms}</a>
+        <a class="btn btn-icon btn-sm" href="https://x.com/magic_noteb00k" target="_blank" rel="noopener noreferrer" title="X.com">
+          <Icon class="icon-sm" name="sm-social-x" />
+          <span class="visually-hidden">X.com</span>
+        </a>
       </nav>
     </div>
   </div>

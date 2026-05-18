@@ -7,6 +7,7 @@
 .obsidian/
 .vault-nickname
 docs/notes/
+src/pages/playground/
 
 # -------------------------------
 # Build / runtime

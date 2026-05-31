@@ -20,6 +20,12 @@ Official website for **Magic Notebook** — a calm, writing-first desktop app fo
 - `/contact-us/` — feedback form
 - `/ru/*` - Russian version
 
+### Deploy
+
+1. `pnpm -s ci:local`
+2. Commit → Push.
+3. The deployment is triggered automatically via .github/workflows/deploy.yml
+
 ## Commands
 
 | Command                        | Action                                                |

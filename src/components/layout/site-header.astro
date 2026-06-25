@@ -14,6 +14,7 @@ interface BaseCopy {
   downloadOptions: string;
   downloadWindows: string;
   downloadWindowsComingSoon: string;
+  getItWindows: string;
   logo: string;
 }
 
@@ -34,7 +35,7 @@ interface Props {
   windowsDownloadHref: string;
 }
 
-const { baseCopy, locale, macosDownloadHref, navCopy, showBanner = false } = Astro.props;
+const { baseCopy, locale, macosDownloadHref, windowsDownloadHref, navCopy, showBanner = false } = Astro.props;
 const localeFlagNames = {
   en: 'flag-en',
   ru: 'flag-ru',
@@ -103,10 +104,10 @@ const isCurrentPath = (path: string) => {
                   </a>
                 </li>
                 <li>
-                  <span class='menu-item menu-item-icon-start' data-platform-target='windows' data-analytics-event='download_click' aria-disabled='true'>
+                  <a class='menu-item menu-item-icon-start' href={windowsDownloadHref} data-platform-target='windows' data-analytics-event='download_click' target='_blank' rel='noopener noreferrer'>
                     <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-windows'></use></svg>
-                    <span class='label'>{baseCopy.downloadWindowsComingSoon}</span>
-                  </span>
+                    <span class='label'>{baseCopy.getItWindows}</span>
+                  </a>
                 </li>
               </ul>
             </div>

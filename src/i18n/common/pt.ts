@@ -9,6 +9,8 @@ export const pt = {
     downloadWindowsComingSoon: 'Windows — Chega em junho',
     downloadWindowsComingSoonShort: 'Chega em junho',
     footer: 'Rodapé',
+    getIt: 'Baixar',
+    getItWindows: 'Baixar para Windows',
     logo: 'Logotipo',
     scrollDown: 'Rolar para baixo',
   },

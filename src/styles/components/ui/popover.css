@@ -161,10 +161,8 @@
 
   /* Panel is aligned to the right (LTR) edge of the trigger */
   .popover-end {
-    @media (--phone-l) {
-      --popover-x-end: 0;
-      --popover-x-start: auto;
-    }
+    --popover-x-end: 0;
+    --popover-x-start: auto;
   }
 
   /* Panel is horizontally centered relative to the trigger… */
@@ -185,7 +183,20 @@
       --popover-x-end: auto;
       --popover-x-start: 50%;
     }
+
+    .phone\:popover-end {
+      --popover-x-end: 0;
+      --popover-x-start: auto;
+    }
+
+    @scope (.phone\:popover-end) {
+      .body {
+        --popover-translate-x: 0;
+      }
+    }
   }
+
+
 
   /* #region: Panel is vertically centered relative to the trigger */
   @scope (.popover-middle) {

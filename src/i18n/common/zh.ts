@@ -9,6 +9,8 @@ export const zh = {
     downloadWindowsComingSoon: 'Windows — 六月推出',
     downloadWindowsComingSoonShort: '六月推出',
     footer: '页脚',
+    getIt: '获取',
+    getItWindows: '获取 Windows 版',
     logo: '标志',
     scrollDown: '向下滚动',
   },

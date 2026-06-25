@@ -6,7 +6,7 @@ export const es = {
   hero: {
     eyebrow: 'Editor de texto',
     title: 'Escribe por tu cuenta. Solo escribe',
-    desc: 'Una app cómoda para quienes solo quieren escribir. <span class="text-brand">✔︎</span> Sin interfaces recargadas. <span class="text-brand">✔︎</span> Sin sistemas complicados. <span class="text-brand">✔︎</span> Sin dependencia de la nube. Solo abre una carpeta y empieza.',
+    desc: 'Una app cómoda para quienes solo quieren escribir. <span class="text-brand">✔︎</span> Sin interfaces recargadas. <span class="text-brand">✔︎</span> Sin sistemas complicados. <span class="text-brand">✔︎</span> Sin dependencia de la nube. Solo abre una carpeta y empieza.',
     alt: 'Anna, tu asistente de IA',
     linkPrimary: 'Descargar',
     linkSecondary: 'Ver vídeo',

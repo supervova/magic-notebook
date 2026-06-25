@@ -9,6 +9,8 @@ export const ja = {
     downloadWindowsComingSoon: 'Windows — 6月公開予定',
     downloadWindowsComingSoonShort: '6月公開予定',
     footer: 'フッター',
+    getIt: '入手',
+    getItWindows: 'Windows 版を入手',
     logo: 'ロゴ',
     scrollDown: '下へスクロール',
   },

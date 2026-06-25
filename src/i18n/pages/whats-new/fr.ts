@@ -31,6 +31,18 @@ export const fr: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '26 juin 2026',
+      version: '1.1.3',
+      items: [
+        { tone: 'new', text: 'Magic Notebook est désormais disponible pour Windows.' },
+        {
+          tone: 'improvement',
+          text: 'La création de fichiers depuis la barre latérale est plus rapide et plus stable.',
+        },
+        { tone: 'fix', text: 'Quelques petits bugs ont été corrigés.' },
+      ],
+    },
+    {
       date: '15 mai 2026',
       version: '1.1.1',
 

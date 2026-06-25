@@ -9,6 +9,8 @@ export const en = {
     downloadWindowsComingSoon: 'Windows — Coming June',
     downloadWindowsComingSoonShort: 'Coming June',
     footer: 'Footer',
+    getIt: 'Get it',
+    getItWindows: 'Get it for Windows',
     logo: 'Logo',
     scrollDown: 'Scroll down',
   },

@@ -9,6 +9,8 @@ export const ko = {
     downloadWindowsComingSoon: 'Windows — 6월 출시 예정',
     downloadWindowsComingSoonShort: '6월 출시 예정',
     footer: '푸터',
+    getIt: '다운로드',
+    getItWindows: 'Windows용 다운로드',
     logo: '로고',
     scrollDown: '아래로 스크롤',
   },

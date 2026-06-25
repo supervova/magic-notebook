@@ -28,6 +28,18 @@ export const en: WhatsNewDictionary = {
   ],
   releases: [
     {
+      date: 'June 26, 2026',
+      version: '1.1.3',
+      items: [
+        { tone: 'new', text: 'Magic Notebook is now available for Windows.' },
+        {
+          tone: 'improvement',
+          text: 'Creating files from the sidebar is now faster and more reliable.',
+        },
+        { tone: 'fix', text: 'Fixed a few small issues.' },
+      ],
+    },
+    {
       date: 'May 15, 2026',
       version: '1.1.1',
       items: [

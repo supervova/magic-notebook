@@ -1,3 +1,6 @@
+@import url('../../styles/base/custom.css');
+@import url('../../styles/base/mixins.css');
+
 /* -------------------------------------------------------------------------- */
 /* #region: BASE                                                              */
 /* -------------------------------------------------------------------------- */
@@ -45,6 +48,10 @@
 
     .release-note + .release-note {
       margin-top: var(--size-8);
+    }
+
+    .release-note + .release-note h2 {
+      @mixin text-format h3;
     }
   }
 }

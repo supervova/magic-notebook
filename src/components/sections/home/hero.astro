@@ -13,6 +13,8 @@ interface BaseCopy {
   downloadWindows: string;
   downloadWindowsComingSoon: string;
   downloadWindowsComingSoonShort: string;
+  getIt: string;
+  getItWindows: string;
   scrollDown: string;
 }
 
@@ -34,7 +36,7 @@ interface Props {
   windowsDownloadHref: string;
 }
 
-const { baseCopy, heroCopy, macosDownloadHref } = Astro.props;
+const { baseCopy, heroCopy, macosDownloadHref, windowsDownloadHref } = Astro.props;
 ---
 
 <section class='hero'>
@@ -57,22 +59,22 @@ const { baseCopy, heroCopy, macosDownloadHref } = Astro.props;
             <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
             <span>{heroCopy.linkPrimary}</span>
           </a>
-          <span class='btn btn-primary btn-main' data-platform-target='windows' data-analytics-event='download_click' hidden>
+          <a class='btn btn-primary btn-main' href={windowsDownloadHref} data-platform-target='windows' data-analytics-event='download_click' target='_blank' rel='noopener noreferrer' hidden>
             <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-windows'></use></svg>
-            <span>{baseCopy.downloadWindowsComingSoonShort}</span>
-          </span>
+            <span>{baseCopy.getIt}</span>
+          </a>
 
-          <details class='popover popover-center' data-role='popover'>
+          <details class='popover phone:popover-end popover-center' data-role='popover'>
             <summary class='btn btn-primary btn-toggle' aria-label={baseCopy.downloadOptions}>
               <Icon class='icon-sm' name='sm-chevron-down' />
             </summary>
-            <div class='body w-max'>
+            <div class='body w-sm'>
               <ul class='menu' role='menu'>
                 <li role='none'>
                   <a role='menuitem' href={macosDownloadHref} aria-current='true' data-platform-current='macos' data-platform-target='macos' data-analytics-event='download_click'>{baseCopy.downloadMacos}</a>
                 </li>
                 <li role='none'>
-                  <span role='menuitem' aria-disabled='true' data-platform-current='windows' data-platform-target='windows' data-analytics-event='download_click'>{baseCopy.downloadWindowsComingSoon}</span>
+                  <a role='menuitem' href={windowsDownloadHref} data-platform-current='windows' data-platform-target='windows' data-analytics-event='download_click' target='_blank' rel='noopener noreferrer'>{baseCopy.getItWindows}</a>
                 </li>
               </ul>
             </div>

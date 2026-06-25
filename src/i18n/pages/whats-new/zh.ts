@@ -31,6 +31,15 @@ export const zh: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026 年 6 月 26 日',
+      version: '1.1.3',
+      items: [
+        { tone: 'new', text: 'Magic Notebook 现在已支持 Windows。' },
+        { tone: 'improvement', text: '通过侧边栏创建文件现在更快、更稳定。' },
+        { tone: 'fix', text: '修复了一些小问题。' },
+      ],
+    },
+    {
       date: '2026 年 5 月 15 日',
       version: '1.1.1',
 

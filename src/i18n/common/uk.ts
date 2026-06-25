@@ -9,6 +9,8 @@ export const uk = {
     downloadWindowsComingSoon: 'Windows — Випуск у червні',
     downloadWindowsComingSoonShort: 'Випуск у червні',
     footer: 'Підвал',
+    getIt: 'Завантажити',
+    getItWindows: 'Завантажити для Windows',
     logo: 'Логотип',
     scrollDown: 'Прокрутити вниз',
   },

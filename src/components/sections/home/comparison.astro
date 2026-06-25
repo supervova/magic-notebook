@@ -5,7 +5,9 @@ import imgLogoCompare from '../../../assets/img/pages/home/logo-compare.png';
 
 interface BaseCopy {
   app: string;
+  downloadMacos: string;
   downloadWindowsComingSoon: string;
+  getItWindows: string;
 }
 
 interface ComparisonCopy {
@@ -33,9 +35,10 @@ interface Props {
   baseCopy: BaseCopy;
   comparisonCopy: ComparisonCopy;
   macosDownloadHref: string;
+  windowsDownloadHref: string;
 }
 
-const { baseCopy, comparisonCopy, macosDownloadHref } = Astro.props;
+const { baseCopy, comparisonCopy, macosDownloadHref, windowsDownloadHref } = Astro.props;
 ---
 
 <section class='section-compare' id='compare'>
@@ -167,8 +170,8 @@ const { baseCopy, comparisonCopy, macosDownloadHref } = Astro.props;
         <tr>
           <th scope='row' class='visually-hidden'>{comparisonCopy.downloadApp}</th>
           <td class='cell-featured cell-last'>
-            <a class='btn btn-primary' href={macosDownloadHref} data-platform-target='macos' data-analytics-event='download_click' set:text={comparisonCopy.download}></a>
-            <span class='btn btn-primary' data-platform-target='windows' data-analytics-event='download_click' hidden>{baseCopy.downloadWindowsComingSoon}</span>
+            <a class='btn btn-primary' href={macosDownloadHref} data-platform-target='macos' data-analytics-event='download_click' set:text={baseCopy.downloadMacos}></a>
+            <a class='btn btn-primary' href={windowsDownloadHref} data-platform-target='windows' data-analytics-event='download_click' set:text={baseCopy.getItWindows}></a>
           </td>
           <td class='cell-empty' colspan='3'></td>
         </tr>

@@ -31,6 +31,18 @@ export const ko: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026년 6월 26일',
+      version: '1.1.3',
+      items: [
+        { tone: 'new', text: '이제 Windows에서도 Magic Notebook을 사용할 수 있습니다.' },
+        {
+          tone: 'improvement',
+          text: '사이드바에서 파일을 만드는 작업이 더 빠르고 안정적으로 개선되었습니다.',
+        },
+        { tone: 'fix', text: '몇 가지 작은 오류를 수정했습니다.' },
+      ],
+    },
+    {
       date: '2026년 5월 15일',
       version: '1.1.1',
 

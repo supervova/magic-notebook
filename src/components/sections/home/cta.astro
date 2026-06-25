@@ -15,6 +15,8 @@ interface BaseCopy {
   downloadWindows: string;
   downloadWindowsComingSoon: string;
   downloadWindowsComingSoonShort: string;
+  getIt: string;
+  getItWindows: string;
 }
 
 interface CtaCopy {
@@ -41,7 +43,7 @@ interface Props {
   windowsDownloadHref: string;
 }
 
-const { baseCopy, ctaCopy, heroCopy, locale, macosDownloadHref } = Astro.props;
+const { baseCopy, ctaCopy, heroCopy, locale, macosDownloadHref, windowsDownloadHref } = Astro.props;
 const supportHref = getLocalizedPath(locale, 'support-project');
 ---
 
@@ -51,14 +53,26 @@ const supportHref = getLocalizedPath(locale, 'support-project');
       <h2>{ctaCopy.title}</h2>
       <Image alt={baseCopy.app} class='logo' densities={[2]} format='png' loading='lazy' src={imgLogo} width={imgLogo.width / 2} />
       <div class='btn-split' data-split-button>
-        <a class='btn btn-main' href={macosDownloadHref} data-platform-target='macos' data-analytics-event='download_click'>
+        <a
+          class='btn btn-main'
+          href={macosDownloadHref}
+          data-platform-target='macos'
+          data-analytics-event='download_click'
+        >
           <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
           <span>{heroCopy.linkPrimary}</span>
         </a>
-        <span class='btn btn-main' data-platform-target='windows' data-analytics-event='download_click' hidden>
+        <a
+          class='btn btn-main'
+          href={windowsDownloadHref}
+          data-platform-target='windows'
+          data-analytics-event='download_click'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-windows'></use></svg>
-          <span>{baseCopy.downloadWindowsComingSoonShort}</span>
-        </span>
+          <span>{baseCopy.getIt}</span>
+        </a>
 
         <details class='popover popover-center' data-role='popover'>
           <summary class='btn btn-toggle' aria-label={baseCopy.downloadOptions}>
@@ -67,10 +81,29 @@ const supportHref = getLocalizedPath(locale, 'support-project');
           <div class='body w-max'>
             <ul class='menu' role='menu'>
               <li role='none'>
-                <a role='menuitem' href={macosDownloadHref} aria-current='true' data-platform-current='macos' data-platform-target='macos' data-analytics-event='download_click'>{baseCopy.downloadMacos}</a>
+                <a
+                  role='menuitem'
+                  href={macosDownloadHref}
+                  aria-current='true'
+                  data-platform-current='macos'
+                  data-platform-target='macos'
+                  data-analytics-event='download_click'
+                >
+                  {baseCopy.downloadMacos}
+                </a>
               </li>
               <li role='none'>
-                <span role='menuitem' aria-disabled='true' data-platform-current='windows' data-platform-target='windows' data-analytics-event='download_click'>{baseCopy.downloadWindowsComingSoon}</span>
+                <a
+                  role='menuitem'
+                  href={windowsDownloadHref}
+                  data-platform-current='windows'
+                  data-platform-target='windows'
+                  data-analytics-event='download_click'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  >
+                    {baseCopy.getItWindows}
+                  </a>
               </li>
             </ul>
           </div>

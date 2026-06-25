@@ -31,6 +31,15 @@ export const ja: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026年6月26日',
+      version: '1.1.3',
+      items: [
+        { tone: 'new', text: 'Magic Notebook が Windows で利用できるようになりました。' },
+        { tone: 'improvement', text: 'サイドバーからのファイル作成がより速く、安定しました。' },
+        { tone: 'fix', text: 'いくつかの軽微な不具合を修正しました。' },
+      ],
+    },
+    {
       date: '2026年5月15日',
       version: '1.1.1',
 

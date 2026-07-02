@@ -5,7 +5,7 @@ export const en = {
   },
   hero: {
     eyebrow: 'Text editor',
-    title: 'Write your way. Write better',
+    title: 'Human-first writing app',
     desc: 'A calm app for people who just want to write. <span class="text-brand">✔︎</span> No cluttered interfaces. <span class="text-brand">✔︎</span> No complicated systems. <span class="text-brand">✔︎</span> No cloud services. Just open a folder and start writing.',
     alt: 'Anna, your AI assistant',
     linkPrimary: 'Download',

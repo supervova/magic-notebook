@@ -31,6 +31,18 @@ export const ja: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026年8月4日',
+      version: '1.2.0',
+      items: [
+        { tone: 'new', text: '大きなドキュメントのセクションを小見出しごとに折りたためるようになりました。' },
+        { tone: 'new', text: 'コードエディタ風のテーマを追加しました。' },
+        { tone: 'improvement', text: 'アクセスできる任意のフォルダからドキュメントを開けるようになりました。' },
+        { tone: 'improvement', text: 'ツールバーは閲覧中に非表示になり、必要なときに再表示されます。' },
+        { tone: 'improvement', text: 'アプリがより高速で応答性の高いものになりました。' },
+        { tone: 'improvement', text: 'Windows との連携を改善しました。' },
+      ],
+    },
+    {
       date: '2026年6月26日',
       version: '1.1.3',
       items: [

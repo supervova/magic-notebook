@@ -31,6 +31,21 @@ export const es: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '4 de agosto de 2026',
+      version: '1.2.0',
+      items: [
+        { tone: 'new', text: 'Contrae secciones de documentos extensos mediante subtítulos.' },
+        { tone: 'new', text: 'Se añadió un tema inspirado en un editor de código.' },
+        { tone: 'improvement', text: 'Ahora puedes abrir documentos desde cualquier carpeta accesible.' },
+        {
+          tone: 'improvement',
+          text: 'La barra de herramientas se oculta al leer y reaparece cuando la necesitas.',
+        },
+        { tone: 'improvement', text: 'La aplicación ahora es más rápida y ágil.' },
+        { tone: 'improvement', text: 'Se mejoró la integración con Windows.' },
+      ],
+    },
+    {
       date: '26 de junio de 2026',
       version: '1.1.3',
       items: [

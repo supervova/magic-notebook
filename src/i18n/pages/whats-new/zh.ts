@@ -31,6 +31,18 @@ export const zh: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026 年 8 月 4 日',
+      version: '1.2.0',
+      items: [
+        { tone: 'new', text: '现在可以按小标题折叠长文档的各个部分。' },
+        { tone: 'new', text: '新增代码编辑器风格的主题。' },
+        { tone: 'improvement', text: '现在可以从任何可访问的文件夹打开文档。' },
+        { tone: 'improvement', text: '阅读时工具栏会自动隐藏，需要时会再次出现。' },
+        { tone: 'improvement', text: '应用现在运行更快、响应更灵敏。' },
+        { tone: 'improvement', text: '改进了 Windows 集成。' },
+      ],
+    },
+    {
       date: '2026 年 6 月 26 日',
       version: '1.1.3',
       items: [

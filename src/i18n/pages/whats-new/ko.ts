@@ -31,6 +31,18 @@ export const ko: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026년 8월 4일',
+      version: '1.2.0',
+      items: [
+        { tone: 'new', text: '긴 문서의 섹션을 소제목별로 접을 수 있습니다.' },
+        { tone: 'new', text: '코드 편집기 스타일의 테마를 추가했습니다.' },
+        { tone: 'improvement', text: '이제 접근 가능한 모든 폴더에서 문서를 열 수 있습니다.' },
+        { tone: 'improvement', text: '읽는 동안 도구 모음이 숨겨지고 필요할 때 다시 나타납니다.' },
+        { tone: 'improvement', text: '앱이 더 빠르고 반응성이 좋아졌습니다.' },
+        { tone: 'improvement', text: 'Windows 통합을 개선했습니다.' },
+      ],
+    },
+    {
       date: '2026년 6월 26일',
       version: '1.1.3',
       items: [

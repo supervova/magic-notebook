@@ -28,6 +28,21 @@ export const de: WhatsNewDictionary = {
   ],
   releases: [
     {
+      date: '4. August 2026',
+      version: '1.2.0',
+      items: [
+        { tone: 'new', text: 'Klappen Sie Abschnitte großer Dokumente anhand von Zwischenüberschriften ein.' },
+        { tone: 'new', text: 'Ein Theme im Stil eines Code-Editors wurde hinzugefügt.' },
+        { tone: 'improvement', text: 'Dokumente lassen sich jetzt aus jedem zugänglichen Ordner öffnen.' },
+        {
+          tone: 'improvement',
+          text: 'Die Symbolleiste wird beim Lesen ausgeblendet und bei Bedarf wieder eingeblendet.',
+        },
+        { tone: 'improvement', text: 'Die App ist jetzt schneller und reaktionsfreudiger.' },
+        { tone: 'improvement', text: 'Die Windows-Integration wurde verbessert.' },
+      ],
+    },
+    {
       date: '26. Juni 2026',
       version: '1.1.3',
       items: [

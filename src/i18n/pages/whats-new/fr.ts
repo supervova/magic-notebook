@@ -31,6 +31,21 @@ export const fr: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '4 août 2026',
+      version: '1.2.0',
+      items: [
+        { tone: 'new', text: 'Repliez les sections des longs documents par sous-titre.' },
+        { tone: 'new', text: 'Ajout d’un thème inspiré d’un éditeur de code.' },
+        { tone: 'improvement', text: 'Vous pouvez désormais ouvrir des documents depuis tout dossier accessible.' },
+        {
+          tone: 'improvement',
+          text: 'La barre d’outils se masque pendant la lecture et revient lorsque nécessaire.',
+        },
+        { tone: 'improvement', text: 'L’application est désormais plus rapide et plus réactive.' },
+        { tone: 'improvement', text: 'L’intégration à Windows a été améliorée.' },
+      ],
+    },
+    {
       date: '26 juin 2026',
       version: '1.1.3',
       items: [

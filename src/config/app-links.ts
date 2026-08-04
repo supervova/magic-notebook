@@ -3,7 +3,7 @@ export const appLinks = {
   downloads: {
     macos:
       // 'https://github.com/Magic-Notebook/updates/releases/download/v1.1.1/MagicNotebook-1.1.1.dmg',
-      'https://github.com/Magic-Notebook/updates/releases/download/v1.1.3/MagicNotebook-1.1.3.dmg',
+      'https://github.com/Magic-Notebook/updates/releases/download/v1.2.0/MagicNotebook-1.2.0.dmg',
     windows: 'https://apps.microsoft.com/detail/9nb0qng2kd8z',
   },
 } as const;

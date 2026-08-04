@@ -28,6 +28,21 @@ export const en: WhatsNewDictionary = {
   ],
   releases: [
     {
+      date: 'August 4, 2026',
+      version: '1.2.0',
+      items: [
+        { tone: 'new', text: 'Collapse sections of large documents by subheading.' },
+        { tone: 'new', text: 'Added a code-editor-inspired theme.' },
+        { tone: 'improvement', text: 'You can now open documents from any accessible folder.' },
+        {
+          tone: 'improvement',
+          text: 'The toolbar hides while reading and returns when needed.',
+        },
+        { tone: 'improvement', text: 'The app is now faster and more responsive.' },
+        { tone: 'improvement', text: 'Improved Windows integration.' },
+      ],
+    },
+    {
       date: 'June 26, 2026',
       version: '1.1.3',
       items: [

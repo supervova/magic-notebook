@@ -61,7 +61,7 @@ const windowsDownloadHref = appLinks.downloads.windows;
     <div class='release-notes'>
       {
         pageDictionary.releases.map((release) => (
-          <section class='release-note col-2/3'>
+          <section class='release-note col-1/2'>
             <h2>
               {release.date}
               {' '}
@@ -70,7 +70,7 @@ const windowsDownloadHref = appLinks.downloads.windows;
               </span>
             </h2>
 
-            <ul class='list-tagged col-5/6'>
+            <ul class='list-tagged'>
               {
                 release.items.map((item) => {
                   const tag = pageDictionary.legend.find(({ tone }) => tone === item.tone);

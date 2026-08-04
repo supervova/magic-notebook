@@ -40,10 +40,6 @@
 
     .release-note h2 {
       text-align: center;
-
-      @media (--phone-l) {
-        text-align: start;
-      }
     }
 
     .release-note + .release-note {

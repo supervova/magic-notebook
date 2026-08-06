@@ -2,7 +2,13 @@
 
 Official website for **Magic Notebook** — a calm, writing-first desktop app for bloggers, journalists, and authors.
 
-**Principles:** static-first, content-first, minimal JS.
+[**Download for macOS**](https://github.com/Magic-Notebook/updates/releases/latest)
+
+<a href="https://apps.microsoft.com/detail/9nb0qng2kd8z?cid=github_repo" target="_self" >
+  <img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200" alt="Download from Microsoft Store" />
+</a>
+
+**Website principles:** static-first, content-first, minimal JS.
 
 ## Stack
 

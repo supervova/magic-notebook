@@ -31,6 +31,22 @@ export const es: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '19 de agosto de 2026',
+      version: '1.3.0',
+      items: [
+        {
+          tone: 'new',
+          text: 'Añadido el modo compacto: la app puede minimizarse al área de notificación junto al reloj para tenerla siempre a mano.',
+        },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: '4 de agosto de 2026',
       version: '1.2.0',
       items: [

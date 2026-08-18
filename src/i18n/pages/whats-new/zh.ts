@@ -31,6 +31,19 @@ export const zh: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026 年 8 月 19 日',
+      version: '1.3.0',
+      items: [
+        { tone: 'new', text: '新增紧凑模式：可将应用最小化到时钟旁的系统托盘，随时都能快速打开。' },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: '2026 年 8 月 4 日',
       version: '1.2.0',
       items: [

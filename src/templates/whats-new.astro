@@ -2,6 +2,10 @@
 import { appLinks } from '../config/app-links';
 import SiteFooter from '../components/layout/site-footer.astro';
 import SiteHeader from '../components/layout/site-header.astro';
+import imgMacosDoc from '../assets/img/pages/whats-new/2026-08-18-macos-doc.png';
+import imgMacosSettings from '../assets/img/pages/whats-new/2026-08-18-macos-settings.png';
+import imgWindowsDoc from '../assets/img/pages/whats-new/2026-08-18-windows-doc.png';
+import imgWindowsSettings from '../assets/img/pages/whats-new/2026-08-18-windows-settings.png';
 import type { Locale } from '../i18n/config';
 import type { commonDictionaries } from '../i18n/config';
 import type { WhatsNewDictionary } from '../i18n/pages/whats-new/types';
@@ -22,6 +26,12 @@ const baseCopy = commonDictionary.base;
 const navCopy = commonDictionary.nav;
 const macosDownloadHref = appLinks.downloads.macos;
 const windowsDownloadHref = appLinks.downloads.windows;
+const releaseImageSources = {
+  '2026-08-18-macos-doc': imgMacosDoc,
+  '2026-08-18-macos-settings': imgMacosSettings,
+  '2026-08-18-windows-doc': imgWindowsDoc,
+  '2026-08-18-windows-settings': imgWindowsSettings,
+};
 ---
 
 <BaseLayout
@@ -90,6 +100,15 @@ const windowsDownloadHref = appLinks.downloads.windows;
                 })
               }
             </ul>
+
+            {
+              release.images?.map((image) => {
+                const source = releaseImageSources[image];
+                const marginClass = image === '2026-08-18-windows-settings' ? 'mt-2lh' : 'mt-3';
+
+                return <img class={marginClass} src={source.src} width={source.width} height={source.height} alt='' loading='lazy' decoding='async' />;
+              })
+            }
           </section>
         ))
       }

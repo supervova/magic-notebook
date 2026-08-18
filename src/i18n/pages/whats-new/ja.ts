@@ -31,6 +31,22 @@ export const ja: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026年8月19日',
+      version: '1.3.0',
+      items: [
+        {
+          tone: 'new',
+          text: 'コンパクトモードを追加：アプリを時計の近くにあるシステムトレイへ最小化でき、いつでもすぐ呼び出せます。',
+        },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: '2026年8月4日',
       version: '1.2.0',
       items: [

@@ -28,6 +28,22 @@ export const en: WhatsNewDictionary = {
   ],
   releases: [
     {
+      date: 'August 19, 2026',
+      version: '1.3.0',
+      items: [
+        {
+          tone: 'new',
+          text: 'Added compact mode: the app can be minimized to the system tray near the clock, so it’s always close at hand.',
+        },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: 'August 4, 2026',
       version: '1.2.0',
       items: [

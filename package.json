@@ -263,10 +263,10 @@
     ]
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
+    "@astrojs/check": "^0.9.10",
     "@astrojs/sitemap": "^3.7.3",
     "@eslint/js": "^10.0.1",
-    "astro": "^6.3.3",
+    "astro": "^7.2.3",
     "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",

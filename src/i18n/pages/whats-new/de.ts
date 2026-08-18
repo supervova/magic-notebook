@@ -28,6 +28,22 @@ export const de: WhatsNewDictionary = {
   ],
   releases: [
     {
+      date: '19. August 2026',
+      version: '1.3.0',
+      items: [
+        {
+          tone: 'new',
+          text: 'Kompaktmodus hinzugefügt: Die App kann in den Infobereich neben der Uhr minimiert werden und bleibt so immer griffbereit.',
+        },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: '4. August 2026',
       version: '1.2.0',
       items: [

@@ -31,6 +31,22 @@ export const ko: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026년 8월 19일',
+      version: '1.3.0',
+      items: [
+        {
+          tone: 'new',
+          text: '컴팩트 모드 추가: 앱을 시계 옆 시스템 트레이로 최소화해 언제든 빠르게 열 수 있습니다.',
+        },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: '2026년 8월 4일',
       version: '1.2.0',
       items: [

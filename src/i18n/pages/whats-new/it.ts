@@ -31,6 +31,22 @@ export const it: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '19 agosto 2026',
+      version: '1.3.0',
+      items: [
+        {
+          tone: 'new',
+          text: 'Aggiunta la modalità compatta: l’app può essere ridotta nell’area di notifica accanto all’orologio, così resta sempre a portata di mano.',
+        },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: '4 agosto 2026',
       version: '1.2.0',
       items: [

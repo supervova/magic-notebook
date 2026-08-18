@@ -6,6 +6,7 @@
   .mt-0 { margin-top: 0; }
   .mt-1 { margin-top: var(--size-1); }
   .mt-2 { margin-top: var(--size-2); }
+  .mt-3 { margin-top: var(--size-3); }
   .mt-1lh { margin-top: var(--size-3); }
   .mt-2lh { margin-top: calc(var(--size-3) * 2); }
   .mt-3lh { margin-top: calc(var(--size-3) * 3); }

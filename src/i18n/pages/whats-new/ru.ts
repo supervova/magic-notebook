@@ -28,6 +28,22 @@ export const ru: WhatsNewDictionary = {
   ],
   releases: [
     {
+      date: '19 августа 2026',
+      version: '1.3.0',
+      items: [
+        {
+          tone: 'new',
+          text: 'Добавил компактный режим: приложение можно свернуть в панель со значками возле часов, чтобы оно всегда было под рукой.',
+        },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: '4 августа 2026',
       version: '1.2.0',
       items: [

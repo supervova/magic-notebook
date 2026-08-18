@@ -31,6 +31,22 @@ export const fr: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '19 août 2026',
+      version: '1.3.0',
+      items: [
+        {
+          tone: 'new',
+          text: 'Ajout du mode compact : l’application peut être réduite dans la zone de notification près de l’horloge pour rester toujours à portée de main.',
+        },
+      ],
+      images: [
+        '2026-08-18-macos-settings',
+        '2026-08-18-macos-doc',
+        '2026-08-18-windows-settings',
+        '2026-08-18-windows-doc',
+      ],
+    },
+    {
       date: '4 août 2026',
       version: '1.2.0',
       items: [

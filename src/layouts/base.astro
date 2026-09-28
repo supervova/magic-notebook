@@ -3,6 +3,8 @@ import type { Locale } from '../i18n/config';
 import '../styles/main.css';
 
 interface Props {
+  noindex?: boolean;
+  analytics?: boolean;
   alternates?: Partial<Record<Locale, string>>;
   bodyClass?: string;
   description: string;
@@ -10,7 +12,7 @@ interface Props {
   title: string;
 }
 
-const { title, description, lang, bodyClass, alternates } = Astro.props;
+const { title, description, lang, bodyClass, alternates, noindex = false, analytics = true } = Astro.props;
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
 const ogImageUrl = Astro.site ? new URL('/assets/img/magic-notebook.jpg', Astro.site).toString() : undefined;
 const localeToOgLocale = {
@@ -41,6 +43,8 @@ const alternateUrls = Astro.site
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex && <meta name="referrer" content="no-referrer" />}
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -58,9 +62,9 @@ const alternateUrls = Astro.site
     <link rel="apple-touch-icon" href="/icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <!-- Google Analytics -->
-    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-PKZCFV9HGK" async></script>
+    {analytics && <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-LLY58MEX1Q" async></script>}
 
-    <script is:inline>
+    {analytics && <script is:inline>
       window.dataLayer = window.dataLayer || [];
 
       function gtag() {
@@ -68,8 +72,8 @@ const alternateUrls = Astro.site
       }
 
       gtag('js', new Date());
-      gtag('config', 'G-PKZCFV9HGK');
-    </script>
+      gtag('config', 'G-LLY58MEX1Q');
+    </script>}
   </head>
 
   <body class={bodyClass}>

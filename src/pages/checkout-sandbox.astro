@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/base.astro';
+import { checkout } from '../i18n/checkout-en';
+---
+
+<BaseLayout title={checkout.title} description={checkout.description} lang="en" bodyClass="page-checkout" noindex analytics={false}>
+  <main class="container">
+    <h1>{checkout.heading}</h1>
+    <p><strong>{checkout.warning}</strong></p>
+    <p id="checkout-status" role="status" aria-live="polite">{checkout.loading}</p>
+    <noscript><p>{checkout.noScript}</p></noscript>
+    <p><button id="checkout-reload" class="btn btn-primary" type="button" hidden>{checkout.reload}</button></p>
+    <p><a href="/">{checkout.home}</a></p>
+  </main>
+</BaseLayout>
+
+<script>
+  import '../js/checkout-sandbox';
+</script>

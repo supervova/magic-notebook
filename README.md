@@ -77,5 +77,22 @@ Optional Cloudflare settings:
 
 ## Deployment
 
+### Paddle sandbox checkout
+
+`/checkout-sandbox/` uses Paddle.js with a public test token and hard-coded sandbox
+mode. It is excluded from the sitemap, has no analytics, and uses noindex.
+
+After publishing, set **Paddle Sandbox → Checkout → Checkout settings → Default
+payment link** to `https://www.magic-notebook.com/checkout-sandbox/`.
+Do not use this page for the live account.
+
+Start from Get Pro in the app: the proxy attaches the authenticated user to the
+transaction and Paddle adds `_ptxn` to the link. Without it, the page only shows
+instructions. Test failed loading, closing checkout, and a sandbox payment.
+After payment, reopen the assistant to check Pro status: only the signed server
+webhook activates the subscription, never this page.
+
+This change prepares files only; publication and Paddle configuration are separate.
+
 Automatic via GitHub Actions → GitHub Pages. The feedback endpoint is deployed
 separately as a Cloudflare Worker.

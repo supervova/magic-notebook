@@ -10,6 +10,7 @@ import Icon from '../ui/icon.astro';
 
 interface BaseCopy {
   app: string;
+  downloadAppStore: string;
   downloadMacos: string;
   downloadOptions: string;
   downloadWindows: string;
@@ -29,13 +30,14 @@ interface NavCopy {
 interface Props {
   baseCopy: BaseCopy;
   locale: Locale;
+  macosAppStoreHref: string;
   macosDownloadHref: string;
   navCopy: NavCopy;
   showBanner?: boolean;
   windowsDownloadHref: string;
 }
 
-const { baseCopy, locale, macosDownloadHref, windowsDownloadHref, navCopy, showBanner = false } = Astro.props;
+const { baseCopy, locale, macosAppStoreHref, macosDownloadHref, windowsDownloadHref, navCopy, showBanner = false } = Astro.props;
 const localeFlagNames = {
   en: 'flag-en',
   ru: 'flag-ru',
@@ -101,6 +103,12 @@ const isCurrentPath = (path: string) => {
                   <a class='menu-item menu-item-icon-start' href={macosDownloadHref} data-platform-target='macos' data-analytics-event='download_click'>
                     <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
                     <span class='label'>{baseCopy.downloadMacos}</span>
+                  </a>
+                </li>
+                <li>
+                  <a class='menu-item menu-item-icon-start' href={macosAppStoreHref} data-analytics-event='download_click' target='_blank' rel='noopener noreferrer'>
+                    <svg class='icon' aria-hidden='true' focusable='false'><use href='/assets/icons/sprite.svg#brand-apple'></use></svg>
+                    <span class='label'>{baseCopy.downloadAppStore}</span>
                   </a>
                 </li>
                 <li>

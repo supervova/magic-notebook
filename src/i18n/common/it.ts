@@ -3,6 +3,7 @@ export const it = {
 
   base: {
     app: 'Magic Notebook',
+    downloadAppStore: 'Scarica dall’App Store',
     downloadMacos: 'Scarica per macOS',
     downloadOptions: 'Altre opzioni di download',
     downloadWindows: 'Scarica per Windows',

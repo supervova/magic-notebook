@@ -3,6 +3,7 @@ export const zh = {
 
   base: {
     app: 'Magic Notebook',
+    downloadAppStore: '从 App Store 下载',
     downloadMacos: '下载 macOS 版',
     downloadOptions: '更多下载选项',
     downloadWindows: '下载 Windows 版',

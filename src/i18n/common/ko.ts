@@ -3,6 +3,7 @@ export const ko = {
 
   base: {
     app: 'Magic Notebook',
+    downloadAppStore: 'App Store에서 다운로드',
     downloadMacos: 'macOS용 다운로드',
     downloadOptions: '다른 다운로드 옵션',
     downloadWindows: 'Windows용 다운로드',

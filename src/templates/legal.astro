@@ -18,6 +18,7 @@ const { locale, commonDictionary, pageDictionary } = Astro.props;
 
 const baseCopy = commonDictionary.base;
 const navCopy = commonDictionary.nav;
+const macosAppStoreHref = appLinks.downloads.macosAppStore;
 const macosDownloadHref = appLinks.downloads.macos;
 const windowsDownloadHref = appLinks.downloads.windows;
 const pathnameWithoutLocale = Astro.url.pathname.replace(/^\/ru(?=\/|$)/, '');
@@ -37,6 +38,7 @@ const localizedAlternates = {
   <SiteHeader
     baseCopy={baseCopy}
     locale={locale}
+    macosAppStoreHref={macosAppStoreHref}
     macosDownloadHref={macosDownloadHref}
     navCopy={navCopy}
     showBanner={true}

@@ -31,6 +31,14 @@ export const ko: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026년 10월 1일',
+      version: '1.3.1',
+      items: [
+        { tone: 'new', text: 'Mac App Store 버전을 추가했습니다.' },
+        { tone: 'fix', text: '사소한 오류 수정 및 인터페이스 개선.' },
+      ],
+    },
+    {
       date: '2026년 8월 19일',
       version: '1.3.0',
       items: [

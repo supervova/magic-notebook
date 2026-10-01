@@ -28,6 +28,14 @@ export const ru: WhatsNewDictionary = {
   ],
   releases: [
     {
+      date: '1 октября 2026',
+      version: '1.3.1',
+      items: [
+        { tone: 'new', text: 'Добавлена версия для Mac App Store.' },
+        { tone: 'fix', text: 'Небольшие исправления и улучшения интерфейса.' },
+      ],
+    },
+    {
       date: '19 августа 2026',
       version: '1.3.0',
       items: [

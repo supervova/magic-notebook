@@ -31,6 +31,14 @@ export const ja: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026年10月1日',
+      version: '1.3.1',
+      items: [
+        { tone: 'new', text: 'Mac App Store版を追加しました。' },
+        { tone: 'fix', text: '軽微な修正とインターフェースの改善。' },
+      ],
+    },
+    {
       date: '2026年8月19日',
       version: '1.3.0',
       items: [

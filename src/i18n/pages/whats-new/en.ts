@@ -28,6 +28,14 @@ export const en: WhatsNewDictionary = {
   ],
   releases: [
     {
+      date: 'October 1, 2026',
+      version: '1.3.1',
+      items: [
+        { tone: 'new', text: 'Added a version for the Mac App Store.' },
+        { tone: 'fix', text: 'Minor fixes and interface improvements.' },
+      ],
+    },
+    {
       date: 'August 19, 2026',
       version: '1.3.0',
       items: [

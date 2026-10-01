@@ -10,6 +10,7 @@ import imgLogo from '../../../assets/img/components/logomark.png';
 
 interface BaseCopy {
   app: string;
+  downloadAppStore: string;
   downloadMacos: string;
   downloadOptions: string;
   downloadWindows: string;
@@ -38,12 +39,13 @@ interface Props {
   ctaCopy: CtaCopy;
   heroCopy: HeroCopy;
   locale: Locale;
+  macosAppStoreHref: string;
   macosDownloadHref: string;
   navCopy: NavCopy;
   windowsDownloadHref: string;
 }
 
-const { baseCopy, ctaCopy, heroCopy, locale, macosDownloadHref, windowsDownloadHref } = Astro.props;
+const { baseCopy, ctaCopy, heroCopy, locale, macosAppStoreHref, macosDownloadHref, windowsDownloadHref } = Astro.props;
 const supportHref = getLocalizedPath(locale, 'support-project');
 ---
 
@@ -90,6 +92,17 @@ const supportHref = getLocalizedPath(locale, 'support-project');
                   data-analytics-event='download_click'
                 >
                   {baseCopy.downloadMacos}
+                </a>
+              </li>
+              <li role='none'>
+                <a
+                  role='menuitem'
+                  href={macosAppStoreHref}
+                  data-analytics-event='download_click'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  {baseCopy.downloadAppStore}
                 </a>
               </li>
               <li role='none'>

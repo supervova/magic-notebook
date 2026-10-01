@@ -31,6 +31,14 @@ export const uk: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '1 жовтня 2026',
+      version: '1.3.1',
+      items: [
+        { tone: 'new', text: 'Додано версію для Mac App Store.' },
+        { tone: 'fix', text: 'Невеликі виправлення та покращення інтерфейсу.' },
+      ],
+    },
+    {
       date: '19 серпня 2026',
       version: '1.3.0',
       items: [

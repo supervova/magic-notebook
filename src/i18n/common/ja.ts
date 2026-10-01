@@ -3,6 +3,7 @@ export const ja = {
 
   base: {
     app: 'Magic Notebook',
+    downloadAppStore: 'App Storeからダウンロード',
     downloadMacos: 'macOS版をダウンロード',
     downloadOptions: 'その他のダウンロード',
     downloadWindows: 'Windows版をダウンロード',

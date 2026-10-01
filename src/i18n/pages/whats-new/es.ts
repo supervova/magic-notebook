@@ -31,6 +31,14 @@ export const es: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '1 de octubre de 2026',
+      version: '1.3.1',
+      items: [
+        { tone: 'new', text: 'Añadida una versión para el Mac App Store.' },
+        { tone: 'fix', text: 'Pequeñas correcciones y mejoras en la interfaz.' },
+      ],
+    },
+    {
       date: '19 de agosto de 2026',
       version: '1.3.0',
       items: [

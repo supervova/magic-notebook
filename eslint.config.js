@@ -1,6 +1,6 @@
 // eslint.config.js
 import js from '@eslint/js';
-import importPlugin from 'eslint-plugin-import';
+import { createNodeResolver, importX } from 'eslint-plugin-import-x';
 import prettier from 'eslint-config-prettier';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import globals from 'globals';
@@ -19,17 +19,15 @@ export default [
         ...globals.es2023,
       },
     },
-    plugins: { import: importPlugin, prettier: eslintPluginPrettier },
+    plugins: { 'import-x': importX, prettier: eslintPluginPrettier },
     settings: {
-      'import/resolver': {
-        node: {
-          extensions: ['.js', '.mjs', '.ts'],
-        },
-      },
+      'import-x/resolver-next': [
+        createNodeResolver({ extensions: ['.js', '.mjs', '.ts'] }),
+      ],
     },
     rules: {
       ...js.configs.recommended.rules,
-      ...importPlugin.configs.recommended.rules,
+      ...importX.flatConfigs.recommended.rules,
 
       // airbnb-base style
 
@@ -59,7 +57,7 @@ export default [
 
       // other stuff
       'prettier/prettier': 'error',
-      'import/extensions': [
+      'import-x/extensions': [
         'error',
         'ignorePackages',
         { js: 'always', mjs: 'always', ts: 'never' },

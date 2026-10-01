@@ -31,6 +31,14 @@ export const zh: WhatsNewDictionary = {
 
   releases: [
     {
+      date: '2026 年 10 月 1 日',
+      version: '1.3.1',
+      items: [
+        { tone: 'new', text: '新增 Mac App Store 版本。' },
+        { tone: 'fix', text: '小幅修复和界面改进。' },
+      ],
+    },
+    {
       date: '2026 年 8 月 19 日',
       version: '1.3.0',
       items: [

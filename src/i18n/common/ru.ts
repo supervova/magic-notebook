@@ -3,6 +3,7 @@ export const ru = {
 
   base: {
     app: 'Magic Notebook',
+    downloadAppStore: 'Загрузить в App Store',
     downloadMacos: 'Скачать для macOS',
     downloadOptions: 'Другие варианты загрузки',
     downloadWindows: 'Скачать для Windows',

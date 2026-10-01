@@ -36,8 +36,8 @@ Official website for **Magic Notebook** — a calm, writing-first desktop app fo
 
 | Command                        | Action                                                |
 | :----------------------------- | :---------------------------------------------------- |
-| `pnpm install`                 | Installs dependencies                                 |
 | `pnpm dev -- --host`           | Starts local dev server at `localhost:4321`           |
+| `pnpm install`                 | Installs dependencies                                 |
 | `pnpm build`                   | Build your production site to `./dist/`               |
 | `pnpm preview`                 | Preview your build locally, before deploying          |
 | `pnpm astro ...`               | Run CLI commands like `astro add`, `astro check`      |
